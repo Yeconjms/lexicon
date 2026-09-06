@@ -18,6 +18,7 @@
   --sans:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Segoe UI','Malgun Gothic',system-ui,sans-serif;
   --serif:'Iowan Old Style','Charter','Palatino Linotype',Georgia,'Times New Roman',serif;
   --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  --fur:#C08145; --fur2:#96602F; --cream:#F7E9D8; --blush:#E5A2A0;
   --navh:62px;
 }
 *,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
@@ -73,18 +74,22 @@ label.sw input{width:19px;height:19px;flex-shrink:0;accent-color:var(--blue);}
 label.sw b{display:block;font-size:14.5px;font-weight:600;}
 label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.5;}
 
-/* ── 렉시(마스코트) ── */
-.lexi{display:block;margin:0 auto;width:104px;height:104px;overflow:visible;}
+/* ── 렉시(마스코트 · 다람쥐) ── */
+.lexi{display:block;margin:0 auto;width:112px;height:112px;overflow:visible;}
 .lexi.sm{width:46px;height:46px;margin:0;}
-.lx-body{fill:var(--deep);}
-.lx-belly{fill:var(--paper);}
+.lx-fur{fill:var(--fur);}
+.lx-tail{fill:none;stroke:var(--fur2);stroke-width:17;stroke-linecap:round;stroke-linejoin:round;}
+.lx-cream{fill:var(--cream);}
+.lx-inner{fill:var(--blush);}
+.lx-blush{fill:var(--blush);opacity:.55;}
 .lx-eyew{fill:#fff;}
 .lx-pupil{fill:var(--deep);}
 .lx-glint{fill:#fff;}
-.lx-beak{fill:var(--amber);}
-.lx-line{stroke:var(--deep);stroke-width:4.5;stroke-linecap:round;fill:none;}
-.lx-foot{stroke:var(--amber);stroke-width:4.5;stroke-linecap:round;fill:none;}
-.lx-eyes{transform-origin:60px 56px;animation:lxblink 5.4s infinite;}
+.lx-nose{fill:var(--deep);}
+.lx-line{stroke:var(--deep);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+.lx-nut{fill:var(--amber);}
+.lx-cap{fill:var(--fur2);}
+.lx-eyes{transform-origin:50px 50px;animation:lxblink 5.4s infinite;}
 @keyframes lxblink{0%,93%,100%{transform:scaleY(1);}96%{transform:scaleY(.08);}}
 .lexi.bob{animation:lxbob 1.5s ease-in-out infinite;}
 @keyframes lxbob{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-7px) rotate(-4deg);}}
@@ -178,10 +183,13 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 .meta{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:5px;}
 
 /* 통계 */
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:14px;}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 11px;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:14px;}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 7px;
+  min-width:0;text-align:center;}
 .stat b{display:block;font-family:var(--mono);font-size:22px;font-weight:700;line-height:1;}
-.stat span{display:block;font-size:11px;color:var(--muted);margin-top:5px;font-weight:600;}
+/* 라벨이 좁은 화면에서 두 줄로 접히면 칸 높이가 들쭉날쭉해집니다. 한 줄로 고정하고 폭에 맞춰 줄입니다 */
+.stat span{display:block;font-size:clamp(9px,2.7vw,11px);color:var(--muted);margin-top:5px;
+  font-weight:600;white-space:nowrap;}
 .heat{display:flex;gap:3px;overflow-x:auto;padding-bottom:4px;}
 .heat .col{display:flex;flex-direction:column;gap:3px;}
 .cell{width:11px;height:11px;border-radius:2px;background:#DCE3E8;flex-shrink:0;}
@@ -1034,23 +1042,42 @@ function importPanel(){
 /** 표정만 바꾸고 몸통은 하나로 씁니다. mood: idle | think | happy | sleep */
 function lexi(mood, cls){
   const eyes = mood==="happy"
-    ? '<path class="lx-line" d="M36 59q9-12 18 0"/><path class="lx-line" d="M66 59q9-12 18 0"/>'
+    ? '<path class="lx-line" d="M35 51q6.5-8.5 13 0"/><path class="lx-line" d="M52 51q6.5-8.5 13 0"/>'
     : mood==="sleep"
-    ? '<path class="lx-line" d="M36 57h17"/><path class="lx-line" d="M67 57h17"/>'
-    : (()=>{ const dx = mood==="think" ? 3 : 0;
+    ? '<path class="lx-line" d="M35 51h12"/><path class="lx-line" d="M53 51h12"/>'
+    : (()=>{ const dx = mood==="think" ? 2.5 : 0;
         return '<g class="lx-eyes">'
-          +'<circle class="lx-eyew" cx="45" cy="56" r="14"/><circle class="lx-eyew" cx="75" cy="56" r="14"/>'
-          +'<circle class="lx-pupil" cx="'+(45+dx)+'" cy="56" r="6.5"/>'
-          +'<circle class="lx-pupil" cx="'+(75+dx)+'" cy="56" r="6.5"/>'
-          +'<circle class="lx-glint" cx="'+(47.5+dx)+'" cy="53" r="2.4"/>'
-          +'<circle class="lx-glint" cx="'+(77.5+dx)+'" cy="53" r="2.4"/></g>'; })();
+          +'<circle class="lx-eyew" cx="41" cy="50" r="7.5"/><circle class="lx-eyew" cx="59" cy="50" r="7.5"/>'
+          +'<circle class="lx-pupil" cx="'+(41+dx)+'" cy="50.5" r="5.2"/>'
+          +'<circle class="lx-pupil" cx="'+(59+dx)+'" cy="50.5" r="5.2"/>'
+          +'<circle class="lx-glint" cx="'+(43.2+dx)+'" cy="48" r="2"/>'
+          +'<circle class="lx-glint" cx="'+(61.2+dx)+'" cy="48" r="2"/></g>'; })();
+  const mouth = mood==="happy"
+    ? '<path class="lx-line" d="M44 64q6 6.5 12 0"/>'
+    : '<path class="lx-line" d="M50 61.5v2.5M50 64q-3.4 3.2-6.2 0M50 64q3.4 3.2 6.2 0"/>';
   return '<svg class="lexi '+(cls||"")+'" viewBox="0 0 120 120" aria-hidden="true">'
-    +'<path class="lx-body" d="M30 42 L34 13 L53 31 Z"/><path class="lx-body" d="M90 42 L86 13 L67 31 Z"/>'
-    +'<ellipse class="lx-body" cx="60" cy="64" rx="39" ry="41"/>'
-    +'<ellipse class="lx-belly" cx="60" cy="79" rx="25" ry="24"/>'
+    /* 꼬리 — 몸보다 먼저 그려서 뒤로 보냅니다 */
+    +'<path class="lx-tail" d="M70 97C101 94 107 65 95 46C86 32 67 35 67 49C67 58 77 61 83 55"/>'
+    +'<ellipse class="lx-fur" cx="50" cy="88" rx="21" ry="23"/>'
+    +'<ellipse class="lx-cream" cx="50" cy="92" rx="13" ry="17"/>'
+    /* 귀 */
+    +'<g transform="rotate(-14 32 26)"><ellipse class="lx-fur" cx="32" cy="26" rx="9.5" ry="13"/>'
+    +'<ellipse class="lx-inner" cx="32" cy="27" rx="5" ry="7.5"/></g>'
+    +'<g transform="rotate(14 68 26)"><ellipse class="lx-fur" cx="68" cy="26" rx="9.5" ry="13"/>'
+    +'<ellipse class="lx-inner" cx="68" cy="27" rx="5" ry="7.5"/></g>'
+    /* 머리 */
+    +'<circle class="lx-fur" cx="50" cy="50" r="27"/>'
+    +'<ellipse class="lx-cream" cx="50" cy="62" rx="13.5" ry="10"/>'
+    +'<ellipse class="lx-blush" cx="31" cy="59" rx="6.5" ry="4.5"/>'
+    +'<ellipse class="lx-blush" cx="69" cy="59" rx="6.5" ry="4.5"/>'
     + eyes
-    +'<path class="lx-beak" d="M60 66 L53.5 75 L66.5 75 Z"/>'
-    +'<path class="lx-foot" d="M50 108h7M63 108h7"/>'
+    +'<path class="lx-nose" d="M50 56.5l-4 4.2h8z"/>'
+    + mouth
+    /* 도토리를 앞발로 안고 있습니다 */
+    +'<ellipse class="lx-nut" cx="50" cy="95" rx="8" ry="8.5"/>'
+    +'<path class="lx-cap" d="M41 91.5a9 6.5 0 0 1 18 0z"/>'
+    +'<ellipse class="lx-fur" cx="39" cy="97" rx="7" ry="5.5"/>'
+    +'<ellipse class="lx-fur" cx="61" cy="97" rx="7" ry="5.5"/>'
     +'</svg>';
 }
 
@@ -1277,7 +1304,7 @@ function viewStats(){
   for(let i=0;i<30;i++){ const v=D.log[dayKey(new Date(Date.now()-i*DAY))]; if(v){ rr+=v.reviews||0; rc+=v.correct||0; } }
   const racc = rr?Math.round(rc/rr*100):null;
   let h='<div class="grid4">'+stat(D.cards.length,"전체 단어")+stat(streak(),"연속 학습일","var(--amber)")
-    +stat(racc===null?"—":racc+"%","최근 30일 정답률", racc!==null&&racc<80?"var(--rose)":"var(--green)")
+    +stat(racc===null?"—":racc+"%","30일 정답률", racc!==null&&racc<80?"var(--rose)":"var(--green)")
     +stat(seen,"총 복습")+'</div>';
 
   /* ── 앞으로 30일 복습량 예보 ── */
