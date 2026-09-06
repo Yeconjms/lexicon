@@ -73,6 +73,53 @@ label.sw input{width:19px;height:19px;flex-shrink:0;accent-color:var(--blue);}
 label.sw b{display:block;font-size:14.5px;font-weight:600;}
 label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.5;}
 
+/* ── 렉시(마스코트) ── */
+.lexi{display:block;margin:0 auto;width:104px;height:104px;overflow:visible;}
+.lexi.sm{width:46px;height:46px;margin:0;}
+.lx-body{fill:var(--deep);}
+.lx-belly{fill:var(--paper);}
+.lx-eyew{fill:#fff;}
+.lx-pupil{fill:var(--deep);}
+.lx-glint{fill:#fff;}
+.lx-beak{fill:var(--amber);}
+.lx-line{stroke:var(--deep);stroke-width:4.5;stroke-linecap:round;fill:none;}
+.lx-foot{stroke:var(--amber);stroke-width:4.5;stroke-linecap:round;fill:none;}
+.lx-eyes{transform-origin:60px 56px;animation:lxblink 5.4s infinite;}
+@keyframes lxblink{0%,93%,100%{transform:scaleY(1);}96%{transform:scaleY(.08);}}
+.lexi.bob{animation:lxbob 1.5s ease-in-out infinite;}
+@keyframes lxbob{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-7px) rotate(-4deg);}}
+.lexi.pop{animation:lxpop .5s cubic-bezier(.34,1.56,.64,1);}
+@keyframes lxpop{0%{transform:scale(.55);}100%{transform:scale(1);}}
+.lexi.cheer{animation:lxcheer .9s ease-in-out 2;}
+@keyframes lxcheer{0%,100%{transform:translateY(0) rotate(0deg);}25%{transform:translateY(-9px) rotate(7deg);}75%{transform:translateY(-9px) rotate(-7deg);}}
+@media (prefers-reduced-motion:reduce){ .lexi,.lx-eyes{animation:none!important;} }
+
+/* ── 사전 ── */
+.dsearch{display:flex;gap:8px;align-items:stretch;}
+.dsearch .field{flex:1 1 auto;min-width:0;font-family:var(--serif);font-size:17px;}
+.dsearch .btn{flex:0 0 auto;white-space:nowrap;}
+.dhead{display:flex;align-items:flex-start;gap:10px;}
+.dword{font-family:var(--serif);font-size:clamp(26px,7.5vw,36px);line-height:1.12;word-break:break-word;}
+.dipa{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:5px;}
+.dsense{border-top:1px solid var(--line);padding-top:14px;margin-top:14px;}
+.dsense.first{border-top:none;padding-top:0;margin-top:14px;}
+.dsrow{display:flex;align-items:center;gap:8px;}
+.dko{font-size:16.5px;font-weight:700;line-height:1.45;margin-top:7px;}
+.den{font-family:var(--serif);font-size:14px;color:var(--muted);line-height:1.6;margin-top:6px;}
+.dex{background:var(--paper);border-radius:9px;padding:10px 12px;margin-top:10px;}
+.dex b{display:block;font-family:var(--serif);font-size:14.5px;font-weight:500;line-height:1.55;}
+.dex span{display:block;font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.5;}
+.dadd{flex:0 0 auto;width:36px;height:36px;border-radius:99px;background:var(--blue);color:#fff;
+  font-size:20px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;line-height:1;}
+.dadd.done{background:var(--green);font-size:16px;}
+.dnear{font-size:13px;color:var(--muted);line-height:1.7;margin-top:8px;}
+.dnear b{font-family:var(--serif);font-weight:600;color:var(--ink);}
+.drecent{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
+.drecent button{font-family:var(--serif);font-size:14px;padding:6px 12px;border-radius:99px;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);}
+.dcache{font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.6;}
+.speak.dark{margin-top:0;flex:0 0 auto;border-color:var(--line);color:var(--blue);background:var(--paper);}
+
 /* ── 플래시카드 ── */
 .stagehead{display:flex;justify-content:space-between;align-items:center;padding:6px 2px 10px;
   font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);}
@@ -185,6 +232,7 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
     <span id="syncdot" class="mono" style="font-size:13px;margin-left:6px"></span>
     <nav id="nav">
       <button data-v="study" class="on"><span class="ic">◆</span>학습<span class="badge hide" id="duebadge"></span></button>
+      <button data-v="dict"><span class="ic">✦</span>사전</button>
       <button data-v="packs"><span class="ic">▤</span>팩</button>
       <button data-v="manage"><span class="ic">≡</span>단어</button>
       <button data-v="stats"><span class="ic">▦</span>통계</button>
@@ -647,6 +695,7 @@ function render(done){
   document.querySelectorAll("#nav button").forEach(x=>x.classList.toggle("on", x.dataset.v===view));
   const m=$("#main");
   if(view==="study") m.innerHTML = S ? viewCard() : viewStudyHome(done);
+  else if(view==="dict") m.innerHTML = viewDict();
   else if(view==="packs") m.innerHTML = viewPacks();
   else if(view==="manage") m.innerHTML = viewManage();
   else if(view==="stats") m.innerHTML = viewStats();
@@ -663,19 +712,22 @@ function render(done){
 /* ── 학습 홈 ── */
 function viewStudyHome(done){
   if(!D.cards.length) return '<div class="panel"><div class="empty">'
-    +'<h3>단어장이 비어 있습니다</h3>'
-    +'<p>설정 탭에서 영단어 목록을 붙여넣거나,<br>예시 20단어로 먼저 둘러보세요.</p>'
+    +lexi("sleep","")
+    +'<h3 style="margin-top:16px">단어장이 비어 있습니다</h3>'
+    +'<p>사전 탭에서 모르는 단어를 찾아 담거나,<br>예시 20단어로 먼저 둘러보세요.</p>'
     +'<div class="row" style="justify-content:center">'
     +'<button class="btn" data-a="seed">예시 20단어 넣기</button>'
-    +'<button class="btn ghost" data-a="go-settings">단어 넣기</button></div></div></div>';
+    +'<button class="btn ghost" data-a="go-dict">사전에서 찾기</button></div></div></div>';
   let h="";
   const backlog=dueAll().length, today=dueToday().length, fl=freshList().length, wl=weakList().length;
   const q=buildQueue({kind:"review"}).length;
   if(done){
     const left=today+fl;
+    const pct=Math.round(done.right/done.total*100);
     h += '<div class="panel"><div class="empty" style="padding:26px 16px">'
-      +'<h3>'+done.total+'장 완료</h3>'
-      +'<p>정답률 '+Math.round(done.right/done.total*100)+'%'
+      +lexi(pct>=70?"happy":"idle","cheer")
+      +'<h3 style="margin-top:14px">'+done.total+'장 완료</h3>'
+      +'<p>정답률 '+pct+'%'
       +(left?('<br><b>오늘 남은 카드 '+left+'장</b>'):'<br>오늘 예정된 카드를 전부 끝냈습니다')+'</p>'
       +(q?'<button class="btn" data-a="start">이어서 '+q+'장 더 하기</button>':'')
       +'</div></div>';
@@ -978,6 +1030,241 @@ function importPanel(){
   return h;
 }
 
+/* ══════════════════ 렉시 (마스코트) ══════════════════ */
+/** 표정만 바꾸고 몸통은 하나로 씁니다. mood: idle | think | happy | sleep */
+function lexi(mood, cls){
+  const eyes = mood==="happy"
+    ? '<path class="lx-line" d="M36 59q9-12 18 0"/><path class="lx-line" d="M66 59q9-12 18 0"/>'
+    : mood==="sleep"
+    ? '<path class="lx-line" d="M36 57h17"/><path class="lx-line" d="M67 57h17"/>'
+    : (()=>{ const dx = mood==="think" ? 3 : 0;
+        return '<g class="lx-eyes">'
+          +'<circle class="lx-eyew" cx="45" cy="56" r="14"/><circle class="lx-eyew" cx="75" cy="56" r="14"/>'
+          +'<circle class="lx-pupil" cx="'+(45+dx)+'" cy="56" r="6.5"/>'
+          +'<circle class="lx-pupil" cx="'+(75+dx)+'" cy="56" r="6.5"/>'
+          +'<circle class="lx-glint" cx="'+(47.5+dx)+'" cy="53" r="2.4"/>'
+          +'<circle class="lx-glint" cx="'+(77.5+dx)+'" cy="53" r="2.4"/></g>'; })();
+  return '<svg class="lexi '+(cls||"")+'" viewBox="0 0 120 120" aria-hidden="true">'
+    +'<path class="lx-body" d="M30 42 L34 13 L53 31 Z"/><path class="lx-body" d="M90 42 L86 13 L67 31 Z"/>'
+    +'<ellipse class="lx-body" cx="60" cy="64" rx="39" ry="41"/>'
+    +'<ellipse class="lx-belly" cx="60" cy="79" rx="25" ry="24"/>'
+    + eyes
+    +'<path class="lx-beak" d="M60 66 L53.5 75 L66.5 75 Z"/>'
+    +'<path class="lx-foot" d="M50 108h7M63 108h7"/>'
+    +'</svg>';
+}
+
+/* ══════════════════ 사전 ══════════════════ */
+/* 검색 캐시는 학습 데이터가 아니라 언제든 버려도 되는 것이라 D 바깥의 별도 키에 둡니다.
+   D에 넣으면 Gist 동기화 페이로드에 사전 캐시가 통째로 실려 갑니다. */
+const DKEY = "lexicon:dict";
+const DICT_MAX = 200;
+
+let dictQ="", dictR=null, dictBusy=false, dictErr="";
+
+function dictAll(){ try{ return JSON.parse(localStorage.getItem(DKEY)||"{}"); }catch(e){ return {}; } }
+function dictGet(q){ const e=dictAll()[(q||"").trim().toLowerCase()]; return e ? e.r : null; }
+function dictPut(q,r){
+  try{
+    const c=dictAll(); c[(q||"").trim().toLowerCase()]={r:r, t:Date.now()};
+    const ks=Object.keys(c);
+    if(ks.length>DICT_MAX) ks.sort((a,b)=>c[a].t-c[b].t).slice(0,ks.length-DICT_MAX).forEach(k=>delete c[k]);
+    localStorage.setItem(DKEY, JSON.stringify(c));
+  }catch(e){}
+}
+function dictRecent(n){
+  const c=dictAll();
+  return Object.keys(c).sort((a,b)=>c[b].t-c[a].t).slice(0,n).map(k=>(c[k].r&&c[k].r.q)||k);
+}
+
+const DICT_PROMPT = q =>
+  '영어 단어·구·숙어의 사전 정보를 JSON 객체 하나로만 출력하세요.\n'
+  +'- q: 표제어. 동사는 원형으로, 숙어와 구동사는 입력 형태 그대로\n'
+  +'- kind: word · phrase · idiom 중 하나\n'
+  +'- ipa: 국제음성기호. 확실하지 않으면 빈 문자열\n'
+  +'- senses: 자주 쓰는 뜻부터 최대 3개\n'
+  +'   · pos: 한국어 품사 (명사·동사·형용사·부사·구동사·숙어 등)\n'
+  +'   · ko: 한국어 뜻 1~2개를 쉼표로 구분\n'
+  +'   · en: 쉬운 영어로 쓴 영영 뜻 한 문장\n'
+  +'   · ex: 예문 1개. en은 15단어 이내의 자연스러운 문장, ko는 그 번역\n'
+  +'- colloc: 자주 함께 쓰는 형태 2~4개\n'
+  +'- note: 뉘앙스·격식·주의점을 한국어 한두 문장. 없으면 빈 문자열\n'
+  +'- near: 형태나 뜻이 헷갈리는 표현 최대 2개. 없으면 빈 배열\n'
+  +'숙어와 구동사도 단어와 똑같이 정상 처리하세요. 영어 표현이 아니면 senses를 빈 배열로 두세요.\n'
+  +'\n입력: '+q;
+
+const S_ = (t,o) => Object.assign({type:t}, o||{});
+const DICT_SCHEMA = {
+  type:"OBJECT",
+  properties:{
+    q:S_("STRING"), kind:S_("STRING"), ipa:S_("STRING"),
+    senses:S_("ARRAY",{items:{ type:"OBJECT",
+      properties:{ pos:S_("STRING"), ko:S_("STRING"), en:S_("STRING"),
+        ex:S_("ARRAY",{items:{type:"OBJECT",
+          properties:{en:S_("STRING"), ko:S_("STRING")}, required:["en","ko"]}}) },
+      required:["pos","ko","en","ex"] }}),
+    colloc:S_("ARRAY",{items:{type:"STRING"}}),
+    note:S_("STRING"),
+    near:S_("ARRAY",{items:{type:"OBJECT",
+      properties:{w:S_("STRING"), ko:S_("STRING")}, required:["w","ko"]}})
+  },
+  required:["q","kind","senses"]
+};
+
+async function dictFetch(q){
+  const prompt=DICT_PROMPT(q);
+  let txt="";
+  if(D.s.provider==="gemini"){
+    const model=D.s.geminiModel||"gemini-2.5-flash";
+    const url="https://generativelanguage.googleapis.com/v1beta/models/"+encodeURIComponent(model)
+      +":generateContent?key="+encodeURIComponent(D.s.geminiKey);
+    const r=await fetch(url,{ method:"POST", headers:{"content-type":"application/json"},
+      body:JSON.stringify({ contents:[{parts:[{text:prompt}]}],
+        generationConfig:{ responseMimeType:"application/json", responseSchema:DICT_SCHEMA } }) });
+    if(!r.ok){
+      const t=await r.text().catch(()=>"");
+      if(r.status===429) throw new Error("무료 한도를 넘었습니다. 잠시 뒤 다시 시도하세요");
+      if(r.status===400||r.status===404) throw new Error("모델 이름이나 키를 확인하세요 ("+r.status+")");
+      throw new Error("HTTP "+r.status+(t?" · "+t.slice(0,100):""));
+    }
+    const j=await r.json();
+    txt=((j.candidates&&j.candidates[0]&&j.candidates[0].content&&j.candidates[0].content.parts)||[])
+      .map(p=>p.text||"").join("");
+  }else{
+    const r=await fetch("https://api.anthropic.com/v1/messages",{ method:"POST", headers:{
+      "content-type":"application/json", "x-api-key":D.s.apiKey,
+      "anthropic-version":"2023-06-01", "anthropic-dangerous-direct-browser-access":"true" },
+      body:JSON.stringify({ model:D.s.model||"claude-sonnet-5", max_tokens:1500,
+        messages:[{role:"user", content:prompt}] }) });
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const j=await r.json();
+    txt=(j.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("");
+  }
+  const a=txt.indexOf("{"), b=txt.lastIndexOf("}");
+  if(a<0||b<0) throw new Error("응답을 읽지 못했습니다");
+  const o=JSON.parse(txt.slice(a,b+1));
+  if(!o.senses || !o.senses.length) throw new Error("영어 표현이 맞는지 확인해 주세요");
+  o.q = (o.q||q).trim();
+  return o;
+}
+
+async function dictLook(q){
+  q=(q||"").trim(); if(!q) return;
+  dictQ=q; dictErr=""; dictR=null;
+  const hit=dictGet(q);
+  if(hit){ dictR=hit; render(); return; }
+  if(!aiReady()){ dictErr="설정에서 Gemini를 먼저 켜주세요. 검색은 인터넷과 API 키가 있어야 합니다."; render(); return; }
+  dictBusy=true; render();
+  try{ const r=await dictFetch(q); dictR=r; dictPut(q,r); }
+  catch(e){ dictErr=e.message; }
+  dictBusy=false; render();
+}
+
+/** 사전에서 담은 카드도 AI가 만든 뜻이므로 auto:true — 단어 탭에 "확인 필요"로 표시됩니다 */
+function dictFields(i){
+  const s=dictR.senses[i];
+  return { word:dictR.q, meaning:s.ko,
+    example:(s.ex && s.ex[0] && s.ex[0].en) || "",
+    collocation:(dictR.colloc||[]).join("; ") };
+}
+function dictSaved(i){
+  if(!dictR) return false;
+  const s=dictR.senses[i];
+  return D.cards.some(c=>c.word.toLowerCase()===dictR.q.toLowerCase() && c.meaning===s.ko);
+}
+function dictSave(i){
+  if(!dictR || !dictR.senses[i]) return;
+  const f=dictFields(i);
+  const dup=D.cards.find(c=>c.word.toLowerCase()===f.word.toLowerCase());
+  if(dup){
+    if(dup.meaning===f.meaning){ toast("이미 담아둔 뜻입니다"); return; }
+    askYes("'"+f.word+"' 는 이미 있습니다",
+      "지금 뜻 — "+dup.meaning+"\n새 뜻 — "+f.meaning+"\n\n바꿔도 복습 진도는 그대로 남고 내용만 바뀝니다.",
+      "새 뜻으로 바꾸기").then(ok=>{
+        if(!ok) return;
+        Object.assign(dup, {meaning:f.meaning, example:f.example||dup.example,
+          collocation:f.collocation||dup.collocation, auto:true});
+        save(); render(); toast("뜻을 바꿨습니다");
+      });
+    return;
+  }
+  D.cards.push(newCard(Object.assign({}, f,
+    {tags:["사전"], pack:D.s.lastPack||"", auto:true})));
+  syncPacks(); save(); render();
+  toast("담았습니다 · 오늘 학습에 바로 나옵니다");
+}
+
+/* ── 사전 화면 ── */
+function viewDict(){
+  let h='<div class="panel"><div class="dsearch">'
+    +'<input class="field" id="d-q" placeholder="단어 · 숙어를 적어보세요" '
+    +'autocapitalize="off" autocomplete="off" spellcheck="false" value="'+esc(dictQ)+'">'
+    +'<button class="btn" data-a="dict-go">찾기</button></div>';
+  if(!aiReady())
+    h+='<p class="note">아직 Gemini가 꺼져 있습니다. 설정에서 키를 한 번 넣으면 바로 찾을 수 있습니다.</p>'
+      +'<button class="btn ghost sm" data-a="go-settings" style="margin-top:9px">설정으로 가기</button>';
+  h+='</div>';
+
+  if(dictBusy) return h+'<div class="panel"><div class="empty">'+lexi("think","bob")
+    +'<h3 style="margin-top:16px">찾아보는 중…</h3><p>렉시가 사전을 뒤지고 있습니다.</p></div></div>';
+
+  if(dictErr) return h+'<div class="panel"><div class="empty">'+lexi("sleep")
+    +'<h3 style="margin-top:16px">찾지 못했습니다</h3><p>'+esc(dictErr)+'</p></div></div>';
+
+  if(!dictR){
+    const rec=dictRecent(12);
+    h+='<div class="panel"><div class="empty">'+lexi("idle","pop")
+      +'<h3 style="margin-top:16px">무엇을 찾아드릴까요?</h3>'
+      +'<p>단어도 숙어도 됩니다. <b>put up with</b> 같은 것도요.<br>'
+      +'마음에 드는 뜻 옆의 <b>+</b> 를 누르면 바로 외울 카드가 됩니다.</p></div>';
+    if(rec.length)
+      h+='<div class="h2">최근에 찾은 것</div><div class="drecent">'
+        +rec.map(w=>'<button data-a="dict-recent" data-w="'+esc(w)+'">'+esc(w)+'</button>').join("")
+        +'</div><p class="dcache">한 번 찾은 것은 저장해 둬서 다시 찾을 때는 인터넷이 없어도 보입니다.</p>';
+    h+='</div>';
+    return h;
+  }
+
+  const r=dictR;
+  const kind={word:"단어", phrase:"표현", idiom:"숙어"}[r.kind]||"표현";
+  h+='<div class="panel"><div class="dhead">'
+    +'<div style="flex:1;min-width:0"><div class="dword">'+esc(r.q)+'</div>'
+    +(r.ipa?'<div class="dipa">'+esc(r.ipa)+'</div>':'')
+    +'<div class="row" style="margin-top:8px"><span class="chip">'+esc(kind)+'</span></div></div>'
+    +'<button class="speak dark" data-a="dict-say">♪</button></div>';
+
+  r.senses.forEach((s,i)=>{
+    const on=dictSaved(i);
+    h+='<div class="dsense'+(i===0?" first":"")+'">'
+      +'<div class="dsrow"><span class="chip">'+esc(s.pos||"")+'</span>'
+      +'<span class="muted" style="font-size:12px">'+(i+1)+'</span>'
+      +'<span style="flex:1"></span>'
+      +'<button class="dadd'+(on?" done":"")+'" data-a="dict-save" data-i="'+i+'" '
+      +'aria-label="'+(on?"담김":"이 뜻으로 담기")+'">'+(on?"✓":"+")+'</button></div>'
+      +'<div class="dko">'+esc(s.ko)+'</div>'
+      +(s.en?'<div class="den">'+esc(s.en)+'</div>':'');
+    (s.ex||[]).slice(0,1).forEach(x=>{
+      h+='<div class="dex"><b>'+esc(x.en)+'</b>'+(x.ko?'<span>'+esc(x.ko)+'</span>':'')+'</div>';
+    });
+    h+='</div>';
+  });
+
+  if((r.colloc||[]).length)
+    h+='<div class="dsense"><div class="h2" style="margin-bottom:8px">자주 쓰는 형태</div>'
+      +'<div class="row">'+r.colloc.map(c=>'<span class="chip">'+esc(c)+'</span>').join("")+'</div></div>';
+  if(r.note)
+    h+='<div class="dsense"><div class="h2" style="margin-bottom:8px">쓸 때 주의</div>'
+      +'<p class="note" style="margin:0">'+esc(r.note)+'</p></div>';
+  if((r.near||[]).length)
+    h+='<div class="dsense"><div class="h2" style="margin-bottom:8px">헷갈리는 것</div><div class="dnear">'
+      +r.near.map(n=>'<b>'+esc(n.w)+'</b> — '+esc(n.ko)).join("<br>")+'</div></div>';
+
+  h+='<p class="dcache">렉시는 사전 데이터가 아니라 AI가 만든 답입니다. 담은 카드에는 '
+    +'<b>확인 필요</b> 표시가 붙으니, 단어 탭에서 한 번 훑어보고 지워주세요.</p>';
+  h+='</div>';
+  return h;
+}
+
 /* ── 통계 ── */
 function viewStats(){
   const seen=D.cards.reduce((s,c)=>s+c.seen,0), cor=D.cards.reduce((s,c)=>s+c.correct,0);
@@ -1272,6 +1559,13 @@ document.addEventListener("click", e=>{
   if(a==="start"){ startSession({kind:"review"}); return; }
   if(a==="start-focus"){ startSession({kind:"focus"}); return; }
   if(a==="go-settings"){ view="settings"; render(); return; }
+
+  /* 사전 */
+  if(a==="go-dict"){ view="dict"; render(); window.scrollTo(0,0); return; }
+  if(a==="dict-go"){ const el=$("#d-q"); if(el) dictLook(el.value); return; }
+  if(a==="dict-recent"){ dictLook(t.dataset.w); window.scrollTo(0,0); return; }
+  if(a==="dict-save"){ dictSave(+t.dataset.i); return; }
+  if(a==="dict-say"){ if(dictR) speak(dictR.q); return; }
   if(a==="seed"){ D.cards=SEED.map(r=>newCard({word:r[0],meaning:r[1],example:r[2],collocation:r[3],tags:[r[4]],pack:"예시/매크로"})); syncPacks(); save(); render(); return; }
 
   /* 팩 */
@@ -1513,6 +1807,7 @@ document.addEventListener("keyup", e=>{
 });
 document.addEventListener("keydown", e=>{
   if(e.target.id==="typein"&&e.key==="Enter"){ checkTyped(); return; }
+  if(e.target.id==="d-q"&&e.key==="Enter"){ e.preventDefault(); dictLook(e.target.value); return; }
   if(!S||["INPUT","TEXTAREA","SELECT"].includes(e.target.tagName)) return;
   if(e.key==="z"||e.key==="Z"){ e.preventDefault(); undoGrade(); return; }
   if(!S.flipped&&e.code==="Space"&&!S.mode.startsWith("type_")){ e.preventDefault(); flip(); return; }
