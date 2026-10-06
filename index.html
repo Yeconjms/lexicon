@@ -372,6 +372,40 @@ function modal(o){
 const askText = (title,placeholder,value,message) => modal({title,placeholder,value,message,input:true});
 const askYes  = (title,message,ok,danger) => modal({title,message,ok:ok||"확인",danger}).then(v=>v===true);
 
+/* ── 기기 식별 · 기록 합산 ──
+   같은 날 폰과 PC에서 각각 공부하면 두 기록은 더해져야 합니다.
+   기기마다 칸을 나눔어 합산하므로 어느 쪽 기록도 다른 쪽을 덮어쓰지 않습니다. */
+const DEVKEY = "lexicon:dev";
+const DEV = (function(){ try{
+    var d = localStorage.getItem(DEVKEY);
+    if(!d){ d = Math.random().toString(36).slice(2,8); localStorage.setItem(DEVKEY, d); }
+    return d;
+  }catch(e){ return "local"; } })();
+
+/** 하루치 합계 — 모든 기기의 칸을 더합니다 */
+function dayStat(k){
+  const row = D.log[k], out = {reviews:0, correct:0, newSeen:0};
+  if(!row) return out;
+  for(const dev in row){ const v = row[dev] || {};
+    out.reviews += v.r||0; out.correct += v.c||0; out.newSeen += v.n||0; }
+  return out;
+}
+/** 이 기기 칸에만 더합니다 */
+function bumpDay(k, dr, dc, dn){
+  const row = D.log[k] || (D.log[k] = {});
+  const v = row[DEV] || (row[DEV] = {r:0, c:0, n:0});
+  v.r += dr; v.c += dc; v.n += dn;
+}
+/** 기기 구분이 없던 예전 형식을 기기별 형식으로 바꿈니다 */
+const normRow = row => (row && (typeof row.reviews === "number" || typeof row.correct === "number"))
+  ? { old:{ r:row.reviews||0, c:row.correct||0, n:row.newSeen||0 } } : row;
+function migrateLog(){ for(const k in D.log) D.log[k] = normRow(D.log[k]); }
+
+/** 카드를 고친 시각을 남깁니다. 기기 간 병합에서 어느 쇽이 최신인지 기준입니다 */
+const touch = c => { if(c) c.updatedAt = Date.now(); return c; };
+/** 병합할 때 한 번에 영기는 칸. 스젠줄러를 바꿀 때 여기만 고치면 됩니다 */
+const CARD_STATE = ["ef","reps","step","st","interval","lapses","lapseIvl","due","seen","correct","susp","leech"];
+
 /* ══════════════════ 데이터 ══════════════════ */
 const DEFAULTS = {
   front:"en",            // en | ko | mix
@@ -384,18 +418,21 @@ const DEFAULTS = {
   geminiKey:"", geminiModel:"gemini-2.5-flash",
   apiKey:"", model:"claude-sonnet-5"
 };
-let D = { v:1, cards:[], log:{}, packs:[], s:{...DEFAULTS} };
+let D = { v:2, cards:[], log:{}, packs:[], del:{}, s:{...DEFAULTS} };
 let view = "study";
 
 function load(){
   try{
     const raw = localStorage.getItem(KEY);
     if(raw){ const p=JSON.parse(raw);
-      D={ v:1, cards:p.cards||[], log:p.log||{}, packs:p.packs||[],
+      D={ v:2, cards:p.cards||[], log:p.log||{}, packs:p.packs||[], del:p.del||{},
           s:{...DEFAULTS,...(p.s||{}), typeModes:{...DEFAULTS.typeModes,...((p.s||{}).typeModes||{})}} };
       D.cards.forEach(c=>{ if(c.step===undefined) c.step=0; if(c.pack===undefined) c.pack="";
-        if(c.susp===undefined) c.susp=false; if(c.leech===undefined) c.leech=false; });
-      syncPacks(); }
+        if(c.susp===undefined) c.susp=false; if(c.leech===undefined) c.leech=false;
+        if(c.updatedAt===undefined) c.updatedAt=c.createdAt||0;
+        if(c.lapseIvl===undefined) c.lapseIvl=0;
+        if(c.st===undefined) c.st=cardSt(c); });
+      migrateLog(); syncPacks(); }
   }catch(e){ toast("저장된 데이터를 읽지 못했습니다"); }
 }
 let saveT, savePending=false;
@@ -431,7 +468,7 @@ async function gistConnect(){
   if(found) return found.id;
   const made=await gh("/gists",{ method:"POST", body:JSON.stringify({
     description:GIST_DESC, public:false,
-    files:{ [GIST_FILE]:{ content:JSON.stringify({v:1,cards:[],log:{},packs:[]}) } }
+    files:{ [GIST_FILE]:{ content:JSON.stringify({v:2,cards:[],log:{},packs:[],del:{}}) } }
   })});
   return made.id;
 }
@@ -448,31 +485,91 @@ async function gistGet(){
 
 async function gistPut(){
   await gh("/gists/"+D.s.gistId,{ method:"PATCH", body:JSON.stringify({
-    files:{ [GIST_FILE]:{ content:JSON.stringify({v:1, cards:D.cards, log:D.log, packs:D.packs, at:Date.now()}) } }
+    files:{ [GIST_FILE]:{ content:JSON.stringify({v:2, cards:D.cards, log:D.log, packs:D.packs, del:D.del, at:Date.now()}) } }
   })});
 }
 
-/** 원격 데이터를 지금 데이터에 합칩니다. {add, upd} 를 돌려줍니다 */
+/** 원거 데이티를 지금 데이티에 합칩니다. {add, upd} 를 돌려줍니다
+    카드 상태는 더 나중에 고친 쇽을 따릅니다(updatedAt).
+    시각 정보가 없는 예전 데이티리끔리는 진도(seen)가 앎선 쇽을 따릅니다.
+    하루 기록은 기기 칸별로 큰 값을 써서, 폰과 PC 기록이 합산됩니다. */
 function mergeData(p){
   if(!p||!Array.isArray(p.cards)) return {add:0,upd:0};
-  const mine=new Map(D.cards.map(c=>[c.word.toLowerCase(),c]));
+  const TOMB = 180*DAY;
+
+  /* 지운 단어 목록을 양쪽에서 합칩니다 (늦게 지운 시각이 기준) */
+  const theirDel = p.del||{};
+  for(const w in theirDel)
+    if((theirDel[w]||0) > (D.del[w]||0)) D.del[w] = theirDel[w];
+
+  /* 다른 기기에서 지운 단어는 여기서도 없엕니다.
+     단, 지운 뒤에 다시 만들어진 카드는 살려둡니다 */
+  D.cards = D.cards.filter(c=>{
+    const t = D.del[(c.word||"").toLowerCase()];
+    return !(t && (c.createdAt||0) <= t);
+  });
+
+  const byWord = new Map(D.cards.map(c=>[(c.word||"").toLowerCase(), c]));
+  const byIdx  = new Map(D.cards.map(c=>[c.id, c]));
   let add=0, upd=0;
+
   p.cards.forEach(inc=>{
-    const cur=mine.get((inc.word||"").toLowerCase());
-    if(!cur){ D.cards.push(Object.assign(newCard({}), inc, {id:uid()})); add++; }
-    else if((inc.seen||0)>(cur.seen||0)){
-      Object.assign(cur,{ef:inc.ef, reps:inc.reps, interval:inc.interval, lapses:inc.lapses,
-        seen:inc.seen, correct:inc.correct, due:inc.due, leech:inc.leech, susp:inc.susp});
-      cur.meaning=cur.meaning||inc.meaning; cur.example=cur.example||inc.example;
-      cur.collocation=cur.collocation||inc.collocation; cur.pack=cur.pack||inc.pack||"";
-      upd++;
+    const w = (inc.word||"").toLowerCase();
+    if(!w) return;
+    const killed = D.del[w];
+    if(killed && (inc.createdAt||0) <= killed) return;   // 여기서 지운 단어는 다시 받지 않습니다
+
+    /* id 가 같아도 단어가 다르면 다른 카드입니다 */
+    let cur = byIdx.get(inc.id);
+    if(cur && (cur.word||"").toLowerCase() !== w) cur = null;
+    if(!cur) cur = byWord.get(w);
+
+    if(!cur){
+      const made = Object.assign(newCard({}), inc);
+      if(byIdx.has(made.id)) made.id = uid();
+      if(!made.updatedAt) made.updatedAt = made.createdAt||0;
+      D.cards.push(made); byWord.set(w, made); byIdx.set(made.id, made);
+      add++; return;
     }
+
+    const theirTime = inc.updatedAt||0, myTime = cur.updatedAt||0;
+    const takeRemote = theirTime > myTime ? true
+                     : theirTime < myTime ? false
+                     : (inc.seen||0) > (cur.seen||0);
+    let changed = false;
+
+    if(takeRemote){
+      CARD_STATE.forEach(f=>{ if(inc[f]!==undefined) cur[f]=inc[f]; });
+      cur.updatedAt = Math.max(theirTime, myTime);
+      changed = true;
+    }
+    /* 뜻·예문은 버어 있으면 채우고, 양쪽에 다 있으면 최신 쇽을 쏵니다 */
+    ["meaning","example","collocation","pack"].forEach(f=>{
+      const mine = cur[f]||"", their = inc[f]||"";
+      if(!mine && their){ cur[f]=their; changed=true; }
+      else if(mine && their && mine!==their && theirTime>myTime){ cur[f]=their; changed=true; }
+    });
+    if(changed) upd++;
   });
-  Object.entries(p.log||{}).forEach(([d,v])=>{
-    const c=D.log[d];
-    D.log[d]= c ? { reviews:Math.max(c.reviews||0,v.reviews||0), correct:Math.max(c.correct||0,v.correct||0),
-      newSeen:Math.max(c.newSeen||0,v.newSeen||0) } : v;
+
+  /* 하루 기록 — 기기 칸별로 큰 값. 칸이 다르면 둘 다 남아 합산됩니다 */
+  Object.entries(p.log||{}).forEach(([d,raw])=>{
+    const row = normRow(raw);
+    if(!row || typeof row !== "object") return;
+    const mine = D.log[d] || (D.log[d] = {});
+    Object.entries(row).forEach(([dev,v])=>{
+      if(!v || typeof v !== "object") return;
+      const cur = mine[dev] || (mine[dev] = {r:0,c:0,n:0});
+      cur.r = Math.max(cur.r||0, v.r||0);
+      cur.c = Math.max(cur.c||0, v.c||0);
+      cur.n = Math.max(cur.n||0, v.n||0);
+    });
   });
+
+  /* 오래된 삭제 기록은 정리합니다 */
+  const cut = Date.now() - TOMB;
+  for(const w in D.del) if(D.del[w] < cut) delete D.del[w];
+
   D.packs=[...new Set([...(D.packs||[]), ...(p.packs||[])])];
   syncPacks();
   return {add,upd};
@@ -563,55 +660,171 @@ function packSelect(id, val){
 function newCard(f){ return Object.assign({
   id:uid(), word:"", meaning:"", example:"", collocation:"", tags:[], pack:"", auto:false,
   susp:false, leech:false,
-  ef:2.5, reps:0, step:0, interval:0, lapses:0, seen:0, correct:0, due:sod(), createdAt:Date.now()
+  ef:2.5, reps:0, step:0, st:0, interval:0, lapses:0, lapseIvl:0, seen:0, correct:0, due:sod(),
+  createdAt:Date.now(), updatedAt:Date.now()
 }, f); }
 
-/* ── 간격 계산 (SM-2 기반 + Anki식 배수 · 학습 단계 · 편차 · 상한) ── */
-let NOFUZZ=false;
-/** 같은 날 무더기로 넣은 카드가 영원히 같은 날 몰리지 않도록 ±5% 흩뜨립니다 */
-function fuzz(i){
-  if(NOFUZZ||i<10) return i;   // 짧은 간격은 버튼에 적힌 숫자와 정확히 맞춥니다
-  const f=Math.max(1,Math.round(i*0.05));
-  return Math.max(1, i + (Math.floor(Math.random()*(2*f+1))-f));
+/* ── 간격 계산 ─────────────────────────────────────────────────────
+   Anki 26.09 기본 스케줄러(SM-2)의 상수와 공식을 그대로 옮겼습니다.
+   Anki 는 FSRS 를 선택 기능으로 두고 있을 뿐, 기본값은 여전히 이 방식입니다.
+
+   한 가지만 다릅니다 — Anki 의 학습 단계는 "1분 뒤 · 10분 뒤" 처럼 분 단위인데
+   이 앱은 분 단위 타이머가 없어 "같은 세션에서 다시" 로 옮겼습니다.
+   하루 이상 간격은 Anki 와 같은 값이 나옵니다. */
+const ANKI = {
+  learnSteps:2,                                   // Anki 기본 1m 10m → 2단계
+  relearnSteps:1,                                 // Anki 기본 10m → 1단계
+  gradGood:1, gradEasy:4,                         // 졸업 간격 · 쉬움 졸업 간격
+  minEase:1.3,
+  againDelta:-0.20, hardDelta:-0.15, easyDelta:0.15,
+  hardMult:1.2, easyBonus:1.3, ivlMult:1.0,
+  lapseMult:0.0, minLapseIvl:1
+};
+const maxIvl = () => D.s.maxInterval>0 ? D.s.maxInterval : 36500;
+
+/** 지금 어느 단계인지 — 0 새 카드 · 1 학습 · 2 복습 · 3 재학습 */
+function cardSt(c){
+  if(c.st!==undefined) return c.st;
+  if((c.seen||0)===0) return 0;
+  if((c.step||0)>=1)  return (c.reps||0)>0 ? 3 : 1;
+  return 2;
 }
+
+/** Anki 와 같은 편차 폭 — 1일 + 구간별 누진. 2.5일 미만은 편차를 넣지 않습니다 */
+function fuzzDelta(i){
+  if(i<2.5) return 0;
+  return 1 + 0.15*Math.max(0, Math.min(i,7)-2.5)
+           + 0.10*Math.max(0, Math.min(i,20)-7)
+           + 0.05*Math.max(0, i-20);
+}
+/** 카드 id 와 복습 횟수로 고정되는 난수.
+    Anki 와 같은 방식이라 버튼에 적힌 숫자가 실제 적용값과 항상 같습니다 */
+function fuzzSeed(c){
+  let h = 2166136261 ^ (c.reps||0);
+  const s = String(c.id||"");
+  for(let i=0;i<s.length;i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619);
+  h = (h ^ (h>>>15)) >>> 0;
+  return h / 4294967296;
+}
+/** 편차를 적용하고 하한·상한으로 자릅니다 */
+function fuzzIvl(raw, c, minI){
+  const cap = maxIvl();
+  const lim = Math.min(minI, cap);          // 상한보다 큰 하한은 상한에 맞춤니다
+  const d = fuzzDelta(raw);
+  if(d===0) return Math.min(cap, Math.max(lim, Math.round(raw)));
+  const lo = Math.max(lim, Math.min(Math.round(raw-d), cap));
+  let   hi = Math.max(lo,  Math.min(Math.round(raw+d), cap));
+  if(lo===hi && hi>2 && hi<cap) hi = lo+1;
+  const pick = Math.floor(lo + fuzzSeed(c)*(1+hi-lo));
+  return Math.min(hi, Math.max(lo, pick));
+}
+
+/** 복습 카드의 세 버튼 간격.
+    하한이 사슬로 묶여 있어 애매 < 알아 < 쉬움 순서가 항상 지켜집니다 */
+function reviewIvls(c){
+  const sched = Math.max(c.interval||0, 1);
+  const late  = Math.max(0, Math.floor((Date.now()-(c.due||Date.now()))/DAY));
+  const ef    = c.ef || 2.5;
+  const hard = fuzzIvl(sched*ANKI.hardMult*ANKI.ivlMult, c, sched+1);
+  const good = fuzzIvl((sched+late/2)*ef*ANKI.ivlMult, c, hard+1);
+  const easy = fuzzIvl((sched+late)*ef*ANKI.easyBonus*ANKI.ivlMult, c, good+1);
+  return {hard, good, easy};
+}
+
 /** 세션 안에서 다시 보여줄 때, 몇 장 뒤에 끼워넣을지 */
 const reshowGap = q => q<3 ? 4 : q===3 ? 8 : 14;
+
 function schedule(c,q){
-  let {ef,reps,interval,lapses}=c; const step=c.step||0;
-  if(q<3) return {...c, ef:Math.max(1.3,ef-0.2), reps:0, step:1, interval:0,
-    lapses:lapses+1, due:Date.now(), seen:c.seen+1};
-  /* 아직 졸업 전: 같은 세션에서 한 번 더 보여줍니다 (Anki의 학습 단계) */
-  if(reps===0 && q<5 && step<1)
-    return {...c, step:1, interval:0, due:Date.now(), seen:c.seen+1, correct:c.correct+1};
-  const nef = Math.max(1.3, ef + (0.1-(5-q)*(0.08+(5-q)*0.02)));
-  let ni;
-  if(reps===0)      ni = q===3 ? 1 : q===4 ? 2 : 4;
-  else if(reps===1) ni = q===3 ? 3 : q===4 ? 6 : 9;
-  else {
-    const mult = q===3 ? 1.2 : q===4 ? nef : nef*1.3;
-    ni = Math.max(interval+1, Math.round(interval*mult));
+  const s = {...c};
+  s.seen = (c.seen||0)+1;
+  s.reps = (c.reps||0)+1;
+  if(q>=3) s.correct = (c.correct||0)+1;
+  const st = cardSt(c), step = c.step||0;
+
+  /* 같은 세션에서 다시 보여줍니다 (Anki 의 분 단위 단계에 해당) */
+  const hold = (nextStep, state) => {
+    s.st=state; s.step=nextStep; s.interval=0; s.due=Date.now(); return s;
+  };
+  /* 복습 단계로 졸업시킵니다 */
+  const grad = ivl => {
+    s.st=2; s.step=0; s.lapseIvl=0;
+    s.interval = fuzzIvl(ivl, c, 1);
+    s.due = sod()+s.interval*DAY; return s;
+  };
+
+  /* 새 카드 · 학습 중 */
+  if(st===0 || st===1){
+    if(q===0) return hold(0,1);                                   // 모름 — 첫 단계로
+    if(q===5) return grad(ANKI.gradEasy);                         // 쉬움 — 바로 졸업
+    if(q===4) return step+1>=ANKI.learnSteps ? grad(ANKI.gradGood) : hold(step+1,1);
+    return hold(step,1);                                          // 애매 — 같은 단계 유지
   }
-  ni = Math.min(fuzz(ni), D.s.maxInterval>0 ? D.s.maxInterval : 3650);
-  return {...c, ef:nef, reps:reps+1, step:0, interval:ni, due:sod()+ni*DAY,
-    seen:c.seen+1, correct:c.correct+1};
+
+  /* 재학습 중 (복습하다 틀린 카드) */
+  if(st===3){
+    const back = Math.max(1, c.lapseIvl||ANKI.minLapseIvl);
+    if(q===0) return hold(0,3);
+    if(q===5) return grad(back+1);
+    if(q===4) return step+1>=ANKI.relearnSteps ? grad(back) : hold(step+1,3);
+    return hold(step,3);
+  }
+
+  /* 복습 카드 */
+  if(q===0){
+    s.ef = Math.max(ANKI.minEase, (c.ef||2.5)+ANKI.againDelta);
+    s.lapses = (c.lapses||0)+1;
+    s.lapseIvl = fuzzIvl(Math.max(c.interval||0,1)*ANKI.lapseMult, c, ANKI.minLapseIvl);
+    if(ANKI.relearnSteps>0){ s.st=3; s.step=0; s.interval=0; s.due=Date.now(); return s; }
+    s.st=2; s.step=0; s.interval=s.lapseIvl; s.due=sod()+s.interval*DAY; return s;
+  }
+  const iv = reviewIvls(c);
+  s.ef = q===3 ? Math.max(ANKI.minEase,(c.ef||2.5)+ANKI.hardDelta)
+       : q===5 ? (c.ef||2.5)+ANKI.easyDelta
+       : (c.ef||2.5);
+  s.st=2; s.step=0; s.lapseIvl=0;
+  s.interval = q===3 ? iv.hard : q===4 ? iv.good : iv.easy;
+  s.due = sod()+s.interval*DAY;
+  return s;
 }
-const prevInt = (c,q) => { NOFUZZ=true; const r=q<3?0:schedule(c,q).interval; NOFUZZ=false; return r; };
+
+/** 버튼을 눌렀을 때 실제로 적용될 간격(일). 0 이면 같은 세션에서 다시 나옵니다.
+    편차가 카드별로 고정되어 있으므로 이 값은 실제 적용값과 정확히 같습니다 */
+const prevInt = (c,q) => {
+  const st = cardSt(c), step = c.step||0;
+  if(st===0 || st===1){
+    if(q===5) return fuzzIvl(ANKI.gradEasy, c, 1);
+    if(q===4 && step+1>=ANKI.learnSteps) return fuzzIvl(ANKI.gradGood, c, 1);
+    return 0;
+  }
+  if(st===3){
+    const back = Math.max(1, c.lapseIvl||ANKI.minLapseIvl);
+    if(q===5) return fuzzIvl(back+1, c, 1);
+    if(q===4 && step+1>=ANKI.relearnSteps) return fuzzIvl(back, c, 1);
+    return 0;
+  }
+  if(q===0) return ANKI.relearnSteps>0 ? 0
+    : fuzzIvl(Math.max(c.interval||0,1)*ANKI.lapseMult, c, ANKI.minLapseIvl);
+  const iv = reviewIvls(c);
+  return q===3 ? iv.hard : q===4 ? iv.good : iv.easy;
+};
+
 /** 채점 버튼에 표시할 문구 */
 function prevLabel(c,q){
-  const inSession = q<3 || (c.reps===0 && q<5 && (c.step||0)<1);
-  if(inSession){
-    const left = S ? Math.max(1, S.queue.length-S.idx-1) : 99;
-    return Math.min(reshowGap(q), left)+"장 뒤";
-  }
-  return prevInt(c,q)+"일 뒤";
+  const d = prevInt(c,q);
+  if(d>0) return d+"일 뒤";
+  /* 분 단위 타이머가 없으니 몇 장 뒤에 다시 나오는지를 보여줍니다.
+     그렇게 해야 버튼 넷이 서로 다른 정보를 가집니다 */
+  const left = S ? Math.max(1, S.queue.length-S.idx-1) : reshowGap(q);
+  return Math.min(reshowGap(q), left)+"장 뒤";
 }
+
 const streak = () => { let n=0; for(let i=0;i<400;i++){ const k=dayKey(new Date(Date.now()-i*DAY));
-  if((D.log[k]||{}).reviews>0) n++; else if(i>0) break; } return n; };
+  if(dayStat(k).reviews>0) n++; else if(i>0) break; } return n; };
 
 /* ══════════════════ 큐 ══════════════════ */
 const active = () => D.cards.filter(c=>!c.susp);
 const inPack = (c,p) => !p ? true : (p==="__none" ? !c.pack : (c.pack===p || c.pack.startsWith(p+"/")));
-const todayDone = () => (D.log[dayKey()]||{}).reviews||0;
+const todayDone = () => dayStat(dayKey()).reviews;
 
 /** 밀린 것 전부 (오래 밀린 순) */
 function dueAll(p){ const now=Date.now();
@@ -619,7 +832,7 @@ function dueAll(p){ const now=Date.now();
 /** 오늘 상한 안에서 꺼낼 수 있는 것 */
 function dueToday(p){ const room=D.s.maxReview>0?Math.max(0,D.s.maxReview-todayDone()):Infinity;
   return dueAll(p).slice(0, room===Infinity?undefined:room); }
-function freshList(p){ const used=(D.log[dayKey()]||{}).newSeen||0;
+function freshList(p){ const used=dayStat(dayKey()).newSeen;
   return active().filter(c=>c.seen===0 && inPack(c,p)).slice(0, Math.max(0, D.s.dailyNew-used)); }
 function weakList(p){ return active().filter(c=>inPack(c,p) && (c.lapses>0||(c.seen>=2&&c.correct/c.seen<0.7)))
   .sort((a,b)=>b.lapses-a.lapses||(a.correct/(a.seen||1))-(b.correct/(b.seen||1))).slice(0,40); }
@@ -694,25 +907,27 @@ function flip(){ if(S.flipped) return; S.flipped=true; S.animate=true; render();
 
 function grade(q){
   const c=byId(S.queue[S.idx]); if(!c) return;
-  const k=dayKey(), prev=D.log[k]||{reviews:0,correct:0,newSeen:0};
+  const k=dayKey(), prevDev={...((D.log[k]||{})[DEV]||{r:0,c:0,n:0})};
   const wasNew=c.seen===0;
   /* 실행 취소용 스냅샷 */
-  S.undo.push({ card:{...c}, day:k, log:{...prev}, idx:S.idx, queue:[...S.queue],
+  S.undo.push({ card:{...c}, day:k, log:prevDev, idx:S.idx, queue:[...S.queue],
                 mode:S.mode, result:S.result, input:S.input, right:S.right });
   if(S.undo.length>15) S.undo.shift();
 
   if(S.noSched){
-    Object.assign(c,{seen:c.seen+1, correct:c.correct+(q>=3?1:0)});
+    Object.assign(c,{seen:c.seen+1, correct:c.correct+(q>=3?1:0)}); touch(c);
   }else{
-    Object.assign(c, schedule(c,q));
+    Object.assign(c, schedule(c,q)); touch(c);
     if(c.interval===0){   // 아직 졸업 전이면 이번 세션에서 다시 보여줍니다
       S.queue.splice(Math.min(S.idx+reshowGap(q), S.queue.length), 0, c.id);
     }
-    if(q<3 && D.s.leechAt>0 && c.lapses>=D.s.leechAt && !c.leech){
+    /* Anki 와 같게 임계값 도달 후 절반 간격마다 다시 알립니다 (8 -> 12 -> 16) */
+    if(q<3 && D.s.leechAt>0 && c.lapses>=D.s.leechAt
+       && (c.lapses-D.s.leechAt) % Math.ceil(D.s.leechAt/2) === 0){
       c.leech=true; toast('"'+c.word+'" 은 '+c.lapses+'번 틀렸습니다 — 카드를 고치거나 보류하세요');
     }
   }
-  D.log[k]={reviews:prev.reviews+1, correct:prev.correct+(q>=3?1:0), newSeen:prev.newSeen+(wasNew?1:0)};
+  bumpDay(k, 1, q>=3?1:0, wasNew?1:0);
   save();
   starBurst(STARS_FOR(q));
   S.combo = q>=3 ? (S.combo||0)+1 : 0;
@@ -731,7 +946,7 @@ function undoGrade(){
   const u=S.undo.pop();
   const c=byId(u.card.id);
   if(c) Object.assign(c, u.card);
-  D.log[u.day]=u.log;
+  (D.log[u.day] || (D.log[u.day]={}))[DEV] = u.log;
   S.queue=u.queue; S.idx=u.idx; S.mode=u.mode; S.result=u.result;
   S.input=u.input; S.right=u.right; S.flipped=true; S.animate=false;
   save(); render(); toast("되돌렸습니다");
@@ -741,10 +956,10 @@ function undoGrade(){
 function buryCard(){
   if(!S) return;
   const c=byId(S.queue[S.idx]); if(!c) return;
-  S.undo.push({ card:{...c}, day:dayKey(), log:{...(D.log[dayKey()]||{reviews:0,correct:0,newSeen:0})},
+  S.undo.push({ card:{...c}, day:dayKey(), log:{...((D.log[dayKey()]||{})[DEV]||{r:0,c:0,n:0})},
                 idx:S.idx, queue:[...S.queue], mode:S.mode, result:S.result, input:S.input, right:S.right });
   if(S.undo.length>15) S.undo.shift();
-  if(!S.noSched){ c.due=sod()+DAY; save(); }
+  if(!S.noSched){ c.due=sod()+DAY; touch(c); save(); }
   S.queue=S.queue.filter((id,i)=>!(id===c.id&&i>=S.idx));
   if(S.idx>=S.queue.length){ const done={total:S.idx,right:S.right}; S=null; render(done); toast("내일 다시 나옵니다"); return; }
   S.flipped=false; S.result=null; S.input=""; S.animate=false;
@@ -780,9 +995,19 @@ function render(done){
   else m.innerHTML = viewSettings();
   /* 새로 그린 요소에는 CSS 전환이 걸리지 않으므로, 다음 프레임에 클래스를 붙여 뒤집기를 재생합니다 */
   if(S && S.animate){
-    const w=$("#flipwrap");
-    if(w) requestAnimationFrame(()=>requestAnimationFrame(()=>{ w.classList.add("flipped"); }));
     S.animate=false;
+    /* 탭이 백그라운드면 requestAnimationFrame 이 오지 않아 카드가 앞면에서 멈춥니다.
+       짧은 타이머를 같이 걸어 둘 중 하나만 올려도 뒤집히게 합니다.
+       요소는 적용 지점에서 다시 찾습니다 — 사이에 다시 그려졌을 수 있어서입니다 */
+    let flipDone=false;
+    const playFlip=()=>{
+      if(flipDone) return; flipDone=true;
+      const el=$("#flipwrap"); if(el) el.classList.add("flipped");
+    };
+    if($("#flipwrap")){
+      requestAnimationFrame(()=>requestAnimationFrame(playFlip));
+      setTimeout(playFlip, 120);
+    }
   }
   paintSync();
 }
@@ -886,11 +1111,14 @@ function viewCard(){
     if(S.noSched) bottom='<div class="grades" style="grid-template-columns:1fr 1fr;margin-top:12px">'
       +'<button class="grade g0" data-a="grade" data-q="0"><b>몰랐음</b></button>'
       +'<button class="grade g5" data-a="grade" data-q="4"><b>알았음</b></button></div>';
-    else if(S.result) bottom = rail(c)
-      +'<button class="btn wide" style="margin-top:10px" data-a="grade" data-q="'+(S.result==="no"?0:S.result==="typo"?3:4)+'">'
-      +'다음 · '+prevLabel(c, S.result==="no"?0:S.result==="typo"?3:4)+'</button>';
-    else bottom = rail(c) + '<div class="grades">'
-      + gbtn(0,"모름","g0",c)+gbtn(3,"애매","",c)+gbtn(4,"알아","",c)+gbtn(5,"쉬움","g5",c) + '</div>';
+    else {
+      /* 뒤집기든 타이핑이든 같은 채점 척도를 씁니다 */
+      const ch = gradeChoices();
+      bottom = rail(c)
+        + '<div class="grades" style="grid-template-columns:repeat('+ch.length+',1fr)">'
+        + ch.map(q=>gbtn(q, GQ[q], q===0?"g0":q===5?"g5":"", c)).join("")
+        + '</div>';
+    }
   } else if(typing){
     bottom='<div class="row" style="margin-top:10px"><button class="btn" style="flex:1" data-a="check">확인</button>'
       +'<button class="btn ghost" data-a="giveup">모르겠음</button></div>';
@@ -918,6 +1146,19 @@ function viewCard(){
 }
 const typeBox=()=>'<input class="typein" id="typein" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="영어로 입력 후 Enter">';
 const gbtn=(q,l,cls,c)=>'<button class="grade '+cls+'" data-a="grade" data-q="'+q+'"><b>'+l+'</b><i>'+prevLabel(c,q)+'</i></button>';
+const GQ = {0:"모름", 3:"애매", 4:"알아", 5:"쉬움"};
+/** 지금 화면에서 고를 수 있는 채점 등급.
+    타이핑 답안도 뒤집기 카드와 같은 척도를 쓰도록 맞췄습니다.
+    예전에는 타이핑이 "모름/알아" 둘만 써서, 같은 카드가 어떤 모드로
+    나왔는지에 따라 복습 일정이 달라졌습니다. */
+function gradeChoices(){
+  if(!S) return [];
+  if(S.noSched) return [0,4];
+  if(S.result==="no")   return [0];      // 오답 — 고를 것이 없습니다
+  if(S.result==="typo") return [0,3];    // 오타 — 틀린 것으로 볼지 사용자가 정합니다
+  if(S.result==="ok")   return [3,4,5];  // 정답 — 체감 난이도만 고릅니다
+  return [0,3,4,5];
+}
 function rail(c){
   const pos=d=>Math.min(100,Math.max(0,Math.log(Math.max(d,1))/Math.log(365)*100));
   let h='<div class="rail"><div class="railline"></div>';
@@ -1394,7 +1635,7 @@ function viewStats(){
   const mat=D.cards.filter(c=>c.interval>=21).length;
   /* 최근 30일 실제 정답률 — 누적보다 지금 상태를 잘 보여줍니다 */
   let rr=0, rc=0;
-  for(let i=0;i<30;i++){ const v=D.log[dayKey(new Date(Date.now()-i*DAY))]; if(v){ rr+=v.reviews||0; rc+=v.correct||0; } }
+  for(let i=0;i<30;i++){ const v=dayStat(dayKey(new Date(Date.now()-i*DAY))); rr+=v.reviews; rc+=v.correct; }
   const racc = rr?Math.round(rc/rr*100):null;
   /* ── 한 줄 진단 ── 숫자만 늘어놓으면 뭘 해야 할지 알 수 없으므로 판정을 먼저 보여줍니다.
      정답률 85~90%가 간격 반복의 통상 기준선입니다. 너무 높아도 간격이 짧다는 뜻입니다. */
@@ -1471,7 +1712,7 @@ function viewStats(){
   for(let w=11;w>=0;w--){ h+='<div class="col">';
     for(let d=0;d<7;d++){ const back=w*7+(off-d);
       if(back<0){ h+='<div class="cell" style="background:transparent"></div>'; continue; }
-      const k=dayKey(new Date(Date.now()-back*DAY)), n=(D.log[k]||{}).reviews||0;
+      const k=dayKey(new Date(Date.now()-back*DAY)), n=dayStat(k).reviews;
       h+='<div class="cell" title="'+k+' · '+n+'장" style="background:'+shade(n)+'"></div>'; }
     h+='</div>'; }
   h+='</div><p class="note">칸 하나가 하루입니다. 진할수록 그날 많이 봤다는 뜻입니다.</p></div>';
@@ -1772,7 +2013,7 @@ document.addEventListener("click", e=>{
     return; }
   if(a==="pack-review"){ startSession({kind:"review", pack:packPath}); return; }
   if(a==="pack-sweep"){ startSession({kind:"sweep", pack:packPath}); return; }
-  if(a==="susp"){ const c=byId(t.dataset.id); c.susp=!c.susp; if(!c.susp) c.leech=false;
+  if(a==="susp"){ const c=byId(t.dataset.id); c.susp=!c.susp; if(!c.susp) c.leech=false; touch(c);
     if(S && S.queue.includes(c.id) && c.susp){ S.queue=S.queue.filter((id,i)=>!(id===c.id&&i>S.idx)); }
     save(); render();
     toast(c.susp?"복습에서 뺐습니다":"다시 복습에 포함됩니다"); return; }
@@ -1808,7 +2049,7 @@ document.addEventListener("click", e=>{
     const f={word:w, meaning:m, example:$("#f-ex").value.trim(), collocation:$("#f-col").value.trim(),
       pack:pk, tags:$("#f-tag").value.split(/[,;]/).map(x=>x.trim()).filter(Boolean)};
     const commit=()=>{
-      if(editing){ Object.assign(byId(editing), f, {auto:false}); editing=null; }
+      if(editing){ touch(Object.assign(byId(editing), f, {auto:false})); editing=null; }
       else { D.cards.push(newCard(Object.assign({}, f, {auto:formAuto}))); D.s.lastPack=pk; }
       formAuto=false; syncPacks(); save(); render(); toast("저장했습니다");
     };
@@ -1838,8 +2079,11 @@ document.addEventListener("click", e=>{
     return;
   }
   if(a==="edit"){ editing=t.dataset.id; render(); window.scrollTo({top:0,behavior:"smooth"}); return; }
-  if(a==="del"){ D.cards=D.cards.filter(c=>c.id!==t.dataset.id); save(); render(); return; }
-  if(a==="confirm"){ byId(t.dataset.id).auto=false; save(); render(); return; }
+  if(a==="del"){
+    const gone=byId(t.dataset.id);
+    if(gone) D.del[(gone.word||"").toLowerCase()]=Date.now();   // 다른 기기에서 다시 내려오지 않도록
+    D.cards=D.cards.filter(c=>c.id!==t.dataset.id); save(); render(); return; }
+  if(a==="confirm"){ touch(byId(t.dataset.id)).auto=false; save(); render(); return; }
   if(a==="say-w"){ speak(byId(t.dataset.id).word); return; }
 
   if(a==="front"){ D.s.front=t.dataset.k; save(); render(); return; }
@@ -1895,7 +2139,7 @@ document.addEventListener("click", e=>{
   if(a==="reset-prog"){
     askYes("학습 진도를 초기화할까요?","단어 "+D.cards.length+"개는 그대로 남고, 복습 일정과 정답률만 처음으로 돌아갑니다.","진도 초기화",true)
       .then(ok=>{ if(!ok) return;
-        D.cards.forEach(c=>Object.assign(c,{ef:2.5,reps:0,step:0,interval:0,lapses:0,seen:0,correct:0,leech:false,due:sod()}));
+        D.cards.forEach(c=>Object.assign(c,{ef:2.5,reps:0,step:0,interval:0,lapses:0,seen:0,correct:0,leech:false,due:sod(),updatedAt:Date.now()}));
         save(); render(); toast("진도를 초기화했습니다"); });
     return;
   }
@@ -1997,7 +2241,8 @@ document.addEventListener("keydown", e=>{
   if(e.key==="z"||e.key==="Z"){ e.preventDefault(); undoGrade(); return; }
   if(!S.flipped&&e.code==="Space"&&!S.mode.startsWith("type_")){ e.preventDefault(); flip(); return; }
   if(S.flipped&&["1","2","3","4"].includes(e.key)){ e.preventDefault();
-    if(S.noSched||S.result) grade(S.result==="no"?0:4); else grade([0,3,4,5][+e.key-1]); }
+    const ch=gradeChoices(), i=+e.key-1;
+    if(i<ch.length) grade(ch[i]); }
 });
 
 /* 스와이프 채점 */
