@@ -419,6 +419,13 @@ const DEFAULTS = {
   geminiKey:"", geminiModel:"gemini-2.5-flash",
   apiKey:"", model:"claude-sonnet-5"
 };
+/* 백업 파일이나 화면에 절대 섞여 나가면 안 되는 값들 */
+const SECRET_KEYS = ["ghToken","gistId","gistEtag","pushSig","geminiKey","apiKey"];
+const publicSettings = s => {
+  const o = {...(s||{})};
+  SECRET_KEYS.forEach(k => delete o[k]);
+  return o;
+};
 let D = { v:2, cards:[], log:{}, packs:[], del:{}, s:{...DEFAULTS} };
 let view = "study";
 
@@ -428,13 +435,17 @@ function load(){
     if(raw){ const p=JSON.parse(raw);
       D={ v:2, cards:p.cards||[], log:p.log||{}, packs:p.packs||[], del:p.del||{},
           s:{...DEFAULTS,...(p.s||{}), typeModes:{...DEFAULTS.typeModes,...((p.s||{}).typeModes||{})}} };
-      D.cards.forEach(c=>{ if(c.step===undefined) c.step=0; if(c.pack===undefined) c.pack="";
-        if(c.susp===undefined) c.susp=false; if(c.leech===undefined) c.leech=false;
-        if(c.updatedAt===undefined) c.updatedAt=c.createdAt||0;
-        if(c.lapseIvl===undefined) c.lapseIvl=0;
-        if(c.st===undefined) c.st=cardSt(c); });
-      migrateLog(); syncPacks(); }
+      fixLoaded(); }
   }catch(e){ toast("저장된 데이터를 읽지 못했습니다"); }
+}
+/** 빠진 칸을 채웁니다. 저장소에서 읽을 때와 백업 파일을 넣을 때 모두 같은 길을 씁니다 */
+function fixLoaded(){
+  D.cards.forEach(c=>{ if(c.step===undefined) c.step=0; if(c.pack===undefined) c.pack="";
+    if(c.susp===undefined) c.susp=false; if(c.leech===undefined) c.leech=false;
+    if(c.updatedAt===undefined) c.updatedAt=c.createdAt||0;
+    if(c.lapseIvl===undefined) c.lapseIvl=0;
+    if(c.st===undefined) c.st=cardSt(c); });
+  migrateLog(); syncPacks();
 }
 let saveT, savePending=false;
 function save(){ savePending=true; clearTimeout(saveT); saveT=setTimeout(()=>{
@@ -2315,7 +2326,9 @@ document.addEventListener("click", e=>{
     }).catch(err=>{ toast("실패: "+err.message); render(); });
     return; }
   if(a==="export"){
-    const blob=new Blob([JSON.stringify(D)],{type:"application/json"});
+    /* 토큰과 API 키는 빼고 내보냅니다. 백업 파일을 남에게 주거나 잃어버려도 안전해야 합니다 */
+    const safe = {v:2, cards:D.cards, log:D.log, packs:D.packs, del:D.del, s:publicSettings(D.s)};
+    const blob=new Blob([JSON.stringify(safe)],{type:"application/json"});
     const url=URL.createObjectURL(blob), link=document.createElement("a");
     link.href=url; link.download="lexicon-backup-"+dayKey()+".json"; link.click();
     setTimeout(()=>URL.revokeObjectURL(url),1000); return;
@@ -2413,8 +2426,11 @@ document.addEventListener("change", e=>{
       if(importMode==="over"){
         askYes("덮어쓸까요?","지금 단어 "+D.cards.length+"개를 지우고 백업의 "+p.cards.length+"개로 바꿉니다.","덮어쓰기",true)
           .then(ok=>{ if(!ok) return;
-            D={v:1, cards:p.cards, log:p.log||{}, packs:p.packs||[], s:{...DEFAULTS,...(p.s||{})}};
-            syncPacks(); save(); render(); toast(D.cards.length+"개로 바꿨습니다"); });
+            /* 설정은 백업의 공개 항목만 받고, 이 기기의 토큰·키는 그대로 둡니다 */
+            D={v:2, cards:p.cards, log:p.log||{}, packs:p.packs||[], del:p.del||{},
+               s:{...D.s, ...publicSettings(p.s||{}),
+                  typeModes:{...DEFAULTS.typeModes,...((p.s||{}).typeModes||{})}}};
+            fixLoaded(); save(); render(); toast(D.cards.length+"개로 바꿨습니다"); });
       }else{
         const r=mergeData(p);
         save(); render();
