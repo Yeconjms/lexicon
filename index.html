@@ -374,7 +374,7 @@ const askYes  = (title,message,ok,danger) => modal({title,message,ok:ok||"확인
 
 /* ── 기기 식별 · 기록 합산 ──
    같은 날 폰과 PC에서 각각 공부하면 두 기록은 더해져야 합니다.
-   기기마다 칸을 나눔어 합산하므로 어느 쪽 기록도 다른 쪽을 덮어쓰지 않습니다. */
+   기기마다 칸을 나눠 합산하므로 어느 쪽 기록도 다른 쪽을 덮어쓰지 않습니다. */
 const DEVKEY = "lexicon:dev";
 const DEV = (function(){ try{
     var d = localStorage.getItem(DEVKEY);
@@ -396,14 +396,14 @@ function bumpDay(k, dr, dc, dn){
   const v = row[DEV] || (row[DEV] = {r:0, c:0, n:0});
   v.r += dr; v.c += dc; v.n += dn;
 }
-/** 기기 구분이 없던 예전 형식을 기기별 형식으로 바꿈니다 */
+/** 기기 구분이 없던 예전 형식을 기기별 형식으로 바꿉니다 */
 const normRow = row => (row && (typeof row.reviews === "number" || typeof row.correct === "number"))
   ? { old:{ r:row.reviews||0, c:row.correct||0, n:row.newSeen||0 } } : row;
 function migrateLog(){ for(const k in D.log) D.log[k] = normRow(D.log[k]); }
 
-/** 카드를 고친 시각을 남깁니다. 기기 간 병합에서 어느 쇽이 최신인지 기준입니다 */
+/** 카드를 고친 시각을 남깁니다. 기기 간 병합에서 어느 쪽이 최신인지 가리는 기준입니다 */
 const touch = c => { if(c) c.updatedAt = Date.now(); return c; };
-/** 병합할 때 한 번에 영기는 칸. 스젠줄러를 바꿀 때 여기만 고치면 됩니다 */
+/** 병합할 때 한 번에 옮기는 칸. 스케줄러를 바꿀 때 여기만 고치면 됩니다 */
 const CARD_STATE = ["ef","reps","step","st","interval","lapses","lapseIvl","due","seen","correct","susp","leech"];
 
 /* ══════════════════ 데이터 ══════════════════ */
@@ -489,9 +489,9 @@ async function gistPut(){
   })});
 }
 
-/** 원거 데이티를 지금 데이티에 합칩니다. {add, upd} 를 돌려줍니다
-    카드 상태는 더 나중에 고친 쇽을 따릅니다(updatedAt).
-    시각 정보가 없는 예전 데이티리끔리는 진도(seen)가 앎선 쇽을 따릅니다.
+/** 원격 데이터를 지금 데이터에 합칩니다. {add, upd} 를 돌려줍니다
+    카드 상태는 더 나중에 고친 쪽을 따릅니다(updatedAt).
+    시각 정보가 없는 예전 데이터끼리는 진도(seen)가 앞선 쪽을 따릅니다.
     하루 기록은 기기 칸별로 큰 값을 써서, 폰과 PC 기록이 합산됩니다. */
 function mergeData(p){
   if(!p||!Array.isArray(p.cards)) return {add:0,upd:0};
@@ -502,7 +502,7 @@ function mergeData(p){
   for(const w in theirDel)
     if((theirDel[w]||0) > (D.del[w]||0)) D.del[w] = theirDel[w];
 
-  /* 다른 기기에서 지운 단어는 여기서도 없엕니다.
+  /* 다른 기기에서 지운 단어는 여기서도 없앱니다.
      단, 지운 뒤에 다시 만들어진 카드는 살려둡니다 */
   D.cards = D.cards.filter(c=>{
     const t = D.del[(c.word||"").toLowerCase()];
@@ -543,7 +543,7 @@ function mergeData(p){
       cur.updatedAt = Math.max(theirTime, myTime);
       changed = true;
     }
-    /* 뜻·예문은 버어 있으면 채우고, 양쪽에 다 있으면 최신 쇽을 쏵니다 */
+    /* 뜻·예문은 비어 있으면 채우고, 양쪽에 다 있으면 최신 쪽을 씁니다 */
     ["meaning","example","collocation","pack"].forEach(f=>{
       const mine = cur[f]||"", their = inc[f]||"";
       if(!mine && their){ cur[f]=their; changed=true; }
@@ -709,7 +709,7 @@ function fuzzSeed(c){
 /** 편차를 적용하고 하한·상한으로 자릅니다 */
 function fuzzIvl(raw, c, minI){
   const cap = maxIvl();
-  const lim = Math.min(minI, cap);          // 상한보다 큰 하한은 상한에 맞춤니다
+  const lim = Math.min(minI, cap);          // 상한보다 큰 하한은 상한에 맞춥니다
   const d = fuzzDelta(raw);
   if(d===0) return Math.min(cap, Math.max(lim, Math.round(raw)));
   const lo = Math.max(lim, Math.min(Math.round(raw-d), cap));
@@ -1509,14 +1509,120 @@ async function dictFetch(q){
   return o;
 }
 
+/* ── 키 없이 쓰는 무료 사전 ──────────────────────────────────────
+   영어 뜻은 영어 위키낱말사전(Wiktionary)에서 그대로 가져옵니다. 사람이 쓴 사전입니다.
+   한국어 뜻은 MyMemory 번역을 거칩니다 — 이쪽은 기계 번역이라 틀릴 수 있습니다.
+   둘 다 키가 필요 없고 공짜입니다. 대신 한국어 품질은 AI 경로보다 떨어집니다. */
+const POS_KO = {
+  "Noun":"명사", "Proper noun":"고유명사", "Verb":"동사", "Adjective":"형용사",
+  "Adverb":"부사", "Pronoun":"대명사", "Preposition":"전치사", "Conjunction":"접속사",
+  "Interjection":"감탄사", "Determiner":"한정사", "Numeral":"수사", "Particle":"조사",
+  "Phrase":"표현", "Proverb":"속담", "Idiom":"숙어", "Prefix":"접두사", "Suffix":"접미사",
+  "Participle":"분사", "Abbreviation":"약어", "Contraction":"축약형"
+};
+const hasHangul = s => /[가-힣]/.test(s || "");
+const stripTags = s => String(s == null ? "" : s)
+  .replace(/<[^>]*>/g, " ").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&")
+  .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+  .replace(/\s+/g, " ")
+  /* 태그를 빼내면 " ," 처럼 고려져 버리므로 무류표 앞 고려에를 다듬억니다 */
+  .replace(/\s+([,.;:!?)\]])/g, "$1")
+  .replace(/([(\[])\s+/g, "$1")
+  .replace(/\(\s*\)/g, "")
+  .replace(/\s+/g, " ").trim();
+
+/** 제한 시간을 붙인 fetch. AbortSignal.timeout 이 없는 옛 브라우저에서도 동작합니다 */
+function fetchT(url, ms){
+  const opt = {};
+  try{ opt.signal = AbortSignal.timeout(ms); }catch(e){}
+  return fetch(url, opt);
+}
+/** 영어 한 토막을 한국어로 옮깁니다. 실패하면 빈 문자열입니다 */
+async function translateKo(text){
+  const q = String(text || "").trim();
+  if(!q) return "";
+  try{
+    const r = await fetchT("https://api.mymemory.translated.net/get?langpair=en%7Cko&q=" + encodeURIComponent(q), 8000);
+    if(!r.ok) return "";
+    const j = await r.json();
+    if(j.quotaFinished) return "";
+    const t = ((j.responseData || {}).translatedText || "").trim();
+    /* 번역이 안 되면 영어를 그대로 돌려주거나 대문자 오류 문구를 보냅니다 */
+    return hasHangul(t) ? t : "";
+  }catch(e){ return ""; }
+}
+
+async function dictFetchFree(q){
+  const word = String(q || "").trim();
+  if(!word) throw new Error("찾을 말을 적어주세요");
+
+  const path = encodeURIComponent(word.replace(/\s+/g, "_"));
+  let wd;
+  try{
+    const r = await fetchT("https://en.wiktionary.org/api/rest_v1/page/definition/" + path, 9000);
+    if(r.status === 404) throw new Error("영어 위키낱말사전에 없는 표현입니다. 철자를 확인해 주세요.");
+    if(!r.ok) throw new Error("사전 서버가 " + r.status + " 를 돌려줬습니다. 잠시 뒤 다시 시도해 주세요.");
+    wd = await r.json();
+  }catch(e){
+    if(e.name === "TimeoutError") throw new Error("사전 서버가 응답하지 않습니다. 인터넷 연결을 확인해 주세요.");
+    throw e;
+  }
+
+  const raw = [];
+  (wd.en || []).forEach(block => {
+    (block.definitions || []).forEach(d => {
+      const en = stripTags(d.definition);
+      /* 위키낙말사전은 라벏만 달린 번 항목을 돌려주기도 합니다 */
+      if(en.length < 3 || !/[a-zA-Z]/.test(en)) return;
+      raw.push({
+        pos: POS_KO[block.partOfSpeech] || block.partOfSpeech || "",
+        en: en,
+        ex: (d.examples || []).map(stripTags).filter(x => x.length > 1).slice(0, 1)
+      });
+    });
+  });
+  if(!raw.length) throw new Error("영어 뜻을 찾지 못했습니다");
+
+  const keep = raw.slice(0, 4);
+  /* 머리말 뜻과 각 뜻풀이를 한꺼번에 번역합니다 */
+  const [headKo, ...defKo] = await Promise.all(
+    [translateKo(word)].concat(keep.map(s => translateKo(s.en)))
+  );
+
+  const senses = [];
+  /* 짧은 뜻을 맨 앞에 둡니다 — 번역된 뜻풀이는 문장이 되어 카드 뒷면에 적기엔 깁니다 */
+  if(headKo) senses.push({ pos: "짧은 뜻", ko: headKo, en: "", ex: [] });
+  keep.forEach((s, i) => senses.push({
+    pos: s.pos,
+    ko: defKo[i] || headKo || "",
+    en: s.en,
+    ex: s.ex.map(x => ({ en: x }))
+  }));
+  /* 번역이 전부 실패했으면 적어도 머리말 뜻이라도 있어야 담을 수 있습니다 */
+  if(!senses.some(s => s.ko) && !headKo)
+    throw new Error("한국어 뜻을 가져오지 못했습니다. 번역 한도에 걸렸을 수 있으니 잠시 뒤 다시 시도해 주세요.");
+
+  return {
+    q: word,
+    kind: /\s/.test(word) ? "phrase" : "word",
+    src: "free",
+    headKo: headKo,
+    senses: senses,
+    colloc: []
+  };
+}
+
 async function dictLook(q){
   q=(q||"").trim(); if(!q) return;
   dictQ=q; dictErr=""; dictR=null;
   const hit=dictGet(q);
   if(hit){ dictR=hit; render(); return; }
-  if(!aiReady()){ dictErr="설정에서 Gemini를 먼저 켜주세요. 검색은 인터넷과 API 키가 있어야 합니다."; render(); return; }
   dictBusy=true; render();
-  try{ const r=await dictFetch(q); dictR=r; dictPut(q,r); }
+  try{
+    /* AI 키가 있으면 그쪽이 한국어 품질이 좋고, 없으면 무료 사전을 씁니다 */
+    const r = aiReady() ? await dictFetch(q) : await dictFetchFree(q);
+    dictR=r; dictPut(q,r);
+  }
   catch(e){ dictErr=e.message; }
   dictBusy=false; render();
 }
@@ -1562,8 +1668,8 @@ function viewDict(){
     +'autocapitalize="off" autocomplete="off" spellcheck="false" value="'+esc(dictQ)+'">'
     +'<button class="btn" data-a="dict-go">찾기</button></div>';
   if(!aiReady())
-    h+='<p class="note">아직 Gemini가 꺼져 있습니다. 설정에서 키를 한 번 넣으면 바로 찾을 수 있습니다.</p>'
-      +'<button class="btn ghost sm" data-a="go-settings" style="margin-top:9px">설정으로 가기</button>';
+    h+='<p class="note">키 없이 쓰는 <b>무료 사전</b>으로 찾습니다. 영어 뜻은 위키낱말사전에서 그대로 가져오고, '
+      +'한국어는 기계 번역입니다. 더 자연스러운 한국어 뜻을 원하면 설정에서 AI를 켜세요.</p>';
   h+='</div>';
 
   if(dictBusy) return h+'<div class="panel"><div class="empty">'+lexi("think","bob")
@@ -1588,10 +1694,12 @@ function viewDict(){
 
   const r=dictR;
   const kind={word:"단어", phrase:"표현", idiom:"숙어"}[r.kind]||"표현";
+  const free=r.src==="free";
   h+='<div class="panel"><div class="dhead">'
     +'<div style="flex:1;min-width:0"><div class="dword">'+esc(r.q)+'</div>'
     +(r.ipa?'<div class="dipa">'+esc(r.ipa)+'</div>':'')
-    +'<div class="row" style="margin-top:8px"><span class="chip">'+esc(kind)+'</span></div></div>'
+    +'<div class="row" style="margin-top:8px"><span class="chip">'+esc(kind)+'</span>'
+    +'<span class="chip">'+(free?"위키낱말사전":"AI")+'</span></div></div>'
     +'<button class="speak dark" data-a="dict-say">♪</button></div>';
 
   r.senses.forEach((s,i)=>{
@@ -1602,7 +1710,7 @@ function viewDict(){
       +'<span style="flex:1"></span>'
       +'<button class="dadd'+(on?" done":"")+'" data-a="dict-save" data-i="'+i+'" '
       +'aria-label="'+(on?"담김":"이 뜻으로 담기")+'">'+(on?"✓":"+")+'</button></div>'
-      +'<div class="dko">'+esc(s.ko)+'</div>'
+      +(s.ko?'<div class="dko">'+esc(s.ko)+'</div>':'')
       +(s.en?'<div class="den">'+esc(s.en)+'</div>':'');
     (s.ex||[]).slice(0,1).forEach(x=>{
       h+='<div class="dex"><b>'+esc(x.en)+'</b>'+(x.ko?'<span>'+esc(x.ko)+'</span>':'')+'</div>';
@@ -1620,8 +1728,11 @@ function viewDict(){
     h+='<div class="dsense"><div class="h2" style="margin-bottom:8px">헷갈리는 것</div><div class="dnear">'
       +r.near.map(n=>'<b>'+esc(n.w)+'</b> — '+esc(n.ko)).join("<br>")+'</div></div>';
 
-  h+='<p class="dcache">렉시는 사전 데이터가 아니라 AI가 만든 답입니다. 담은 카드에는 '
-    +'<b>확인 필요</b> 표시가 붙으니, 단어 탭에서 한 번 훑어보고 지워주세요.</p>';
+  h+='<p class="dcache">'
+    +(free
+      ? '영어 뜻은 위키낱말사전 원문이고 <b>한국어는 기계 번역</b>입니다. 뜻이 어색하면 담은 뒤 단어 탭에서 고치세요.'
+      : '렉시는 사전 데이터가 아니라 AI가 만든 답입니다.')
+    +' 담은 카드에는 <b>확인 필요</b> 표시가 붙으니, 단어 탭에서 한 번 훑어보고 지워주세요.</p>';
   h+='</div>';
   return h;
 }
@@ -1738,121 +1849,120 @@ function viewSettings(){
   const s=D.s;
   const linked = s.ghToken && s.gistId;
 
-  /* ── 항상 보이는 것: 학습량과 카드 앞면 ── */
+  /* ── 자주 만지는 둘만 펼쳐 둡니다 ── */
   let h='<div class="panel"><div class="h2">하루 학습량</div>'
     +'<div class="row" style="justify-content:space-between"><label style="font-size:14.5px;font-weight:600">하루 신규 단어</label>'
     +'<input class="field" type="number" min="0" max="200" style="width:92px" id="s-new" value="'+s.dailyNew+'"></div>'
-    +'<p class="note">이 숫자 하나가 앞으로의 복습량을 결정합니다. 신규 '+s.dailyNew+'개/일이면 몇 달 뒤 하루 '
-    +Math.round(s.dailyNew*7)+'~'+Math.round(s.dailyNew*10)+'장 근처에서 균형을 잡습니다. '
-    +'밀리기 시작하면 <b>여기부터</b> 줄이세요.</p>'
-    +'<div class="row" style="justify-content:space-between;margin-top:15px"><label style="font-size:14.5px;font-weight:600">한 번에 꺼낼 장수</label>'
+    +'<div class="row" style="justify-content:space-between;margin-top:12px"><label style="font-size:14.5px;font-weight:600">하루 최대 복습</label>'
+    +'<input class="field" type="number" min="0" max="999" style="width:92px" id="s-max" value="'+s.maxReview+'"></div>'
+    +'<div class="row" style="justify-content:space-between;margin-top:12px"><label style="font-size:14.5px;font-weight:600">한 번에 꺼낼 장수</label>'
     +'<div class="seg" style="flex:0 0 auto">'
     +[[10,"10"],[20,"20"],[30,"30"],[0,"전부"]].map(([v,l])=>
-      '<button data-a="seslim" data-k="'+v+'"'+(s.sessionLimit===v?' class="on"':'')+' style="padding:7px 12px">'+l+'</button>').join("")
+      '<button data-a="seslim" data-k="'+v+'"'+(s.sessionLimit===v?' class="on"':'')+' style="padding:7px 12px;white-space:nowrap">'+l+'</button>').join("")
     +'</div></div>'
-    +'<p class="note">오늘 할 양을 줄이는 게 아니라 <b>한 번에 보여줄 만큼만</b> 꺼내는 것입니다. '
-    +'채점은 카드마다 즉시 저장되니 끊어서 해도 됩니다.</p></div>';
+    +'<p class="note"><b>신규 단어 수가 앞으로의 복습량을 정합니다.</b> '+s.dailyNew+'개/일이면 몇 달 뒤 하루 '
+    +Math.round(s.dailyNew*7)+'~'+Math.round(s.dailyNew*10)+'장에서 균형을 잡습니다. 밀리면 여기부터 줄이세요.<br>'
+    +'최대 복습은 넘는 만큼 다음 날로 미룹니다 — 일을 미룰 뿐 줄이지는 않습니다. 0 = 무제한.<br>'
+    +'꺼낼 장수는 오늘 할 양이 아니라 <b>한 번에 보여줄 만큼</b>입니다. 채점은 즉시 저장되니 끊어서 해도 됩니다.</p></div>';
 
   h+='<div class="panel"><div class="h2">카드 앞면</div><div class="seg" id="seg-front">'
     +[["en","영 → 한"],["ko","한 → 영"],["mix","섞기"]].map(([k,l])=>
       '<button data-a="front" data-k="'+k+'"'+(s.front===k?' class="on"':'')+'>'+l+'</button>').join("")
-    +'</div><p class="note">기본은 탭해서 뒤집고 스스로 채점하는 방식입니다. 이동 중에 쓰기 좋습니다.</p></div>';
+    +'</div><p class="note">탭해서 뒤집고 스스로 채점하는 방식이 기본입니다.</p></div>';
 
-  /* ── 접어두는 것들 ── */
+  /* ── 나머지는 네 묶음으로 접어 둡니다 ── */
   let inner;
 
-  inner = sw("typing","타이핑 문제 섞기","플래시카드 사이사이에 직접 입력하는 문제를 넣습니다",s.typing)
+  /* 1. 문제 형식 — 타이핑과 발음을 한 곳에 */
+  inner = sw("typing","타이핑 문제 섞기","플래시카드 사이에 직접 입력하는 문제를 넣습니다",s.typing)
     +(s.typing?'<div style="padding-left:8px;border-left:2px solid var(--line);margin-top:8px">'
       +sw("t-ko2en","한 → 영 입력","뜻 보고 영단어 타이핑",s.typeModes.ko2en)
       +sw("t-spell","예문 빈칸","예문의 빈칸 채우기",s.typeModes.spell)
       +sw("t-dict","받아쓰기","소리만 듣고 입력"+(TTS.ok?"":" — 이 브라우저는 지원 안 함"),s.typeModes.dictation,!TTS.ok)
       +'</div>':'')
-    +'<p class="note">직접 써보면 더 확실히 외워지지만 시간이 더 걸립니다. 이동 중에는 꺼두는 편이 낫습니다.</p>';
-  h+=setBox("타이핑 문제", s.typing?"켜짐":"꺼짐", inner);
-
-  if(!TTS.ok) inner='<div class="warn">이 브라우저는 음성 합성을 지원하지 않습니다.</div>';
-  else inner='<div class="row"><select class="field" id="s-voice" style="flex:1;min-width:160px"><option value="">기본 음성</option>'
+    +'<p class="note">써보면 더 확실히 외워지지만 시간이 걸립니다. 이동 중에는 꺼두는 편이 낫습니다.</p>';
+  if(!TTS.ok) inner+='<div class="warn" style="margin-top:12px">이 브라우저는 음성 합성을 지원하지 않습니다.</div>';
+  else inner+='<div class="h2" style="margin:16px 0 10px">발음</div>'
+      +'<div class="row"><select class="field" id="s-voice" style="flex:1;min-width:160px"><option value="">기본 음성</option>'
       +TTS.voices.map(v=>'<option value="'+esc(v.voiceURI)+'"'+(s.voiceURI===v.voiceURI?" selected":"")+'>'+esc(v.name)+' ('+esc(v.lang)+')</option>').join("")
       +'</select><button class="btn ghost" data-a="test-voice">미리 듣기</button></div>'
       +'<div class="row" style="margin-top:12px"><label style="font-size:14px;font-weight:600;white-space:nowrap">속도 '+s.rate.toFixed(1)+'x</label>'
       +'<input type="range" min="0.6" max="1.3" step="0.1" id="s-rate" value="'+s.rate+'" style="flex:1"></div>'
-      +sw("autospeak","자동 발음","카드를 뒤집거나 정답을 확인할 때 소리를 냅니다. 끄면 ♪ 버튼을 눌렀을 때만 재생됩니다",s.autoSpeak)
-      +'<p class="note">기기에 설치된 음성을 씁니다. 목록과 품질은 기기마다 다르고, iOS는 자동 재생이 막힐 수 있습니다.</p>';
-  h+=setBox("발음", TTS.ok?(s.autoSpeak?"자동 재생 켜짐":"수동"):"지원 안 함", inner);
+      +sw("autospeak","자동 발음","뒤집거나 정답을 확인할 때 소리를 냅니다",s.autoSpeak)
+      +'<p class="note">기기에 설치된 음성을 씁니다. iOS는 자동 재생이 막힐 수 있습니다.</p>';
+  h+=setBox("문제 형식과 발음", s.typing?"타이핑 켜짐":"뒤집기만", inner);
 
-  inner='<div class="row" style="justify-content:space-between"><label style="font-size:14px;font-weight:600">하루 최대 복습</label>'
-    +'<input class="field" type="number" min="0" max="999" style="width:92px" id="s-max" value="'+s.maxReview+'"></div>'
-    +'<p class="note">넘는 만큼은 다음 날로 넘어갑니다. 0 = 무제한. '
-    +'<b>상한은 일을 미룰 뿐 줄이지 않습니다</b> — 계속 밀리면 하루 신규 단어를 줄이세요.</p>'
-    +'<div class="row" style="justify-content:space-between;margin-top:14px"><label style="font-size:14px;font-weight:600">최대 간격 (일)</label>'
-    +'<input class="field" type="number" min="0" max="3650" style="width:92px" id="s-maxint" value="'+s.maxInterval+'"></div>'
-    +'<p class="note">아무리 잘 맞혀도 이 간격을 넘기지 않습니다. 0 = 무제한.</p>'
-    +'<div class="row" style="justify-content:space-between;margin-top:14px"><label style="font-size:14px;font-weight:600">누수 판정 실패 횟수</label>'
-    +'<input class="field" type="number" min="0" max="30" style="width:92px" id="s-leech" value="'+s.leechAt+'"></div>'
-    +'<p class="note">이만큼 틀리면 <b>누수 단어</b>로 표시해 알려줍니다. 대개 카드가 나쁜 것이라 고치는 게 빠릅니다.</p>';
-  h+=setBox("세부 조절", "잘 모르겠으면 그대로 두세요", inner);
-
+  /* 2. 사전 검색 — 무료가 기본이고 AI는 선택 */
   inner='<div class="seg">'
-    +[["none","사용 안 함"],["gemini","Gemini · 무료"],["anthropic","Claude · 유료"]].map(([k,l])=>
+    +[["none","무료 · 기본"],["gemini","Gemini · 무료 키"],["anthropic","Claude · 유료"]].map(([k,l])=>
       '<button data-a="prov" data-k="'+k+'"'+(s.provider===k?' class="on"':'')+'>'+l+'</button>').join("")
     +'</div>';
   if(s.provider==="none")
-    inner+='<p class="note">사전 탭 검색과 뜻 자동 채우기가 꺼집니다. 대신 단어 탭의 <b>Claude용 프롬프트 복사</b>로 직접 붙여넣어 쓸 수 있습니다. 아무 비용도 들지 않습니다.</p>';
+    inner+='<p class="note"><b>키 없이 바로 씁니다.</b> 영어 뜻은 위키낱말사전 원문, 한국어는 기계 번역입니다. '
+      +'한국어가 어색할 때가 있으니 담은 뒤 고치면 됩니다.<br>'
+      +'단어를 한꺼번에 넣을 때는 단어 탭의 <b>Claude용 프롬프트 복사</b>를 쓰세요. 역시 무료입니다.</p>';
   if(s.provider==="gemini")
-    inner+='<p class="note">Google AI Studio(<span class="mono">aistudio.google.com</span>)에서 무료로 키를 발급받을 수 있습니다. 신용카드가 필요 없습니다.<br>'
-      +'분당·일일 요청 수에 한도가 있고 그 수치는 자주 바뀝니다. 한도를 넘으면 잠시 뒤 다시 시도하면 됩니다.<br>'
-      +'무료 티어로 보낸 내용은 구글이 모델 개선에 쓸 수 있다고 명시되어 있습니다. 영단어 목록이라 문제는 없지만 알고 쓰세요.</p>'
+    inner+='<p class="note">Google AI Studio(<span class="mono">aistudio.google.com</span>)에서 카드 없이 무료 키를 받습니다. '
+      +'한국어 뜻이 무료 사전보다 자연스럽습니다.<br>'
+      +'분당·일일 한도가 있고 수치는 자주 바뀝니다. 무료 티어로 보낸 내용은 구글이 모델 개선에 쓸 수 있습니다.</p>'
       +'<input class="field" id="s-gkey" type="password" placeholder="Gemini API 키" value="'+esc(s.geminiKey)+'" style="margin-top:10px">'
       +'<input class="field" id="s-gmodel" placeholder="모델 이름" value="'+esc(s.geminiModel)+'" style="margin-top:8px">'
-      +'<p class="note">모델 이름이 맞지 않으면 오류가 납니다. AI Studio에서 현재 쓸 수 있는 모델 ID를 확인해 넣으세요.</p>';
+      +'<p class="note">모델 이름이 틀리면 오류가 납니다. AI Studio에서 쓸 수 있는 ID를 확인해 넣으세요.</p>';
   if(s.provider==="anthropic")
-    inner+='<p class="note">Anthropic API는 사용량만큼 과금되며 Claude 구독과 별개입니다. 단어 100개에 100원 안팎이지만 미리 크레딧을 충전해야 합니다.</p>'
+    inner+='<p class="note">Anthropic API는 쓴 만큼 과금되며 Claude 구독과 별개입니다. 단어 100개에 100원 안팎이고 미리 충전해야 합니다.</p>'
       +'<input class="field" id="s-key" type="password" placeholder="sk-ant-..." value="'+esc(s.apiKey)+'" style="margin-top:10px">'
       +'<input class="field" id="s-model" placeholder="모델 이름" value="'+esc(s.model)+'" style="margin-top:8px">';
   if(s.provider!=="none")
     inner+='<div class="row" style="margin-top:10px"><button class="btn ghost" data-a="test-ai" id="testai">연결 테스트</button>'
-      +'<span class="note" style="margin:0">키는 이 기기에만 저장됩니다. GitHub에 올라가지 않습니다.</span></div>';
-  h+=setBox("사전과 뜻 자동 채우기",
-    s.provider==="none"?"꺼짐":s.provider==="gemini"?(s.geminiKey?"Gemini 연결됨":"Gemini · 키 필요"):(s.apiKey?"Claude 연결됨":"Claude · 키 필요"),
+      +'<span class="note" style="margin:0">키는 이 기기에만 저장됩니다.</span></div>';
+  h+=setBox("사전 검색",
+    s.provider==="none"?"무료 사전":s.provider==="gemini"?(s.geminiKey?"Gemini":"Gemini · 키 필요"):(s.apiKey?"Claude":"Claude · 키 필요"),
     inner, s.provider!=="none" && !(s.provider==="gemini"?s.geminiKey:s.apiKey));
 
+  /* 3. 데이터 보관 — 동기화와 파일 백업을 한 곳에 */
   if(linked){
     inner='<p class="note" style="margin-top:0"><span class="ok">연결됨</span> · 마지막 동기화 '+syncAgo()+'<br>'
-      +'단어를 추가하거나 채점하면 잠시 뒤 자동으로 올라갑니다. 앱을 열 때와 다시 열 때도 자동으로 받아옵니다.</p>'
+      +'추가·채점하면 잠시 뒤 자동으로 올라가고, 앱을 열 때 받아옵니다. 같은 토큰을 다른 기기에 넣으면 이어집니다.</p>'
       +'<div class="row" style="margin-top:10px">'
       +'<button class="btn" data-a="sync-now">지금 동기화</button>'
-      +'<button class="btn ghost" data-a="sync-off">연결 해제</button></div>'
-      +'<p class="note">다른 기기에서도 같은 토큰을 넣으면 이 데이터를 그대로 이어받습니다.</p>';
+      +'<button class="btn ghost" data-a="sync-off">연결 해제</button></div>';
   }else{
-    inner='<p class="note" style="margin-top:0">GitHub 토큰을 한 번 넣으면 백업과 기기 간 동기화가 자동으로 처리됩니다. 파일을 주고받을 필요가 없어집니다.</p>'
+    inner='<p class="note" style="margin-top:0">GitHub 토큰을 한 번 넣으면 백업과 폰·PC 동기화가 자동으로 됩니다.</p>'
       +'<div class="warn" style="margin-top:10px"><b>토큰 만드는 법</b><br>'
-      +'1. github.com → 우측 상단 프로필 → Settings<br>'
+      +'1. github.com → 프로필 → Settings<br>'
       +'2. 맨 아래 Developer settings → Personal access tokens → <b>Tokens (classic)</b><br>'
       +'3. Generate new token (classic) → 이름 아무거나 → 권한은 <b>gist 하나만</b> 체크<br>'
-      +'4. Generate token → 나온 문자열을 복사 (그 화면을 벗어나면 다시 볼 수 없습니다)</div>'
+      +'4. Generate token → 나온 문자열 복사 (화면을 벗어나면 다시 볼 수 없습니다)</div>'
       +'<input class="field" id="s-ghtoken" type="password" placeholder="ghp_... 토큰 붙여넣기" style="margin-top:10px">'
       +'<div class="row" style="margin-top:10px"><button class="btn" data-a="sync-connect" id="synccon">연결하기</button></div>'
-      +'<p class="note">권한을 gist 하나로 좁혔으므로, 토큰이 새더라도 이 단어장 외에는 건드릴 수 없습니다. '
-      +'폰을 잃어버리면 같은 화면에서 토큰을 폐기(Revoke)하면 됩니다. 토큰은 이 기기에만 저장되고 GitHub 저장소에는 올라가지 않습니다.</p>';
+      +'<p class="note">권한이 gist 하나라 토큰이 새도 이 단어장 외에는 건드릴 수 없습니다. '
+      +'토큰은 이 기기에만 저장되고 저장소에 올라가지 않습니다.</p>';
   }
-  h+=setBox("기기 간 동기화", linked?"연결됨":"꺼짐", inner);
-
-  inner='<p class="note" style="margin-top:0">'+(linked?'동기화를 쓰면 굳이 안 해도 되지만, 파일로 따로 보관하고 싶을 때 쓰세요.':'동기화를 안 쓸 때 이 방법으로 옮길 수 있습니다.')+'</p>'
-    +'<div class="row" style="margin-top:10px">'
+  inner+='<div class="h2" style="margin:16px 0 10px">파일로 주고받기</div>'
+    +'<div class="row">'
     +'<button class="btn ghost" data-a="export">내보내기</button>'
     +'<button class="btn ghost" data-a="import-merge">합치기</button>'
     +'<button class="btn ghost" style="color:var(--rose)" data-a="import-over">덮어쓰기</button>'
     +'<input type="file" id="filein" accept=".json,application/json" style="display:none">'
     +'</div>'
-    +'<p class="note">내보내기는 <span class="mono">.json</span> 파일 하나를 다운로드 폴더에 저장합니다. '
-    +'합치기는 그 파일을 지금 데이터에 더하고, 덮어쓰기는 지금 데이터를 지우고 파일 내용으로 바꿉니다.</p>';
-  h+=setBox("백업 파일", "내보내기 · 합치기 · 덮어쓰기", inner);
+    +'<p class="note">내보내기는 <span class="mono">.json</span> 하나를 저장합니다. 합치기는 지금 데이터에 더하고, '
+    +'덮어쓰기는 지금 데이터를 지우고 파일로 바꿉니다.</p>';
+  h+=setBox("데이터 보관", linked?"동기화 켜짐":"동기화 꺼짐", inner);
 
-  inner='<div class="row">'
+  /* 4. 고급 — 간격 조절과 초기화 */
+  inner='<div class="row" style="justify-content:space-between"><label style="font-size:14px;font-weight:600">최대 간격 (일)</label>'
+    +'<input class="field" type="number" min="0" max="3650" style="width:92px" id="s-maxint" value="'+s.maxInterval+'"></div>'
+    +'<p class="note">아무리 잘 맞혀도 이 간격을 넘기지 않습니다. 0 = 무제한. Anki 기본은 36500일인데 '
+    +'여기선 365일로 뒀습니다 — 간격이 1년 반까지 벌어져 단어가 사라지는 문제가 있었습니다.</p>'
+    +'<div class="row" style="justify-content:space-between;margin-top:14px"><label style="font-size:14px;font-weight:600">누수 판정 실패 횟수</label>'
+    +'<input class="field" type="number" min="0" max="30" style="width:92px" id="s-leech" value="'+s.leechAt+'"></div>'
+    +'<p class="note">이만큼 틀리면 <b>누수 단어</b>로 표시합니다. 대개 카드가 나쁜 것이라 고치는 게 빠릅니다.</p>'
+    +'<div class="h2" style="margin:16px 0 10px">초기화</div>'
+    +'<div class="row">'
     +'<button class="btn ghost" data-a="reset-prog">진도만 초기화</button>'
     +'<button class="btn ghost" style="color:var(--rose)" data-a="reset-all">전체 삭제</button></div>'
-    +'<p class="note">진도만 초기화하면 단어는 남고 복습 일정과 정답률만 처음으로 돌아갑니다.</p>';
-  h+=setBox("초기화", "되돌릴 수 없습니다", inner);
+    +'<p class="note">진도만 초기화하면 단어는 남고 복습 일정과 정답률만 돌아갑니다. 둘 다 되돌릴 수 없습니다.</p>';
+  h+=setBox("고급", "잘 모르겠으면 그대로 두세요", inner);
 
   h+='<p class="note">단어를 넣고 고치는 일은 <b>단어 탭</b>에서 합니다. 여기는 학습 방식과 저장 설정입니다.</p>';
   return h;
