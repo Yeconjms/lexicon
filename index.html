@@ -411,9 +411,10 @@ const DEFAULTS = {
   front:"en",            // en | ko | mix
   typing:false,          // 타이핑 문제 섞기
   typeModes:{ko2en:true, spell:true, dictation:false},
-  dailyNew:15, maxReview:100, sessionLimit:20, leechAt:8, maxInterval:365,
+  dailyNew:15, maxReview:100,
+  lowData:false,
   autoSpeak:true, rate:0.9, voiceURI:"", lastPack:"",
-  ghToken:"", gistId:"", syncedAt:0,
+  ghToken:"", gistId:"", gistEtag:"", pushSig:"", syncedAt:0,
   provider:"none",                              // none | gemini | anthropic
   geminiKey:"", geminiModel:"gemini-2.5-flash",
   apiKey:"", model:"claude-sonnet-5"
@@ -473,20 +474,53 @@ async function gistConnect(){
   return made.id;
 }
 
+/* ── 동기화 ──────────────────────────────────────────────────────
+   이 앱에서 데이터를 가장 많이 쓰는 부분입니다. 단어가 쌓이면 한 번에 수백 KB를
+   주고받게 되므로 세 가지로 줄였습니다.
+   1) 원격이 그대로면 ETag 로 304 를 받아 본문을 아예 내려받지 않습니다.
+   2) 올릴 내용이 지난번과 같으면 올리지 않습니다.
+   3) 저데이터 모드에서는 자동 간격을 늘리고 화면 복귀 시 자동 수신을 끕니다. */
+function payloadJSON(){
+  /* 시각 같은 매번 달라지는 값을 넣으면 "바뀐 게 없는데도" 매번 올리게 됩니다 */
+  return JSON.stringify({v:2, cards:D.cards, log:D.log, packs:D.packs, del:D.del});
+}
+/** 내용이 같은지만 보면 되므로 짧은 지문이면 충분합니다 */
+function sig(s){
+  let h = 5381;
+  for(let i=0;i<s.length;i++) h = ((h<<5) + h + s.charCodeAt(i)) | 0;
+  return s.length + ":" + (h >>> 0).toString(36);
+}
+
 async function gistGet(){
-  const g=await gh("/gists/"+D.s.gistId);
-  const f=g.files&&g.files[GIST_FILE];
+  const headers = {
+    "Authorization":"Bearer "+D.s.ghToken,
+    "Accept":"application/vnd.github+json",
+    "X-GitHub-Api-Version":"2022-11-28"
+  };
+  if(D.s.gistEtag) headers["If-None-Match"] = D.s.gistEtag;
+  const r = await fetch("https://api.github.com/gists/"+D.s.gistId, { headers });
+  if(r.status === 304) return "same";          // 원격이 그대로 — 본문을 받지 않았습니다
+  if(r.status === 401) throw new Error("토큰이 잘못되었거나 만료됐습니다");
+  if(r.status === 403) throw new Error("권한 없음 — 토큰에 gist 권한이 있는지 확인하세요");
+  if(r.status === 404){ D.s.gistEtag=""; throw new Error("저장소를 찾지 못했습니다. 연결을 다시 해 주세요"); }
+  if(!r.ok) throw new Error("GitHub 오류 "+r.status);
+  const tag = r.headers.get("ETag");
+  D.s.gistEtag = tag || "";
+  const g = await r.json();
+  const f = g.files && g.files[GIST_FILE];
   if(!f) return null;
-  let txt=f.content;
-  if(f.truncated && f.raw_url){ txt=await fetch(f.raw_url).then(r=>r.text()); }
+  let txt = f.content;
+  if(f.truncated && f.raw_url) txt = await fetch(f.raw_url).then(x => x.text());
   if(!txt) return null;
   try{ return JSON.parse(txt); }catch(e){ throw new Error("저장된 내용을 읽지 못했습니다"); }
 }
 
-async function gistPut(){
-  await gh("/gists/"+D.s.gistId,{ method:"PATCH", body:JSON.stringify({
-    files:{ [GIST_FILE]:{ content:JSON.stringify({v:2, cards:D.cards, log:D.log, packs:D.packs, del:D.del, at:Date.now()}) } }
+async function gistPut(body){
+  await gh("/gists/"+D.s.gistId, { method:"PATCH", body: JSON.stringify({
+    files:{ [GIST_FILE]:{ content: body } }
   })});
+  /* 우리가 바꿨으므로 들고 있던 ETag 는 더 이상 유효하지 않습니다 */
+  D.s.gistEtag = "";
 }
 
 /** 원격 데이터를 지금 데이터에 합칩니다. {add, upd} 를 돌려줍니다
@@ -597,20 +631,29 @@ function scheduleSync(){
   if(!D.s.ghToken||!D.s.gistId) return;
   if(syncing){ syncDirty=true; return; }   // 동기화 중 생긴 변경은 끝난 뒤 다시 올립니다
   clearTimeout(syncT);
-  syncT=setTimeout(()=>syncNow(true), 8000);
+  syncT=setTimeout(()=>syncNow(true), D.s.lowData ? 60000 : 8000);
 }
 
 async function syncNow(silent){
   if(!D.s.ghToken||!D.s.gistId||syncing) return;
   syncing=true; syncDirty=false; syncState="ing"; paintSync();
   try{
-    const remote=await gistGet();
-    const r=mergeData(remote);
-    await gistPut();
+    const remote = await gistGet();
+    const r = (remote === "same") ? {add:0, upd:0} : mergeData(remote);
+
+    const body = payloadJSON(), mark = sig(body);
+    /* 원격이 그대로였고(304) 내 쪽도 지난번 올린 그대로면 올릴 이유가 없습니다.
+       둘 중 하나라도 확실하지 않으면 올립니다 — 안 올려서 잃는 쪽이 더 나쁩니다 */
+    const skipPush = (remote === "same") && (mark === D.s.pushSig);
+    let pushed = false;
+    if(!skipPush){ await gistPut(body); D.s.pushSig = mark; pushed = true; }
+
     D.s.syncedAt=Date.now();
     try{ localStorage.setItem(KEY, JSON.stringify(D)); savePending=false; }catch(e){}
     syncState="ok";
-    if(!silent) toast(r.add||r.upd ? ("동기화 완료 · 새 단어 "+r.add+"개, 진도 "+r.upd+"개 갱신") : "동기화 완료");
+    if(!silent) toast(
+      (r.add||r.upd) ? ("동기화 완료 · 새 단어 "+r.add+"개, 진도 "+r.upd+"개 갱신")
+      : pushed ? "동기화 완료" : "이미 최신입니다");
     syncing=false; paintSync();
     if(!silent||r.add||r.upd) render();
     if(syncDirty) scheduleSync();
@@ -678,9 +721,12 @@ const ANKI = {
   minEase:1.3,
   againDelta:-0.20, hardDelta:-0.15, easyDelta:0.15,
   hardMult:1.2, easyBonus:1.3, ivlMult:1.0,
-  lapseMult:0.0, minLapseIvl:1
+  lapseMult:0.0, minLapseIvl:1,
+  /* 설정에서 뺀 값들. Anki 기본은 최대 간격 36500일이지만,
+     간격이 1년 반까지 벌어져 단어가 사라지는 문제가 있어 365일로 둡니다 */
+  maxIvl:365, leechAt:8
 };
-const maxIvl = () => D.s.maxInterval>0 ? D.s.maxInterval : 36500;
+const maxIvl = () => ANKI.maxIvl;
 
 /** 지금 어느 단계인지 — 0 새 카드 · 1 학습 · 2 복습 · 3 재학습 */
 function cardSt(c){
@@ -851,20 +897,73 @@ function buildQueue(o){
     due.forEach((c,k)=>{ ids.push(c.id); if(k%3===2&&i<fr.length) ids.push(fr[i++].id); });
     while(i<fr.length) ids.push(fr[i++].id);
   }
-  const lim=D.s.sessionLimit;
-  return lim>0 ? ids.slice(0,lim) : ids;
+  /* Anki 는 세션을 몇 장으로 끊는 개념이 없습니다.
+     오늘 몴을 한 번에 내주고, 중간에 그만두면 거기까지가 오늘 한 것입니다 */
+  return ids;
 }
 
 /* ══════════════════ 음성 ══════════════════ */
+/* ── 음성 ───────────────────────────────────────────────────────
+   lang 만 "en-US" 로 지정하고 음성을 고르지 않으면, 한국어 환경의 기기는
+   시스템 기본(한국어) 음성으로 영어를 읽어버립니다. 그래서 발음이 이상하게 들립니다.
+   반드시 영어 음성을 직접 골라서 넣습니다. */
 const TTS = { ok: "speechSynthesis" in window, voices: [] };
-function loadVoices(){ if(!TTS.ok) return; TTS.voices = speechSynthesis.getVoices().filter(v=>v.lang.startsWith("en")); }
-if(TTS.ok){ loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+const isEnVoice = v => /^en[-_]?/i.test(v.lang || "");
+
+function loadVoices(){
+  if(!TTS.ok) return;
+  let list = [];
+  try{ list = speechSynthesis.getVoices() || []; }catch(e){}
+  TTS.voices = list.filter(isEnVoice);
+}
+/** 쓸 만한 영어 음성을 고릅니다. 사용자가 고른 것이 있으면 그것을 씁니다 */
+function bestVoice(){
+  if(!TTS.ok) return null;
+  let list = [];
+  try{ list = (speechSynthesis.getVoices() || []).filter(isEnVoice); }catch(e){}
+  if(!list.length) return null;
+  const saved = list.find(v => v.voiceURI === D.s.voiceURI);
+  if(saved) return saved;
+  /* 고르지 않았으면 품질이 나은 쪽을 자동으로 집습니다 */
+  const score = v => {
+    let n = 0;
+    if(/^en[-_]?US/i.test(v.lang)) n += 4;
+    else if(/^en[-_]?GB/i.test(v.lang)) n += 3;
+    else n += 1;
+    if(/google|natural|neural|premium|enhanced|siri|samantha/i.test(v.name || "")) n += 3;
+    if(v.localService === false) n += 1;
+    if(v.default) n += 1;
+    return n;
+  };
+  return list.slice().sort((a,b) => score(b) - score(a))[0];
+}
+if(TTS.ok){
+  loadVoices();
+  speechSynthesis.onvoiceschanged = () => {
+    loadVoices();
+    /* 음성 목록은 늦게 도착합니다. 설정 화면이 열려 있으면 선택지를 다시 그립니다 */
+    if(view === "settings" && !S) render();
+  };
+}
+
+let speakT = null;
 function speak(text){
-  if(!TTS.ok||!text) return;
-  try{ speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(text); u.lang="en-US"; u.rate=D.s.rate;
-    const v=speechSynthesis.getVoices().find(x=>x.voiceURI===D.s.voiceURI); if(v) u.voice=v;
-    speechSynthesis.speak(u);
+  if(!TTS.ok || !text) return;
+  const say = String(text);
+  try{
+    speechSynthesis.cancel();
+    clearTimeout(speakT);
+    /* cancel 직후 곧바로 speak 하면 일부 브라우저에서 첫 음절이 잘립니다 */
+    speakT = setTimeout(() => {
+      try{
+        const u = new SpeechSynthesisUtterance(say);
+        u.rate = D.s.rate;
+        const v = bestVoice();
+        if(v){ u.voice = v; u.lang = v.lang || "en-US"; }
+        else u.lang = "en-US";   // 영어 음성이 하나도 없으면 이것밖에 할 수 없습니다
+        speechSynthesis.speak(u);
+      }catch(e){}
+    }, 90);
   }catch(e){}
 }
 
@@ -922,8 +1021,8 @@ function grade(q){
       S.queue.splice(Math.min(S.idx+reshowGap(q), S.queue.length), 0, c.id);
     }
     /* Anki 와 같게 임계값 도달 후 절반 간격마다 다시 알립니다 (8 -> 12 -> 16) */
-    if(q<3 && D.s.leechAt>0 && c.lapses>=D.s.leechAt
-       && (c.lapses-D.s.leechAt) % Math.ceil(D.s.leechAt/2) === 0){
+    if(q<3 && c.lapses>=ANKI.leechAt
+       && (c.lapses-ANKI.leechAt) % Math.ceil(ANKI.leechAt/2) === 0){
       c.leech=true; toast('"'+c.word+'" 은 '+c.lapses+'번 틀렸습니다 — 카드를 고치거나 보류하세요');
     }
   }
@@ -1070,8 +1169,6 @@ function viewStudyHome(done){
     +'</div>';
   if(backlog>today) h+='<div class="warn">밀린 카드가 '+backlog+'장입니다. 하루 최대 '+D.s.maxReview
     +'장까지만 꺼내므로 나머지는 다음 날로 넘어갑니다. 계속 쌓이면 설정에서 <b>하루 신규 단어</b>를 줄이세요.</div>';
-  else if(D.s.sessionLimit>0 && today+fl>q)
-    h+='<p class="note">한 세션에 '+D.s.sessionLimit+'장씩 나옵니다. 끝내고 다시 눌러 이어서 하면 됩니다.</p>';
   else if(!q) h+='<p class="note">오늘 예정된 카드를 다 봤습니다. 팩 탭에서 특정 범위만 훑어볼 수 있습니다.</p>';
   h+='</div>';
   h+='<p class="note">오답 집중과 팩 훑기는 복습 일정을 바꾸지 않고 통계에만 반영됩니다.</p>';
@@ -1848,6 +1945,7 @@ const setBox = (title, sub, inner, open) =>
 function viewSettings(){
   const s=D.s;
   const linked = s.ghToken && s.gistId;
+  const enVoices = TTS.ok ? TTS.voices : [];
 
   /* ── 자주 만지는 둘만 펼쳐 둡니다 ── */
   let h='<div class="panel"><div class="h2">하루 학습량</div>'
@@ -1855,25 +1953,20 @@ function viewSettings(){
     +'<input class="field" type="number" min="0" max="200" style="width:92px" id="s-new" value="'+s.dailyNew+'"></div>'
     +'<div class="row" style="justify-content:space-between;margin-top:12px"><label style="font-size:14.5px;font-weight:600">하루 최대 복습</label>'
     +'<input class="field" type="number" min="0" max="999" style="width:92px" id="s-max" value="'+s.maxReview+'"></div>'
-    +'<div class="row" style="justify-content:space-between;margin-top:12px"><label style="font-size:14.5px;font-weight:600">한 번에 꺼낼 장수</label>'
-    +'<div class="seg" style="flex:0 0 auto">'
-    +[[10,"10"],[20,"20"],[30,"30"],[0,"전부"]].map(([v,l])=>
-      '<button data-a="seslim" data-k="'+v+'"'+(s.sessionLimit===v?' class="on"':'')+' style="padding:7px 12px;white-space:nowrap">'+l+'</button>').join("")
-    +'</div></div>'
-    +'<p class="note"><b>신규 단어 수가 앞으로의 복습량을 정합니다.</b> '+s.dailyNew+'개/일이면 몇 달 뒤 하루 '
+    +'<p class="note">Anki도 이 둘만 씁니다(기본 신규 20 · 복습 200). 세션을 몇 장으로 끊을지는 Anki에 없어서 뺐습니다 — '
+    +'오늘 할 몫을 한 번에 보여주고, 중간에 그만둬도 채점은 카드마다 저장됩니다.<br>'
+    +'<b>신규 단어 수가 앞으로의 복습량을 정합니다.</b> '+s.dailyNew+'개/일이면 몇 달 뒤 하루 '
     +Math.round(s.dailyNew*7)+'~'+Math.round(s.dailyNew*10)+'장에서 균형을 잡습니다. 밀리면 여기부터 줄이세요.<br>'
-    +'최대 복습은 넘는 만큼 다음 날로 미룹니다 — 일을 미룰 뿐 줄이지는 않습니다. 0 = 무제한.<br>'
-    +'꺼낼 장수는 오늘 할 양이 아니라 <b>한 번에 보여줄 만큼</b>입니다. 채점은 즉시 저장되니 끊어서 해도 됩니다.</p></div>';
+    +'최대 복습은 넘는 만큼 다음 날로 미룹니다 — 일을 미룰 뿐 줄이지는 않습니다. 0 = 무제한.</p></div>';
 
   h+='<div class="panel"><div class="h2">카드 앞면</div><div class="seg" id="seg-front">'
     +[["en","영 → 한"],["ko","한 → 영"],["mix","섞기"]].map(([k,l])=>
       '<button data-a="front" data-k="'+k+'"'+(s.front===k?' class="on"':'')+'>'+l+'</button>').join("")
     +'</div><p class="note">탭해서 뒤집고 스스로 채점하는 방식이 기본입니다.</p></div>';
 
-  /* ── 나머지는 네 묶음으로 접어 둡니다 ── */
   let inner;
 
-  /* 1. 문제 형식 — 타이핑과 발음을 한 곳에 */
+  /* 1. 문제 형식과 발음 */
   inner = sw("typing","타이핑 문제 섞기","플래시카드 사이에 직접 입력하는 문제를 넣습니다",s.typing)
     +(s.typing?'<div style="padding-left:8px;border-left:2px solid var(--line);margin-top:8px">'
       +sw("t-ko2en","한 → 영 입력","뜻 보고 영단어 타이핑",s.typeModes.ko2en)
@@ -1882,17 +1975,27 @@ function viewSettings(){
       +'</div>':'')
     +'<p class="note">써보면 더 확실히 외워지지만 시간이 걸립니다. 이동 중에는 꺼두는 편이 낫습니다.</p>';
   if(!TTS.ok) inner+='<div class="warn" style="margin-top:12px">이 브라우저는 음성 합성을 지원하지 않습니다.</div>';
-  else inner+='<div class="h2" style="margin:16px 0 10px">발음</div>'
-      +'<div class="row"><select class="field" id="s-voice" style="flex:1;min-width:160px"><option value="">기본 음성</option>'
-      +TTS.voices.map(v=>'<option value="'+esc(v.voiceURI)+'"'+(s.voiceURI===v.voiceURI?" selected":"")+'>'+esc(v.name)+' ('+esc(v.lang)+')</option>').join("")
+  else{
+    inner+='<div class="h2" style="margin:16px 0 10px">발음</div>';
+    if(!enVoices.length)
+      inner+='<div class="warn"><b>영어 음성이 설치되어 있지 않습니다.</b><br>'
+        +'이대로면 기기 기본 음성(대개 한국어)이 영어를 읽어서 발음이 어색하게 들립니다.<br>'
+        +'안드로이드: 설정 → 접근성 → 글자 읽어주기 → 음성 데이터에서 English 설치<br>'
+        +'아이폰: 설정 → 손쉬운 사용 → 음성 콘텐츠 → 음성에서 English 추가<br>'
+        +'윈도우: 설정 → 시간 및 언어 → 음성에서 영어 음성 추가</div>';
+    inner+='<div class="row" style="margin-top:10px"><select class="field" id="s-voice" style="flex:1;min-width:160px">'
+      +'<option value="">자동 (영어 음성 중 좋은 것)</option>'
+      +enVoices.map(v=>'<option value="'+esc(v.voiceURI)+'"'+(s.voiceURI===v.voiceURI?" selected":"")+'>'+esc(v.name)+' ('+esc(v.lang)+')</option>').join("")
       +'</select><button class="btn ghost" data-a="test-voice">미리 듣기</button></div>'
       +'<div class="row" style="margin-top:12px"><label style="font-size:14px;font-weight:600;white-space:nowrap">속도 '+s.rate.toFixed(1)+'x</label>'
       +'<input type="range" min="0.6" max="1.3" step="0.1" id="s-rate" value="'+s.rate+'" style="flex:1"></div>'
       +sw("autospeak","자동 발음","뒤집거나 정답을 확인할 때 소리를 냅니다",s.autoSpeak)
-      +'<p class="note">기기에 설치된 음성을 씁니다. iOS는 자동 재생이 막힐 수 있습니다.</p>';
+      +'<p class="note">기기에 설치된 음성만 쓸 수 있고 인터넷 데이터는 쓰지 않습니다. '
+      +'목록은 음성이 준비된 뒤에 채워지므로 비어 보이면 잠시 뒤 다시 열어보세요.</p>';
+  }
   h+=setBox("문제 형식과 발음", s.typing?"타이핑 켜짐":"뒤집기만", inner);
 
-  /* 2. 사전 검색 — 무료가 기본이고 AI는 선택 */
+  /* 2. 사전 검색 */
   inner='<div class="seg">'
     +[["none","무료 · 기본"],["gemini","Gemini · 무료 키"],["anthropic","Claude · 유료"]].map(([k,l])=>
       '<button data-a="prov" data-k="'+k+'"'+(s.provider===k?' class="on"':'')+'>'+l+'</button>').join("")
@@ -1919,7 +2022,7 @@ function viewSettings(){
     s.provider==="none"?"무료 사전":s.provider==="gemini"?(s.geminiKey?"Gemini":"Gemini · 키 필요"):(s.apiKey?"Claude":"Claude · 키 필요"),
     inner, s.provider!=="none" && !(s.provider==="gemini"?s.geminiKey:s.apiKey));
 
-  /* 3. 데이터 보관 — 동기화와 파일 백업을 한 곳에 */
+  /* 3. 데이터 — 동기화 · 데이터 절약 · 파일 · 초기화를 한 곳에 */
   if(linked){
     inner='<p class="note" style="margin-top:0"><span class="ok">연결됨</span> · 마지막 동기화 '+syncAgo()+'<br>'
       +'추가·채점하면 잠시 뒤 자동으로 올라가고, 앱을 열 때 받아옵니다. 같은 토큰을 다른 기기에 넣으면 이어집니다.</p>'
@@ -1927,7 +2030,7 @@ function viewSettings(){
       +'<button class="btn" data-a="sync-now">지금 동기화</button>'
       +'<button class="btn ghost" data-a="sync-off">연결 해제</button></div>';
   }else{
-    inner='<p class="note" style="margin-top:0">GitHub 토큰을 한 번 넣으면 백업과 폰·PC 동기화가 자동으로 됩니다.</p>'
+    inner='<p class="note" style="margin-top:0">GitHub 토큰을 한 번 넣으면 폰과 PC가 같은 데이터를 보게 됩니다.</p>'
       +'<div class="warn" style="margin-top:10px"><b>토큰 만드는 법</b><br>'
       +'1. github.com → 프로필 → Settings<br>'
       +'2. 맨 아래 Developer settings → Personal access tokens → <b>Tokens (classic)</b><br>'
@@ -1938,31 +2041,23 @@ function viewSettings(){
       +'<p class="note">권한이 gist 하나라 토큰이 새도 이 단어장 외에는 건드릴 수 없습니다. '
       +'토큰은 이 기기에만 저장되고 저장소에 올라가지 않습니다.</p>';
   }
+  inner+=sw("lowdata","데이터 아껴 쓰기","자동 동기화를 1분 간격으로 늦추고, 앱으로 돌아올 때 자동으로 받아오지 않습니다. "
+      +"바뀐 게 없으면 어차피 주고받지 않으니 평소에는 꺼도 됩니다",s.lowData);
   inner+='<div class="h2" style="margin:16px 0 10px">파일로 주고받기</div>'
-    +'<div class="row">'
+    +'<p class="note" style="margin-top:0">동기화를 쓰면 평소엔 필요 없습니다. '
+    +'토큰이 막히거나 Gist가 사라졌을 때 되살릴 수단으로 남겨 둡니다.</p>'
+    +'<div class="row" style="margin-top:10px">'
     +'<button class="btn ghost" data-a="export">내보내기</button>'
     +'<button class="btn ghost" data-a="import-merge">합치기</button>'
     +'<button class="btn ghost" style="color:var(--rose)" data-a="import-over">덮어쓰기</button>'
     +'<input type="file" id="filein" accept=".json,application/json" style="display:none">'
     +'</div>'
-    +'<p class="note">내보내기는 <span class="mono">.json</span> 하나를 저장합니다. 합치기는 지금 데이터에 더하고, '
-    +'덮어쓰기는 지금 데이터를 지우고 파일로 바꿉니다.</p>';
-  h+=setBox("데이터 보관", linked?"동기화 켜짐":"동기화 꺼짐", inner);
-
-  /* 4. 고급 — 간격 조절과 초기화 */
-  inner='<div class="row" style="justify-content:space-between"><label style="font-size:14px;font-weight:600">최대 간격 (일)</label>'
-    +'<input class="field" type="number" min="0" max="3650" style="width:92px" id="s-maxint" value="'+s.maxInterval+'"></div>'
-    +'<p class="note">아무리 잘 맞혀도 이 간격을 넘기지 않습니다. 0 = 무제한. Anki 기본은 36500일인데 '
-    +'여기선 365일로 뒀습니다 — 간격이 1년 반까지 벌어져 단어가 사라지는 문제가 있었습니다.</p>'
-    +'<div class="row" style="justify-content:space-between;margin-top:14px"><label style="font-size:14px;font-weight:600">누수 판정 실패 횟수</label>'
-    +'<input class="field" type="number" min="0" max="30" style="width:92px" id="s-leech" value="'+s.leechAt+'"></div>'
-    +'<p class="note">이만큼 틀리면 <b>누수 단어</b>로 표시합니다. 대개 카드가 나쁜 것이라 고치는 게 빠릅니다.</p>'
     +'<div class="h2" style="margin:16px 0 10px">초기화</div>'
     +'<div class="row">'
     +'<button class="btn ghost" data-a="reset-prog">진도만 초기화</button>'
     +'<button class="btn ghost" style="color:var(--rose)" data-a="reset-all">전체 삭제</button></div>'
     +'<p class="note">진도만 초기화하면 단어는 남고 복습 일정과 정답률만 돌아갑니다. 둘 다 되돌릴 수 없습니다.</p>';
-  h+=setBox("고급", "잘 모르겠으면 그대로 두세요", inner);
+  h+=setBox("데이터", linked?"동기화 켜짐":"동기화 꺼짐", inner);
 
   h+='<p class="note">단어를 넣고 고치는 일은 <b>단어 탭</b>에서 합니다. 여기는 학습 방식과 저장 설정입니다.</p>';
   return h;
@@ -2197,7 +2292,6 @@ document.addEventListener("click", e=>{
   if(a==="say-w"){ speak(byId(t.dataset.id).word); return; }
 
   if(a==="front"){ D.s.front=t.dataset.k; save(); render(); return; }
-  if(a==="seslim"){ D.s.sessionLimit=+t.dataset.k; save(); render(); return; }
   if(a==="test-voice"){ speak("The underlying trend is improving."); return; }
   if(a==="preview"){ doPreview(); return; }
   if(a==="bulk-fill"){ bulkFill(); return; }
@@ -2242,7 +2336,8 @@ document.addEventListener("click", e=>{
   if(a==="sync-now"){ syncNow(false); return; }
   if(a==="sync-off"){
     askYes("동기화 연결을 끊을까요?","이 기기의 단어는 그대로 남습니다. GitHub에 저장된 내용도 지워지지 않습니다.","연결 해제")
-      .then(ok=>{ if(!ok) return; D.s.ghToken=""; D.s.gistId=""; D.s.syncedAt=0; syncState=""; save(); render(); });
+      .then(ok=>{ if(!ok) return; D.s.ghToken=""; D.s.gistId=""; D.s.gistEtag=""; D.s.pushSig="";
+        D.s.syncedAt=0; syncState=""; save(); render(); });
     return; }
   if(a==="import-merge"){ importMode="merge"; $("#filein").value=""; $("#filein").click(); return; }
   if(a==="import-over"){ importMode="over"; $("#filein").value=""; $("#filein").click(); return; }
@@ -2280,6 +2375,7 @@ document.addEventListener("change", e=>{
   if(k){
     if(k==="typing") D.s.typing=e.target.checked;
     else if(k==="autospeak") D.s.autoSpeak=e.target.checked;
+    else if(k==="lowdata") D.s.lowData=e.target.checked;
     else if(k.startsWith("t-")) D.s.typeModes[{"t-ko2en":"ko2en","t-spell":"spell","t-dict":"dictation"}[k]]=e.target.checked;
     save(); render(); return;
   }
@@ -2303,8 +2399,6 @@ document.addEventListener("change", e=>{
   }
   if(e.target.id==="s-new"){ D.s.dailyNew=Math.max(0,+e.target.value||0); save(); render(); return; }
   if(e.target.id==="s-max"){ D.s.maxReview=Math.max(0,+e.target.value||0); save(); render(); return; }
-  if(e.target.id==="s-leech"){ D.s.leechAt=Math.max(0,+e.target.value||0); save(); return; }
-  if(e.target.id==="s-maxint"){ D.s.maxInterval=Math.max(0,+e.target.value||0); save(); return; }
   if(e.target.id==="s-gkey"){ D.s.geminiKey=e.target.value.trim(); save(); return; }
   if(e.target.id==="s-gmodel"){ D.s.geminiModel=e.target.value.trim()||"gemini-2.5-flash"; save(); return; }
   if(e.target.id==="s-key"){ D.s.apiKey=e.target.value.trim(); save(); return; }
@@ -2396,8 +2490,14 @@ const SEED=[
 load(); render(); paintSync();
 if(D.s.ghToken && D.s.gistId) syncNow(true);
 document.addEventListener("visibilitychange", ()=>{
-  if(document.visibilityState==="visible" && D.s.ghToken && D.s.gistId
-     && Date.now()-(D.s.syncedAt||0) > 60000) syncNow(true);
+  if(!D.s.ghToken || !D.s.gistId) return;
+  if(document.visibilityState === "hidden"){
+    /* 화면을 떠날 때 밀린 변경을 올려 둡니다 */
+    if(savePending || syncDirty) syncNow(true);
+    return;
+  }
+  /* 저데이터 모드에서는 돌아올 때마다 자동으로 받아오지 않습니다 */
+  if(!D.s.lowData && Date.now()-(D.s.syncedAt||0) > 60000) syncNow(true);
 });
 /* 저장 대기 중일 때만 기록합니다. 무조건 쓰면 오래 열어둔 탭이 다른 탭의 최신 변경을 덮어씁니다 */
 window.addEventListener("beforeunload", ()=>{
