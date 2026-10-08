@@ -1596,7 +1596,8 @@ function importPanel(){
   h+='<div class="panel"><div class="h2">단어 넣기</div>'
     +'<p class="note" style="margin-top:0">두 가지 방법이 있습니다.<br>'
     +'<b>① 단어만</b> — 한 줄에 하나씩. 뜻·예문은 나중에 채웁니다.<br>'
-    +'<b>② 전체 CSV</b> — 줄마다 <span class="mono">단어,뜻,예문,연어,태그</span>. 쉼표가 들어가는 칸은 큰따옴표로 감싸세요.<br>'
+    +'<b>② 전체 CSV</b> — 줄마다 <span class="mono">단어,뜻,예문,함께쓰는표현,태그,팩</span>. '
+    +'뒤쪽 칸은 비워도 됩니다. 쉼표가 들어가는 칸은 큰따옴표로 감싸세요.<br>'
     +'팩 이름은 아래 칸에 <b>한 번만</b> 적으면 이번에 넣는 단어 전부에 적용됩니다.</p>'
     +'<div style="margin-top:10px"><div class="note" style="margin:0 0 4px">이번에 넣는 단어를 담을 팩</div>'
     +packSelect("imp-pack", importPack||D.s.lastPack||"")+'</div>'
@@ -1613,7 +1614,7 @@ function importPanel(){
   if(importPreview){
     h+='<p class="note">읽은 줄 '+importPreview.items.length+' · 중복 '+importPreview.dup
       +(importPreview.missing?' · <b>뜻 없음 '+importPreview.missing+'</b>':'')+'</p>';
-    if(importPreview.missing) h+='<div class="warn">뜻이 없는 단어도 그대로 추가됩니다. "Claude용 프롬프트 복사"를 눌러 Claude에 붙여넣으면 뜻·예문·연어가 붙은 CSV를 받을 수 있습니다. 그걸 다시 여기 붙여넣으세요.</div>';
+    if(importPreview.missing) h+='<div class="warn">뜻이 없는 단어도 그대로 추가됩니다. "Claude용 프롬프트 복사"를 눌러 Claude에 붙여넣으면 뜻과 예문이 붙은 CSV를 받을 수 있습니다. 그걸 다시 여기 붙여넣으세요.</div>';
     h+=importPreview.fresh.slice(0,6).map(x=>'<div class="item"><span class="itemw">'+esc(x.word)+'</span> '
       +'<span class="itemm" style="display:inline">'+(x.meaning?esc(x.meaning):'<span style="color:var(--amber)">뜻 없음</span>')+'</span></div>').join("");
     if(importPreview.fresh.length>6) h+='<p class="note">외 '+(importPreview.fresh.length-6)+'개</p>';
@@ -2323,7 +2324,7 @@ const PROMPT_HEAD =
   + "[출력 형식]\n"
   + "- CSV만 출력. 설명도, 코드펜스도, 헤더 줄도 넣지 마.\n"
   + "- 한 단어당 한 줄. 열 순서는 정확히 이 여섯 개:\n"
-  + "  단어,뜻,예문,연어,태그,팩\n"
+  + "  단어,뜻,예문,함께쓰는표현,태그,팩\n"
   + "- 쉼표나 큰따옴표가 들어가는 칸은 큰따옴표로 감싸고, 안의 큰따옴표는 두 번 써.\n"
   + "- 비는 칸은 그냥 비워 둬. 쉼표 개수는 모든 줄에서 같아야 해.\n\n"
   + "[각 열에 넣을 것]\n"
@@ -2333,7 +2334,7 @@ const PROMPT_HEAD =
   + "  (좋음: 완화하다/누그러뜨리다  나쁨: 어떤 것을 덜 심각하게 만드는 것을 뜻한다)\n"
   + "- 예문: 자료에 그 단어가 들어간 문장이나 대사가 있으면 그것을 그대로 써.\n"
   + "  없으면 15단어 이내의 자연스러운 영어 문장을 하나 만들어.\n"
-  + "- 연어: 자주 함께 쓰는 표현 2~3개를 세미콜론(;)으로 구분.\n"
+  + "- 함께쓰는표현: 그 단어가 보통 어떤 말과 붙어 다니는지 2~3개를 세미콜론(;)으로 구분.\n"
   + "- 태그: 자료에 분류가 적혀 있으면 넣고, 없으면 비워 둬. 여러 개면 세미콜론(;)으로 구분.\n"
   + "- 팩: 자료에 출처나 회차가 적혀 있으면 계층을 슬래시로 표현해 (영 쉘던/S1/E02).\n"
   + "  없으면 비워 둬.\n\n"
@@ -2360,7 +2361,7 @@ const AI_PROMPT = words =>
   +'각 원소: {"word":"","meaning":"","example":"","collocation":""}\n'
   +'- meaning: 한국어 대표 뜻 1~3개를 쉼표로 구분\n'
   +'- example: 그 단어가 들어간 자연스러운 영어 문장 1개, 15단어 이내\n'
-  +'- collocation: 자주 쓰이는 연어 2~3개를 세미콜론으로 구분\n'
+  +'- collocation: 그 단어와 자주 함께 쓰는 표현 2~3개를 세미콜론으로 구분\n'
   +'- 영어 단어가 아니면 meaning은 빈 문자열\n'
   +'- 입력 순서와 개수를 그대로 유지\n\n단어: '+JSON.stringify(words);
 
