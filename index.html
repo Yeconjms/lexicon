@@ -164,6 +164,36 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
   background:var(--card);font-size:17px;line-height:1;cursor:pointer;padding:0 6px;color:var(--muted);}
 .iconbtn.on{border-color:var(--ink);background:var(--paper);}
 .packbar{width:5px;border-radius:99px;flex:0 0 5px;align-self:stretch;min-height:36px;}
+
+/* 들어올 때 뜨는 인사 */
+/* grid + place-items 는 자식마다 한 줄씩 잡아 별과 문구가 따로 떨어집니다.
+   세로 가운데 정렬은 flex 로 묶어야 합니다 */
+.greet{position:fixed;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;z-index:120;
+  pointer-events:auto;background:rgba(235,239,242,.9);
+  animation:gfade .22s ease-out;}
+.greet.out{animation:gout .3s ease-in forwards;}
+.greet .lexi{width:150px;height:150px;}
+.gline{font-size:19px;font-weight:700;color:var(--ink);margin-top:-12px;
+  animation:gpop .36s cubic-bezier(.34,1.56,.64,1) .12s backwards;}
+@keyframes gfade{from{opacity:0}to{opacity:1}}
+@keyframes gout{to{opacity:0;transform:scale(.97)}}
+@keyframes gpop{from{opacity:0;transform:translateY(9px) scale(.9)}to{opacity:1;transform:none}}
+
+.lexi.g-wave{animation:gwave 1s ease-in-out 2;transform-origin:50% 90%;}
+@keyframes gwave{0%,100%{transform:rotate(0)}25%{transform:rotate(-9deg)}75%{transform:rotate(9deg)}}
+.lexi.g-jump{animation:gjump .62s cubic-bezier(.3,1.5,.5,1) 3;}
+@keyframes gjump{0%,100%{transform:translateY(0) scaleY(1)}
+  30%{transform:translateY(-22px) scaleY(1.06)}60%{transform:translateY(0) scaleY(.92)}}
+.lexi.g-spin{animation:gspin .9s cubic-bezier(.4,.1,.2,1) 1;}
+@keyframes gspin{from{transform:rotate(0) scale(.7)}to{transform:rotate(360deg) scale(1)}}
+.lexi.g-stretch{animation:gstretch 1.3s ease-in-out 2;}
+@keyframes gstretch{0%,100%{transform:scale(1,1)}45%{transform:scale(.92,1.12) translateY(-6px)}}
+.lexi.g-tilt{animation:gtilt 1.4s ease-in-out 2;transform-origin:50% 80%;}
+@keyframes gtilt{0%,100%{transform:rotate(0)}30%{transform:rotate(-12deg)}65%{transform:rotate(7deg)}}
+.lexi.g-cheerup{animation:gcheerup .8s ease-in-out 3;}
+@keyframes gcheerup{0%,100%{transform:translateY(0) rotate(0)}
+  30%{transform:translateY(-14px) rotate(-7deg)}65%{transform:translateY(-14px) rotate(7deg)}}
 @keyframes lxshine{0%,100%{opacity:0;transform:scale(.5) rotate(0deg);}45%{opacity:1;transform:scale(1) rotate(35deg);}}
 
 /* ── 채점할 때 아기 별이 통통 튀어나옵니다 ── */
@@ -540,6 +570,7 @@ FB.ready = !!(FB.apiKey && FB.dbURL);
 
 const AKEY = "lexicon:auth", SOLOKEY = "lexicon:solo";
 let AUTH = { uid:"", email:"", idToken:"", refreshToken:"", expires:0,
+             name:"", nick:"", keepMail:true, approved:true,
              mode:"in", busy:false, err:"", note:"" };
 
 const isSolo = () => { try{ return localStorage.getItem(SOLOKEY)==="1"; }catch(e){ return false; } };
@@ -557,7 +588,8 @@ function authSave(){
     idToken:AUTH.idToken, refreshToken:AUTH.refreshToken, expires:AUTH.expires })); }catch(e){}
 }
 function authClear(){
-  Object.assign(AUTH, { uid:"", email:"", idToken:"", refreshToken:"", expires:0, err:"", note:"" });
+  Object.assign(AUTH, { uid:"", email:"", idToken:"", refreshToken:"", expires:0,
+    name:"", nick:"", err:"", note:"" });
   try{ localStorage.removeItem(AKEY); }catch(e){}
 }
 
@@ -656,10 +688,14 @@ async function dbPut(body, etag){
 async function authDo(){
   const em = ($("#au-email") ? $("#au-email").value : "").trim();
   const pw = ($("#au-pw") ? $("#au-pw").value : "");
+  AUTH.name = ($("#au-name") ? $("#au-name").value : AUTH.name||"").trim();
+  AUTH.nick = ($("#au-nick") ? $("#au-nick").value : AUTH.nick||"").trim();
   AUTH.email = em; AUTH.err = ""; AUTH.note = "";
   if(!em){ AUTH.err = "이메일을 입력해 주세요"; render(); return; }
   if(AUTH.mode !== "reset" && pw.length < 6){
     AUTH.err = "비밀번호는 6자 이상이어야 합니다"; render(); return; }
+  if(AUTH.mode === "up" && !AUTH.name){ AUTH.err = "이름을 입력해 주세요"; render(); return; }
+  if(AUTH.mode === "up" && !AUTH.nick){ AUTH.err = "닉네임을 입력해 주세요"; render(); return; }
   AUTH.busy = true; render();
   try{
     if(AUTH.mode === "reset"){
@@ -674,6 +710,7 @@ async function authDo(){
       : await idt("signInWithPassword", { email:em, password:pw, returnSecureToken:true });
     authAdopt(j);
     setSolo(false);
+    keepEmail(AUTH.keepMail === false ? "" : em);
     AUTH.busy = false;
     await afterLogin();
   }catch(e){
@@ -691,6 +728,7 @@ async function afterLogin(){
   view = "study"; render();
   await ensureAccess();
   render();
+  if(AUTH.approved) greet();
   if(!AUTH.approved) return;      // 승인 전에는 올리지 않습니다
   await syncNow(false);
 }
@@ -2186,6 +2224,50 @@ function viewDict(){
 /* ── 통계 ── */
 /* ── 복습 상태를 별 표정으로 ──────────────────────────────────────
    숫자만 보면 지금 잘 하고 있는지 알기 어렵습니다. 별이 대신 말해 줍니다. */
+/* ── 별의 인사 ──────────────────────────────────────────────────────
+   들어올 때마다 조금씩 다르게 인사합니다. 같은 걸 연달아 보여주지 않습니다. */
+const GREETS = [
+  {m:"happy", c:"g-wave",   t:["안녕하세요!","또 오셨네요","반가워요"]},
+  {m:"happy", c:"g-jump",   t:["왔다!","기다렸어요","오늘도 가볼까요"]},
+  {m:"happy", c:"g-spin",   t:["준비 끝!","시작해 볼까요","자, 갑니다"]},
+  {m:"push",  c:"g-stretch",t:["으으 잘 잤다","기지개 좀…","이제 깼어요"]},
+  {m:"think", c:"g-tilt",   t:["오늘은 뭘 외워볼까요","어디까지 했더라","음…"]},
+  {m:"happy", c:"g-cheerup",t:["좋아요!","가봅시다","신난다"]}
+];
+let lastGreet = -1, greetT = null;
+
+function greetLine(){
+  const h = new Date().getHours();
+  const st = streak();
+  if(st >= 7)  return st+"일 연속! 대단해요";
+  if(st >= 3)  return st+"일째네요";
+  if(h < 6)    return "이 시간에도 공부를…";
+  if(h < 11)   return "좋은 아침이에요";
+  if(h >= 22)  return "자기 전에 한 번?";
+  return null;
+}
+
+/** 짧게 떴다 사라지는 인사. 누르면 바로 닫힙니다 */
+function greet(){
+  if(document.getElementById("greet")) return;
+  let i = Math.floor(Math.random()*GREETS.length);
+  if(i === lastGreet) i = (i+1) % GREETS.length;   // 연달아 같은 건 피합니다
+  lastGreet = i;
+  const g = GREETS[i];
+  const line = greetLine() || g.t[Math.floor(Math.random()*g.t.length)];
+
+  const w = document.createElement("div");
+  w.className = "greet"; w.id = "greet";
+  w.innerHTML = lexi(g.m, g.c + " shine") + '<div class="gline">'+esc(line)+'</div>';
+  document.body.appendChild(w);
+
+  const close = () => { if(!w.parentNode) return;
+    w.classList.add("out"); setTimeout(()=>w.remove(), 320); };
+  w.addEventListener("click", close);
+  clearTimeout(greetT);
+  greetT = setTimeout(close, 2100);
+}
+
 function moodNow(){
   const back = dueAll().length;
   const done = dayStat(dayKey()).reviews;
@@ -2379,15 +2461,20 @@ async function ensureAccess(){
     const now = Date.now();
     let mine = null;
     try{ mine = await dbRead("directory/"+AUTH.uid); }catch(e){}
-    if(!mine) await dbWrite("directory/"+AUTH.uid, {email:AUTH.email, at:now, seen:now});
-    else      await dbWrite("directory/"+AUTH.uid, {email:AUTH.email, seen:now});
+    const who = {};
+    if(AUTH.name) who.name = AUTH.name;
+    if(AUTH.nick) who.nick = AUTH.nick;
+    if(!mine) await dbWrite("directory/"+AUTH.uid, Object.assign({email:AUTH.email, at:now, seen:now}, who));
+    else{
+      await dbWrite("directory/"+AUTH.uid, Object.assign({email:AUTH.email, seen:now}, who));
+      AUTH.name = AUTH.name || mine.name || "";
+      AUTH.nick = AUTH.nick || mine.nick || "";
+    }
     /* 관리자는 자기 칸도 승인해 둡니다. 보안 규칙이 ok 를 보기 때문에
        이게 없으면 관리자 본인이 자기 단어장을 못 읽습니다 */
     if(AUTH.uid === ADMIN_UID && !(mine && mine.ok === true))
       await dbWrite("directory/"+AUTH.uid, {ok:true});
-    let open = null;
-    try{ open = await dbRead("config/open"); }catch(e){}
-    AUTH.approved = (AUTH.uid === ADMIN_UID) || (mine && mine.ok === true) || open === true;
+    AUTH.approved = (AUTH.uid === ADMIN_UID) || (mine && mine.ok === true);
   }catch(e){ AUTH.approved = true; }
 }
 
@@ -2415,7 +2502,7 @@ async function admLoad(){
     const d = await dbRead("directory");
     admList = Object.entries(d||{}).map(([uid,v]) => Object.assign({uid}, v||{}))
       .sort((a,b) => (b.at||0) - (a.at||0));
-    try{ admOpen = (await dbRead("config/open")) === true; }catch(e){ admOpen = false; }
+
   }catch(e){
     admErr = /40[13]/.test(e.message)
       ? "명부를 읽을 권한이 없습니다. 보안 규칙을 아직 안 바꾸셨거나 관리자 번호가 틀렸습니다."
@@ -2437,13 +2524,9 @@ function adminBox(){
   h += '<div class="row" style="margin-top:10px">'
     + '<button class="btn" data-a="adm-load"'+(admBusy?" disabled":"")+'>'
     + (admBusy?'<span class="spin"></span>불러오는 중':'명부 불러오기')+'</button>'
-    + (admList ? '<button class="btn ghost" data-a="adm-open">'
-        + (admOpen?"승인 없이 바로 쓰기 · 켜짐":"승인 없이 바로 쓰기 · 꺼짐")+'</button>' : '')
     + '</div>';
 
   if(admErr) h += '<div class="warn">'+esc(admErr)+'</div>';
-  if(admOpen) h += '<div class="warn">지금은 <b>가입하면 바로</b> 쓸 수 있는 상태입니다. '
-    + '승인을 받게 하려면 위 버튼을 눌러 꺼주세요.</div>';
 
   if(admList){
     h += '<div class="h2" style="margin:16px 0 8px">'+admList.length+'명</div>';
@@ -2453,53 +2536,74 @@ function adminBox(){
       const ok = me || u.ok === true;
       h += '<div class="item"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap">'
         + '<div style="flex:1;min-width:0">'
-        + '<div class="itemw" style="font-size:14px">'+esc(u.email||"(이메일 없음)")
+        + '<div class="itemw" style="font-size:14px">'
+        + esc(u.nick || u.name || "(이름 없음)")
         + (me?' <span class="chip">나</span>':'')
         + (ok?' <span class="chip" style="background:rgba(22,120,90,.15);color:var(--green)">승인됨</span>'
              :' <span class="chip rev">대기</span>')+'</div>'
-        + '<div class="meta">가입 '+when(u.at)+' · 마지막 접속 '+ago(u.seen)+'</div>'
+        + '<div class="meta">'+esc(u.email||"(이메일 없음)")+'</div>'
+        + '<div class="meta">'+(u.name?('이름 '+esc(u.name)+' · '):'')
+        + '가입 '+when(u.at)+' · 마지막 접속 '+ago(u.seen)+'</div>'
         + '<div class="meta mono" style="font-size:10.5px;opacity:.6">'+esc(u.uid)+'</div></div>'
         + (me?'':'<div class="row" style="flex-wrap:nowrap">'
             + '<button class="btn sm ghost" data-a="adm-ok" data-u="'+esc(u.uid)+'" data-v="'+(ok?"0":"1")+'">'
             + (ok?"승인 취소":"승인")+'</button>'
+            + '<button class="btn sm ghost" data-a="adm-reset" data-e="'+esc(u.email||"")+'">비번 재설정</button>'
             + '<button class="btn sm ghost" style="color:var(--rose)" data-a="adm-wipe" data-u="'+esc(u.uid)+'" data-e="'+esc(u.email||"")+'">지우기</button>'
             + '</div>')
         + '</div></div>';
     });
-    h += '<p class="note"><b>지우기</b>는 그 사람의 단어장과 명부 기록을 없애고 접근을 막습니다. '
+    h += '<p class="note"><b>비밀번호는 암호화되어 저장되어 관리자도 원문을 볼 수 없습니다.</b> '
+      + '구글도 못 봅니다. 까먹었다고 하면 <b>비번 재설정</b>을 눌러 메일을 보내주세요.<br>'
+      + '<b>지우기</b>는 그 사람의 단어장과 명부 기록을 없애고 접근을 막습니다. '
       + '다만 <b>로그인 계정 자체는 여기서 지울 수 없습니다</b> — Firebase 가 웹에서 그걸 허용하지 않습니다. '
       + '계정까지 완전히 없애려면 Firebase 콘솔 → Authentication → Users 에서 지우세요.</p>';
   }
   return h;
 }
 
+/* ── 로그인-구 ────────────────────────────────────────────────── */
 /* ── 로그인 화면 ────────────────────────────────────────────────── */
+const EMKEY = "lexicon:lastemail";
+const lastEmail = () => { try{ return localStorage.getItem(EMKEY) || ""; }catch(e){ return ""; } };
+const keepEmail = v => { try{ v ? localStorage.setItem(EMKEY, v) : localStorage.removeItem(EMKEY); }catch(e){} };
+
 function viewLogin(){
   const a = AUTH;
   const title = a.mode==="up" ? "가입하기" : a.mode==="reset" ? "비밀번호 재설정" : "로그인";
   const lead  = a.mode==="up"
-      ? "이메일과 비밀번호만 있으면 됩니다. 단어장은 계정마다 따로 보관됩니다."
+      ? "이메일과 비밀번호, 그리고 이름만 적으면 됩니다. 단어장은 계정마다 따로 보관됩니다."
     : a.mode==="reset"
       ? "가입할 때 쓴 이메일을 적으면 비밀번호를 다시 정하는 편지를 보냅니다."
       : "가입했던 이메일로 들어오면 폰과 PC가 같은 단어장을 봅니다.";
+  const saved = lastEmail();
 
   let h = '<div class="panel"><div class="empty" style="padding-bottom:4px">'
     + lexi(a.mode==="reset" ? "think" : "idle", "pop")
     + '<h3 style="margin-top:16px">'+esc(title)+'</h3>'
     + '<p>'+esc(lead)+'</p></div>';
 
-  if(a.err) h += '<div class="warn">'+esc(a.err)+'</div>';
+  if(a.err)  h += '<div class="warn">'+esc(a.err)+'</div>';
   if(a.note) h += '<div class="ok-box">'+esc(a.note)+'</div>';
 
   h += '<input class="field" id="au-email" type="email" autocomplete="username" '
-    + 'autocapitalize="off" spellcheck="false" placeholder="이메일" value="'+esc(a.email||"")+'" style="margin-top:4px">';
+    + 'autocapitalize="off" spellcheck="false" placeholder="이메일" value="'+esc(a.email || saved)+'" style="margin-top:4px">';
   if(a.mode!=="reset")
     h += '<input class="field" id="au-pw" type="password" style="margin-top:9px" '
       + 'autocomplete="'+(a.mode==="up"?"new-password":"current-password")+'" placeholder="비밀번호'
       + (a.mode==="up" ? " (6자 이상)" : "")+'">';
+  if(a.mode==="up")
+    h += '<input class="field" id="au-name" style="margin-top:9px" placeholder="이름 — 실명" value="'+esc(a.name||"")+'">'
+      +  '<input class="field" id="au-nick" style="margin-top:9px" placeholder="닉네임 — 앱에서 불릴 이름" value="'+esc(a.nick||"")+'">';
+
+  if(a.mode!=="reset")
+    h += '<label class="sw" style="margin-top:10px"><input type="checkbox" data-sw="keepmail"'
+      + (saved?" checked":"")+'>'
+      + '<span><b>이메일 기억하기</b><span>다음에 들어올 때 이메일이 채워져 있습니다. 비밀번호는 저장하지 않습니다</span></span></label>';
 
   h += '<button class="btn wide" data-a="au-go" style="margin-top:12px"'+(a.busy?" disabled":"")+'>'
-    + (a.busy ? '<span class="spin"></span>잠시만요' : esc(a.mode==="up" ? "가입하고 시작" : a.mode==="reset" ? "재설정 메일 보내기" : "로그인"))
+    + (a.busy ? '<span class="spin"></span>잠시만요'
+              : esc(a.mode==="up" ? "가입하고 시작" : a.mode==="reset" ? "재설정 메일 보내기" : "로그인"))
     + '</button>';
 
   h += '<div class="row" style="justify-content:center;margin-top:12px;gap:14px">';
@@ -2509,8 +2613,7 @@ function viewLogin(){
   }else{
     h += '<button class="linkish" data-a="au-mode" data-k="in">로그인으로 돌아가기</button>';
   }
-  h += '</div>';
-  h += '</div>';
+  h += '</div></div>';
 
   h += '<div class="panel"><p class="note" style="margin-top:0">'
     + '계정 없이 이 기기에서만 쓸 수도 있습니다. 단어장이 이 브라우저에만 남고 '
@@ -2649,6 +2752,11 @@ function accountBox(){
     + '<button class="linkish" data-a="sync-now">지금 바로 맞추기</button>'
     + '<span style="flex:1"></span>'
     + '<button class="linkish" data-a="au-out">로그아웃</button></div>'
+    + (AUTH.name ? '<p class="note" style="margin-top:10px">이름 <b>'+esc(AUTH.name)+'</b> '
+        + '<span style="opacity:.6">— 이름은 바꿀 수 없습니다</span></p>' : '')
+    + '<div class="row" style="margin-top:8px;flex-wrap:nowrap">'
+    + '<input class="field" id="au-nickedit" placeholder="닉네임" value="'+esc(AUTH.nick||"")+'">'
+    + '<button class="btn ghost" data-a="au-nicksave">닉네임 저장</button></div>'
     + '<p class="note" style="margin-top:10px">내 사용자 번호 '
     + '<span class="mono" style="font-size:11px">'+esc(AUTH.uid)+'</span></p>'
     + '<div class="row" style="margin-top:2px">'
@@ -3074,16 +3182,23 @@ document.addEventListener("click", e=>{
     ensureAccess().then(()=>{ render(); if(AUTH.approved){ toast("승인되었습니다"); syncNow(false); }
       else toast("아직 승인 전입니다"); });
     return; }
+  if(a==="au-nicksave"){
+    const v=($("#au-nickedit")?$("#au-nickedit").value:"").trim();
+    if(!v){ toast("닉네임을 입력해 주세요"); return; }
+    AUTH.nick=v;
+    dbWrite("directory/"+AUTH.uid, {nick:v}).then(()=>{ render(); toast("닉네임을 바꿨습니다"); })
+      .catch(e=>toast("바꾸지 못했습니다: "+e.message));
+    return; }
   if(a==="adm-load"){ admLoad(); return; }
-  if(a==="adm-open"){
-    const next = !admOpen;
-    askYes(next?"승인 없이 바로 쓰게 할까요?":"승인을 받게 할까요?",
-      next ? "가입한 사람이 기다리지 않고 바로 쓰게 됩니다. 아무나 가입할 수 있다는 뜻이기도 합니다."
-           : "앞으로 가입하는 사람은 관리자가 승인해야 쓸 수 있습니다. 이미 승인된 사람은 그대로입니다.",
-      next?"바로 쓰게 하기":"승인 받게 하기")
+  if(a==="adm-reset"){
+    const em=t.dataset.e||"";
+    if(!em){ toast("이메일이 없습니다"); return; }
+    askYes("재설정 메일을 보낼까요?", em+" 로 비밀번호를 다시 정하는 메일을 보냅니다.\n"
+      +"비밀번호는 암호화되어 저장되므로 관리자도 원문을 볼 수 없습니다.\n"
+      +"메일이 안 보이면 스팸함도 확인하라고 알려주세요.", "메일 보내기")
       .then(ok=>{ if(!ok) return;
-        dbWrite("config", {open:next}).then(()=>{ admOpen=next; render(); toast("바꿨습니다"); })
-          .catch(e=>toast("바꾸지 못했습니다: "+e.message)); });
+        idt("sendOobCode",{requestType:"PASSWORD_RESET", email:em})
+          .then(()=>toast("메일을 보냈습니다")).catch(e=>toast(e.message)); });
     return; }
   if(a==="adm-ok"){
     const uid=t.dataset.u, v=t.dataset.v==="1";
@@ -3166,6 +3281,8 @@ document.addEventListener("change", e=>{
     if(k==="typing") D.s.typing=e.target.checked;
     else if(k==="autospeak") D.s.autoSpeak=e.target.checked;
     else if(k==="lowdata") D.s.lowData=e.target.checked;
+    else if(k==="keepmail"){ AUTH.keepMail=e.target.checked;
+      keepEmail(e.target.checked ? ($("#au-email")?$("#au-email").value.trim():"") : ""); return; }
     else if(k.startsWith("t-")) D.s.typeModes[{"t-ko2en":"ko2en","t-spell":"spell","t-dict":"dictation"}[k]]=e.target.checked;
     save(); render(); return;
   }
@@ -3301,7 +3418,8 @@ const SEED=[
 
 /* ══════════════════ 시작 ══════════════════ */
 load(); authLoad(); render(); paintSync();
-if(FB.ready && AUTH.uid) ensureAccess().then(()=>{ render(); if(AUTH.approved) syncNow(true); });
+if(FB.ready && AUTH.uid) ensureAccess().then(()=>{ render(); if(AUTH.approved){ greet(); syncNow(true); } });
+else if(!FB.ready || isSolo()) setTimeout(greet, 260);
 document.addEventListener("visibilitychange", ()=>{
   if(!FB.ready || !AUTH.uid) return;
   if(document.visibilityState === "hidden"){
