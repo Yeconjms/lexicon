@@ -530,8 +530,10 @@ function save(){ savePending=true; clearTimeout(saveT); saveT=setTimeout(()=>{
    둘 다 비밀값이 아닙니다 — 공개되어도 됩니다. 데이터는 보안 규칙이 지킵니다.
    비워 두면 로그인 없이 이 기기에서만 쓰는 상태로 동작합니다. */
 const FB = {
-  apiKey: "",   // 프로젝트 설정 → 일반 → 내 앱 → SDK 설정 및 구성 의 apiKey
-  dbURL : "",   // 같은 화면의 databaseURL (예: https://이름-default-rtdb.asia-southeast1.firebasedatabase.app)
+  /* 프로젝트 설정 → 일반 → 내 앱 → SDK 설정 및 구성 에서 그대로 옮겨 적은 값입니다.
+     비밀값이 아닙니다 — 공개되어도 됩니다. 데이터는 Realtime Database 보안 규칙이 지킵니다. */
+  apiKey: "AIzaSyCnnJrIAARW-8i-jcvQXgZPzUwpuApCfUA",
+  dbURL : "https://lexicon-e396e-default-rtdb.asia-southeast1.firebasedatabase.app",
   ready : false
 };
 FB.ready = !!(FB.apiKey && FB.dbURL);
