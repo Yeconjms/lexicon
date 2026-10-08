@@ -153,6 +153,17 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 .fchip.c-rev{border-color:rgba(181,130,14,.45);color:#7A5806;}
 .fchip.c-leech{border-color:rgba(166,57,74,.4);color:var(--rose);}
 .fchip.c-tag{border-color:rgba(42,76,125,.32);color:var(--blue);}
+
+/* 팩 색 · 아이콘 */
+.swatches{display:flex;flex-wrap:wrap;gap:7px;}
+.swatch{width:32px;height:32px;border-radius:9px;border:2px solid transparent;cursor:pointer;padding:0;}
+.swatch.on{border-color:var(--ink);}
+.swatch.none{background:var(--card);border:1px dashed var(--line);color:var(--muted);font-size:14px;}
+.swatch.none.on{border:2px solid var(--ink);}
+.iconbtn{min-width:40px;height:36px;border-radius:9px;border:1px solid var(--line);
+  background:var(--card);font-size:17px;line-height:1;cursor:pointer;padding:0 6px;color:var(--muted);}
+.iconbtn.on{border-color:var(--ink);background:var(--paper);}
+.packbar{width:5px;border-radius:99px;flex:0 0 5px;align-self:stretch;min-height:36px;}
 @keyframes lxshine{0%,100%{opacity:0;transform:scale(.5) rotate(0deg);}45%{opacity:1;transform:scale(1) rotate(35deg);}}
 
 /* ── 채점할 때 아기 별이 통통 튀어나옵니다 ── */
@@ -484,7 +495,7 @@ const publicSettings = s => {
   SECRET_KEYS.forEach(k => delete o[k]);
   return o;
 };
-let D = { v:2, cards:[], log:{}, packs:[], del:{}, s:{...DEFAULTS} };
+let D = { v:2, cards:[], log:{}, packs:[], del:{}, packMeta:{}, s:{...DEFAULTS} };
 let view = "study";
 
 function load(){
@@ -492,6 +503,7 @@ function load(){
     const raw = localStorage.getItem(KEY);
     if(raw){ const p=JSON.parse(raw);
       D={ v:2, cards:p.cards||[], log:p.log||{}, packs:p.packs||[], del:p.del||{},
+          packMeta:p.packMeta||{},
           s:{...DEFAULTS,...(p.s||{}), typeModes:{...DEFAULTS.typeModes,...((p.s||{}).typeModes||{})}} };
       fixLoaded(); }
   }catch(e){ toast("저장된 데이터를 읽지 못했습니다"); }
@@ -692,7 +704,7 @@ let syncT=null, syncing=false, syncDirty=false, syncState="";   // "" | "ing" | 
    3) 저데이터 모드에서는 자동 간격을 늘리고 화면 복귀 시 자동 수신을 끕니다. */
 function payloadJSON(){
   /* 시각 같은 매번 달라지는 값을 넣으면 "바뀐 게 없는데도" 매번 올리게 됩니다 */
-  return JSON.stringify({v:2, cards:D.cards, log:D.log, packs:D.packs, del:D.del});
+  return JSON.stringify({v:2, cards:D.cards, log:D.log, packs:D.packs, del:D.del, packMeta:D.packMeta});
 }
 /** 내용이 같은지만 보면 되므로 짧은 지문이면 충분합니다 */
 function sig(s){
@@ -778,6 +790,14 @@ function mergeData(p){
     });
   });
 
+  /* 팩 색·아이콘 — 더 나중에 고친 쪽을 따릅니다 */
+  if(!D.packMeta) D.packMeta = {};
+  Object.entries(p.packMeta||{}).forEach(([k,v])=>{
+    if(!v || typeof v !== "object") return;
+    const cur = D.packMeta[k];
+    if(!cur || (v.at||0) > (cur.at||0)) D.packMeta[k] = v;
+  });
+
   /* 오래된 삭제 기록은 정리합니다 */
   const cut = Date.now() - TOMB;
   for(const w in D.del) if(D.del[w] < cut) delete D.del[w];
@@ -795,11 +815,18 @@ function doRename(name){
     else if(c.pack.startsWith(packPath+"/")) c.pack=nn+c.pack.slice(packPath.length); });
   D.packs=D.packs.map(p=>p===packPath?nn:(p.startsWith(packPath+"/")?nn+p.slice(packPath.length):p));
   if(D.s.lastPack===packPath) D.s.lastPack=nn;
+  /* 색·아이콘도 새 이름으로 옮깁니다 */
+  const meta={};
+  Object.entries(D.packMeta||{}).forEach(([k,v])=>{
+    meta[ k===packPath ? nn : (k.startsWith(packPath+"/") ? nn+k.slice(packPath.length) : k) ] = v; });
+  D.packMeta=meta;
   packPath=nn; syncPacks(); save(); render(); toast("이름을 바꿨습니다");
 }
 function doPackDelete(){
   D.cards.forEach(c=>{ if(inPack(c,packPath)) c.pack=""; });
   D.packs=D.packs.filter(p=>p!==packPath && !p.startsWith(packPath+"/"));
+  Object.keys(D.packMeta||{}).forEach(k=>{
+    if(k===packPath || k.startsWith(packPath+"/")) delete D.packMeta[k]; });
   if(D.s.lastPack===packPath) D.s.lastPack="";
   packPath=packPath.split("/").slice(0,-1).join("/");
   syncPacks(); save(); render(); toast("팩을 없앴습니다");
@@ -877,7 +904,7 @@ function packSelect(id, val){
   const list=allPacks();
   return '<select class="field" id="'+id+'">'
     +'<option value=""'+(!val?" selected":"")+'>분류 없음</option>'
-    + list.map(p=>'<option value="'+esc(p)+'"'+(p===val?" selected":"")+'>'+esc(p)+'</option>').join("")
+    + list.map(p=>'<option value="'+esc(p)+'"'+(p===val?" selected":"")+'>'+packTag(p)+esc(p)+'</option>').join("")
     +'<option value="__new">＋ 새 팩 만들기…</option></select>';
 }
 
@@ -1456,6 +1483,68 @@ function rail(c){
   return h+'<div class="dot now" style="left:'+pos(c.interval||1)+'%"></div></div>';
 }
 
+/* ── 팩마다 색과 아이콘 ──
+   하위 팩은 비워 두면 위에서 물려받습니다. 영 쉘던 을 파랑으로 두면
+   영 쉘던/S1, 영 쉘던/S1/E02 도 파랑으로 보입니다. */
+const PACK_COLORS = ["#2A4C7D","#16785A","#A6394A","#B5820E",
+                     "#6B4FA0","#1F7A8C","#C2622C","#55606B"];
+const PACK_ICONS  = ["📺","🎬","📚","📝","🧪","💼","✈️","🍳","⚖️","🩺","🎧","💬","🧠","🔖"];
+
+function packStyle(path){
+  const out = {c:null, e:""};
+  if(!path || path==="__none") return out;
+  let p = path;
+  while(p){
+    const m = (D.packMeta||{})[p];
+    if(m){
+      if(out.c===null && m.c!==undefined && m.c!==null) out.c = m.c;
+      if(!out.e && m.e) out.e = m.e;
+    }
+    if(out.c!==null && out.e) break;
+    const i = p.lastIndexOf("/");
+    p = i < 0 ? "" : p.slice(0, i);
+  }
+  return out;
+}
+const packColor = path => { const c = packStyle(path).c;
+  return (c===null || c===undefined) ? null : PACK_COLORS[c % PACK_COLORS.length]; };
+const packIcon = path => packStyle(path).e;
+/** 드롭다운이나 목록 앞에 붙일 아이콘 (없으면 빈 문자열) */
+const packTag = path => { const e = packIcon(path); return e ? e + " " : ""; };
+
+function setPackMeta(path, patch){
+  if(!path || path==="__none") return;
+  if(!D.packMeta) D.packMeta = {};
+  const m = (D.packMeta[path] = D.packMeta[path] || {});
+  Object.assign(m, patch, {at: Date.now()});
+  save(); render();
+}
+
+/** 팩 화면의 색·아이콘 고르기 */
+function packStyleBox(){
+  const own = (D.packMeta||{})[packPath] || {};
+  const eff = packStyle(packPath);
+  const inherited = (own.c===undefined||own.c===null) && eff.c!==null;
+  let h = '<div class="h2" style="margin-bottom:9px">색</div><div class="swatches">';
+  h += '<button class="swatch none'+((own.c===undefined||own.c===null)?" on":"")+'" '
+     + 'data-a="pack-color" data-i="" aria-label="색 없음">—</button>';
+  PACK_COLORS.forEach((col,i)=>{
+    h += '<button class="swatch'+(own.c===i?" on":"")+'" style="background:'+col+'" '
+       + 'data-a="pack-color" data-i="'+i+'" aria-label="색 '+(i+1)+'"></button>';
+  });
+  h += '</div>';
+  h += '<div class="h2" style="margin:14px 0 9px">아이콘</div><div class="swatches">';
+  h += '<button class="iconbtn'+(!own.e?" on":"")+'" data-a="pack-icon" data-e="">—</button>';
+  PACK_ICONS.forEach(e=>{
+    h += '<button class="iconbtn'+(own.e===e?" on":"")+'" data-a="pack-icon" data-e="'+esc(e)+'">'+e+'</button>';
+  });
+  h += '</div>';
+  h += '<p class="note">비워 두면 위 팩의 것을 물려받습니다.'
+     + (inherited ? ' 지금은 <b>위에서 물려받은 색</b>으로 보이고 있습니다.' : '')
+     + '</p>';
+  return h;
+}
+
 /* ── 팩 브라우저 ── */
 let packPath = "";   // "" = 최상위, "__none" = 분류 없음, 그 외 = 경로
 function packStats(p){
@@ -1489,7 +1578,8 @@ function viewPacks(){
     h+='<div class="panel" style="padding:13px 15px">'
       +'<div class="row" style="font-size:13px">'
       +'<button class="btn sm ghost" data-a="pack-up">← 뒤로</button>'
-      +'<span class="mono muted" style="font-size:12px">'+esc(segs.join(" / "))+'</span></div>';
+      +'<span class="mono muted" style="font-size:12px">'
+      + packTag(packPath) + esc(segs.join(" / "))+'</span></div>';
     const st=packStats(packPath);
     h+='<div class="grid4" style="margin-top:12px">'
       + stat(st.n,"단어") + stat(st.due,"복습 대기")
@@ -1506,6 +1596,10 @@ function viewPacks(){
       +'<button class="btn sm ghost" data-a="pack-csv-in">CSV로 넣기</button>'
       +'</div>'
       +'<p class="note" style="margin:6px 0 0">넣으면 이 팩으로 들어갑니다. 파일에 팩 칸이 적혀 있으면 그쪽을 따릅니다.</p>';
+    if(packPath!=="__none")
+      h+=setBox("색과 아이콘",
+        (packIcon(packPath)||"") + (packColor(packPath)?" 색 있음":" 아직 없음"),
+        packStyleBox());
     if(packPath!=="__none") h+='<div class="row" style="margin-top:8px">'
       +'<button class="btn sm ghost" data-a="pack-sub">＋ 하위 팩</button>'
       +'<button class="btn sm ghost" data-a="pack-rename">이름 바꾸기</button>'
@@ -1523,10 +1617,12 @@ function viewPacks(){
   if(kids.length){
     h+='<div class="panel"><div class="h2">'+(packPath?"하위 팩":"팩 목록")+'</div>';
     kids.forEach(k=>{ const st=packStats(k);
+      const col=packColor(k);
       h+='<div class="item" data-a="pack-open" data-p="'+esc(k)+'" style="cursor:pointer">'
         +'<div class="row" style="justify-content:space-between;flex-wrap:nowrap">'
-        +'<div style="min-width:0"><div style="font-size:15px;font-weight:600">'
-        +esc(k.split("/").pop())+(st.leech?' <span class="chip rev">누수 '+st.leech+'</span>':'')+'</div>'
+        +(col?'<div class="packbar" style="background:'+col+'"></div>':'')
+        +'<div style="min-width:0;flex:1"><div style="font-size:15px;font-weight:600">'
+        +packTag(k)+esc(k.split("/").pop())+(st.leech?' <span class="chip rev">누수 '+st.leech+'</span>':'')+'</div>'
         +'<div class="meta">'+st.n+'단어'+(st.acc!==null?" · 정답률 "+st.acc+"%":"")+'</div></div>'
         +'<div class="row" style="flex-wrap:nowrap;align-items:center">'
         +(st.due?'<span class="chip" style="background:rgba(166,57,74,.12);color:var(--rose)">'+st.due+'</span>':'')
@@ -2792,6 +2888,9 @@ document.addEventListener("click", e=>{
   if(a==="test-voice"){ speak("The underlying trend is improving."); return; }
   if(a==="preview"){ doPreview(); return; }
   if(a==="csv-pick"){ const el=$("#csvin"); if(el){ el.value=""; el.click(); } return; }
+  if(a==="pack-color"){ const v=t.dataset.i;
+    setPackMeta(packPath, {c: v==="" ? null : +v}); return; }
+  if(a==="pack-icon"){ setPackMeta(packPath, {e: t.dataset.e||""}); return; }
   if(a==="pack-csv-in"){
     /* 지금 팩을 기본값으로 두고 단어 탭의 넣기 칸으로 보냅니다 */
     if(packPath && packPath!=="__none") D.s.lastPack=packPath;
@@ -2820,7 +2919,8 @@ document.addEventListener("click", e=>{
     return; }
   if(a==="export"){
     /* 토큰과 API 키는 빼고 내보냅니다. 백업 파일을 남에게 주거나 잃어버려도 안전해야 합니다 */
-    const safe = {v:2, cards:D.cards, log:D.log, packs:D.packs, del:D.del, s:publicSettings(D.s)};
+    const safe = {v:2, cards:D.cards, log:D.log, packs:D.packs, del:D.del,
+                  packMeta:D.packMeta, s:publicSettings(D.s)};
     const blob=new Blob([JSON.stringify(safe)],{type:"application/json"});
     const url=URL.createObjectURL(blob), link=document.createElement("a");
     link.href=url; link.download="lexicon-backup-"+dayKey()+".json"; link.click();
@@ -2870,7 +2970,7 @@ document.addEventListener("click", e=>{
         /* 묘비를 남겨야 동기화로 되살아나지 않습니다 */
         const now=Date.now();
         D.cards.forEach(c=>{ D.del[(c.word||"").toLowerCase()]=now; });
-        D.cards=[]; D.log={}; D.packs=[]; importPreview=null; packPath=""; D.s.lastPack="";
+        D.cards=[]; D.log={}; D.packs=[]; D.packMeta={}; importPreview=null; packPath=""; D.s.lastPack="";
         D.s.pushSig="";
         save(); render(); toast("전부 지웠습니다"); });
     return;
@@ -2954,6 +3054,7 @@ document.addEventListener("change", e=>{
           .then(ok=>{ if(!ok) return;
             /* 설정은 백업의 공개 항목만 받고, 이 기기의 토큰·키는 그대로 둡니다 */
             D={v:2, cards:p.cards, log:p.log||{}, packs:p.packs||[], del:p.del||{},
+               packMeta:p.packMeta||{},
                s:{...D.s, ...publicSettings(p.s||{}),
                   typeModes:{...DEFAULTS.typeModes,...((p.s||{}).typeModes||{})}}};
             fixLoaded(); save(); render(); toast(D.cards.length+"개로 바꿨습니다"); });
