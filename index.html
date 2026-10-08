@@ -134,6 +134,81 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 @keyframes lxdrop{0%,100%{opacity:.72;transform:translateY(0) scale(1)}
   50%{opacity:.95;transform:translateY(2.4px) scale(1.08)}}
 
+/* ── 표정에 쓰는 조각들 ──
+   선 색은 전부 --star-ink 를 따라갑니다. 몸 색이 바뀌면 선도 같이 바뀌어야 하기 때문입니다 */
+.st-mouth{fill:var(--star-ink);}
+.st-tongue{fill:#E2695F;}
+.st-teeth{fill:none;stroke:var(--star);stroke-width:1.6;stroke-linecap:round;}
+.st-fist{fill:var(--star);stroke:var(--star-ink);stroke-width:2.3;}
+.st-glint{fill:none;stroke:var(--star);stroke-width:1.5;stroke-linecap:round;}
+.st-coil{fill:none;stroke:var(--star-ink);stroke-width:1.9;stroke-linecap:round;}
+.st-orbstar{fill:var(--star-deep);stroke:var(--star-ink);stroke-width:1.4;stroke-linejoin:round;}
+.st-ask{fill:none;stroke:var(--star-ink);stroke-width:2.2;stroke-linecap:round;}
+.st-shade{fill:#1F2933;opacity:.17;}
+.st-blush{fill:#E2695F;opacity:.34;}
+.st-swish{fill:none;stroke:var(--star-ink);stroke-width:1.7;stroke-linecap:round;opacity:.42;}
+/* 핏대 — 만화에서 화를 나타내는 그 표시 */
+.st-vein{fill:#CF3A2E;animation:lxvein 1s ease-in-out infinite;transform-box:fill-box;}
+@keyframes lxvein{0%,100%{opacity:.95}50%{opacity:.45}}
+/* 머리에서 나는 김 */
+.st-steam path{fill:none;stroke:#CF3A2E;stroke-width:2.3;stroke-linecap:round;opacity:.7;}
+.st-steam{animation:lxsteam 1.5s ease-in-out infinite;}
+@keyframes lxsteam{0%{opacity:.25;transform:translateY(3px)}
+  55%{opacity:.85;transform:translateY(-3px)}100%{opacity:0;transform:translateY(-9px)}}
+/* 잠잘 때 뜨는 Z */
+.st-zzz path{fill:none;stroke:var(--star-ink);stroke-width:2;stroke-linejoin:round;opacity:.5;}
+.st-zzz{animation:lxzzz 2.8s ease-in-out infinite;}
+@keyframes lxzzz{0%,100%{opacity:.35;transform:translateY(2px)}50%{opacity:1;transform:translateY(-4px)}}
+/* 등줄기에 흐르는 세로줄 — 아찔할 때 */
+.st-dread path{fill:none;stroke:#4C5A78;stroke-width:1.5;stroke-linecap:round;opacity:.45;}
+/* 머리 위를 도는 별 */
+.st-orbit{transform-origin:60px 46px;animation:lxorbit 2.2s linear infinite;}
+@keyframes lxorbit{to{transform:rotate(360deg)}}
+
+/* ── 몸 색 변주 ──
+   같은 표정이라도 색이 받쳐 줘야 상태가 한눈에 읽힙니다 */
+/* 터지기 직전 — 열이 올라 시뻘게집니다 */
+.lexi.hot .st-fill{fill:#E8604A;}
+.lexi.hot .st-ink,.lexi.hot .st-ink2,.lexi.hot .st-limb{stroke:#6E1C12;}
+.lexi.hot .st-eye,.lexi.hot .st-mouth{fill:#6E1C12;}
+.lexi.hot .st-teeth{stroke:#E8604A;}
+.lexi.hot .st-fist{fill:#E8604A;stroke:#6E1C12;}
+.lexi.hot .st-vein{fill:#5E1109;}
+/* 화남 — 아직 시뻘겋진 않고 달아오르는 중 */
+.lexi.warm .st-fill{fill:#F0A23C;}
+.lexi.warm .st-ink,.lexi.warm .st-ink2,.lexi.warm .st-limb{stroke:#6B3410;}
+.lexi.warm .st-eye,.lexi.warm .st-mouth{fill:#6B3410;}
+.lexi.warm .st-fist{fill:#F0A23C;stroke:#6B3410;}
+/* 각오 — 한 톤 가라앉힙니다 */
+.lexi.dusk .st-fill{fill:#D8B63E;}
+.lexi.dusk .st-ink,.lexi.dusk .st-ink2,.lexi.dusk .st-limb{stroke:#141C24;}
+.lexi.dusk .st-eye,.lexi.dusk .st-mouth{fill:#141C24;}
+.lexi.dusk .st-glint{stroke:#FFF6D0;stroke-width:1.8;}
+/* 놀람 — 핏기가 가십니다 */
+.lexi.pale .st-fill{fill:#F2EDD4;}
+.lexi.pale .st-ink,.lexi.pale .st-ink2,.lexi.pale .st-limb{stroke:#49555E;}
+.lexi.pale .st-eye,.lexi.pale .st-mouth{fill:#49555E;}
+
+/* ── 자세에 붙는 움직임 ── */
+.lexi.tremble{animation:lxtremble .22s linear infinite;}
+@keyframes lxtremble{0%,100%{transform:translate(0,0)}25%{transform:translate(-1.6px,1px)}
+  50%{transform:translate(1.4px,-1px)}75%{transform:translate(1px,1.4px)}}
+
+/* ── 인사 동작 ──
+   여섯 가지로는 금방 질립니다. 자세(팔다리)까지 같이 바뀌어야 달라 보입니다 */
+.lexi.g-hop{animation:ghop .72s cubic-bezier(.3,1.5,.5,1) 3;}
+@keyframes ghop{0%,100%{transform:translateY(0) rotate(0)}
+  35%{transform:translateY(-18px) rotate(-8deg)}70%{transform:translateY(0) rotate(4deg)}}
+.lexi.g-lean{animation:glean 1.6s ease-in-out 2;transform-origin:50% 92%;}
+@keyframes glean{0%,100%{transform:rotate(0) translateX(0)}
+  40%{transform:rotate(9deg) translateX(5px)}70%{transform:rotate(6deg) translateX(3px)}}
+.lexi.g-shimmy{animation:gshimmy .5s ease-in-out 5;}
+@keyframes gshimmy{0%,100%{transform:translateX(0) rotate(0)}
+  25%{transform:translateX(-5px) rotate(-5deg)}75%{transform:translateX(5px) rotate(5deg)}}
+.lexi.g-burst{animation:gburst .9s cubic-bezier(.2,1.6,.4,1) 1;}
+@keyframes gburst{0%{transform:scale(.4) rotate(-20deg);opacity:0}
+  60%{transform:scale(1.14) rotate(5deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+
 /* 통계 탭 머리 — 복습 상태를 별 표정으로 */
 .moodbox{text-align:center;}
 .moodart{position:relative;display:inline-block;}
@@ -455,7 +530,8 @@ function starBurst(n){
   clearTimeout(burstT);
   const w=document.createElement("div");
   w.className="burst"; w.id="burst";
-  w.innerHTML = lexi(n>=4?"happy":"push","")
+  /* 다 맞출수록 더 신난 얼굴이 뜹니다 */
+  w.innerHTML = lexi(n>=5?"blaze":n>=4?"joy":n>=3?"happy":"push","",n>=4?"cheer":"stand")
     +'<div class="bstars">'
     + [0,1,2,3,4].map(i=>'<span class="bstar'+(i<n?" on":"")+'"'
         +(i<n?' style="animation-delay:'+(90+i*95)+'ms"':'')+'>★</span>').join("")
@@ -1413,7 +1489,8 @@ function viewStudyHome(done){
     /* 세션 정답률을 별 다섯 개로 환산합니다 — 40% 미만 1개에서 90% 이상 5개까지 */
     const sc = pct>=90?5 : pct>=75?4 : pct>=60?3 : pct>=40?2 : 1;
     h += '<div class="panel"><div class="empty" style="padding:26px 16px">'
-      +lexi(sc>=4?"happy":"idle", sc>=4?"cheer shine":"cheer")
+      +lexi(sc>=5?"blaze":sc>=4?"joy":sc>=3?"happy":"push",
+            sc>=4?"cheer shine":"cheer", sc>=4?"cheer":"stand")
       +'<div class="bstars" style="justify-content:center;margin:14px auto 0;width:max-content">'
       + [0,1,2,3,4].map(i=>'<span class="bstar'+(i<sc?" on":"")+'"'
           +(i<sc?' style="animation-delay:'+(120+i*110)+'ms"':'')+'>★</span>').join("")
@@ -1885,7 +1962,6 @@ const STAR_B = "M58.6 10.5 L71.8 34.2 L97.6 38.6 L75.8 56.8 L86.2 82.2 L60.8 69.
 const SPARK = (x,y,s) => '<path class="st-spark" transform="translate('+x+' '+y+') scale('+s+')" '
   +'d="M0 -7 Q1.2 -1.2 7 0 Q1.2 1.2 0 7 Q-1.2 1.2 -7 0 Q-1.2 -1.2 0 -7 Z"/>';
 
-/** 표정만 바꾸고 몸통은 하나로 씁니다. mood: idle | think | happy | sleep | push */
 const AURA = '<g class="st-aura">'
   + '<circle class="st-glow" cx="60" cy="46" r="47"/>'
   + '<circle class="st-glow2" cx="60" cy="46" r="33"/>'
@@ -1894,68 +1970,222 @@ const AURA = '<g class="st-aura">'
       '<path class="st-ray" transform="rotate('+a+' 60 46)" d="M60 -11 L62.7 15 L60 21 L57.3 15 Z"/>').join("")
   + '</g></g>';
 
-function lexi(mood, cls){
+/* ── 자세 ────────────────────────────────────────────────────────
+   표정만 바꾸면 인사가 전부 비슷해 보입니다. 팔다리를 통째로 갈아 끼웁니다. */
+const ln = d => '<path class="st-limb" d="'+d+'"/>';
+/** 손끝의 짧은 선 세 개. dir 은 손가락이 벌어지는 방향(도) */
+function hand(x, y, dir, len){
+  const L = len || 5.2, p = [];
+  [-44, 0, 44].forEach(a => {
+    const t = (dir + a) * Math.PI / 180;
+    p.push("M"+x+" "+y+"l"+(Math.cos(t)*L).toFixed(1)+" "+(Math.sin(t)*L).toFixed(1));
+  });
+  return ln(p.join(""));
+}
+
+const LEG = {
+  stand: ln("M54 72 L50 105") + ln("M50 105h-7.5") + ln("M66 72 L71 105") + ln("M71 105h7.5"),
+  wide : ln("M53 72 L41 101") + ln("M41 101h-8")   + ln("M67 72 L79 101") + ln("M79 101h8"),
+  hop  : ln("M54 72 Q45 85 48 96") + ln("M48 96l-7.6 2.8")
+       + ln("M66 72 Q75 85 72 96") + ln("M72 96l7.6 2.8"),
+  bent : ln("M55 72 L52 88 L45.5 99") + ln("M45.5 99h-7.5")
+       + ln("M66 72 L69.5 88 L64 99") + ln("M64 99h7.5")
+};
+
+const POSE = {
+  /* 기본 — 두 팔을 비스듬히 내립니다 */
+  stand: ln("M36 52 L19 67") + hand(19,67,135) + ln("M84 52 L101 67") + hand(101,67,45) + LEG.stand,
+  /* 손 흔들기 — 한 손만 높이 들고 흔듭니다 */
+  wave : ln("M36 54 L21 69") + hand(21,69,135)
+       + ln("M84 49 Q97 40 99 25") + hand(99,25,-68)
+       + '<path class="st-swish" d="M105 19q4.4-2.6 5.2-7.4M107.5 28q5-.6 8-4.4"/>'
+       + LEG.stand,
+  /* 만세 — 두 팔을 번쩍 */
+  cheer: ln("M38 50 Q27 37 24 22") + hand(24,22,-118)
+       + ln("M82 50 Q93 37 96 22") + hand(96,22,-62) + LEG.wide,
+  /* 허리에 손 — 한 손은 옆구리, 한 손은 들어 올려 */
+  hip  : ln("M36 53 Q21 61 29 71") + ln("M84 50 Q96 42 97 30") + hand(97,30,-70) + LEG.stand,
+  /* 가리키기 — 검지 하나를 세웁니다 */
+  point: ln("M36 55 L22 70") + hand(22,70,135)
+       + ln("M84 51 Q99 47 102 37.5") + '<circle class="st-fist" cx="102" cy="33.6" r="4.6"/>'
+       + ln("M102 29 L102.6 19.5")
+       + LEG.stand,
+  /* 주먹 — 의욕이 오를 때 */
+  fist : ln("M38 50 Q25 44 26.5 35") + '<circle class="st-fist" cx="26.5" cy="31" r="4.8"/>'
+       + ln("M82 50 Q95 44 93.5 35") + '<circle class="st-fist" cx="93.5" cy="31" r="4.8"/>'
+       + LEG.wide,
+  /* 허둥지둥 — 두 팔을 들고 흔듭니다 */
+  flail: ln("M38 51 Q25 45 27 30") + hand(27,30,-110)
+       + ln("M82 51 Q95 45 93 30") + hand(93,30,-70)
+       + '<path class="st-swish" d="M19 27q4-2.6 4.6-7M101 27q-4-2.6-4.6-7"/>'
+       + LEG.hop,
+  /* 눈 비비기 — 한 손을 얼굴로 가져갑니다 */
+  rub  : ln("M36 55 L21 69") + hand(21,69,135)
+       + ln("M84 53 Q89 41 77.5 38.5") + LEG.stand,
+  /* 축 늘어짐 — 사그라졌을 때 */
+  sag  : ln("M32 55 Q23 68 22 83") + hand(22,83,104)
+       + ln("M88 55 Q97 68 98 83") + hand(98,83,76) + LEG.bent
+};
+
+/* ── 덧붙이는 기호 ──────────────────────────────────────────────── */
+/** 핏대. 만화에서 화를 나타내는 그 표시입니다 */
+const VEIN = (x,y,s,r) => '<path class="st-vein" transform="translate('+x+' '+y+') rotate('+(r||0)
+  +') scale('+s+')" d="M0 -7.4Q1.3 -2.4 6.6 -3.7Q2.3 0 6.6 3.7Q1.3 2.4 0 7.4'
+  +'Q-1.3 2.4 -6.6 3.7Q-2.3 0 -6.6 -3.7Q-1.3 -2.4 0 -7.4Z"/>';
+const BLUSH = '<ellipse class="st-blush" cx="46.6" cy="56.6" rx="4.6" ry="2.5"/>'
+            + '<ellipse class="st-blush" cx="73.4" cy="56.6" rx="4.6" ry="2.5"/>';
+const STEAM = '<g class="st-steam"><path d="M33 20q-5.4-4-1.6-9"/><path d="M45 12q-4.6-4.6-.6-9"/>'
+            + '<path d="M75 12q4.6-4.6.6-9"/><path d="M87 20q5.4-4 1.6-9"/></g>';
+const ZZZ   = '<g class="st-zzz"><path d="M79 26h8.4l-8.4 9.4h8.4"/>'
+            + '<path d="M91 13h6.6l-6.6 7.4h6.6"/></g>';
+const DREAD = '<g class="st-dread">'
+            + [46,52,58,64,70].map(x => '<path d="M'+x+' 30v8.5"/>').join("") + '</g>';
+/** 눈 자리에 박는 작은 별. 신났을 때 */
+const EYESTAR = (x,y) => '<path class="st-eye" transform="translate('+x+' '+y+')" '
+  + 'd="M0 -6.6Q1.1 -1.1 6.6 0Q1.1 1.1 0 6.6Q-1.1 1.1 -6.6 0Q-1.1 -1.1 0 -6.6Z"/>';
+/** 눈이 핑핑 도는 나선 */
+const SPIRAL = (x,y) => '<path class="st-coil" d="M'+x+' '+y
+  + 'a1 1 0 0 1 2 0a2 2 0 0 1 -4 0a3 3 0 0 1 6 0a4 4 0 0 1 -8 0"/>';
+
+/* ── 표정 ────────────────────────────────────────────────────────
+   얼굴은 눈·입·덧붙임 셋으로 나눠 둡니다. 새 표정을 넣을 때 여기만 보면 됩니다. */
+function face(mood){
   const dx = mood==="think" ? 2.6 : 0;
-  const eyes = mood==="sleep"
-    ? '<path class="st-limb" d="M45 48q5 4.5 10 0"/><path class="st-limb" d="M65 48q5 4.5 10 0"/>'
-    : mood==="push"
-    ? '<path class="st-limb" d="M45 50q5-5 10 0"/><path class="st-limb" d="M65 50q5-5 10 0"/>'
-    : mood==="angry"
-    ? '<path class="st-limb" d="M42 43l13 6"/><path class="st-limb" d="M78 43l-13 6"/>'
-      +'<circle class="st-eye" cx="51" cy="51" r="3.4"/><circle class="st-eye" cx="69" cy="51" r="3.4"/>'
-    : mood==="dim"
-    /* 바깥쪽이 처진 반달 눈과 눈 밑 그늘 두 줄. 눈썹은 안쪽이 올라가 울상이 됩니다 */
-    ? '<path class="st-limb" style="stroke-width:1.9" d="M41.2 43Q47.6 36.2 55.4 38.6"/>'
-      +'<path class="st-limb" style="stroke-width:1.9" d="M78.8 43Q72.4 36.2 64.6 38.6"/>'
-      +'<path class="st-eye" d="M41.4 54Q48.4 43.2 57.6 47.2Q49 54.4 41.4 54Z"/>'
-      +'<path class="st-eye" d="M78.6 54Q71.6 43.2 62.4 47.2Q71 54.4 78.6 54Z"/>'
-      +'<circle class="st-fill" cx="53.2" cy="48.2" r="1.4"/>'+'<circle class="st-fill" cx="66.8" cy="48.2" r="1.4"/>'
-      +'<path class="st-limb" style="stroke-width:2" opacity=".38" d="M42.8 57.4q6.4 4.8 13-1.2"/>'
-      +'<path class="st-limb" style="stroke-width:2" opacity=".38" d="M77.2 57.4q-6.4 4.8-13-1.2"/>'
-    : '<g class="st-eyes"><circle class="st-eye" cx="'+(50+dx)+'" cy="48" r="3.7"/>'
-      +'<circle class="st-eye" cx="'+(70+dx)+'" cy="48" r="3.7"/></g>';
-  const mouth = mood==="happy"
-    ? '<path class="st-limb" d="M51 59q9 9 18 0"/>'
-    : mood==="angry"
-    ? '<path class="st-limb" d="M51 64q9-8 18 0"/>'
-    : mood==="dim"
-    /* 한쪽으로 삐뚜름하게 쳐진 울상 입 */
-    ? '<path class="st-limb" d="M48.6 68.2Q54.4 60.6 60.8 63.4Q67.2 66.2 71.6 67"/>'
-    : mood==="push"
-    ? '<path class="st-limb" d="M53 61q7 4 14 0q-7 4-14 0Z"/>'
-    : mood==="think"
-    ? '<path class="st-limb" d="M52 61q4-3 8 0t8 0"/>'
-    : '<path class="st-limb" d="M52 61h16"/>';
+  const round = '<g class="st-eyes"><circle class="st-eye" cx="'+(50+dx)+'" cy="48" r="3.7"/>'
+              + '<circle class="st-eye" cx="'+(70+dx)+'" cy="48" r="3.7"/></g>';
+
+  switch(mood){
+
+  /* 신남 — 눈이 별이 되고 입을 크게 엽니다 */
+  case "blaze": return {
+    e: EYESTAR(50,48) + EYESTAR(70,48),
+    m: '<path class="st-mouth" d="M47.5 57q12.5 3 25 0q-2.5 12-12.5 12t-12.5-12Z"/>'
+     + '<path class="st-tongue" d="M54.5 66q5.5-3.5 11 0q-2 3-5.5 3t-5.5-3Z"/>',
+    x: BLUSH };
+
+  /* 감격 — 눈물이 핑 돌고 입이 함박 */
+  case "joy": return {
+    e: '<path class="st-limb" style="stroke-width:3" d="M43.5 51q6.5-8 13 0"/>'
+     + '<path class="st-limb" style="stroke-width:3" d="M76.5 51q-6.5-8-13 0"/>',
+    m: '<path class="st-mouth" d="M46 55.5q14 3 28 0q-3 14-14 14t-14-14Z"/>'
+     + '<path class="st-tongue" d="M53.5 65q6.5-4 13 0q-2.5 3.6-6.5 3.6t-6.5-3.6Z"/>',
+    x: BLUSH + '<path class="st-drop" d="M40.6 52.5q-3.4 7.4 0 10q3.4-2.6 0-10Z"/>'
+     + '<path class="st-drop" d="M79.4 52.5q3.4 7.4 0 10q-3.4-2.6 0-10Z"/>' };
+
+  /* 으쓱 — 반쯤 감은 눈에 씩 웃는 입 */
+  case "smug": return {
+    e: '<path class="st-limb" style="stroke-width:2.8" d="M43.6 47.4q6.6 2.6 13 .4"/>'
+     + '<path class="st-limb" style="stroke-width:2.8" d="M76.4 47.4q-6.6 2.6-13 .4"/>'
+     + '<circle class="st-eye" cx="50.5" cy="51.4" r="2.3"/><circle class="st-eye" cx="69.5" cy="51.4" r="2.3"/>',
+    m: '<path class="st-limb" style="stroke-width:2.6" d="M46.5 59.5q12 11 25-2.5"/>'
+     + '<path class="st-limb" style="stroke-width:1.6" opacity=".5" d="M50.5 62.6q9 4.6 17-1.4"/>',
+    x: '<path class="st-swish" d="M80 40.5q5-1.6 8.4-5M82 46.5q5.4-.6 9.4-3.4"/>' };
+
+  /* 각오 — 눈매가 날카로워지고 위쪽에 그늘이 집니다 */
+  case "fired": return {
+    e: '<path class="st-shade" d="M38.5 36q21.5 5 43 0q1 9-4 13.5q-17.5 5-35 0q-5-4.5-4-13.5Z"/>'
+     + '<path class="st-limb" style="stroke-width:2.6" d="M42.4 42.6l12.4 4.6"/>'
+     + '<path class="st-limb" style="stroke-width:2.6" d="M77.6 42.6l-12.4 4.6"/>'
+     + '<ellipse class="st-eye" cx="51" cy="51" rx="3.4" ry="2.4"/>'
+     + '<ellipse class="st-eye" cx="69" cy="51" rx="3.4" ry="2.4"/>'
+     + '<path class="st-glint" d="M49.6 50.1l2.6-1.1"/><path class="st-glint" d="M67.6 50.1l2.6-1.1"/>',
+    m: '<path class="st-limb" style="stroke-width:2.5" d="M51 60.5q9 7 18-1"/>',
+    x: '<path class="st-swish" d="M30 30q4-4.6 3.4-10M90 30q-4-4.6-3.4-10"/>' };
+
+  /* 터지기 직전 — 이를 악물고 김이 납니다 */
+  case "boom": return {
+    e: '<path class="st-limb" style="stroke-width:3" d="M43 42.6l12.4 5.4l-12 4.6"/>'
+     + '<path class="st-limb" style="stroke-width:3" d="M77 42.6l-12.4 5.4l12 4.6"/>',
+    m: '<path class="st-mouth" d="M46.5 57.5h27l-3 11h-21Z"/>'
+     + '<path class="st-teeth" d="M46.5 61.2h27M53 57.5l-.6 11M60 57.5v11M67 57.5l.6 11"/>',
+    x: VEIN(84,27,1,12) + VEIN(32,31,.78,-20) + STEAM };
+
+  /* 화남 — 눈썹이 솟고 핏대가 하나 */
+  case "angry": return {
+    e: '<path class="st-limb" style="stroke-width:2.6" d="M42 42l13.5 6.2"/>'
+     + '<path class="st-limb" style="stroke-width:2.6" d="M78 42l-13.5 6.2"/>'
+     + '<circle class="st-eye" cx="51" cy="52" r="3.5"/><circle class="st-eye" cx="69" cy="52" r="3.5"/>',
+    m: '<path class="st-limb" style="stroke-width:2.5" d="M50.5 64.6q9.5-8 19 0"/>',
+    x: VEIN(85,28,.92,10) };
+
+  /* 어질 — 눈이 핑핑 돕니다 */
+  case "dizzy": return {
+    e: SPIRAL(48,48) + SPIRAL(68,48),
+    m: '<path class="st-limb" d="M51 62q3-3.4 6 0t6 0t5 .6"/>',
+    x: '<g class="st-orbit">'
+     + '<path class="st-orbstar" transform="translate(60 10)" d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z"/>'
+     + '<path class="st-orbstar" transform="translate(96 46) scale(.66)" d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z"/>'
+     + '</g>' };
+
+  /* 놀람 — 눈이 점만 해지고 등줄기에 세로줄 */
+  case "shock": return {
+    e: '<path class="st-limb" style="stroke-width:2" d="M44 39.5q6-3.6 12-.6"/>'
+     + '<path class="st-limb" style="stroke-width:2" d="M76 39.5q-6-3.6-12-.6"/>'
+     + '<circle class="st-eye" cx="51" cy="49" r="1.6"/><circle class="st-eye" cx="69" cy="49" r="1.6"/>',
+    m: '<ellipse class="st-mouth" cx="60" cy="62.5" rx="5" ry="6.2"/>',
+    x: DREAD + '<path class="st-drop" d="M88 33q4.4 7.6 0 10.2q-4.4-2.6 0-10.2Z"/>' };
+
+  /* 윙크 */
+  case "wink": return {
+    e: '<path class="st-limb" style="stroke-width:3" d="M44.5 49.5q6 -7 12 0"/>'
+     + '<circle class="st-eye" cx="70" cy="48" r="3.9"/>',
+    m: '<path class="st-limb" style="stroke-width:2.4" d="M52 60q8 7 16 -1"/>',
+    x: BLUSH + SPARK(40,34,.8) };
+
+  /* 사그라짐 — 축 처진 눈꺼풀과 눈 밑 그늘, 울상 눈썹 */
+  case "dim": return {
+    e: '<path class="st-limb" style="stroke-width:1.9" d="M41.2 43Q47.6 36.2 55.4 38.6"/>'
+     + '<path class="st-limb" style="stroke-width:1.9" d="M78.8 43Q72.4 36.2 64.6 38.6"/>'
+     + '<path class="st-eye" d="M41.4 54Q48.4 43.2 57.6 47.2Q49 54.4 41.4 54Z"/>'
+     + '<path class="st-eye" d="M78.6 54Q71.6 43.2 62.4 47.2Q71 54.4 78.6 54Z"/>'
+     + '<circle class="st-fill" cx="53.2" cy="48.2" r="1.4"/><circle class="st-fill" cx="66.8" cy="48.2" r="1.4"/>'
+     + '<path class="st-limb" style="stroke-width:2" opacity=".38" d="M42.8 57.4q6.4 4.8 13-1.2"/>'
+     + '<path class="st-limb" style="stroke-width:2" opacity=".38" d="M77.2 57.4q-6.4 4.8-13-1.2"/>',
+    m: '<path class="st-limb" d="M48.6 68.2Q54.4 60.6 60.8 63.4Q67.2 66.2 71.6 67"/>',
+    x: '<path class="st-drop" d="M45 60.8q-3 7.8 0 10.6q3-2.8 0-10.6Z"/>'
+     + '<path class="st-drop" d="M75 60.8q3 7.8 0 10.6q-3-2.8 0-10.6Z"/>' };
+
+  /* 잠 */
+  case "sleep": return {
+    e: '<path class="st-limb" d="M45 48q5 4.5 10 0"/><path class="st-limb" d="M65 48q5 4.5 10 0"/>',
+    m: '<path class="st-limb" d="M55.5 61.5q4.5 4 9 0"/>',
+    x: ZZZ };
+
+  /* 기지개 */
+  case "push": return {
+    e: '<path class="st-limb" d="M45 50q5-5 10 0"/><path class="st-limb" d="M65 50q5-5 10 0"/>',
+    m: '<path class="st-mouth" d="M53.5 59q6.5-2 13 0q-1.5 8-6.5 8t-6.5-8Z"/>', x: "" };
+
+  /* 기쁨 */
+  case "happy": return {
+    e: round,
+    m: '<path class="st-limb" style="stroke-width:2.5" d="M51 59q9 9 18 0"/>', x: BLUSH };
+
+  /* 생각 중 */
+  case "think": return {
+    e: round,
+    m: '<path class="st-limb" d="M52 61q4-3 8 0t8 0"/>',
+    x: '<path class="st-ask" d="M91 29.5q0-5.2 4.6-5.2t4.6 4.6q0 3.6-4.6 5.2v2.4"/>'
+     + '<circle class="st-eye" cx="95.6" cy="40" r="1.6"/>' };
+
+  }
+  /* 기본 */
+  return { e: round, m: '<path class="st-limb" d="M52 61h16"/>', x: "" };
+}
+
+/** 표정과 자세를 조합해 별 하나를 그립니다. mood 는 face(), pose 는 POSE 의 열쇠 */
+function lexi(mood, cls, pose){
+  const f = face(mood);
+  const p = POSE[pose || (mood==="dim" ? "sag" : mood==="boom" ? "flail"
+          : (mood==="blaze" || mood==="joy") ? "cheer" : "stand")] || POSE.stand;
   return '<svg class="lexi '+(cls||"")+'" viewBox="0 0 120 120" aria-hidden="true">'
-    /* 스티커 테두리 → 채움 → 손그림 윤곽 두 겹 */
     + AURA
+    /* 스티커 테두리 → 채움 → 손그림 윤곽 두 겹 */
     +'<path class="st-halo" d="'+STAR_A+'"/>'
     +'<path class="st-fill" d="'+STAR_A+'"/>'
     +'<path class="st-ink" d="'+STAR_A+'"/>'
     +'<path class="st-ink2" d="'+STAR_B+'"/>'
-    /* 팔 — 별 뒤에서 나와 아래로 뻗습니다. 지쳤을 땐 축 늘어뜨립니다 */
-    + (mood==="dim"
-      /* 팔은 얼굴을 가리지 않게 바깥으로 빼서 늘어뜨립니다 */
-      ? '<path class="st-limb" d="M32 55 Q23 68 22 83"/>'
-       +'<path class="st-limb" d="M22 83l-4.2 1.6M22 83l.4 4.6M22 83l3.8 2.2"/>'
-       +'<path class="st-limb" d="M88 55 Q97 68 98 83"/>'
-       +'<path class="st-limb" d="M98 83l4.2 1.6M98 83l-.4 4.6M98 83l-3.8 2.2"/>'
-       +'<path class="st-limb" d="M55 72 L52 88 L45.5 99"/><path class="st-limb" d="M45.5 99h-7.5"/>'
-       +'<path class="st-limb" d="M66 72 L69.5 88 L64 99"/><path class="st-limb" d="M64 99h7.5"/>'
-       /* 그렁그렁 맺힌 눈물 */
-       +'<path class="st-drop" d="M45 60.8q-3 7.8 0 10.6q3-2.8 0-10.6Z"/>'
-       +'<path class="st-drop" d="M75 60.8q3 7.8 0 10.6q-3-2.8 0-10.6Z"/>'
-      : '')
-    + (mood==="dim" ? '' :
-       '<path class="st-limb" d="M36 52 L19 67"/>'
-      +'<path class="st-limb" d="M19 67l-5.5-1.4M19 67l-2.6 4.6M19 67l1.6-5.4"/>'
-      +'<path class="st-limb" d="M84 52 L101 67"/>')
-    + (mood==="dim" ? '' :
-       '<path class="st-limb" d="M101 67l5.5-1.4M101 67l2.6 4.6M101 67l-1.6-5.4"/>'
-      /* 다리 */
-      +'<path class="st-limb" d="M54 72 L50 105"/><path class="st-limb" d="M50 105h-7.5"/>'
-      +'<path class="st-limb" d="M66 72 L71 105"/><path class="st-limb" d="M71 105h7.5"/>')
-    + eyes + mouth
+    + p + f.e + f.m + f.x
     /* 반짝임 — .shine 을 붙였을 때만 보입니다 */
     + SPARK(104,26,1) + SPARK(18,22,.72) + SPARK(96,96,.85)
     +'</svg>';
@@ -2217,10 +2447,10 @@ function viewDict(){
       +'한국어는 기계 번역입니다. 더 자연스러운 한국어 뜻을 원하면 설정에서 AI를 켜세요.</p>';
   h+='</div>';
 
-  if(dictBusy) return h+'<div class="panel"><div class="empty">'+lexi("think","bob")
+  if(dictBusy) return h+'<div class="panel"><div class="empty">'+lexi("think","bob","hip")
     +'<h3 style="margin-top:16px">찾아보는 중…</h3><p>렉시가 사전을 뒤지고 있습니다.</p></div></div>';
 
-  if(dictErr) return h+'<div class="panel"><div class="empty">'+lexi("sleep")
+  if(dictErr) return h+'<div class="panel"><div class="empty">'+lexi("shock","","flail")
     +'<h3 style="margin-top:16px">찾지 못했습니다</h3><p>'+esc(dictErr)+'</p></div></div>';
 
   if(!dictR){
@@ -2288,12 +2518,16 @@ function viewDict(){
 /* ── 별의 인사 ──────────────────────────────────────────────────────
    들어올 때마다 조금씩 다르게 인사합니다. 같은 걸 연달아 보여주지 않습니다. */
 const GREETS = [
-  {m:"happy", c:"g-wave",   t:["안녕하세요!","또 오셨네요","반가워요"]},
-  {m:"happy", c:"g-jump",   t:["왔다!","기다렸어요","오늘도 가볼까요"]},
-  {m:"happy", c:"g-spin",   t:["준비 끝!","시작해 볼까요","자, 갑니다"]},
-  {m:"push",  c:"g-stretch",t:["으으 잘 잤다","기지개 좀…","이제 깼어요"]},
-  {m:"think", c:"g-tilt",   t:["오늘은 뭘 외워볼까요","어디까지 했더라","음…"]},
-  {m:"happy", c:"g-cheerup",t:["좋아요!","가봅시다","신난다"]}
+  {m:"happy", c:"g-wave",    p:"wave",  t:["안녕하세요!","또 오셨네요","반가워요"]},
+  {m:"joy",   c:"g-jump",    p:"cheer", t:["왔다!","기다렸어요","보고 싶었어요"]},
+  {m:"blaze", c:"g-burst",   p:"point", t:["준비 끝!","자, 갑니다","이쪽이에요"]},
+  {m:"push",  c:"g-stretch", p:"rub",   t:["으으 잘 잤다","기지개 좀…","이제 깼어요"]},
+  {m:"think", c:"g-tilt",    p:"hip",   t:["오늘은 뭘 외워볼까요","어디까지 했더라","음…"]},
+  {m:"fired", c:"g-shimmy",  p:"fist",  t:["오늘은 제대로 해봅시다","각오 됐나요","해치웁시다"]},
+  {m:"wink",  c:"g-hop",     p:"point", t:["좋아요!","딱 맞춰 오셨네요","시작해 볼까요"]},
+  {m:"smug",  c:"g-lean",    p:"hip",   t:["올 줄 알았어요","기다리고 있었죠","역시 오시네요"]},
+  {m:"happy", c:"g-cheerup", p:"cheer", t:["신난다","가봅시다","오늘도 해봐요"]},
+  {m:"dizzy", c:"g-spin",    p:"flail", t:["어… 어지러워","방금 뭐였지","잠깐만요"]}
 ];
 let lastGreet = -1, greetT = null;
 
@@ -2321,7 +2555,7 @@ function greet(){
   w.className = "greet"; w.id = "greet";
   /* 7일 이상 이어왔으면 인사할 때도 광채가 돕니다 */
   const aura = streak() >= 7 ? " aura" : "";
-  w.innerHTML = lexi(g.m, g.c + " shine" + aura) + '<div class="gline">'+esc(line)+'</div>';
+  w.innerHTML = lexi(g.m, g.c + " shine" + aura, g.p) + '<div class="gline">'+esc(line)+'</div>';
   document.body.appendChild(w);
 
   const close = () => { if(!w.parentNode) return;
@@ -2339,6 +2573,8 @@ function lastStudyDays(){
   return -1;
 }
 
+/* 각 상태가 어떤 얼굴(f)·몸 색과 움직임(c)·자세(p)로 나올지 여기 한 곳에 적습니다.
+   예전처럼 moodPanel 안에서 삼항 연산자를 길게 잇지 않습니다 — 상태를 더할 때마다 두 곳을 고쳐야 했습니다. */
 function moodNow(){
   const back = dueAll().length;
   const done = dayStat(dayKey()).reviews;
@@ -2346,25 +2582,26 @@ function moodNow(){
   const left = dueToday().length + freshList().length;
   const n    = D.cards.length;
 
-  if(!n) return {k:"sleep", t:"별이 자고 있습니다",
+  if(!n) return {k:"sleep", f:"sleep", c:"", p:"stand", t:"별이 자고 있습니다",
     s:"아직 단어가 없습니다. 사전 탭에서 하나 찾아 담아보세요."};
   /* 오래 손을 놓은 쪽이 밀린 양보다 먼저입니다. 안 온 사람에게 밀렸다고 다그칠 일이 아닙니다 */
   const gone = lastStudyDays();
-  if(gone >= 10) return {k:"dim", t:"별이 사그라졌습니다",
+  if(gone >= 10) return {k:"dim", f:"dim", c:"dim", p:"sag", t:"별이 사그라졌습니다",
     s:"마지막으로 공부한 지 "+gone+"일 됐습니다. 오늘 다섯 장만 해도 다시 빛나기 시작합니다."};
-  if(back >= 120) return {k:"boom", t:"별이 터지기 직전입니다",
+  /* 터지기 직전에는 몸이 시뻘게지고 김이 납니다 */
+  if(back >= 120) return {k:"boom", f:"boom", c:"hot boom", p:"flail", t:"별이 터지기 직전입니다",
     s:"밀린 카드가 "+back+"장입니다. 오늘 조금만 해도 숨통이 트입니다. 그리고 하루 신규 단어를 줄이세요."};
-  if(back >= 50) return {k:"angry", t:"별이 화났습니다",
+  if(back >= 50) return {k:"angry", f:"angry", c:"warm shake", p:"fist", t:"별이 화났습니다",
     s:"밀린 카드가 "+back+"장입니다. 상한은 일을 미룰 뿐 줄이지 않습니다. 신규를 잠깐 멈춰보세요."};
-  if(st >= 7 && left === 0) return {k:"blaze", t:st+"일 연속 · 불타는 중",
-    s:"오늘 몫까지 끝냈습니다. 이게 제일 좋은 상태입니다."};
-  if(left === 0 && done > 0) return {k:"happy", t:"오늘 몫 끝",
+  if(st >= 7 && left === 0) return {k:"blaze", f:"blaze", c:"aura shine cheerloop", p:"cheer",
+    t:st+"일 연속 · 불타는 중", s:"오늘 몫까지 끝냈습니다. 이게 제일 좋은 상태입니다."};
+  if(left === 0 && done > 0) return {k:"done", f:"joy", c:"shine bob", p:"cheer", t:"오늘 몫 끝",
     s:"오늘 "+done+"장 했습니다. 내일 또 만나요."};
-  if(st >= 3) return {k:"happy", t:st+"일 연속",
+  if(st >= 3) return {k:"happy", f:"happy", c:"shine bob", p:"wave", t:st+"일 연속",
     s:"오늘 "+left+"장 남았습니다. 이대로만 가면 됩니다."};
-  if(done === 0 && st === 0) return {k:"sleep", t:"별이 자고 있습니다",
+  if(done === 0 && st === 0) return {k:"sleep", f:"sleep", c:"", p:"stand", t:"별이 자고 있습니다",
     s: left ? ("오늘 "+left+"장이 기다리고 있습니다. 깨워주세요.") : "오늘 할 카드가 없습니다."};
-  return {k:"idle", t:"하는 중",
+  return {k:"idle", f:"fired", c:"dusk bob", p:"fist", t:"하는 중",
     s:"오늘 "+left+"장 남았습니다"+(done?(" · 지금까지 "+done+"장"):"")+"."};
 }
 
@@ -2376,16 +2613,8 @@ function moodPanel(){
   let mini = "";
   for(let i=0;i<extra;i++) mini += '<span class="ministar" style="animation-delay:'+(i*170)+'ms">★</span>';
 
-  const face = m.k==="blaze" ? "happy" : m.k==="boom" ? "angry" : m.k;
-  const cls  = m.k==="blaze" ? "aura shine cheerloop"
-             : m.k==="boom"  ? "boom"
-             : m.k==="angry" ? "shake"
-             : m.k==="dim"   ? "dim"
-             : m.k==="happy" ? "shine bob"
-             : m.k==="sleep" ? "" : "bob";
-
   return '<div class="panel moodbox"><div class="moodart">'
-    + lexi(face, cls)
+    + lexi(m.f, m.c, m.p)
     + (mini ? '<div class="ministars">'+mini+'</div>' : '')
     + (m.k==="boom" ? '<div class="boomfx"><i></i><i></i><i></i><i></i><i></i></div>' : '')
     + '</div>'
@@ -2655,7 +2884,7 @@ function viewLogin(){
   const saved = lastEmail();
 
   let h = '<div class="panel"><div class="empty" style="padding-bottom:4px">'
-    + lexi(a.mode==="reset" ? "think" : "idle", "pop")
+    + lexi(a.mode==="reset" ? "think" : "wink", "pop", a.mode==="reset" ? "hip" : "wave")
     + '<h3 style="margin-top:16px">'+esc(title)+'</h3>'
     + '<p>'+esc(lead)+'</p></div>';
 
