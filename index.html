@@ -2289,7 +2289,6 @@ function viewLogin(){
   return h;
 }
 
-/* ── 설정 안의 계정 칸 ── */
 /** 지금 단어장이 실제로 몇 바이트인지. 한 번 오갈 때 이만큼 쓰입니다 */
 function dataSize(){
   const t = payloadJSON();
@@ -2297,15 +2296,113 @@ function dataSize(){
 }
 const kb = n => n < 1024 ? (n + "B") : (n/1024).toFixed(n < 10240 ? 1 : 0) + "KB";
 
+/* ── 설정값을 앱 안에서 바로 넣고 확인할 수 있게 ──
+   코드에 적어 두면 모두가 쓰고, 여기서 넣으면 이 기기에서만 먼저 써볼 수 있습니다.
+   콘솔 설정을 끝낸 뒤 코드에 옮겨 적으면 다른 사람도 쓸 수 있게 됩니다. */
+const FBKEY = "lexicon:fb";
+(function(){
+  if(FB.apiKey && FB.dbURL){ FB.ready = true; return; }
+  try{
+    const p = JSON.parse(localStorage.getItem(FBKEY) || "null");
+    if(p && p.apiKey && p.dbURL){ FB.apiKey = p.apiKey; FB.dbURL = p.dbURL; FB.ready = true; }
+  }catch(e){}
+})();
+
+let fbDiag = "", fbChecking = false;
+
+/** 넣은 값이 맞는지, 콘솔 설정을 빠뜨리지 않았는지 하나씩 확인합니다 */
+async function fbCheck(){
+  const key = ($("#fb-key") ? $("#fb-key").value : "").trim();
+  const db  = ($("#fb-db")  ? $("#fb-db").value  : "").trim().replace(/\/+$/,"");
+  const rows = [];
+  const ok   = t => rows.push('<div class="ok-box" style="margin-top:6px">✓ '+t+'</div>');
+  const bad  = t => rows.push('<div class="warn" style="margin-top:6px">✕ '+t+'</div>');
+
+  fbChecking = true; fbDiag = ""; render();
+  try{
+    /* 1. 생김새부터 */
+    if(!key){ bad("apiKey 가 비어 있습니다."); }
+    else if(!/^AIza/.test(key)) bad("apiKey 는 보통 <b>AIza</b> 로 시작합니다. 다른 값을 붙여넣으신 것 같습니다.");
+    else ok("apiKey 형식이 맞습니다.");
+
+    if(!db){ bad("databaseURL 이 비어 있습니다."); }
+    else if(!/^https:\/\//.test(db)) bad("databaseURL 은 <b>https://</b> 로 시작해야 합니다.");
+    else if(!/(firebasedatabase\.app|firebaseio\.com)$/.test(db))
+      bad("databaseURL 이 <b>.firebasedatabase.app</b> 이나 <b>.firebaseio.com</b> 으로 끝나야 합니다. "
+        + "Realtime Database 화면 맨 위 주소를 그대로 복사하세요. Firestore 주소가 아닙니다.");
+    else ok("databaseURL 형식이 맞습니다.");
+
+    /* 2. 로그인 쪽이 켜져 있는지 — 없는 계정으로 한 번 찔러봅니다 */
+    if(key && /^AIza/.test(key)){
+      try{
+        const r = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key="
+            + encodeURIComponent(key),
+          { method:"POST", headers:{"Content-Type":"application/json"},
+            body: JSON.stringify({email:"lexicon-setup-check@example.invalid",
+                                  password:"checkcheck", returnSecureToken:true}) });
+        const j = await r.json().catch(()=>({}));
+        const m = (j.error && j.error.message) || "";
+        if(/API key not valid/i.test(m)) bad("apiKey 가 이 프로젝트의 것이 아닙니다. 다시 복사해 주세요.");
+        else if(/OPERATION_NOT_ALLOWED/.test(m))
+          bad("<b>이메일 로그인이 꺼져 있습니다.</b> 콘솔에서 Authentication → Sign-in method → "
+            + "이메일/비밀번호 를 켜주세요. (안내문 3단계)");
+        else if(/INVALID_LOGIN_CREDENTIALS|EMAIL_NOT_FOUND|INVALID_PASSWORD/.test(m))
+          ok("이메일 로그인이 켜져 있습니다.");
+        else if(r.ok) ok("로그인 기능이 응답합니다.");
+        else bad("로그인 쪽 응답이 뜻밖입니다: " + esc(m || ("HTTP "+r.status)));
+      }catch(e){ bad("로그인 서버에 닿지 못했습니다. 인터넷 연결을 확인해 주세요."); }
+    }
+
+    /* 3. 데이터베이스 주소와 보안 규칙 */
+    if(db && /^https:\/\//.test(db)){
+      try{
+        const r = await fetch(db + "/users/__setupcheck.json");
+        if(r.status === 401) ok("데이터베이스가 있고 <b>보안 규칙이 걸려 있습니다.</b> 가장 좋은 상태입니다.");
+        else if(r.status === 404)
+          bad("그 주소에 데이터베이스가 없습니다. 주소를 다시 확인하시거나, "
+            + "Realtime Database 를 아직 안 만드셨다면 먼저 만들어 주세요. (안내문 4단계)");
+        else if(r.ok)
+          bad("<b>데이터베이스가 아무나 읽을 수 있는 상태입니다.</b> 테스트 모드로 만드신 것 같습니다. "
+            + "안내문 5단계의 보안 규칙을 넣고 게시해 주세요.");
+        else bad("데이터베이스 응답이 뜻밖입니다: HTTP " + r.status);
+      }catch(e){ bad("데이터베이스 주소에 닿지 못했습니다. 주소에 오타가 없는지 보세요."); }
+    }
+
+    const allOk = rows.every(x => x.indexOf("ok-box") >= 0) && rows.length >= 3;
+    if(allOk && key && db){
+      try{ localStorage.setItem(FBKEY, JSON.stringify({apiKey:key, dbURL:db})); }catch(e){}
+      FB.apiKey = key; FB.dbURL = db; FB.ready = true;
+      rows.push('<div class="ok-box" style="margin-top:10px"><b>전부 통과했습니다.</b><br>'
+        + '이 기기에서 바로 로그인해 볼 수 있습니다. 다른 사람도 쓰게 하려면 '
+        + '이 두 값을 코드의 <span class="mono">const FB</span> 에 옮겨 적으면 됩니다.</div>');
+    }
+  }catch(e){
+    rows.push('<div class="warn">확인 중 오류가 났습니다: '+esc(e.message)+'</div>');
+  }
+  fbDiag = rows.join("");
+  fbChecking = false;
+  render();
+}
+
 /* ── 설정 안의 계정 칸 ── */
 function accountBox(){
   const size = kb(dataSize()), n = D.cards.length;
 
-  if(!FB.ready)
+  if(!FB.ready){
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(FBKEY) || "{}") || {}; }catch(e){}
     return '<div class="warn" style="margin-top:0"><b>지금은 이 브라우저에만 저장됩니다.</b><br>'
-      + '단어 '+n+'개 · '+size+'. 다른 기기와 이어지지 않고, 브라우저 데이터를 지우면 함께 사라집니다.<br>'
-      + '폰과 PC를 같이 쓰려면 저장소의 <b>FIREBASE.md</b> 를 따라 설정값을 넣으세요. '
-      + '그 전까지는 아래 <b>파일로 주고받기</b>로 옮길 수 있습니다.</div>';
+      + '단어 '+n+'개 · '+size+'. 다른 기기와 이어지지 않고, 브라우저 데이터를 지우면 함께 사라집니다.</div>'
+      + '<p class="note">폰과 PC를 같이 쓰려면 Firebase 설정이 한 번 필요합니다. '
+      + '저장소의 <b>FIREBASE.md</b> 를 따라 하신 뒤, 거기서 나온 값 두 개를 아래에 붙여넣고 '
+      + '<b>확인</b>을 누르세요. 무엇이 빠졌는지 하나씩 짚어 드립니다.</p>'
+      + '<input class="field" id="fb-key" placeholder="apiKey — AIza... 로 시작" value="'+esc(saved.apiKey||"")+'" style="margin-top:8px">'
+      + '<input class="field" id="fb-db" placeholder="databaseURL — https://... firebasedatabase.app" value="'+esc(saved.dbURL||"")+'" style="margin-top:8px">'
+      + '<div class="row" style="margin-top:10px">'
+      + '<button class="btn" data-a="fb-check"'+(fbChecking?" disabled":"")+'>'
+      + (fbChecking?'<span class="spin"></span>확인 중':'확인')+'</button></div>'
+      + fbDiag;
+  }
 
   if(!AUTH.uid)
     return '<p class="note" style="margin-top:0"><b>이 기기에서만</b> 쓰는 중입니다. 단어 '+n+'개 · '+size+'.<br>'
@@ -2733,6 +2830,7 @@ document.addEventListener("click", e=>{
   if(a==="au-go"){ authDo(); return; }
   if(a==="au-solo"){ setSolo(true); view="study"; render(); return; }
   if(a==="au-show"){ setSolo(false); AUTH.mode="in"; AUTH.err=""; AUTH.note=""; render(); return; }
+  if(a==="fb-check"){ fbCheck(); return; }
   if(a==="au-out"){ authOut(); return; }
   if(a==="sync-now"){ syncNow(false); return; }
   if(a==="au-pwreset"){
