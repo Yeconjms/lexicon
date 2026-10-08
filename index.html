@@ -108,6 +108,26 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
   72%{transform:scale(1.09) rotate(-3deg)}}
 .lexi.cheerloop{animation:lxcheer 1.4s ease-in-out infinite;}
 
+/* 뒤에서 뻗는 광채 — 아주 잘 하고 있을 때만 붙입니다. 흔해지면 특별하지 않습니다 */
+.st-aura{opacity:0;}
+.st-glow{fill:var(--star);opacity:.16;}
+.st-glow2{fill:var(--star-deep);opacity:.13;}
+.st-ray{fill:var(--star-deep);opacity:.5;}
+.st-rays{transform-origin:60px 46px;}
+.lexi.aura .st-aura{opacity:1;animation:lxaurapulse 3.2s ease-in-out infinite;}
+.lexi.aura .st-rays{animation:lxrayspin 16s linear infinite;}
+.lexi.aura .st-fill{filter:drop-shadow(0 0 7px rgba(246,219,99,.95));}
+@keyframes lxaurapulse{0%,100%{opacity:.7}50%{opacity:1}}
+@keyframes lxrayspin{to{transform:rotate(360deg)}}
+
+/* 오래 안 하면 빛이 꺼지고 축 처집니다 */
+.lexi.dim .st-fill{fill:#9CA7AE;}
+.lexi.dim .st-ink,.lexi.dim .st-ink2,.lexi.dim .st-limb{stroke:#59646C;}
+.lexi.dim .st-eye{fill:#59646C;}
+.lexi.dim{animation:lxsag 4.2s ease-in-out infinite;}
+@keyframes lxsag{0%,100%{transform:translateY(0) scale(1,1) rotate(0)}
+  50%{transform:translateY(4px) scale(1.035,.95) rotate(-2deg)}}
+
 /* 통계 탭 머리 — 복습 상태를 별 표정으로 */
 .moodbox{text-align:center;}
 .moodart{position:relative;display:inline-block;}
@@ -1860,6 +1880,14 @@ const SPARK = (x,y,s) => '<path class="st-spark" transform="translate('+x+' '+y+
   +'d="M0 -7 Q1.2 -1.2 7 0 Q1.2 1.2 0 7 Q-1.2 1.2 -7 0 Q-1.2 -1.2 0 -7 Z"/>';
 
 /** 표정만 바꾸고 몸통은 하나로 씁니다. mood: idle | think | happy | sleep | push */
+const AURA = '<g class="st-aura">'
+  + '<circle class="st-glow" cx="60" cy="46" r="47"/>'
+  + '<circle class="st-glow2" cx="60" cy="46" r="33"/>'
+  + '<g class="st-rays">'
+  + [0,45,90,135,180,225,270,315].map(a =>
+      '<path class="st-ray" transform="rotate('+a+' 60 46)" d="M60 -11 L62.7 15 L60 21 L57.3 15 Z"/>').join("")
+  + '</g></g>';
+
 function lexi(mood, cls){
   const dx = mood==="think" ? 2.6 : 0;
   const eyes = mood==="sleep"
@@ -1869,12 +1897,18 @@ function lexi(mood, cls){
     : mood==="angry"
     ? '<path class="st-limb" d="M42 43l13 6"/><path class="st-limb" d="M78 43l-13 6"/>'
       +'<circle class="st-eye" cx="51" cy="51" r="3.4"/><circle class="st-eye" cx="69" cy="51" r="3.4"/>'
+    : mood==="dim"
+    ? '<path class="st-limb" d="M45 49h10"/><path class="st-limb" d="M65 49h10"/>'
+      +'<path class="st-limb" opacity=".45" d="M47 54q3 2.5 6 0"/>'
+      +'<path class="st-limb" opacity=".45" d="M67 54q3 2.5 6 0"/>'
     : '<g class="st-eyes"><circle class="st-eye" cx="'+(50+dx)+'" cy="48" r="3.7"/>'
       +'<circle class="st-eye" cx="'+(70+dx)+'" cy="48" r="3.7"/></g>';
   const mouth = mood==="happy"
     ? '<path class="st-limb" d="M51 59q9 9 18 0"/>'
     : mood==="angry"
     ? '<path class="st-limb" d="M51 64q9-8 18 0"/>'
+    : mood==="dim"
+    ? '<path class="st-limb" d="M51 63q4-3 8 0t8-1"/>'
     : mood==="push"
     ? '<path class="st-limb" d="M53 61q7 4 14 0q-7 4-14 0Z"/>'
     : mood==="think"
@@ -1882,6 +1916,7 @@ function lexi(mood, cls){
     : '<path class="st-limb" d="M52 61h16"/>';
   return '<svg class="lexi '+(cls||"")+'" viewBox="0 0 120 120" aria-hidden="true">'
     /* 스티커 테두리 → 채움 → 손그림 윤곽 두 겹 */
+    + AURA
     +'<path class="st-halo" d="'+STAR_A+'"/>'
     +'<path class="st-fill" d="'+STAR_A+'"/>'
     +'<path class="st-ink" d="'+STAR_A+'"/>'
@@ -2258,7 +2293,9 @@ function greet(){
 
   const w = document.createElement("div");
   w.className = "greet"; w.id = "greet";
-  w.innerHTML = lexi(g.m, g.c + " shine") + '<div class="gline">'+esc(line)+'</div>';
+  /* 7일 이상 이어왔으면 인사할 때도 광채가 돕니다 */
+  const aura = streak() >= 7 ? " aura" : "";
+  w.innerHTML = lexi(g.m, g.c + " shine" + aura) + '<div class="gline">'+esc(line)+'</div>';
   document.body.appendChild(w);
 
   const close = () => { if(!w.parentNode) return;
@@ -2266,6 +2303,14 @@ function greet(){
   w.addEventListener("click", close);
   clearTimeout(greetT);
   greetT = setTimeout(close, 2100);
+}
+
+/** 마지막으로 복습한 날이 며칠 전인지. 기록이 없으면 -1 */
+function lastStudyDays(){
+  for(let i=0;i<400;i++){
+    if(dayStat(dayKey(new Date(Date.now()-i*DAY))).reviews > 0) return i;
+  }
+  return -1;
 }
 
 function moodNow(){
@@ -2277,6 +2322,10 @@ function moodNow(){
 
   if(!n) return {k:"sleep", t:"별이 자고 있습니다",
     s:"아직 단어가 없습니다. 사전 탭에서 하나 찾아 담아보세요."};
+  /* 오래 손을 놓은 쪽이 밀린 양보다 먼저입니다. 안 온 사람에게 밀렸다고 다그칠 일이 아닙니다 */
+  const gone = lastStudyDays();
+  if(gone >= 10) return {k:"dim", t:"별이 사그라졌습니다",
+    s:"마지막으로 공부한 지 "+gone+"일 됐습니다. 오늘 다섯 장만 해도 다시 빛나기 시작합니다."};
   if(back >= 120) return {k:"boom", t:"별이 터지기 직전입니다",
     s:"밀린 카드가 "+back+"장입니다. 오늘 조금만 해도 숨통이 트입니다. 그리고 하루 신규 단어를 줄이세요."};
   if(back >= 50) return {k:"angry", t:"별이 화났습니다",
@@ -2302,9 +2351,10 @@ function moodPanel(){
   for(let i=0;i<extra;i++) mini += '<span class="ministar" style="animation-delay:'+(i*170)+'ms">★</span>';
 
   const face = m.k==="blaze" ? "happy" : m.k==="boom" ? "angry" : m.k;
-  const cls  = m.k==="blaze" ? "shine cheerloop"
+  const cls  = m.k==="blaze" ? "aura shine cheerloop"
              : m.k==="boom"  ? "boom"
              : m.k==="angry" ? "shake"
+             : m.k==="dim"   ? "dim"
              : m.k==="happy" ? "shine bob"
              : m.k==="sleep" ? "" : "bob";
 
@@ -2817,18 +2867,23 @@ function viewSettings(){
   }
   h+=setBox("문제 형식과 발음", s.typing?"타이핑 켜짐":"뒤집기만", inner);
 
-  /* 2. 사전 검색 */
-  inner='<div class="seg">'
-    +[["none","무료 · 기본"],["gemini","Gemini · 무료 키"],["anthropic","Claude · 유료"]].map(([k,l])=>
+  /* 2. 사전 — 무료가 기본, AI 는 각자 자기 키 */
+  /* 무료 사전이 기본이고 AI 는 각자 자기 키로 더하는 것입니다.
+     앱에 키를 박아 두면 공개 저장소에서 새고, 쓰는 사람 전부가 한 사람 한도를 나눠 씁니다. */
+  inner='<p class="note" style="margin-top:0"><b>아무것도 안 해도 사전이 동작합니다.</b> '
+    +'영어 뜻은 위키낱말사전 원문, 한국어는 기계 번역입니다. 한국어가 가끔 어색하지만 '
+    +'담은 뒤 고치면 됩니다. 단어를 한꺼번에 넣을 때는 단어 탭의 '
+    +'<b>Claude용 프롬프트 복사</b>를 쓰세요. 역시 무료입니다.</p>'
+    +'<div class="h2" style="margin:16px 0 8px">내 키로 더 좋은 뜻 받기 <span style="font-weight:400;color:var(--muted)">(선택)</span></div>'
+    +'<p class="note" style="margin-top:0">자기 API 키를 넣으면 한국어 뜻이 기계 번역보다 자연스러워집니다. '
+    +'<b>키는 이 기기에만 저장되고 다른 사람과 공유되지 않습니다.</b> '
+    +'클라우드에도 백업 파일에도 올라가지 않습니다. 쓰려는 사람이 각자 자기 키를 넣어야 합니다.</p>'
+    +'<div class="seg" style="margin-top:10px">'
+    +[["none","안 씀"],["gemini","내 Gemini 키"],["anthropic","내 Claude 키"]].map(([k,l])=>
       '<button data-a="prov" data-k="'+k+'"'+(s.provider===k?' class="on"':'')+'>'+l+'</button>').join("")
     +'</div>';
-  if(s.provider==="none")
-    inner+='<p class="note"><b>키 없이 바로 씁니다.</b> 영어 뜻은 위키낱말사전 원문, 한국어는 기계 번역입니다. '
-      +'한국어가 어색할 때가 있으니 담은 뒤 고치면 됩니다.<br>'
-      +'단어를 한꺼번에 넣을 때는 단어 탭의 <b>Claude용 프롬프트 복사</b>를 쓰세요. 역시 무료입니다.</p>';
   if(s.provider==="gemini")
-    inner+='<p class="note">Google AI Studio(<span class="mono">aistudio.google.com</span>)에서 카드 없이 무료 키를 받습니다. '
-      +'한국어 뜻이 무료 사전보다 자연스럽습니다.<br>'
+    inner+='<p class="note">Google AI Studio(<span class="mono">aistudio.google.com</span>)에서 카드 없이 무료 키를 받습니다.<br>'
       +'분당·일일 한도가 있고 수치는 자주 바뀝니다. 무료 티어로 보낸 내용은 구글이 모델 개선에 쓸 수 있습니다.</p>'
       +'<input class="field" id="s-gkey" type="password" placeholder="Gemini API 키" value="'+esc(s.geminiKey)+'" style="margin-top:10px">'
       +'<input class="field" id="s-gmodel" placeholder="모델 이름" value="'+esc(s.geminiModel)+'" style="margin-top:8px">'
@@ -2838,10 +2893,9 @@ function viewSettings(){
       +'<input class="field" id="s-key" type="password" placeholder="sk-ant-..." value="'+esc(s.apiKey)+'" style="margin-top:10px">'
       +'<input class="field" id="s-model" placeholder="모델 이름" value="'+esc(s.model)+'" style="margin-top:8px">';
   if(s.provider!=="none")
-    inner+='<div class="row" style="margin-top:10px"><button class="btn ghost" data-a="test-ai" id="testai">연결 테스트</button>'
-      +'<span class="note" style="margin:0">키는 이 기기에만 저장됩니다.</span></div>';
-  h+=setBox("사전 검색",
-    s.provider==="none"?"무료 사전":s.provider==="gemini"?(s.geminiKey?"Gemini":"Gemini · 키 필요"):(s.apiKey?"Claude":"Claude · 키 필요"),
+    inner+='<div class="row" style="margin-top:10px"><button class="btn ghost" data-a="test-ai" id="testai">연결 테스트</button></div>';
+  h+=setBox("사전",
+    s.provider==="none"?"무료 사전":s.provider==="gemini"?(s.geminiKey?"무료 + 내 Gemini 키":"Gemini · 키 필요"):(s.apiKey?"무료 + 내 Claude 키":"Claude · 키 필요"),
     inner, s.provider!=="none" && !(s.provider==="gemini"?s.geminiKey:s.apiKey));
 
   /* 3. 데이터 — 동기화 · 데이터 절약 · 파일 · 초기화를 한 곳에 */
