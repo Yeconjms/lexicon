@@ -120,13 +120,19 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 @keyframes lxaurapulse{0%,100%{opacity:.7}50%{opacity:1}}
 @keyframes lxrayspin{to{transform:rotate(360deg)}}
 
-/* 오래 안 하면 빛이 꺼지고 축 처집니다 */
+/* 오래 안 하면 빛이 꺼지고 허리가 굽습니다 */
 .lexi.dim .st-fill{fill:#9CA7AE;}
 .lexi.dim .st-ink,.lexi.dim .st-ink2,.lexi.dim .st-limb{stroke:#59646C;}
 .lexi.dim .st-eye{fill:#59646C;}
-.lexi.dim{animation:lxsag 4.2s ease-in-out infinite;}
-@keyframes lxsag{0%,100%{transform:translateY(0) scale(1,1) rotate(0)}
-  50%{transform:translateY(4px) scale(1.035,.95) rotate(-2deg)}}
+.st-drop{fill:#7FA8C9;opacity:.8;}
+/* 발을 축으로 앞으로 기울어야 허리가 굽은 것처럼 보입니다 */
+.lexi.dim{transform-origin:50% 88%;animation:lxsag 4.6s ease-in-out infinite;}
+@keyframes lxsag{
+  0%,100%{transform:rotate(-7deg) translateY(2px) scale(1.03,.95)}
+  50%{transform:rotate(-10deg) translateY(6px) scale(1.05,.92)}}
+.lexi.dim .st-drop{animation:lxdrop 4.6s ease-in-out infinite;}
+@keyframes lxdrop{0%,100%{opacity:.72;transform:translateY(0) scale(1)}
+  50%{opacity:.95;transform:translateY(2.4px) scale(1.08)}}
 
 /* 통계 탭 머리 — 복습 상태를 별 표정으로 */
 .moodbox{text-align:center;}
@@ -1898,9 +1904,14 @@ function lexi(mood, cls){
     ? '<path class="st-limb" d="M42 43l13 6"/><path class="st-limb" d="M78 43l-13 6"/>'
       +'<circle class="st-eye" cx="51" cy="51" r="3.4"/><circle class="st-eye" cx="69" cy="51" r="3.4"/>'
     : mood==="dim"
-    ? '<path class="st-limb" d="M45 49h10"/><path class="st-limb" d="M65 49h10"/>'
-      +'<path class="st-limb" opacity=".45" d="M47 54q3 2.5 6 0"/>'
-      +'<path class="st-limb" opacity=".45" d="M67 54q3 2.5 6 0"/>'
+    /* 바깥쪽이 처진 반달 눈과 눈 밑 그늘 두 줄. 눈썹은 안쪽이 올라가 울상이 됩니다 */
+    ? '<path class="st-limb" style="stroke-width:1.9" d="M41.2 43Q47.6 36.2 55.4 38.6"/>'
+      +'<path class="st-limb" style="stroke-width:1.9" d="M78.8 43Q72.4 36.2 64.6 38.6"/>'
+      +'<path class="st-eye" d="M41.4 54Q48.4 43.2 57.6 47.2Q49 54.4 41.4 54Z"/>'
+      +'<path class="st-eye" d="M78.6 54Q71.6 43.2 62.4 47.2Q71 54.4 78.6 54Z"/>'
+      +'<circle class="st-fill" cx="53.2" cy="48.2" r="1.4"/>'+'<circle class="st-fill" cx="66.8" cy="48.2" r="1.4"/>'
+      +'<path class="st-limb" style="stroke-width:2" opacity=".38" d="M42.8 57.4q6.4 4.8 13-1.2"/>'
+      +'<path class="st-limb" style="stroke-width:2" opacity=".38" d="M77.2 57.4q-6.4 4.8-13-1.2"/>'
     : '<g class="st-eyes"><circle class="st-eye" cx="'+(50+dx)+'" cy="48" r="3.7"/>'
       +'<circle class="st-eye" cx="'+(70+dx)+'" cy="48" r="3.7"/></g>';
   const mouth = mood==="happy"
@@ -1908,7 +1919,8 @@ function lexi(mood, cls){
     : mood==="angry"
     ? '<path class="st-limb" d="M51 64q9-8 18 0"/>'
     : mood==="dim"
-    ? '<path class="st-limb" d="M51 63q4-3 8 0t8-1"/>'
+    /* 한쪽으로 삐뚜름하게 쳐진 울상 입 */
+    ? '<path class="st-limb" d="M48.6 68.2Q54.4 60.6 60.8 63.4Q67.2 66.2 71.6 67"/>'
     : mood==="push"
     ? '<path class="st-limb" d="M53 61q7 4 14 0q-7 4-14 0Z"/>'
     : mood==="think"
@@ -1921,14 +1933,28 @@ function lexi(mood, cls){
     +'<path class="st-fill" d="'+STAR_A+'"/>'
     +'<path class="st-ink" d="'+STAR_A+'"/>'
     +'<path class="st-ink2" d="'+STAR_B+'"/>'
-    /* 팔 — 별 뒤에서 나와 아래로 뻗습니다 */
-    +'<path class="st-limb" d="M36 52 L19 67"/>'
-    +'<path class="st-limb" d="M19 67l-5.5-1.4M19 67l-2.6 4.6M19 67l1.6-5.4"/>'
-    +'<path class="st-limb" d="M84 52 L101 67"/>'
-    +'<path class="st-limb" d="M101 67l5.5-1.4M101 67l2.6 4.6M101 67l-1.6-5.4"/>'
-    /* 다리 */
-    +'<path class="st-limb" d="M54 72 L50 105"/><path class="st-limb" d="M50 105h-7.5"/>'
-    +'<path class="st-limb" d="M66 72 L71 105"/><path class="st-limb" d="M71 105h7.5"/>'
+    /* 팔 — 별 뒤에서 나와 아래로 뻗습니다. 지쳤을 땐 축 늘어뜨립니다 */
+    + (mood==="dim"
+      /* 팔은 얼굴을 가리지 않게 바깥으로 빼서 늘어뜨립니다 */
+      ? '<path class="st-limb" d="M32 55 Q23 68 22 83"/>'
+       +'<path class="st-limb" d="M22 83l-4.2 1.6M22 83l.4 4.6M22 83l3.8 2.2"/>'
+       +'<path class="st-limb" d="M88 55 Q97 68 98 83"/>'
+       +'<path class="st-limb" d="M98 83l4.2 1.6M98 83l-.4 4.6M98 83l-3.8 2.2"/>'
+       +'<path class="st-limb" d="M55 72 L52 88 L45.5 99"/><path class="st-limb" d="M45.5 99h-7.5"/>'
+       +'<path class="st-limb" d="M66 72 L69.5 88 L64 99"/><path class="st-limb" d="M64 99h7.5"/>'
+       /* 그렁그렁 맺힌 눈물 */
+       +'<path class="st-drop" d="M45 60.8q-3 7.8 0 10.6q3-2.8 0-10.6Z"/>'
+       +'<path class="st-drop" d="M75 60.8q3 7.8 0 10.6q-3-2.8 0-10.6Z"/>'
+      : '')
+    + (mood==="dim" ? '' :
+       '<path class="st-limb" d="M36 52 L19 67"/>'
+      +'<path class="st-limb" d="M19 67l-5.5-1.4M19 67l-2.6 4.6M19 67l1.6-5.4"/>'
+      +'<path class="st-limb" d="M84 52 L101 67"/>')
+    + (mood==="dim" ? '' :
+       '<path class="st-limb" d="M101 67l5.5-1.4M101 67l2.6 4.6M101 67l-1.6-5.4"/>'
+      /* 다리 */
+      +'<path class="st-limb" d="M54 72 L50 105"/><path class="st-limb" d="M50 105h-7.5"/>'
+      +'<path class="st-limb" d="M66 72 L71 105"/><path class="st-limb" d="M71 105h7.5"/>')
     + eyes + mouth
     /* 반짝임 — .shine 을 붙였을 때만 보입니다 */
     + SPARK(104,26,1) + SPARK(18,22,.72) + SPARK(96,96,.85)
