@@ -1584,6 +1584,8 @@ function importPanel(){
     +'placeholder="sarcasm&#10;condescending&#10;&#10;또는&#10;sarcasm,비꼬기,&quot;Sheldon, that was sarcasm.&quot;,detect sarcasm"></textarea>'
     +'<div class="row" style="margin-top:10px">'
     +'<button class="btn ghost" data-a="preview">확인하기</button>'
+    +'<button class="btn ghost" data-a="csv-pick">파일에서 넣기</button>'
+    +'<input type="file" id="csvin" accept=".csv,.tsv,.txt,text/csv,text/plain" style="display:none">'
     +'<button class="btn ghost" data-a="copy-prompt">Claude용 프롬프트 복사</button>'
     +(importPreview?'<button class="btn" data-a="commit">'+importPreview.fresh.length+'개 추가</button>':'')
     +(importPreview&&aiReady()&&importPreview.missing?'<button class="btn" data-a="bulk-fill" id="bulkbtn">뜻 '+importPreview.missing+'개 채우기</button>':'')
@@ -2119,20 +2121,39 @@ function viewLogin(){
 }
 
 /* ── 설정 안의 계정 칸 ── */
+/** 지금 단어장이 실제로 몇 바이트인지. 한 번 오갈 때 이만큼 쓰입니다 */
+function dataSize(){
+  const t = payloadJSON();
+  try{ return new Blob([t]).size; }catch(e){ return t.length; }
+}
+const kb = n => n < 1024 ? (n + "B") : (n/1024).toFixed(n < 10240 ? 1 : 0) + "KB";
+
+/* ── 설정 안의 계정 칸 ── */
 function accountBox(){
+  const size = kb(dataSize()), n = D.cards.length;
+
   if(!FB.ready)
-    return '<div class="warn" style="margin-top:0"><b>로그인 기능이 아직 연결되지 않았습니다.</b><br>'
-      + 'Firebase 설정값이 코드에 들어가야 동작합니다. README 의 "로그인 붙이기" 안내를 보세요.</div>';
+    return '<div class="warn" style="margin-top:0"><b>지금은 이 브라우저에만 저장됩니다.</b><br>'
+      + '단어 '+n+'개 · '+size+'. 다른 기기와 이어지지 않고, 브라우저 데이터를 지우면 함께 사라집니다.<br>'
+      + '폰과 PC를 같이 쓰려면 저장소의 <b>FIREBASE.md</b> 를 따라 설정값을 넣으세요. '
+      + '그 전까지는 아래 <b>파일로 주고받기</b>로 옮길 수 있습니다.</div>';
+
   if(!AUTH.uid)
-    return '<p class="note" style="margin-top:0">지금은 <b>이 기기에서만</b> 쓰는 중입니다. '
+    return '<p class="note" style="margin-top:0"><b>이 기기에서만</b> 쓰는 중입니다. 단어 '+n+'개 · '+size+'.<br>'
       + '로그인하면 지금까지 모은 단어를 계정으로 옮기고, 폰과 PC가 같은 단어장을 보게 됩니다.</p>'
       + '<button class="btn wide" data-a="au-show" style="margin-top:10px">로그인 / 가입하기</button>';
-  return '<p class="note" style="margin-top:0"><span class="ok">'+esc(AUTH.email)+'</span> 로 로그인되어 있습니다.<br>'
-    + '마지막 동기화 '+syncAgo()+' · 추가하거나 채점하면 잠시 뒤 자동으로 올라갑니다.</p>'
-    + '<div class="row" style="margin-top:10px">'
-    + '<button class="btn" data-a="sync-now">지금 동기화</button>'
-    + '<button class="btn ghost" data-a="au-out">로그아웃</button></div>'
+
+  return '<p class="note" style="margin-top:0"><span class="ok">'+esc(AUTH.email)+'</span> 로 로그인되어 있습니다. '
+    + '단어 '+n+'개 · '+size+'.</p>'
+    + '<p class="note"><b>저장과 동기화는 자동입니다.</b> 단어를 넣거나 채점하면 잠시 뒤 올라가고, '
+    + '앱을 열 때 받아옵니다. 평소에는 아무것도 누르지 않아도 됩니다.<br>'
+    + '마지막으로 맞춘 시각 '+syncAgo()+'. 다른 기기에서 방금 넣은 단어를 '
+    + '<b>지금 당장</b> 가져오고 싶을 때만 아래를 누르세요.</p>'
     + '<div class="row" style="margin-top:8px">'
+    + '<button class="linkish" data-a="sync-now">지금 바로 맞추기</button>'
+    + '<span style="flex:1"></span>'
+    + '<button class="linkish" data-a="au-out">로그아웃</button></div>'
+    + '<div class="row" style="margin-top:2px">'
     + '<button class="linkish" data-a="au-pwreset">비밀번호 바꾸기</button>'
     + '<span style="flex:1"></span>'
     + '<button class="linkish" style="color:var(--rose)" data-a="au-delete">계정 지우기</button></div>';
@@ -2219,8 +2240,10 @@ function viewSettings(){
 
   /* 3. 데이터 — 동기화 · 데이터 절약 · 파일 · 초기화를 한 곳에 */
   inner = accountBox();
-  inner+=sw("lowdata","데이터 아껴 쓰기","자동 동기화를 1분 간격으로 늦추고, 앱으로 돌아올 때 자동으로 받아오지 않습니다. "
-      +"바뀐 게 없으면 어차피 주고받지 않으니 평소에는 꺼도 됩니다",s.lowData);
+  inner+=sw("lowdata","데이터 아껴 쓰기",
+    "자동 저장을 8초 뒤에서 1분 뒤로 미룹니다. 공부하는 동안 오가는 횟수가 줄어듭니다. "
+    +"한 번 오갈 때 "+kb(dataSize())+" 정도이고, 바뀐 게 없으면 켜든 끄든 올리지 않습니다. "
+    +"휴대폰 데이터로 쓸 때 켜세요.",s.lowData);
   inner+='<div class="h2" style="margin:16px 0 10px">파일로 주고받기</div>'
     +'<p class="note" style="margin-top:0">동기화를 쓰면 평소엔 필요 없습니다. '
     +'토큰이 막히거나 Gist가 사라졌을 때 되살릴 수단으로 남겨 둡니다.</p>'
@@ -2275,13 +2298,32 @@ function doPreview(){
   importPreview={items, fresh, dup:items.length-fresh.length, missing:fresh.filter(x=>!x.meaning).length, raw};
   render(); $("#imp").value=raw;
 }
-const PROMPT_HEAD = "아래 영단어들의 사전 정보를 CSV로만 출력해줘. 헤더 없이, 한 단어당 한 줄.\n"
-  + "열 순서: 단어,뜻,예문,연어\n"
-  + "- 뜻: 한국어 대표 뜻 1~3개를 슬래시(/)로 구분\n"
-  + "- 예문: 단어 옆에 대사나 문장이 함께 적혀 있으면 그것을 그대로 예문으로 쓸 것. 없으면 자연스러운 영어 문장 1개를 만들 것 (15단어 이내)\n"
-  + "- 연어: 자주 쓰이는 연어 2~3개를 세미콜론(;)으로 구분\n"
-  + "- 쉼표가 들어가는 칸은 큰따옴표로 감쌀 것\n"
-  + "- 설명이나 코드펜스 없이 CSV만 출력\n\n단어 목록:\n";
+const PROMPT_HEAD =
+    "너는 영단어 학습 자료를 정리하는 도우미야. 아래 자료를 Lexicon 플래시카드용 CSV로 바꿔줘.\n\n"
+  + "[출력 형식]\n"
+  + "- CSV만 출력. 설명도, 코드펜스도, 헤더 줄도 넣지 마.\n"
+  + "- 한 단어당 한 줄. 열 순서는 정확히 이 여섯 개:\n"
+  + "  단어,뜻,예문,연어,태그,팩\n"
+  + "- 쉼표나 큰따옴표가 들어가는 칸은 큰따옴표로 감싸고, 안의 큰따옴표는 두 번 써.\n"
+  + "- 비는 칸은 그냥 비워 둬. 쉼표 개수는 모든 줄에서 같아야 해.\n\n"
+  + "[각 열에 넣을 것]\n"
+  + "- 단어: 영어 표제어. 변형형이면 기본형으로 바꿔 (ran -> run, 복수형 -> 단수형).\n"
+  + "  숙어나 구동사는 그대로 둬 (put up with).\n"
+  + "- 뜻: 한국어 뜻 1~3개를 슬래시(/)로 구분. 문장이 아니라 사전처럼 짧게.\n"
+  + "  (좋음: 완화하다/누그러뜨리다  나쁨: 어떤 것을 덜 심각하게 만드는 것을 뜻한다)\n"
+  + "- 예문: 자료에 그 단어가 들어간 문장이나 대사가 있으면 그것을 그대로 써.\n"
+  + "  없으면 15단어 이내의 자연스러운 영어 문장을 하나 만들어.\n"
+  + "- 연어: 자주 함께 쓰는 표현 2~3개를 세미콜론(;)으로 구분.\n"
+  + "- 태그: 자료에 분류가 적혀 있으면 넣고, 없으면 비워 둬. 여러 개면 세미콜론(;)으로 구분.\n"
+  + "- 팩: 자료에 출처나 회차가 적혀 있으면 계층을 슬래시로 표현해 (영 쉘던/S1/E02).\n"
+  + "  없으면 비워 둬.\n\n"
+  + "[자료 읽는 법]\n"
+  + "- 자료는 정리되어 있지 않을 수 있어. 줄바꿈, 번호, 하이픈, 메모가 섞여 있어도 알아서 추려.\n"
+  + "- 한 줄에 단어와 뜻이 같이 적혀 있으면 그 뜻을 살리되 위 형식에 맞게 다듬어.\n"
+  + "- 같은 단어가 여러 번 나오면 한 줄로 합쳐.\n"
+  + "- 영어 단어가 아닌 줄(제목, 날짜, 메모)은 버려.\n"
+  + "- 자료에 뜻이 적혀 있으면 그걸 우선하고, 명백히 틀렸을 때만 고쳐.\n\n"
+  + "[자료]\n";
 
 /* ══════════════════ AI 자동 채우기 ══════════════════ */
 const aiReady = () => (D.s.provider==="gemini" && D.s.geminiKey) || (D.s.provider==="anthropic" && D.s.apiKey);
@@ -2472,6 +2514,7 @@ document.addEventListener("click", e=>{
   if(a==="front"){ D.s.front=t.dataset.k; save(); render(); return; }
   if(a==="test-voice"){ speak("The underlying trend is improving."); return; }
   if(a==="preview"){ doPreview(); return; }
+  if(a==="csv-pick"){ const el=$("#csvin"); if(el){ el.value=""; el.click(); } return; }
   if(a==="bulk-fill"){ bulkFill(); return; }
   if(a==="commit"){
     D.cards=D.cards.concat(importPreview.fresh.map(x=>newCard(x)));
@@ -2534,9 +2577,17 @@ document.addEventListener("click", e=>{
     return;
   }
   if(a==="reset-all"){
-    askYes("전부 삭제할까요?","단어 "+D.cards.length+"개와 학습 기록이 모두 사라집니다. 되돌릴 수 없습니다.","전부 삭제",true)
-      .then(ok=>{ if(!ok) return;
+    askText("정말 전부 삭제할까요?","삭제","",
+      "단어 "+D.cards.length+"개와 학습 기록이 모두 사라집니다. 되돌릴 수 없습니다.\n"
+      +(AUTH.uid?"계정에 올라간 것도 함께 지워지고, 다른 기기에서도 사라집니다.\n":"")
+      +"\n맞으면 아래 칸에 \u2018삭제\u2019 두 글자를 직접 적어 주세요.")
+      .then(v=>{
+        if(String(v||"").trim()!=="삭제"){ toast("지우지 않았습니다"); return; }
+        /* 묘비를 남겨야 동기화로 되살아나지 않습니다 */
+        const now=Date.now();
+        D.cards.forEach(c=>{ D.del[(c.word||"").toLowerCase()]=now; });
         D.cards=[]; D.log={}; D.packs=[]; importPreview=null; packPath=""; D.s.lastPack="";
+        D.s.pushSig="";
         save(); render(); toast("전부 지웠습니다"); });
     return;
   }
@@ -2590,6 +2641,26 @@ document.addEventListener("change", e=>{
   if(e.target.id==="s-model"){ D.s.model=e.target.value.trim()||"claude-sonnet-5"; save(); return; }
   if(e.target.id==="s-voice"){ D.s.voiceURI=e.target.value; save(); return; }
   if(e.target.id==="m-tag"){ mtag=e.target.value; render(); return; }
+  if(e.target.id==="csvin"){
+    const f=e.target.files[0]; if(!f) return;
+    const rd=new FileReader();
+    rd.onload=()=>{
+      let txt=new TextDecoder("utf-8").decode(new Uint8Array(rd.result));
+      /* 엑셀에서 저장한 한국어 CSV 는 UTF-8 이 아닌 경우가 많습니다.
+         글자가 깨졌으면(U+FFFD) 한국어 인코딩으로 다시 읽습니다 */
+      if(txt.indexOf("\uFFFD")>=0){
+        try{ txt=new TextDecoder("euc-kr").decode(new Uint8Array(rd.result)); }catch(err){}
+      }
+      const box=$("#imp");
+      if(!box){ toast("단어 탭에서 다시 시도해 주세요"); return; }
+      box.value=txt.replace(/^\uFEFF/,"");
+      doPreview();
+      toast(f.name+" 을 읽었습니다");
+    };
+    rd.onerror=()=>toast("파일을 읽지 못했습니다");
+    rd.readAsArrayBuffer(f);
+    return;
+  }
   if(e.target.id==="filein"){
     const f=e.target.files[0]; if(!f) return;
     const rd=new FileReader();
