@@ -1435,7 +1435,9 @@ function viewPacks(){
       + stat(st.leech,"누수", st.leech?"var(--rose)":"")+'</div>'
       +'<div style="margin-top:12px;display:grid;gap:7px">'
       +'<button class="btn wide" data-a="pack-review" '+(st.due?"":"disabled")+'>이 팩 복습 · '+st.due+'장</button>'
-      +'<button class="btn ghost wide" data-a="pack-sweep" '+(st.n?"":"disabled")+'>전체 훑기 · '+st.n+'장 (일정 영향 없음)</button>'
+      +'<button class="btn ghost wide" data-a="pack-sweep" '+(st.n?"":"disabled")+'>전체 훑기 · '+st.n+'장</button>'
+      +'<p class="note" style="margin:2px 0 0">복습은 오늘 차례가 된 것만 나오고 일정이 바뀝니다. '
+      +'훑기는 차례와 상관없이 전부 보여주고 일정을 바꾸지 않습니다.</p>'
       +'</div>';
     h+='<div class="row" style="margin-top:10px">'
       +'<button class="btn sm ghost" data-a="pack-csv">CSV로 내보내기</button>'
@@ -1474,6 +1476,14 @@ function viewPacks(){
       +'<div><div style="font-size:15px;font-weight:600">분류 없음</div><div class="meta">'+noneCount+'단어</div></div>'
       +'<span class="muted" style="font-size:18px">›</span></div></div></div>';
   }
+
+  /* 아직 아무것도 없을 때 */
+  if(!packPath && !kids.length && !noneCount)
+    h+='<div class="panel"><div class="empty">'+lexi("idle","pop")
+      +'<h3 style="margin-top:16px">아직 팩이 없습니다</h3>'
+      +'<p>팩은 단어를 모아두는 폴더입니다. 드라마 회차나 시험 범위처럼<br>'
+      +'나중에 "그때 그 단어들"을 찾고 싶은 단위로 만들면 됩니다.<br>'
+      +'안 만들어도 단어는 넣을 수 있습니다.</p></div></div>';
 
   /* 이 경로에 직접 속한 단어 — 실패 많은 순 */
   if(packPath && exact.length){
@@ -1518,15 +1528,24 @@ function viewManage(){
   let h = S ? '<div class="panel" style="padding:11px 15px"><div class="row" style="justify-content:space-between">'
     +'<span class="note" style="margin:0">학습이 진행 중입니다 ('+(S.idx+1)+'/'+S.queue.length+')</span>'
     +'<button class="btn sm" data-a="resume">학습으로 돌아가기</button></div></div>' : '';
+  /* 빨리 넣는 데 필요한 건 단어와 뜻뿐입니다. 나머지는 접어 둡니다 */
+  const hasDetail = !!(e && (e.example || e.collocation || (e.tags||[]).length));
   h+='<div class="panel"><div class="h2">'+(e?"단어 수정":"단어 추가")+'</div>'
     +'<div style="display:grid;gap:8px">'
-    +'<div><div class="note" style="margin:0 0 4px">팩</div>'+packSelect("f-pack",curPack)+'</div>'
+    +'<div><div class="note" style="margin:0 0 4px">팩 — 어디서 모은 단어인지</div>'+packSelect("f-pack",curPack)+'</div>'
     +'<input class="field" id="f-word" placeholder="영단어" autocapitalize="off" spellcheck="false" value="'+esc(e?e.word:"")+'">'
-    +'<input class="field" id="f-mean" placeholder="뜻" value="'+esc(e?e.meaning:"")+'">'
+    +'<input class="field" id="f-mean" placeholder="뜻 — 짧게, 여러 개면 / 로 구분" value="'+esc(e?e.meaning:"")+'">'
+    +'<details class="set"'+(hasDetail?" open":"")+' style="margin:0">'
+    +'<summary><strong>자세히</strong><span>예문 · 함께 쓰는 표현 · 태그</span></summary>'
+    +'<div class="inner" style="display:grid;gap:8px">'
     +'<input class="field" id="f-ex" placeholder="예문 — 미드 대사를 그대로 넣으면 기억에 잘 남습니다" value="'+esc(e?e.example:"")+'">'
-    +'<div class="row" style="flex-wrap:nowrap">'
-    +'<input class="field" id="f-col" placeholder="연어" value="'+esc(e?e.collocation:"")+'">'
-    +'<input class="field" id="f-tag" placeholder="태그" value="'+esc(e?(e.tags||[]).join(", "):"")+'"></div>'
+    +'<input class="field" id="f-col" placeholder="함께 쓰는 표현 — 예: mitigate risk; mitigate the impact" value="'+esc(e?e.collocation:"")+'">'
+    +'<input class="field" id="f-tag" placeholder="태그 — 주제 표시, 쉼표로 구분 (예: 매크로, 시험)" value="'+esc(e?(e.tags||[]).join(", "):"")+'">'
+    +'<p class="note" style="margin:0"><b>팩</b>은 폴더처럼 한 곳에만 넣는 것이고, '
+    +'<b>태그</b>는 여러 개를 겹쳐 붙이는 주제 표시입니다. 아래 목록에서 태그로 걸러 볼 수 있습니다.<br>'
+    +'<b>함께 쓰는 표현</b>은 그 단어가 보통 어떤 말과 붙어 다니는지입니다. 카드 뒷면에 같이 보입니다.<br>'
+    +'셋 다 비워도 됩니다.</p>'
+    +'</div></details>'
     +'<div class="row"><button class="btn" data-a="save-word">'+(e?"저장":"추가")+'</button>'
     +'<button class="btn ghost" data-a="clear-form">비우기</button>'
     + (aiReady()?'<button class="btn ghost" data-a="fill-form">뜻 자동 채우기</button>':'')
@@ -1536,7 +1555,8 @@ function viewManage(){
     + (e&&e.susp?'<p class="note" style="margin:0">이 단어는 복습에 나오지 않습니다.</p>':'')
     + (e&&e.leech?'<div class="warn" style="margin-top:0">'+e.lapses+'번 틀린 단어입니다. 뜻이 애매하거나 예문이 없으면 고쳐보시고, '
       +'그래도 안 붙으면 복습에서 빼두세요.</div>':'')
-    +(e?'':'<p class="note" style="margin:0">팩은 한 번 고르면 다음 단어에도 그대로 유지됩니다.</p>')
+    +(e?'':'<p class="note" style="margin:0">팩은 한 번 고르면 다음 단어에도 그대로 유지됩니다. '
+      +'사전 탭에서 찾아 담으면 뜻과 예문이 자동으로 들어갑니다.</p>')
     +'</div></div>';
   h+=importPanel();
   h+='<div class="panel"><div class="row" style="margin-bottom:12px;flex-wrap:nowrap">'
