@@ -42,17 +42,16 @@ https://yeconjms.github.io/lexicon/ 에 들어가 이메일로 가입합니다.
 예: aB3xK9mPqR2sT5vW8yZ1cD4eF6gH
 ```
 
-### 3단계 · 번호를 앱에 넣기 (클로드)
+### 3단계 · 번호를 앱에 넣기 (클로드) — 2026-10-09 완료
 
-`index.html` 의 `ADMIN_UID` 에 넣고 올립니다. 깃허브 배포에 2~3분 걸립니다.
-**이게 끝난 걸 확인한 다음에 4단계로 갑니다.**
+`index.html` 의 `ADMIN_UID` 에 `fPqN8D8aATVfdbzmxubbSiTsWp83` 를 넣고 배포했습니다.
 
 ### 4단계 · 보안 규칙 바꾸기 (정민서)
 
 Firebase 콘솔 → **Realtime Database → 규칙** 탭.
 내용을 **전부 지우고** 아래를 붙여넣은 뒤 **게시** 를 누릅니다.
 
-`내번호` 가 **세 군데** 있습니다. 2단계에서 복사한 번호로 모두 바꾸세요.
+**정민서 번호(`fPqN8D8aATVfdbzmxubbSiTsWp83`)가 이미 들어 있습니다.** 그대로 붙여넣기만 하면 됩니다.
 
 ```json
 {
@@ -60,14 +59,14 @@ Firebase 콘솔 → **Realtime Database → 규칙** 탭.
     "users": {
       "$uid": {
         ".read": "auth !== null && auth.uid === $uid && root.child('directory').child($uid).child('ok').val() === true",
-        ".write": "auth !== null && ((auth.uid === $uid && root.child('directory').child($uid).child('ok').val() === true) || auth.uid === '내번호')"
+        ".write": "auth !== null && ((auth.uid === $uid && root.child('directory').child($uid).child('ok').val() === true) || auth.uid === 'fPqN8D8aATVfdbzmxubbSiTsWp83')"
       }
     },
     "directory": {
-      ".read": "auth !== null && auth.uid === '내번호'",
+      ".read": "auth !== null && auth.uid === 'fPqN8D8aATVfdbzmxubbSiTsWp83'",
       "$uid": {
         ".read": "auth !== null && auth.uid === $uid",
-        ".write": "auth !== null && auth.uid === '내번호'",
+        ".write": "auth !== null && auth.uid === 'fPqN8D8aATVfdbzmxubbSiTsWp83'",
         "email": { ".write": "auth !== null && auth.uid === $uid" },
         "name":  { ".write": "auth !== null && auth.uid === $uid && !data.exists()" },
         "nick":  { ".write": "auth !== null && auth.uid === $uid" },
