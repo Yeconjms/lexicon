@@ -2787,7 +2787,13 @@ async function ensureAccess(){
     if(AUTH.nick) who.nick = AUTH.nick;
     if(!mine) await dbWrite("directory/"+AUTH.uid, Object.assign({email:AUTH.email, at:now, seen:now}, who));
     else{
-      await dbWrite("directory/"+AUTH.uid, Object.assign({email:AUTH.email, seen:now}, who));
+      /* 이미 적혀 있는 칸은 다시 보내지 않습니다. 이름은 보안 규칙에서 한 번만 쓸 수 있어서,
+         같은 값을 다시 보내면 쓰기 전체가 거부됩니다. 그러면 아래 승인 검사까지 통째로
+         실패하고 catch 로 빠져 승인 없이 들어와 버립니다 — "다시 확인" 단추가 그 통로였습니다 */
+      const up = {email:AUTH.email, seen:now};
+      if(AUTH.name && !mine.name) up.name = AUTH.name;
+      if(AUTH.nick && !mine.nick) up.nick = AUTH.nick;
+      await dbWrite("directory/"+AUTH.uid, up);
       AUTH.name = AUTH.name || mine.name || "";
       AUTH.nick = AUTH.nick || mine.nick || "";
     }
@@ -2795,7 +2801,10 @@ async function ensureAccess(){
        이게 없으면 관리자 본인이 자기 단어장을 못 읽습니다 */
     if(AUTH.uid === ADMIN_UID && !(mine && mine.ok === true))
       await dbWrite("directory/"+AUTH.uid, {ok:true});
-    AUTH.approved = (AUTH.uid === ADMIN_UID) || (mine && mine.ok === true);
+    /* 반드시 true/false 여야 합니다. mine 이 없으면 null 이 되는데, 화면과 동기화가
+       모두 `approved === false` 로만 막기 때문에 null 이면 갓 가입한 사람이
+       승인 화면을 건너뛰고 들어와 401 만 쌓입니다 */
+    AUTH.approved = (AUTH.uid === ADMIN_UID) || !!(mine && mine.ok === true);
   }catch(e){ AUTH.approved = true; }
 }
 
