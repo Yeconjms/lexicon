@@ -39,6 +39,13 @@ input,textarea,select{font-family:inherit;font-size:16px;color:var(--ink);}
 .syncpill{margin-left:8px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;
   background:rgba(95,117,128,.14);color:var(--muted);white-space:nowrap;}
 .syncpill.bad{background:rgba(166,57,74,.13);color:var(--rose);cursor:pointer;}
+/* 당겨서 새로고침 — 화면 맨 위에서 내려옵니다 */
+.ptr{position:fixed;top:0;left:0;right:0;height:0;overflow:hidden;z-index:90;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--card);
+  transition:height .18s ease-out;pointer-events:none;}
+.ptrtxt{font-size:12.5px;font-weight:700;color:var(--muted);}
+.ptr.ready .ptrtxt{color:var(--blue);}
 
 nav{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;background:rgba(255,255,255,.94);
   backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);}
@@ -758,7 +765,15 @@ async function freshToken(){
       body: "grant_type=refresh_token&refresh_token=" + encodeURIComponent(AUTH.refreshToken) });
   let j = {};
   try{ j = await r.json(); }catch(e){}
-  if(!r.ok){ authClear(); throw new Error("로그인이 만료되었습니다. 다시 로그인해 주세요"); }
+  /* 아무 실패에나 로그인을 지우면 안 됩니다. 구글이 잠깐 5xx 를 주거나 한도에 걸린 것만으로도
+     로그아웃되어, 쓰는 사람에게는 "자꾸 로그인이 풀린다" 로 보입니다.
+     정말로 토큰이 죽은 경우에만 지우고, 나머지는 이번 시도만 실패시킵니다. */
+  if(!r.ok){
+    const code = (j && j.error && j.error.message) || "";
+    const dead = /TOKEN_EXPIRED|INVALID_REFRESH_TOKEN|MISSING_REFRESH_TOKEN|USER_DISABLED|USER_NOT_FOUND|INVALID_GRANT_TYPE|credential/i.test(code);
+    if(dead){ authClear(); throw new Error("로그인이 만료되었습니다. 다시 로그인해 주세요"); }
+    throw new Error("지금 서버에 연결할 수 없습니다. 잠시 뒤 다시 시도합니다");
+  }
   AUTH.idToken      = j.id_token;
   AUTH.refreshToken = j.refresh_token || AUTH.refreshToken;
   AUTH.uid          = j.user_id || AUTH.uid;
@@ -3115,6 +3130,54 @@ const isStandalone = () => {
 };
 const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent || "");
 
+/* ── 당겨서 새로고침 ───────────────────────────────────────────────
+   홈 화면에 추가한 앱에는 주소창이 없어 새로고침할 방법이 아예 없습니다.
+   맨 위에서 아래로 당기면 새로고침합니다. 브라우저로 열었을 때는 브라우저가 이미
+   같은 동작을 가지고 있으므로 켜지 않습니다 — 켜면 두 번 걸립니다. */
+function initPullRefresh(){
+  if(!isStandalone()) return;
+  const bar = document.createElement("div");
+  bar.className = "ptr";
+  bar.innerHTML = '<span class="ptrtxt">당겨서 새로고침</span>';
+  document.body.appendChild(bar);
+
+  const TRIG = 64, MAX = 96;
+  let startY = 0, pulling = false, armed = false;
+  const top = () => (document.scrollingElement || document.documentElement).scrollTop;
+  const reset = () => { bar.style.height = "0px"; bar.classList.remove("ready"); armed = false; };
+
+  addEventListener("touchstart", e => {
+    /* 모달·인사가 떠 있거나 맨 위가 아니면 잡지 않습니다 */
+    pulling = e.touches.length === 1 && top() <= 0
+      && !document.querySelector(".modal") && !document.getElementById("greet");
+    if(pulling) startY = e.touches[0].clientY;
+  }, {passive:true});
+
+  addEventListener("touchmove", e => {
+    if(!pulling) return;
+    const d = e.touches[0].clientY - startY;
+    if(d <= 0 || top() > 0){ pulling = false; reset(); return; }
+    const h = Math.min(MAX, d * 0.5);
+    bar.style.height = h + "px";
+    armed = h >= TRIG;
+    bar.classList.toggle("ready", armed);
+    bar.querySelector(".ptrtxt").textContent = armed ? "놓으면 새로고침" : "당겨서 새로고침";
+  }, {passive:true});
+
+  const end = () => {
+    if(!pulling) return;
+    pulling = false;
+    if(!armed){ reset(); return; }
+    bar.querySelector(".ptrtxt").textContent = "새로고침 중…";
+    bar.style.height = "56px";
+    /* 저장이 밀려 있으면 먼저 기록하고 새로고침합니다 */
+    try{ if(savePending) localStorage.setItem(KEY, JSON.stringify(D)); }catch(e){}
+    setTimeout(()=>location.reload(), 120);
+  };
+  addEventListener("touchend", end, {passive:true});
+  addEventListener("touchcancel", () => { pulling = false; reset(); }, {passive:true});
+}
+
 function installBox(){
   if(isStandalone())
     return '<p class="note" style="margin-top:0"><b>이미 앱으로 쓰고 계십니다.</b> '
@@ -3138,6 +3201,11 @@ function installBox(){
       + '<b>컴퓨터 · 크롬</b> — 주소창 오른쪽 끝의 설치 아이콘.</p>';
 
   h += '<p class="note">추가해도 같은 단어장입니다. 지금 쓰던 내용이 그대로 보입니다.</p>';
+  h += '<div class="h2" style="margin:16px 0 8px">새로고침</div>'
+    + '<p class="note" style="margin-top:0">앱에는 주소창이 없습니다. '
+    + '<b>화면 맨 위에서 아래로 당기면</b> 새로고침됩니다. 아래 단추도 같은 일을 합니다.</p>'
+    + '<div class="row" style="margin-top:10px">'
+    + '<button class="btn ghost" data-a="reload">새로고침</button></div>';
   return h;
 }
 
@@ -3292,7 +3360,7 @@ function viewSettings(){
     +'<button class="btn ghost" style="color:var(--rose)" data-a="reset-all">전체 삭제</button></div>'
     +'<p class="note">진도만 초기화하면 단어는 남고 복습 일정과 정답률만 돌아갑니다. 둘 다 되돌릴 수 없습니다.</p>';
   h+=setBox("데이터", !FB.ready ? "이 기기에만" : AUTH.uid ? "로그인됨" : "로그인 안 함", inner);
-  h+=setBox("앱처럼 쓰기", isStandalone() ? "설치됨" : "홈 화면에 추가", installBox(), !isStandalone());
+  h+=setBox("앱처럼 쓰기", isStandalone() ? "앱으로 열림" : "홈 화면에 추가", installBox(), !isStandalone());
   if(FB.ready && ADMIN_UID && AUTH.uid === ADMIN_UID)
     { /* 기다리는 사람이 있으면 부제에 먼저 띄우고 칸도 펼쳐 둡니다 */
     const wait = admList ? admList.filter(u=>u.uid!==ADMIN_UID && u.ok!==true).length : 0;
@@ -3656,6 +3724,9 @@ document.addEventListener("click", e=>{
           .then(()=>{ admLoad(); toast("지웠습니다"); })
           .catch(e=>toast("지우지 못했습니다: "+e.message)); });
     return; }
+  if(a==="reload"){
+    try{ if(savePending) localStorage.setItem(KEY, JSON.stringify(D)); }catch(e){}
+    location.reload(); return; }
   if(a==="pwa-install"){
     if(!installPrompt){ toast("이 브라우저는 자동 설치를 지원하지 않습니다. 메뉴에서 추가해 주세요"); return; }
     const p = installPrompt; installPrompt = null;
@@ -3871,7 +3942,7 @@ const SEED=[
 ];
 
 /* ══════════════════ 시작 ══════════════════ */
-load(); authLoad(); render(); paintSync();
+load(); authLoad(); render(); paintSync(); initPullRefresh();
 if(FB.ready && AUTH.uid) ensureAccess().then(()=>{ render(); if(AUTH.approved){ greet(); syncNow(true); } });
 else if(!FB.ready || isSolo()) setTimeout(greet, 260);
 /* 엔터로도 들어가지고, 암호 관리자가 알아보게 합니다 */
