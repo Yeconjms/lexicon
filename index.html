@@ -1041,11 +1041,16 @@ async function syncNow(silent){
     if(!silent || r.add || r.upd) render();
     if(syncDirty) scheduleSync();
   }catch(e){
+    /* 받아서 합치는 데까지 성공했다면 그것만은 살려 둡니다.
+       예전에는 올리기가 실패하면 이미 합쳐 둔 내용을 저장도 안 하고 다시 그리지도 않았습니다.
+       그래서 다른 기기에서 넣은 단어가 새로고침해도 안 보이다가, 나갔다 들어오면 보였습니다. */
+    const merged = r.add || r.upd;
+    if(merged){ try{ localStorage.setItem(KEY, JSON.stringify(D)); savePending=false; }catch(e2){} }
     syncState="err"; syncErrMsg = e.message || String(e); syncing=false; paintSync();
     if(syncDirty) scheduleSync();
     if(!silent) toast("동기화 실패: " + e.message);
-    /* 토큰이 끊겼으면 로그인 화면으로 돌려보냅니다 */
-    if(!AUTH.refreshToken) render();
+    /* 받은 것이 있거나 토큰이 끊겼으면 화면을 다시 그립니다 */
+    if(merged || !AUTH.refreshToken) render();
   }
 }
 
@@ -2951,7 +2956,7 @@ function viewLogin(){
       ? "이메일과 비밀번호, 그리고 이름만 적으면 됩니다. 단어장은 계정마다 따로 보관됩니다."
     : a.mode==="reset"
       ? "가입할 때 쓴 이메일을 적으면 비밀번호를 다시 정하는 편지를 보냅니다."
-      : "가입했던 이메일로 들어오면 폰과 PC가 같은 단어장을 봅니다.";
+      : "한 번 들어오면 계속 로그인된 채로 있습니다. 매번 치지 않아도 됩니다.";
   const saved = lastEmail();
 
   let h = '<div class="panel"><div class="empty" style="padding-bottom:4px">'
@@ -2961,6 +2966,10 @@ function viewLogin(){
 
   if(a.err)  h += '<div class="warn">'+esc(a.err)+'</div>';
   if(a.note) h += '<div class="ok-box">'+esc(a.note)+'</div>';
+
+  /* 진짜 <form> 이어야 브라우저와 아이폰 암호 관리자가 "저장할까요?" 를 띄우고
+     다음 번에 자동으로 채워 줍니다. 칸만 늘어놓으면 대부분 그냥 지나칩니다 */
+  h += '<form id="au-form" autocomplete="on">';
 
   h += '<input class="field" id="au-email" type="email" autocomplete="username" '
     + 'autocapitalize="off" spellcheck="false" placeholder="이메일" value="'+esc(a.email || saved)+'" style="margin-top:4px">';
@@ -2977,10 +2986,11 @@ function viewLogin(){
       + (saved?" checked":"")+'>'
       + '<span><b>이메일 기억하기</b><span>다음에 들어올 때 이메일이 채워져 있습니다. 비밀번호는 저장하지 않습니다</span></span></label>';
 
-  h += '<button class="btn wide" data-a="au-go" style="margin-top:12px"'+(a.busy?" disabled":"")+'>'
+  /* data-a 를 빼고 submit 으로 둡니다. 둘 다 있으면 누를 때 두 번 실행됩니다 */
+  h += '<button class="btn wide" type="submit" style="margin-top:12px"'+(a.busy?" disabled":"")+'>'
     + (a.busy ? '<span class="spin"></span>잠시만요'
               : esc(a.mode==="up" ? "가입하고 시작" : a.mode==="reset" ? "재설정 메일 보내기" : "로그인"))
-    + '</button>';
+    + '</button></form>';
 
   h += '<div class="row" style="justify-content:center;margin-top:12px;gap:14px">';
   if(a.mode==="in"){
@@ -3094,6 +3104,43 @@ async function fbCheck(){
 }
 
 /* ── 설정 안의 계정 칸 ── */
+/* ── 앱처럼 쓰기 (홈 화면에 추가) ──────────────────────────────────
+   매번 비밀번호를 치는 느낌이 드는 가장 큰 이유가 이것입니다.
+   아이폰 사파리는 홈 화면에 추가하지 않은 사이트의 저장 공간을 한동안 안 들어오면 비웁니다.
+   추가해 두면 그 대상에서 빠지고, 주소창 없이 앱처럼 열립니다. */
+let installPrompt = null;
+const isStandalone = () => {
+  try{ return window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true; }
+  catch(e){ return false; }
+};
+const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent || "");
+
+function installBox(){
+  if(isStandalone())
+    return '<p class="note" style="margin-top:0"><b>이미 앱으로 쓰고 계십니다.</b> '
+      + '주소창 없이 열리고, 로그인이 풀리지 않습니다.</p>';
+
+  let h = '<p class="note" style="margin-top:0">홈 화면에 추가하면 앱처럼 열립니다. '
+    + '주소창이 사라지고 <b>로그인이 유지됩니다.</b><br>'
+    + '특히 <b>아이폰 사파리</b>는 홈 화면에 추가하지 않은 사이트의 저장 내용을 '
+    + '한동안 안 들어오면 지웁니다. 그때 다시 로그인하게 됩니다.</p>';
+
+  if(installPrompt)
+    h += '<div class="row" style="margin-top:10px">'
+      + '<button class="btn" data-a="pwa-install">홈 화면에 추가</button></div>';
+  else if(isIOS())
+    h += '<p class="note" style="margin-top:10px"><b>아이폰 · 사파리</b><br>'
+      + '화면 아래 공유 단추(네모에 위 화살표) → 목록을 내려 <b>홈 화면에 추가</b> → 오른쪽 위 추가.<br>'
+      + '<span style="opacity:.7">크롬이나 다른 브라우저에서는 이 메뉴가 없습니다. 사파리로 여세요.</span></p>';
+  else
+    h += '<p class="note" style="margin-top:10px"><b>안드로이드 · 크롬</b> — 오른쪽 위 점 세 개 → '
+      + '<b>앱 설치</b> 또는 <b>홈 화면에 추가</b>.<br>'
+      + '<b>컴퓨터 · 크롬</b> — 주소창 오른쪽 끝의 설치 아이콘.</p>';
+
+  h += '<p class="note">추가해도 같은 단어장입니다. 지금 쓰던 내용이 그대로 보입니다.</p>';
+  return h;
+}
+
 function accountBox(){
   const size = kb(dataSize()), n = D.cards.length;
 
@@ -3245,6 +3292,7 @@ function viewSettings(){
     +'<button class="btn ghost" style="color:var(--rose)" data-a="reset-all">전체 삭제</button></div>'
     +'<p class="note">진도만 초기화하면 단어는 남고 복습 일정과 정답률만 돌아갑니다. 둘 다 되돌릴 수 없습니다.</p>';
   h+=setBox("데이터", !FB.ready ? "이 기기에만" : AUTH.uid ? "로그인됨" : "로그인 안 함", inner);
+  h+=setBox("앱처럼 쓰기", isStandalone() ? "설치됨" : "홈 화면에 추가", installBox(), !isStandalone());
   if(FB.ready && ADMIN_UID && AUTH.uid === ADMIN_UID)
     { /* 기다리는 사람이 있으면 부제에 먼저 띄우고 칸도 펼쳐 둡니다 */
     const wait = admList ? admList.filter(u=>u.uid!==ADMIN_UID && u.ok!==true).length : 0;
@@ -3608,6 +3656,12 @@ document.addEventListener("click", e=>{
           .then(()=>{ admLoad(); toast("지웠습니다"); })
           .catch(e=>toast("지우지 못했습니다: "+e.message)); });
     return; }
+  if(a==="pwa-install"){
+    if(!installPrompt){ toast("이 브라우저는 자동 설치를 지원하지 않습니다. 메뉴에서 추가해 주세요"); return; }
+    const p = installPrompt; installPrompt = null;
+    p.prompt();
+    Promise.resolve(p.userChoice).catch(()=>{}).then(()=>render());
+    return; }
   if(a==="sync-why"){
     modal({title:"계정에 저장하지 못했습니다",
       message:"지금까지 공부한 내용은 이 기기에 그대로 있습니다. 사라지지 않습니다.\n"
@@ -3820,6 +3874,16 @@ const SEED=[
 load(); authLoad(); render(); paintSync();
 if(FB.ready && AUTH.uid) ensureAccess().then(()=>{ render(); if(AUTH.approved){ greet(); syncNow(true); } });
 else if(!FB.ready || isSolo()) setTimeout(greet, 260);
+/* 엔터로도 들어가지고, 암호 관리자가 알아보게 합니다 */
+window.addEventListener("beforeinstallprompt", e=>{
+  e.preventDefault(); installPrompt = e;
+  if(view==="settings") render();   // 설정이 열려 있으면 단추가 바로 나타나게
+});
+document.addEventListener("submit", e=>{
+  if(!e.target || e.target.id !== "au-form") return;
+  e.preventDefault();
+  authDo();
+});
 document.addEventListener("visibilitychange", ()=>{
   if(!FB.ready || !AUTH.uid) return;
   if(document.visibilityState === "hidden"){
