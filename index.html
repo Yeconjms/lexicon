@@ -157,11 +157,8 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 .st-tongue{fill:#E2695F;}
 .st-teeth{fill:none;stroke:var(--star);stroke-width:1.6;stroke-linecap:round;}
 .st-fist{fill:var(--star);stroke:var(--star-ink);stroke-width:2.3;}
-.st-glint{fill:none;stroke:var(--star);stroke-width:1.5;stroke-linecap:round;}
 .st-coil{fill:none;stroke:var(--star-ink);stroke-width:1.9;stroke-linecap:round;}
-.st-orbstar{fill:var(--star-deep);stroke:var(--star-ink);stroke-width:1.4;stroke-linejoin:round;}
 .st-ask{fill:none;stroke:var(--star-ink);stroke-width:2.2;stroke-linecap:round;}
-.st-shade{fill:#1F2933;opacity:.17;}
 .st-blush{fill:#E2695F;opacity:.34;}
 .st-swish{fill:none;stroke:var(--star-ink);stroke-width:1.7;stroke-linecap:round;opacity:.42;}
 /* 핏대 — 만화에서 화를 나타내는 그 표시 */
@@ -176,11 +173,6 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 .st-zzz path{fill:none;stroke:var(--star-ink);stroke-width:2;stroke-linejoin:round;opacity:.5;}
 .st-zzz{animation:lxzzz 2.8s ease-in-out infinite;}
 @keyframes lxzzz{0%,100%{opacity:.35;transform:translateY(2px)}50%{opacity:1;transform:translateY(-4px)}}
-/* 등줄기에 흐르는 세로줄 — 아찔할 때 */
-.st-dread path{fill:none;stroke:#4C5A78;stroke-width:1.5;stroke-linecap:round;opacity:.45;}
-/* 머리 위를 도는 별 */
-.st-orbit{transform-origin:60px 46px;animation:lxorbit 2.2s linear infinite;}
-@keyframes lxorbit{to{transform:rotate(360deg)}}
 
 /* ── 몸 색 변주 ──
    같은 표정이라도 색이 받쳐 줘야 상태가 한눈에 읽힙니다 */
@@ -196,15 +188,6 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 .lexi.warm .st-ink,.lexi.warm .st-ink2,.lexi.warm .st-limb{stroke:#6B3410;}
 .lexi.warm .st-eye,.lexi.warm .st-mouth{fill:#6B3410;}
 .lexi.warm .st-fist{fill:#F0A23C;stroke:#6B3410;}
-/* 각오 — 한 톤 가라앉힙니다 */
-.lexi.dusk .st-fill{fill:#D8B63E;}
-.lexi.dusk .st-ink,.lexi.dusk .st-ink2,.lexi.dusk .st-limb{stroke:#141C24;}
-.lexi.dusk .st-eye,.lexi.dusk .st-mouth{fill:#141C24;}
-.lexi.dusk .st-glint{stroke:#FFF6D0;stroke-width:1.8;}
-/* 놀람 — 핏기가 가십니다 */
-.lexi.pale .st-fill{fill:#F2EDD4;}
-.lexi.pale .st-ink,.lexi.pale .st-ink2,.lexi.pale .st-limb{stroke:#49555E;}
-.lexi.pale .st-eye,.lexi.pale .st-mouth{fill:#49555E;}
 
 /* ── 자세에 붙는 움직임 ── */
 .lexi.tremble{animation:lxtremble .22s linear infinite;}
@@ -2150,8 +2133,6 @@ const STEAM = '<g class="st-steam"><path d="M33 20q-5.4-4-1.6-9"/><path d="M45 1
             + '<path d="M75 12q4.6-4.6.6-9"/><path d="M87 20q5.4-4 1.6-9"/></g>';
 const ZZZ   = '<g class="st-zzz"><path d="M79 26h8.4l-8.4 9.4h8.4"/>'
             + '<path d="M91 13h6.6l-6.6 7.4h6.6"/></g>';
-const DREAD = '<g class="st-dread">'
-            + [46,52,58,64,70].map(x => '<path d="M'+x+' 30v8.5"/>').join("") + '</g>';
 /** 눈 자리에 박는 작은 별. 신났을 때 */
 const EYESTAR = (x,y) => '<path class="st-eye" transform="translate('+x+' '+y+')" '
   + 'd="M0 -6.6Q1.1 -1.1 6.6 0Q1.1 1.1 0 6.6Q-1.1 1.1 -6.6 0Q-1.1 -1.1 0 -6.6Z"/>';
@@ -2193,16 +2174,7 @@ function face(mood){
      + '<path class="st-limb" style="stroke-width:1.6" opacity=".5" d="M50.5 62.6q9 4.6 17-1.4"/>',
     x: '<path class="st-swish" d="M80 40.5q5-1.6 8.4-5M82 46.5q5.4-.6 9.4-3.4"/>' };
 
-  /* 각오 — 눈매가 날카로워지고 위쪽에 그늘이 집니다 */
-  case "fired": return {
-    e: '<path class="st-shade" d="M38.5 36q21.5 5 43 0q1 9-4 13.5q-17.5 5-35 0q-5-4.5-4-13.5Z"/>'
-     + '<path class="st-limb" style="stroke-width:2.6" d="M42.4 42.6l12.4 4.6"/>'
-     + '<path class="st-limb" style="stroke-width:2.6" d="M77.6 42.6l-12.4 4.6"/>'
-     + '<ellipse class="st-eye" cx="51" cy="51" rx="3.4" ry="2.4"/>'
-     + '<ellipse class="st-eye" cx="69" cy="51" rx="3.4" ry="2.4"/>'
-     + '<path class="st-glint" d="M49.6 50.1l2.6-1.1"/><path class="st-glint" d="M67.6 50.1l2.6-1.1"/>',
-    m: '<path class="st-limb" style="stroke-width:2.5" d="M51 60.5q9 7 18-1"/>',
-    x: '<path class="st-swish" d="M30 30q4-4.6 3.4-10M90 30q-4-4.6-3.4-10"/>' };
+
 
   /* 터지기 직전 — 이를 악물고 김이 납니다 */
   case "boom": return {
@@ -2224,18 +2196,9 @@ function face(mood){
   case "dizzy": return {
     e: SPIRAL(48,48) + SPIRAL(68,48),
     m: '<path class="st-limb" d="M51 62q3-3.4 6 0t6 0t5 .6"/>',
-    x: '<g class="st-orbit">'
-     + '<path class="st-orbstar" transform="translate(60 10)" d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z"/>'
-     + '<path class="st-orbstar" transform="translate(96 46) scale(.66)" d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z"/>'
-     + '</g>' };
+    x: "" };
 
-  /* 놀람 — 눈이 점만 해지고 등줄기에 세로줄 */
-  case "shock": return {
-    e: '<path class="st-limb" style="stroke-width:2" d="M44 39.5q6-3.6 12-.6"/>'
-     + '<path class="st-limb" style="stroke-width:2" d="M76 39.5q-6-3.6-12-.6"/>'
-     + '<circle class="st-eye" cx="51" cy="49" r="1.6"/><circle class="st-eye" cx="69" cy="49" r="1.6"/>',
-    m: '<ellipse class="st-mouth" cx="60" cy="62.5" rx="5" ry="6.2"/>',
-    x: DREAD + '<path class="st-drop" d="M88 33q4.4 7.6 0 10.2q-4.4-2.6 0-10.2Z"/>' };
+
 
   /* 윙크 */
   case "wink": return {
@@ -2266,7 +2229,7 @@ function face(mood){
   /* 기지개 */
   case "push": return {
     e: '<path class="st-limb" d="M45 50q5-5 10 0"/><path class="st-limb" d="M65 50q5-5 10 0"/>',
-    m: '<path class="st-mouth" d="M53.5 59q6.5-2 13 0q-1.5 8-6.5 8t-6.5-8Z"/>', x: "" };
+    m: '<path class="st-mouth" d="M55 60q5-1.6 10 0q-1.2 5.6-5 5.6t-5-5.6Z"/>', x: "" };
 
   /* 기쁨 */
   case "happy": return {
@@ -2562,7 +2525,7 @@ function viewDict(){
   if(dictBusy) return h+'<div class="panel"><div class="empty">'+lexi("think","bob","hip")
     +'<h3 style="margin-top:16px">찾아보는 중…</h3><p>렉시가 사전을 뒤지고 있습니다.</p></div></div>';
 
-  if(dictErr) return h+'<div class="panel"><div class="empty">'+lexi("shock","","flail")
+  if(dictErr) return h+'<div class="panel"><div class="empty">'+lexi("dizzy","","flail")
     +'<h3 style="margin-top:16px">찾지 못했습니다</h3><p>'+esc(dictErr)+'</p></div></div>';
 
   if(!dictR){
@@ -2635,7 +2598,7 @@ const GREETS = [
   {m:"blaze", c:"g-burst",   p:"point", t:["준비 끝!","자, 갑니다","이쪽이에요"]},
   {m:"push",  c:"g-stretch", p:"rub",   t:["으으 잘 잤다","기지개 좀…","이제 깼어요"]},
   {m:"think", c:"g-tilt",    p:"hip",   t:["오늘은 뭘 외워볼까요","어디까지 했더라","음…"]},
-  {m:"fired", c:"g-shimmy",  p:"fist",  t:["오늘은 제대로 해봅시다","각오 됐나요","해치웁시다"]},
+  {m:"happy", c:"g-shimmy",  p:"fist",  t:["오늘은 제대로 해봅시다","해치웁시다","가볍게 가봐요"]},
   {m:"wink",  c:"g-hop",     p:"point", t:["좋아요!","딱 맞춰 오셨네요","시작해 볼까요"]},
   {m:"smug",  c:"g-lean",    p:"hip",   t:["올 줄 알았어요","기다리고 있었죠","역시 오시네요"]},
   {m:"happy", c:"g-cheerup", p:"cheer", t:["신난다","가봅시다","오늘도 해봐요"]},
@@ -2713,7 +2676,7 @@ function moodNow(){
     s:"오늘 "+left+"장 남았습니다. 이대로만 가면 됩니다."};
   if(done === 0 && st === 0) return {k:"sleep", f:"sleep", c:"", p:"stand", t:"별이 자고 있습니다",
     s: left ? ("오늘 "+left+"장이 기다리고 있습니다. 깨워주세요.") : "오늘 할 카드가 없습니다."};
-  return {k:"idle", f:"fired", c:"dusk bob", p:"fist", t:"하는 중",
+  return {k:"idle", f:"idle", c:"bob", p:"stand", t:"하는 중",
     s:"오늘 "+left+"장 남았습니다"+(done?(" · 지금까지 "+done+"장"):"")+"."};
 }
 
@@ -2975,9 +2938,7 @@ function adminBox(){
   if(admErr) h += '<div class="warn" style="margin-top:0">' + esc(admErr) + '</div>';
 
   if(!admList){
-    h += '<p class="note" style="margin-top:0">가입한 사람의 목록입니다. '
-       + '<b>단어장 내용은 관리자도 볼 수 없습니다</b> — 각자 자기 것만 읽도록 규칙이 걸려 있습니다.</p>'
-       + '<div class="row" style="margin-top:10px">'
+    h += '<div class="row" style="margin-top:0">'
        + '<button class="btn" data-a="adm-load"' + (admBusy?" disabled":"") + '>'
        + (admBusy ? '<span class="spin"></span>불러오는 중' : '명부 불러오기') + '</button></div>';
     return h;
@@ -3409,10 +3370,15 @@ function viewSettings(){
     "자동 저장을 8초 뒤에서 1분 뒤로 미룹니다. 공부하는 동안 오가는 횟수가 줄어듭니다. "
     +"한 번 오갈 때 "+kb(dataSize())+" 정도이고, 바뀐 게 없으면 켜든 끄든 올리지 않습니다. "
     +"휴대폰 데이터로 쓸 때 켜세요.",s.lowData);
-  inner+='<div class="h2" style="margin:16px 0 10px">파일로 주고받기</div>'
-    +'<p class="note" style="margin-top:0">평소엔 필요 없습니다.</p>'
+  inner+='<div class="h2" style="margin:16px 0 10px">백업 파일'+helpBtn("backup")+'</div>'
+    +'<p class="note" style="margin-top:0">평소엔 필요 없습니다. 계정에 자동으로 저장됩니다.</p>'
+    +helpBox("backup",
+      '<b>복습 진도까지 통째로</b> 담은 파일입니다. 그래서 사람이 읽는 표가 아니라 '
+      +'<span class="mono">.json</span> 입니다. 간격·예정일·정답률은 표로 옮길 수 없습니다.<br>'
+      +'<b>단어만</b> 주고받으려면 팩 탭에서 <b>CSV 내려받기</b>를 쓰세요. 엑셀에서 열립니다.<br>'
+      +'<b>합치기</b>는 없는 단어만 더하고, <b>덮어쓰기</b>는 지금 것을 버리고 파일로 바꿉니다.')
     +'<div class="row" style="margin-top:10px">'
-    +'<button class="btn ghost" data-a="export">내보내기</button>'
+    +'<button class="btn ghost" data-a="export">내려받기</button>'
     +'<button class="btn ghost" data-a="import-merge">합치기</button>'
     +'<button class="btn ghost" style="color:var(--rose)" data-a="import-over">덮어쓰기</button>'
     +'<input type="file" id="filein" accept=".json,application/json" style="display:none">'
@@ -3582,7 +3548,6 @@ document.addEventListener("click", e=>{
   if(a==="quit"){ S=null; render(); return; }
   if(a==="start"){ startSession({kind:"review"}); return; }
   if(a==="start-focus"){ startSession({kind:"focus"}); return; }
-  if(a==="go-settings"){ view="settings"; render(); return; }
 
   /* 사전 */
   if(a==="go-dict"){ view="dict"; render(); window.scrollTo(0,0); return; }
@@ -3745,7 +3710,6 @@ document.addEventListener("click", e=>{
     setTimeout(()=>URL.revokeObjectURL(url),1000); return;
   }
   if(a==="au-mode"){ AUTH.mode=t.dataset.k; AUTH.err=""; AUTH.note=""; render(); return; }
-  if(a==="au-go"){ authDo(); return; }
   if(a==="au-solo"){ setSolo(true); view="study"; render(); return; }
   if(a==="au-show"){ setSolo(false); AUTH.mode="in"; AUTH.err=""; AUTH.note=""; render(); return; }
   if(a==="fb-check"){ fbCheck(); return; }
