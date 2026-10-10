@@ -36,6 +36,9 @@ input,textarea,select{font-family:inherit;font-size:16px;color:var(--ink);}
 .brand{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:.02em;}
 .brand small{font-family:var(--sans);font-size:11px;color:var(--muted);margin-left:7px;letter-spacing:.05em;font-weight:600;}
 .streak{margin-left:auto;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--amber);}
+.syncpill{margin-left:8px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;
+  background:rgba(95,117,128,.14);color:var(--muted);white-space:nowrap;}
+.syncpill.bad{background:rgba(166,57,74,.13);color:var(--rose);cursor:pointer;}
 
 nav{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;background:rgba(255,255,255,.94);
   backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);}
@@ -69,6 +72,7 @@ nav .badge{position:absolute;transform:translate(15px,-4px);background:var(--ros
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
 .chip{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:99px;background:rgba(42,76,125,.09);color:var(--blue);}
 .chip.rev{background:rgba(181,130,14,.15);color:#7A5806;}
+.chip.ok{background:rgba(22,120,90,.15);color:var(--green);}
 .seg{display:flex;background:var(--paper);border-radius:9px;padding:3px;gap:3px;}
 .seg button{flex:1;padding:8px 6px;font-size:13px;font-weight:600;color:var(--muted);border-radius:7px;}
 .seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08);}
@@ -426,6 +430,12 @@ details.set .inner{padding:0 17px 18px;border-top:1px solid var(--line);margin-t
 /* 목록 */
 .item{border-bottom:1px solid var(--line);padding:12px 0;}
 .item:last-child{border-bottom:none;}
+/* 단추를 글과 같은 줄에 두면 폭을 빼앗겨 뜻과 예문이 두세 글자마다 줄바꿈됐습니다.
+   아래 줄로 내리고 오른쪽에 모읍니다 */
+.itemacts{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;margin-top:9px;}
+.itemacts .btn{flex:0 0 auto;}
+.admbar{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 0 2px;font-size:13.5px;color:var(--muted);}
 .itemw{font-family:var(--serif);font-size:17.5px;font-weight:600;}
 .itemm{font-size:13.5px;color:var(--muted);margin-top:2px;}
 .itemex{font-family:var(--serif);font-size:13px;color:var(--muted);margin-top:4px;line-height:1.5;}
@@ -843,6 +853,7 @@ function authOut(){
     .then(ok=>{ if(!ok) return; authClear(); setSolo(false); view="study"; render(); });
 }
 let syncT=null, syncing=false, syncDirty=false, syncState="";   // "" | "ing" | "ok" | "err"
+let syncErrMsg = "";   // 머리말의 경고를 눌렀을 때 보여줄 마지막 실패 사유
 
 /** 토큰으로 기존 Gist를 찾고, 없으면 새로 만듭니다 */
 /* ── 동기화 ──────────────────────────────────────────────────────
@@ -1022,7 +1033,7 @@ async function syncNow(silent){
     }
     D.s.syncedAt = Date.now();
     try{ localStorage.setItem(KEY, JSON.stringify(D)); savePending=false; }catch(e){}
-    syncState = "ok";
+    syncState = "ok"; syncErrMsg = "";
     if(!silent) toast(
       (r.add||r.upd) ? ("동기화 완료 · 새 단어 "+r.add+"개, 진도 "+r.upd+"개 갱신")
       : pushed ? "동기화 완료" : "이미 최신입니다");
@@ -1030,7 +1041,7 @@ async function syncNow(silent){
     if(!silent || r.add || r.upd) render();
     if(syncDirty) scheduleSync();
   }catch(e){
-    syncState="err"; syncing=false; paintSync();
+    syncState="err"; syncErrMsg = e.message || String(e); syncing=false; paintSync();
     if(syncDirty) scheduleSync();
     if(!silent) toast("동기화 실패: " + e.message);
     /* 토큰이 끊겼으면 로그인 화면으로 돌려보냅니다 */
@@ -1038,11 +1049,19 @@ async function syncNow(silent){
   }
 }
 
+/* 머리말에 ⚠ 하나만 띄워 두면 무슨 일인지 알 수 없습니다. 눌러서 설명을 볼 수 있게 하고,
+   잘 되고 있을 때는 아무것도 띄우지 않습니다 */
 function paintSync(){
   const el=$("#syncdot"); if(!el) return;
-  if(!FB.ready || !AUTH.uid){ el.textContent=""; return; }
-  el.textContent = syncState==="ing" ? "⟳" : syncState==="err" ? "⚠" : "";
-  el.style.color = syncState==="err" ? "var(--rose)" : "var(--muted)";
+  if(!FB.ready || !AUTH.uid || syncState==="" || syncState==="ok"){
+    el.textContent=""; el.removeAttribute("data-a"); el.removeAttribute("title"); return; }
+  if(syncState==="ing"){
+    el.textContent="⟳ 올리는 중"; el.className="syncpill";
+    el.removeAttribute("data-a"); el.title="바뀐 내용을 계정에 올리고 있습니다"; return; }
+  el.textContent="⚠ 저장 안 됨";
+  el.className="syncpill bad";
+  el.setAttribute("data-a","sync-why");
+  el.title="눌러서 무슨 일인지 보기";
 }
 const syncAgo = () => {
   if(!D.s.syncedAt) return "아직 없음";
@@ -1919,8 +1938,8 @@ function viewManage(){
     +'<div class="h2">'+list.length+'개'+(anyFilter?' · 전체 '+D.cards.length+'개 중':'')+'</div>';
   if(!list.length) h+='<p class="note">조건에 맞는 단어가 없습니다.</p>';
   list.slice(0,300).forEach(c=>{
-    h+='<div class="item"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap">'
-      +'<div style="flex:1;min-width:0"><div class="itemw">'+esc(c.word)
+    h+='<div class="item">'
+      +'<div class="itemw">'+esc(c.word)
       +(c.auto?' <span class="chip rev">확인 필요</span>':'')
       +(c.leech?' <span class="chip rev">누수</span>':'')
       +(c.susp?' <span class="chip">보류</span>':'')
@@ -1929,14 +1948,14 @@ function viewManage(){
       +(c.example?'<div class="itemex">'+esc(c.example)+'</div>':'')
       +'<div class="meta">'+(c.pack?esc(c.pack)+' · ':'')
       +(c.seen===0?"신규":(c.interval+"일 간격 · "+fmtD(c.due)+" 예정 · "+c.correct+"/"+c.seen))
-      +(c.lapses?" · 실패 "+c.lapses:"")+'</div></div>'
-      +'<div class="row" style="flex-wrap:nowrap">'
-      +(TTS.ok?'<button class="btn sm ghost" data-a="say-w" data-id="'+c.id+'">♪</button>':'')
+      +(c.lapses?" · 실패 "+c.lapses:"")+'</div>'
+      +'<div class="itemacts">'
+      +(TTS.ok?'<button class="btn sm ghost" data-a="say-w" data-id="'+c.id+'">♪ 발음</button>':'')
       +(c.auto?'<button class="btn sm ghost" style="color:var(--green)" data-a="confirm" data-id="'+c.id+'">확인</button>':'')
       +'<button class="btn sm ghost" data-a="susp" data-id="'+c.id+'">'+(c.susp?"재개":"빼기")+'</button>'
       +'<button class="btn sm ghost" data-a="edit" data-id="'+c.id+'">수정</button>'
       +'<button class="btn sm ghost" style="color:var(--rose)" data-a="del" data-id="'+c.id+'">삭제</button>'
-      +'</div></div></div>';
+      +'</div></div>';
   });
   if(list.length>300) h+='<p class="note">앞의 300개만 표시했습니다. 검색으로 좁혀보세요.</p>';
   return h+'</div>';
@@ -2852,47 +2871,70 @@ function adminBox(){
     const m = Math.round((Date.now()-t)/60000);
     return m<1?"방금":m<60?(m+"분 전"):m<1440?(Math.round(m/60)+"시간 전"):(Math.round(m/1440)+"일 전"); };
 
-  let h = '<p class="note" style="margin-top:0">로그인한 사람의 목록입니다. '
-    + '단어장 내용은 관리자도 볼 수 없습니다 — 각자 자기 것만 읽도록 규칙이 걸려 있습니다.</p>';
+  /* 한 줄에 단추까지 욱여넣으면 이름이 두 글자마다 줄바꿈됩니다. 글은 전체 폭을 쓰고
+     단추는 아래 줄 오른쪽에 모읍니다 */
+  const row = u => {
+    const me = u.uid === ADMIN_UID;
+    const ok = me || u.ok === true;
+    return '<div class="item">'
+      + '<div class="itemw" style="font-size:15.5px">'
+      + esc(u.nick || u.name || "(이름 없음)")
+      + (me ? ' <span class="chip">나</span>' : '')
+      + (ok ? ' <span class="chip ok">승인됨</span>' : ' <span class="chip rev">대기</span>')
+      + '</div>'
+      + '<div class="itemm" style="word-break:break-all">' + esc(u.email || "(이메일 없음)") + '</div>'
+      + '<div class="meta">' + (u.name ? ('이름 ' + esc(u.name) + ' · ') : '')
+      + '가입 ' + when(u.at) + ' · 마지막 접속 ' + ago(u.seen) + '</div>'
+      + (me ? '<div class="meta" style="opacity:.55;word-break:break-all">' + esc(u.uid) + '</div>' : '')
+      + (me ? '' :
+          '<div class="itemacts">'
+          + '<button class="btn sm ghost" data-a="adm-ok" data-u="' + esc(u.uid) + '" data-v="' + (ok?"0":"1") + '">'
+          + (ok ? "승인 취소" : "승인") + '</button>'
+          + '<button class="btn sm ghost" data-a="adm-reset" data-e="' + esc(u.email||"") + '">비번 재설정</button>'
+          + '<button class="btn sm ghost" style="color:var(--rose)" data-a="adm-wipe" data-u="' + esc(u.uid)
+          + '" data-e="' + esc(u.email||"") + '">지우기</button>'
+          + '</div>')
+      + '</div>';
+  };
 
-  h += '<div class="row" style="margin-top:10px">'
-    + '<button class="btn" data-a="adm-load"'+(admBusy?" disabled":"")+'>'
-    + (admBusy?'<span class="spin"></span>불러오는 중':'명부 불러오기')+'</button>'
-    + '</div>';
+  let h = "";
 
-  if(admErr) h += '<div class="warn">'+esc(admErr)+'</div>';
+  if(admErr) h += '<div class="warn" style="margin-top:0">' + esc(admErr) + '</div>';
 
-  if(admList){
-    h += '<div class="h2" style="margin:16px 0 8px">'+admList.length+'명</div>';
-    if(!admList.length) h += '<p class="note">아직 아무도 없습니다.</p>';
-    admList.forEach(u=>{
-      const me = u.uid === ADMIN_UID;
-      const ok = me || u.ok === true;
-      h += '<div class="item"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap">'
-        + '<div style="flex:1;min-width:0">'
-        + '<div class="itemw" style="font-size:14px">'
-        + esc(u.nick || u.name || "(이름 없음)")
-        + (me?' <span class="chip">나</span>':'')
-        + (ok?' <span class="chip" style="background:rgba(22,120,90,.15);color:var(--green)">승인됨</span>'
-             :' <span class="chip rev">대기</span>')+'</div>'
-        + '<div class="meta">'+esc(u.email||"(이메일 없음)")+'</div>'
-        + '<div class="meta">'+(u.name?('이름 '+esc(u.name)+' · '):'')
-        + '가입 '+when(u.at)+' · 마지막 접속 '+ago(u.seen)+'</div>'
-        + '<div class="meta mono" style="font-size:10.5px;opacity:.6">'+esc(u.uid)+'</div></div>'
-        + (me?'':'<div class="row" style="flex-wrap:nowrap">'
-            + '<button class="btn sm ghost" data-a="adm-ok" data-u="'+esc(u.uid)+'" data-v="'+(ok?"0":"1")+'">'
-            + (ok?"승인 취소":"승인")+'</button>'
-            + '<button class="btn sm ghost" data-a="adm-reset" data-e="'+esc(u.email||"")+'">비번 재설정</button>'
-            + '<button class="btn sm ghost" style="color:var(--rose)" data-a="adm-wipe" data-u="'+esc(u.uid)+'" data-e="'+esc(u.email||"")+'">지우기</button>'
-            + '</div>')
-        + '</div></div>';
-    });
-    h += '<p class="note"><b>비밀번호는 암호화되어 저장되어 관리자도 원문을 볼 수 없습니다.</b> '
-      + '구글도 못 봅니다. 까먹었다고 하면 <b>비번 재설정</b>을 눌러 메일을 보내주세요.<br>'
-      + '<b>지우기</b>는 그 사람의 단어장과 명부 기록을 없애고 접근을 막습니다. '
-      + '다만 <b>로그인 계정 자체는 여기서 지울 수 없습니다</b> — Firebase 가 웹에서 그걸 허용하지 않습니다. '
-      + '계정까지 완전히 없애려면 Firebase 콘솔 → Authentication → Users 에서 지우세요.</p>';
+  if(!admList){
+    h += '<p class="note" style="margin-top:0">가입한 사람의 목록입니다. '
+       + '<b>단어장 내용은 관리자도 볼 수 없습니다</b> — 각자 자기 것만 읽도록 규칙이 걸려 있습니다.</p>'
+       + '<div class="row" style="margin-top:10px">'
+       + '<button class="btn" data-a="adm-load"' + (admBusy?" disabled":"") + '>'
+       + (admBusy ? '<span class="spin"></span>불러오는 중' : '명부 불러오기') + '</button></div>';
+    return h;
   }
+
+  const waiting  = admList.filter(u => u.uid !== ADMIN_UID && u.ok !== true);
+  const approved = admList.filter(u => u.uid === ADMIN_UID || u.ok === true);
+
+  /* 할 일이 있는 쪽을 맨 위에 둡니다. 승인을 기다리는 사람이 묻혀 있으면 안 됩니다 */
+  h += '<div class="admbar">'
+     + '<span><b>' + admList.length + '명</b>'
+     + (waiting.length ? ' · <span style="color:var(--rose);font-weight:700">대기 ' + waiting.length + '명</span>' : '')
+     + '</span>'
+     + '<button class="linkish" data-a="adm-load"' + (admBusy?" disabled":"") + '>'
+     + (admBusy ? '불러오는 중…' : '새로고침') + '</button></div>';
+
+  if(waiting.length){
+    h += '<div class="h2" style="margin:14px 0 2px">승인 기다리는 중 ' + waiting.length + '명</div>';
+    h += waiting.map(row).join("");
+  }
+
+  h += '<div class="h2" style="margin:' + (waiting.length?'18px':'14px') + ' 0 2px">쓰고 있는 사람 '
+     + approved.length + '명</div>';
+  h += approved.length ? approved.map(row).join("") : '<p class="note">아직 없습니다.</p>';
+
+  h += '<p class="note" style="margin-top:14px"><b>비밀번호는 아무도 볼 수 없습니다.</b> '
+     + '되돌릴 수 없는 형태로만 저장되어 구글도 원문을 모릅니다. '
+     + '까먹었다고 하면 <b>비번 재설정</b>을 눌러 메일을 보내주세요.<br>'
+     + '<b>지우기</b>는 그 사람의 단어장과 명부 기록을 없앱니다. '
+     + '로그인 계정 자체는 남으므로, 완전히 없애려면 Firebase 콘솔 → Authentication → Users 에서 지우세요.</p>';
   return h;
 }
 
@@ -3189,8 +3231,8 @@ function viewSettings(){
     +"한 번 오갈 때 "+kb(dataSize())+" 정도이고, 바뀐 게 없으면 켜든 끄든 올리지 않습니다. "
     +"휴대폰 데이터로 쓸 때 켜세요.",s.lowData);
   inner+='<div class="h2" style="margin:16px 0 10px">파일로 주고받기</div>'
-    +'<p class="note" style="margin-top:0">동기화를 쓰면 평소엔 필요 없습니다. '
-    +'토큰이 막히거나 Gist가 사라졌을 때 되살릴 수단으로 남겨 둡니다.</p>'
+    +'<p class="note" style="margin-top:0">평소엔 필요 없습니다. 계정 저장이 막히거나 '
+    +'다른 사람과 단어를 주고받을 때 쓰는 수단으로 남겨 둡니다.</p>'
     +'<div class="row" style="margin-top:10px">'
     +'<button class="btn ghost" data-a="export">내보내기</button>'
     +'<button class="btn ghost" data-a="import-merge">합치기</button>'
@@ -3204,7 +3246,11 @@ function viewSettings(){
     +'<p class="note">진도만 초기화하면 단어는 남고 복습 일정과 정답률만 돌아갑니다. 둘 다 되돌릴 수 없습니다.</p>';
   h+=setBox("데이터", !FB.ready ? "이 기기에만" : AUTH.uid ? "로그인됨" : "로그인 안 함", inner);
   if(FB.ready && ADMIN_UID && AUTH.uid === ADMIN_UID)
-    h+=setBox("관리자", admList ? (admList.length+"명") : "명부와 승인", adminBox());
+    { /* 기다리는 사람이 있으면 부제에 먼저 띄우고 칸도 펼쳐 둡니다 */
+    const wait = admList ? admList.filter(u=>u.uid!==ADMIN_UID && u.ok!==true).length : 0;
+    h+=setBox("관리자",
+      !admList ? "명부와 승인" : (wait ? ("대기 "+wait+"명") : (admList.length+"명")),
+      adminBox(), wait>0); }
 
   h+='<p class="note">단어를 넣고 고치는 일은 <b>단어 탭</b>에서 합니다. 여기는 학습 방식과 저장 설정입니다.</p>';
   return h;
@@ -3561,6 +3607,15 @@ document.addEventListener("click", e=>{
           .then(()=>dbWrite("directory/"+uid, null, "DELETE"))
           .then(()=>{ admLoad(); toast("지웠습니다"); })
           .catch(e=>toast("지우지 못했습니다: "+e.message)); });
+    return; }
+  if(a==="sync-why"){
+    modal({title:"계정에 저장하지 못했습니다",
+      message:"지금까지 공부한 내용은 이 기기에 그대로 있습니다. 사라지지 않습니다.\n"
+        + "다만 다른 기기로 넘어가지 않고 있습니다.\n\n"
+        + "마지막 오류: " + (syncErrMsg || "알 수 없음") + "\n\n"
+        + "인터넷이 끊겼다면 연결되면 저절로 다시 올라갑니다. "
+        + "계속 이 표시가 남아 있으면 로그아웃했다가 다시 로그인해 보세요.",
+      ok:"지금 다시 시도"}).then(v=>{ if(v===true) syncNow(false); });
     return; }
   if(a==="sync-now"){ syncNow(false); return; }
   if(a==="au-pwreset"){
