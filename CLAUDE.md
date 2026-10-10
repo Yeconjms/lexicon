@@ -380,13 +380,15 @@ Anthropic API는 유료라 **Gemini 무료 티어를 권장 경로**로 둔다.
 
 - **얼굴**은 `face(mood)` 한 곳에 모여 있고 `{e, m, x}`(눈·입·덧붙임)를 돌려준다.
   표정을 더할 때 여기만 보면 된다. 지금 15가지다 —
-  `idle think happy joy blaze smug fired wink push sleep angry boom dizzy shock dim`.
+  `idle think happy joy blaze smug wink push sleep angry boom dizzy dim`.
+  **"각오(fired)" 와 "놀람(shock)" 은 2026-10 에 뺐다.** 얼굴 위 그늘이 얼룩처럼,
+  창백한 몸에 세로줄이 고장난 그림처럼 보여서 사용자가 "무슨 의미인지 모르겠다" 고 했다.
+  **표정은 한눈에 읽히지 않으면 없느니만 못하다.** 새로 넣을 때 그 기준으로 판단할 것.
 - **자세**는 `POSE` 객체다. 팔다리를 통째로 갈아 끼운다. 9가지 —
   `stand wave cheer hip point fist flail rub sag`.
   `LEG`(stand/wide/hop/bent)과 `hand(x, y, 방향)`을 조합해 만든다.
 - **몸 색**은 CSS 클래스다. `hot`(터지기 직전 · 빨강) `warm`(화남 · 주황)
-  `dusk`(각오 · 가라앉은 금색) `pale`(놀람 · 핏기 없음) `dim`(사그라짐 · 회색)
-  `aura`(광채). **색은 `.st-fill` 뿐 아니라 `.st-ink`·`.st-limb`·`.st-eye`·`.st-mouth`를
+  `dim`(사그라짐 · 회색) `aura`(광채). **색은 `.st-fill` 뿐 아니라 `.st-ink`·`.st-limb`·`.st-eye`·`.st-mouth`를
   전부 같이 바꿔야 한다.** 하나라도 빠지면 몸만 빨갛고 선은 검은 어색한 그림이 된다.
 - `pose` 를 안 주면 표정에서 기본값을 고른다(`dim`→sag, `boom`→flail, `blaze`·`joy`→cheer).
   그래서 옛 호출부 `lexi("happy","bob")` 가 그대로 동작한다.
