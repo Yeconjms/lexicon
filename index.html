@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
-<meta name="theme-color" content="#1B2C3A">
+<meta name="theme-color" content="#EBEFF2">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Lexicon">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
@@ -23,15 +23,19 @@
 }
 *,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{margin:0;padding:0;height:100%;}
+html{background:var(--paper);}
 body{font-family:var(--sans);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;
-  overscroll-behavior-y:contain;}
+  overscroll-behavior-y:contain;min-height:100vh;min-height:100dvh;}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;padding:0;}
 input,textarea,select{font-family:inherit;font-size:16px;color:var(--ink);}
 :focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
 .hide{display:none!important;}
 
 /* ── 레이아웃 ── */
-#app{max-width:760px;margin:0 auto;padding:0 15px calc(var(--navh) + env(safe-area-inset-bottom) + 20px);}
+#app{max-width:760px;margin:0 auto;
+  padding:env(safe-area-inset-top) calc(15px + env(safe-area-inset-right))
+          calc(var(--navh) + env(safe-area-inset-bottom) + 20px)
+          calc(15px + env(safe-area-inset-left));}
 .head{display:flex;align-items:center;gap:12px;padding:14px 0 4px;}
 .brand{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:.02em;}
 .brand small{font-family:var(--sans);font-size:11px;color:var(--muted);margin-left:7px;letter-spacing:.05em;font-weight:600;}
@@ -40,7 +44,7 @@ input,textarea,select{font-family:inherit;font-size:16px;color:var(--ink);}
   background:rgba(95,117,128,.14);color:var(--muted);white-space:nowrap;}
 .syncpill.bad{background:rgba(166,57,74,.13);color:var(--rose);cursor:pointer;}
 /* 당겨서 새로고침 — 화면 맨 위에서 내려옵니다 */
-.ptr{position:fixed;top:0;left:0;right:0;height:0;overflow:hidden;z-index:90;
+.ptr{position:fixed;top:env(safe-area-inset-top);left:0;right:0;height:0;overflow:hidden;z-index:90;
   display:flex;align-items:center;justify-content:center;
   background:var(--card);
   transition:height .18s ease-out;pointer-events:none;}
@@ -48,7 +52,9 @@ input,textarea,select{font-family:inherit;font-size:16px;color:var(--ink);}
 .ptr.ready .ptrtxt{color:var(--blue);}
 
 nav{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;background:rgba(255,255,255,.94);
-  backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);}
+  backdrop-filter:blur(10px);border-top:1px solid var(--line);
+  padding-bottom:env(safe-area-inset-bottom);
+  padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);}
 nav button{flex:1;padding:9px 0 10px;font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:.02em;
   display:flex;flex-direction:column;align-items:center;gap:3px;}
 nav button .ic{font-size:17px;line-height:1;}
@@ -351,7 +357,8 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 details.set{background:var(--card);border:1px solid var(--line);border-radius:13px;margin-top:12px;}
 details.set>summary{list-style:none;cursor:pointer;padding:15px 17px;display:flex;align-items:baseline;gap:9px;}
 details.set>summary::-webkit-details-marker{display:none;}
-details.set>summary strong{font-size:14.5px;font-weight:700;}
+details.set>summary strong{font-size:14.5px;font-weight:700;white-space:nowrap;flex:0 0 auto;}
+details.set>summary span{min-width:0;}
 details.set>summary span{font-size:12px;color:var(--muted);}
 details.set>summary::after{content:"▾";margin-left:auto;color:var(--muted);font-size:12px;
   align-self:center;transition:transform .2s;}
@@ -429,8 +436,14 @@ details.set .inner{padding:0 17px 18px;border-top:1px solid var(--line);margin-t
 .grade:active{background:#E3E9ED;}
 .grade b{display:block;font-size:14.5px;font-weight:700;}
 .grade i{display:block;font-style:normal;font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px;}
-.grade.g0{border-color:rgba(166,57,74,.4);} .grade.g0 b{color:var(--rose);}
-.grade.g5{border-color:rgba(22,120,90,.4);} .grade.g5 b{color:var(--green);}
+.grade.g0{border-color:rgba(166,57,74,.38);background:rgba(166,57,74,.045);}
+.grade.g0 b{color:var(--rose);}
+.grade.g3{border-color:rgba(181,130,14,.34);background:rgba(181,130,14,.05);}
+.grade.g3 b{color:var(--amber);}
+.grade.g4{border-color:rgba(42,76,125,.3);background:rgba(42,76,125,.04);}
+.grade.g4 b{color:var(--blue);}
+.grade.g5{border-color:rgba(22,120,90,.38);background:rgba(22,120,90,.05);}
+.grade.g5 b{color:var(--green);}
 .prog{height:3px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:12px;}
 .prog i{display:block;height:100%;background:var(--blue);transition:width .3s;}
 
@@ -443,6 +456,14 @@ details.set .inner{padding:0 17px 18px;border-top:1px solid var(--line);margin-t
 .itemacts .btn{flex:0 0 auto;}
 .admbar{display:flex;align-items:center;justify-content:space-between;gap:10px;
   padding:10px 0 2px;font-size:13.5px;color:var(--muted);}
+.hlp{display:inline-block;width:19px;height:19px;line-height:19px;text-align:center;
+  border-radius:99px;font-size:11.5px;font-weight:800;margin-left:7px;vertical-align:1px;
+  background:rgba(42,76,125,.1);color:var(--blue);}
+.hlp.on{background:var(--blue);color:#fff;}
+.hlpbox{background:rgba(42,76,125,.055);border-radius:10px;padding:10px 12px;margin-top:9px;
+  font-size:12.8px;line-height:1.65;color:var(--muted);}
+.hlpbox b{color:var(--ink);}
+.aibox{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);}
 .itemw{font-family:var(--serif);font-size:17.5px;font-weight:600;}
 .itemm{font-size:13.5px;color:var(--muted);margin-top:2px;}
 .itemex{font-family:var(--serif);font-size:13px;color:var(--muted);margin-top:4px;line-height:1.5;}
@@ -1360,23 +1381,28 @@ if(TTS.ok){
 }
 
 let speakT = null;
+/* 아이폰은 "사용자가 누른 바로 그 순간" 에 speak 해야 소리를 냅니다.
+   예전에는 90ms 타이머를 끼워 뒀는데, 그 사이에 손짓 자격이 사라져서 iOS 에서는
+   아무 소리도 나지 않고 오류도 없었습니다. 타이머를 없앴습니다.
+   첫 호출 한 번은 소리 없는 발화로 엔진을 깨워 둡니다 — 이것도 손짓 안에서 해야 합니다. */
+let ttsReady = false;
+function unlockTTS(){
+  if(ttsReady || !TTS.ok) return;
+  ttsReady = true;
+  try{ const u = new SpeechSynthesisUtterance(" "); u.volume = 0; speechSynthesis.speak(u); }catch(e){}
+}
 function speak(text){
   if(!TTS.ok || !text) return;
-  const say = String(text);
   try{
-    speechSynthesis.cancel();
-    clearTimeout(speakT);
-    /* cancel 직후 곧바로 speak 하면 일부 브라우저에서 첫 음절이 잘립니다 */
-    speakT = setTimeout(() => {
-      try{
-        const u = new SpeechSynthesisUtterance(say);
-        u.rate = D.s.rate;
-        const v = bestVoice();
-        if(v){ u.voice = v; u.lang = v.lang || "en-US"; }
-        else u.lang = "en-US";   // 영어 음성이 하나도 없으면 이것밖에 할 수 없습니다
-        speechSynthesis.speak(u);
-      }catch(e){}
-    }, 90);
+    const u = new SpeechSynthesisUtterance(String(text));
+    u.rate = D.s.rate;
+    const v = bestVoice();
+    if(v){ u.voice = v; u.lang = v.lang || "en-US"; }
+    else u.lang = "en-US";   // 영어 음성이 하나도 없으면 이것밖에 할 수 없습니다
+    /* 말하는 중일 때만 끊습니다. 매번 cancel 하면 첫 음절이 잘립니다 */
+    if(speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+    try{ speechSynthesis.resume(); }catch(e){}   // 크롬이 가끔 멈춘 채로 둡니다
   }catch(e){}
 }
 
@@ -1639,7 +1665,7 @@ function viewCard(){
       const ch = gradeChoices();
       bottom = rail(c)
         + '<div class="grades" style="grid-template-columns:repeat('+ch.length+',1fr)">'
-        + ch.map(q=>gbtn(q, GQ[q], q===0?"g0":q===5?"g5":"", c)).join("")
+        + ch.map(q=>gbtn(q, GQ[q], "g"+q, c)).join("")
         + '</div>';
     }
   } else if(typing){
@@ -1936,8 +1962,7 @@ function viewManage(){
     + (e&&e.susp?'<p class="note" style="margin:0">이 단어는 복습에 나오지 않습니다.</p>':'')
     + (e&&e.leech?'<div class="warn" style="margin-top:0">'+e.lapses+'번 틀린 단어입니다. 뜻이 애매하거나 예문이 없으면 고쳐보시고, '
       +'그래도 안 붙으면 복습에서 빼두세요.</div>':'')
-    +(e?'':'<p class="note" style="margin:0">팩은 한 번 고르면 다음 단어에도 그대로 유지됩니다. '
-      +'사전 탭에서 찾아 담으면 뜻과 예문이 자동으로 들어갑니다.</p>')
+    +(e?'':'<p class="note" style="margin:0">사전 탭에서 찾아 담으면 뜻과 예문이 자동으로 들어갑니다.</p>')
     +'</div></div>';
   h+=importPanel();
   /* 여러 개를 함께 고를 수 있습니다. 상태는 모두 만족, 태그는 하나만 맞으면 됩니다 */
@@ -1982,36 +2007,64 @@ function viewManage(){
 }
 
 /** 단어 일괄 넣기 패널 (단어 탭에서 사용) */
+/* -- jeobhineun seolmyeong --
+   설명을 화면에 늘어놓으면 할 일이 묻힙니다. ? 를 누른 사람에게만 보여줍니다. */
+const helpOn = {};
+const helpBtn = k => '<button class="hlp'+(helpOn[k]?" on":"")+'" data-a="help" data-k="'+k+'" '
+  + 'aria-label="설명 보기">?</button>';
+const helpBox = (k, html) => helpOn[k] ? '<div class="hlpbox">'+html+'</div>' : '';
+
 function importPanel(){
-  let h="";
-  h+='<div class="panel"><div class="h2">단어 넣기</div>'
-    +'<p class="note" style="margin-top:0">두 가지 방법이 있습니다.<br>'
-    +'<b>① 단어만</b> — 한 줄에 하나씩. 뜻·예문은 나중에 채웁니다.<br>'
-    +'<b>② 전체 CSV</b> — 줄마다 <span class="mono">단어,뜻,예문,함께쓰는표현,태그,팩</span>. '
-    +'뒤쪽 칸은 비워도 됩니다. 쉼표가 들어가는 칸은 큰따옴표로 감싸세요.<br>'
-    +'팩 이름은 아래 칸에 <b>한 번만</b> 적으면 이번에 넣는 단어 전부에 적용됩니다.</p>'
-    +'<div style="margin-top:10px"><div class="note" style="margin:0 0 4px">이번에 넣는 단어를 담을 팩</div>'
-    +packSelect("imp-pack", importPack||D.s.lastPack||"")+'</div>'
-    +'<textarea class="field" id="imp" rows="6" style="font-family:var(--mono);font-size:13px;margin-top:8px" '
-    +'placeholder="sarcasm&#10;condescending&#10;&#10;또는&#10;sarcasm,비꼬기,&quot;Sheldon, that was sarcasm.&quot;,detect sarcasm"></textarea>'
-    +'<div class="row" style="margin-top:10px">'
-    +'<button class="btn ghost" data-a="preview">확인하기</button>'
-    +'<button class="btn ghost" data-a="csv-pick">파일에서 넣기</button>'
-    +'<input type="file" id="csvin" accept=".csv,.tsv,.txt,text/csv,text/plain" style="display:none">'
-    +'<button class="btn ghost" data-a="copy-prompt">Claude용 프롬프트 복사</button>'
-    +(importPreview?'<button class="btn" data-a="commit">'+importPreview.fresh.length+'개 추가</button>':'')
-    +(importPreview&&aiReady()&&importPreview.missing?'<button class="btn" data-a="bulk-fill" id="bulkbtn">뜻 '+importPreview.missing+'개 채우기</button>':'')
-    +'</div>';
+  const n = importPreview ? importPreview.fresh.length : 0;
+  let h = '<div class="panel"><div class="h2">여러 개 한 번에 넣기'
+    + helpBtn("imp") + '</div>'
+    + helpBox("imp",
+        '<b>한 줄에 한 단어</b>만 적어도 됩니다. 뜻은 나중에 채우면 됩니다.<br>'
+        + '뜻까지 같이 넣으려면 줄마다 쉼표로 <span class="mono">단어,뜻,예문,함께쓰는표현,태그,팩</span> '
+        + '순서로 적습니다. 뒤쪽은 비워도 됩니다. 쉼표가 들어가는 칸은 큰따옴표로 감싸세요.<br>'
+        + '엑셀에서 저장한 CSV 파일도 그대로 읽습니다.')
+    + packSelect("imp-pack", importPack || D.s.lastPack || "")
+    + '<textarea class="field" id="imp" rows="5" '
+    + 'style="font-family:var(--mono);font-size:13px;margin-top:8px" '
+    + 'placeholder="sarcasm&#10;condescending&#10;&#10;또는&#10;sarcasm,비꼬기,&quot;That was sarcasm.&quot;"></textarea>'
+    + '<div class="row" style="margin-top:10px">'
+    + '<button class="btn' + (n ? ' ghost' : '') + '" data-a="preview">확인하기</button>'
+    + '<button class="btn ghost" data-a="csv-pick">파일에서</button>'
+    + '<input type="file" id="csvin" accept=".csv,.tsv,.txt,text/csv,text/plain" style="display:none">'
+    + (n ? '<button class="btn" data-a="commit">' + n + '개 넣기</button>' : '')
+    + (importPreview && aiReady() && importPreview.missing
+        ? '<button class="btn ghost" data-a="bulk-fill" id="bulkbtn">뜻 ' + importPreview.missing + '개 채우기</button>' : '')
+    + '</div>';
+
   if(importPreview){
-    h+='<p class="note">읽은 줄 '+importPreview.items.length+' · 중복 '+importPreview.dup
-      +(importPreview.missing?' · <b>뜻 없음 '+importPreview.missing+'</b>':'')+'</p>';
-    if(importPreview.missing) h+='<div class="warn">뜻이 없는 단어도 그대로 추가됩니다. "Claude용 프롬프트 복사"를 눌러 Claude에 붙여넣으면 뜻과 예문이 붙은 CSV를 받을 수 있습니다. 그걸 다시 여기 붙여넣으세요.</div>';
-    h+=importPreview.fresh.slice(0,6).map(x=>'<div class="item"><span class="itemw">'+esc(x.word)+'</span> '
-      +'<span class="itemm" style="display:inline">'+(x.meaning?esc(x.meaning):'<span style="color:var(--amber)">뜻 없음</span>')+'</span></div>').join("");
-    if(importPreview.fresh.length>6) h+='<p class="note">외 '+(importPreview.fresh.length-6)+'개</p>';
+    h += '<p class="note">' + importPreview.items.length + '줄 읽음'
+      + (importPreview.dup ? ' · 이미 있음 ' + importPreview.dup : '')
+      + (importPreview.missing ? ' · <b style="color:var(--amber)">뜻 없음 ' + importPreview.missing + '</b>' : '')
+      + '</p>';
+    h += importPreview.fresh.slice(0,6).map(x =>
+        '<div class="item" style="padding:7px 0"><span class="itemw" style="font-size:15px">' + esc(x.word) + '</span> '
+      + '<span class="itemm" style="display:inline">'
+      + (x.meaning ? esc(x.meaning) : '<span style="color:var(--amber)">뜻 없음</span>') + '</span></div>').join("");
+    if(importPreview.fresh.length > 6)
+      h += '<p class="note">외 ' + (importPreview.fresh.length - 6) + '개</p>';
   }
-  h+='</div>';
-  return h;
+
+  /* AI 로 정리하기 — 단어를 먼저 넣어야만 복사되던 것이 가장 헷갈리는 부분이었습니다.
+     이제 비어 있어도 프롬프트만 복사됩니다. 받아온 CSV 를 위 칸에 붙여넣으면 끝입니다. */
+  h += '<div class="aibox">'
+    + '<div class="h2" style="margin:0">정리 안 된 메모가 있다면' + helpBtn("ai") + '</div>'
+    + '<p class="note" style="margin:4px 0 0">프롬프트를 복사해 Claude·ChatGPT에 붙여넣고, '
+    + '받은 결과를 위 칸에 다시 붙여넣으세요.</p>'
+    + helpBox("ai",
+        '필기, 자막, 메모처럼 형식이 제각각인 글을 넣어도 됩니다. '
+        + '단어·뜻·예문·함께 쓰는 표현·태그·팩까지 채운 표로 만들어 줍니다. '
+        + '영어 단어가 아닌 줄은 알아서 버립니다.<br>'
+        + '무료입니다. 앱 안에서 자동으로 채우려면 설정 → 사전에서 자기 API 키를 넣으세요.')
+    + '<div class="row" style="margin-top:9px">'
+    + '<button class="btn ghost" data-a="copy-prompt">AI 프롬프트 복사</button></div>'
+    + '</div>';
+
+  return h + '</div>';
 }
 
 /* ══════════════════ 렉시 (마스코트) ══════════════════ */
@@ -3183,27 +3236,34 @@ function installBox(){
     return '<p class="note" style="margin-top:0"><b>이미 앱으로 쓰고 계십니다.</b> '
       + '주소창 없이 열리고, 로그인이 풀리지 않습니다.</p>';
 
-  let h = '<p class="note" style="margin-top:0">홈 화면에 추가하면 앱처럼 열립니다. '
-    + '주소창이 사라지고 <b>로그인이 유지됩니다.</b><br>'
-    + '특히 <b>아이폰 사파리</b>는 홈 화면에 추가하지 않은 사이트의 저장 내용을 '
-    + '한동안 안 들어오면 지웁니다. 그때 다시 로그인하게 됩니다.</p>';
+  let h = '<p class="note" style="margin-top:0">홈 화면에 추가하면 주소창 없이 앱처럼 열리고 '
+    + '<b>로그인이 유지됩니다.</b>' + helpBtn("pwa") + '</p>'
+    + helpBox("pwa",
+        '아이폰 사파리는 홈 화면에 추가하지 않은 사이트의 저장 내용을 한동안 안 들어오면 지웁니다. '
+        + '그때 다시 로그인하게 됩니다. 추가해 두면 그 대상에서 빠집니다.<br>'
+        + '브라우저마다 저장 공간이 따로라, 사파리와 카카오톡 내부 브라우저와 앱은 각각 로그인해야 합니다. '
+        + '<b>앱 하나만 쓰는 것이 가장 편합니다.</b>');
 
+  /* 쓰는 브라우저에 맞는 길만 보여줍니다. 전부 늘어놓으면 자기 것을 못 찾습니다 */
   if(installPrompt)
     h += '<div class="row" style="margin-top:10px">'
       + '<button class="btn" data-a="pwa-install">홈 화면에 추가</button></div>';
   else if(isIOS())
     h += '<p class="note" style="margin-top:10px"><b>아이폰 · 사파리</b><br>'
-      + '화면 아래 공유 단추(네모에 위 화살표) → 목록을 내려 <b>홈 화면에 추가</b> → 오른쪽 위 추가.<br>'
-      + '<span style="opacity:.7">크롬이나 다른 브라우저에서는 이 메뉴가 없습니다. 사파리로 여세요.</span></p>';
+      + '아래 공유 단추(네모에 위 화살표) → <b>홈 화면에 추가</b>.<br>'
+      + '<span style="opacity:.7">크롬 등 다른 브라우저에는 이 메뉴가 없습니다.</span></p>';
+  else if(/SamsungBrowser/i.test(navigator.userAgent||""))
+    h += '<p class="note" style="margin-top:10px"><b>삼성 인터넷</b><br>'
+      + '아래 줄 세 개(≡) → <b>현재 페이지 추가</b> → <b>홈 화면</b>.</p>';
+  else if(/Android/i.test(navigator.userAgent||""))
+    h += '<p class="note" style="margin-top:10px"><b>안드로이드 · 크롬</b><br>'
+      + '오른쪽 위 점 세 개 → <b>앱 설치</b> 또는 <b>홈 화면에 추가</b>.</p>';
   else
-    h += '<p class="note" style="margin-top:10px"><b>안드로이드 · 크롬</b> — 오른쪽 위 점 세 개 → '
-      + '<b>앱 설치</b> 또는 <b>홈 화면에 추가</b>.<br>'
-      + '<b>컴퓨터 · 크롬</b> — 주소창 오른쪽 끝의 설치 아이콘.</p>';
+    h += '<p class="note" style="margin-top:10px"><b>컴퓨터 · 크롬</b><br>'
+      + '주소창 오른쪽 끝의 설치 아이콘.</p>';
 
-  h += '<p class="note">추가해도 같은 단어장입니다. 지금 쓰던 내용이 그대로 보입니다.</p>';
   h += '<div class="h2" style="margin:16px 0 8px">새로고침</div>'
-    + '<p class="note" style="margin-top:0">앱에는 주소창이 없습니다. '
-    + '<b>화면 맨 위에서 아래로 당기면</b> 새로고침됩니다. 아래 단추도 같은 일을 합니다.</p>'
+    + '<p class="note" style="margin-top:0">앱에서는 <b>맨 위에서 아래로 당기면</b> 됩니다.</p>'
     + '<div class="row" style="margin-top:10px">'
     + '<button class="btn ghost" data-a="reload">새로고침</button></div>';
   return h;
@@ -3235,10 +3295,12 @@ function accountBox(){
 
   return '<p class="note" style="margin-top:0"><span class="ok">'+esc(AUTH.email)+'</span> 로 로그인되어 있습니다. '
     + '단어 '+n+'개 · '+size+'.</p>'
-    + '<p class="note"><b>저장과 동기화는 자동입니다.</b> 단어를 넣거나 채점하면 잠시 뒤 올라가고, '
-    + '앱을 열 때 받아옵니다. 평소에는 아무것도 누르지 않아도 됩니다.<br>'
-    + '마지막으로 맞춘 시각 '+syncAgo()+'. 다른 기기에서 방금 넣은 단어를 '
-    + '<b>지금 당장</b> 가져오고 싶을 때만 아래를 누르세요.</p>'
+    + '<p class="note">자동으로 저장됩니다 · 마지막 '+syncAgo()+helpBtn("sync")+'</p>'
+    + helpBox("sync",
+        '단어를 넣거나 채점하면 잠시 뒤 계정에 올라가고, 앱을 열 때 받아옵니다. '
+        + '평소에는 아무것도 누르지 않아도 됩니다.<br>'
+        + '다른 기기에서 방금 넣은 단어를 <b>지금 당장</b> 가져오고 싶을 때만 '
+        + '아래 "지금 바로 맞추기" 를 누르세요.')
     + '<div class="row" style="margin-top:8px">'
     + '<button class="linkish" data-a="sync-now">지금 바로 맞추기</button>'
     + '<span style="flex:1"></span>'
@@ -3261,16 +3323,18 @@ function viewSettings(){
   const enVoices = TTS.ok ? TTS.voices : [];
 
   /* ── 자주 만지는 둘만 펼쳐 둡니다 ── */
-  let h='<div class="panel"><div class="h2">하루 학습량</div>'
+  let h='<div class="panel"><div class="h2">하루 학습량'+helpBtn("daily")+'</div>'
     +'<div class="row" style="justify-content:space-between"><label style="font-size:14.5px;font-weight:600">하루 신규 단어</label>'
     +'<input class="field" type="number" min="0" max="200" style="width:92px" id="s-new" value="'+s.dailyNew+'"></div>'
     +'<div class="row" style="justify-content:space-between;margin-top:12px"><label style="font-size:14.5px;font-weight:600">하루 최대 복습</label>'
     +'<input class="field" type="number" min="0" max="999" style="width:92px" id="s-max" value="'+s.maxReview+'"></div>'
-    +'<p class="note">Anki도 이 둘만 씁니다(기본 신규 20 · 복습 200). 세션을 몇 장으로 끊을지는 Anki에 없어서 뺐습니다 — '
-    +'오늘 할 몫을 한 번에 보여주고, 중간에 그만둬도 채점은 카드마다 저장됩니다.<br>'
-    +'<b>신규 단어 수가 앞으로의 복습량을 정합니다.</b> '+s.dailyNew+'개/일이면 몇 달 뒤 하루 '
-    +Math.round(s.dailyNew*7)+'~'+Math.round(s.dailyNew*10)+'장에서 균형을 잡습니다. 밀리면 여기부터 줄이세요.<br>'
-    +'최대 복습은 넘는 만큼 다음 날로 미룹니다 — 일을 미룰 뿐 줄이지는 않습니다. 0 = 무제한.</p></div>';
+    +'<p class="note">신규 '+s.dailyNew+'개/일이면 몇 달 뒤 하루 '
+    +Math.round(s.dailyNew*7)+'~'+Math.round(s.dailyNew*10)+'장에서 균형을 잡습니다.</p>'
+    +helpBox("daily",
+      '<b>복습량은 신규 단어 수가 정합니다.</b> 밀리기 시작하면 신규부터 줄이세요.<br>'
+      +'최대 복습은 넘는 만큼 다음 날로 미룹니다. 일을 미룰 뿐 줄이지는 않습니다. 0 = 무제한.<br>'
+      +'Anki도 이 둘만 씁니다(기본 신규 20 · 복습 200).')
+    +'</div>';
 
   h+='<div class="panel"><div class="h2">카드 앞면</div><div class="seg" id="seg-front">'
     +[["en","영 → 한"],["ko","한 → 영"],["mix","섞기"]].map(([k,l])=>
@@ -3346,8 +3410,7 @@ function viewSettings(){
     +"한 번 오갈 때 "+kb(dataSize())+" 정도이고, 바뀐 게 없으면 켜든 끄든 올리지 않습니다. "
     +"휴대폰 데이터로 쓸 때 켜세요.",s.lowData);
   inner+='<div class="h2" style="margin:16px 0 10px">파일로 주고받기</div>'
-    +'<p class="note" style="margin-top:0">평소엔 필요 없습니다. 계정 저장이 막히거나 '
-    +'다른 사람과 단어를 주고받을 때 쓰는 수단으로 남겨 둡니다.</p>'
+    +'<p class="note" style="margin-top:0">평소엔 필요 없습니다.</p>'
     +'<div class="row" style="margin-top:10px">'
     +'<button class="btn ghost" data-a="export">내보내기</button>'
     +'<button class="btn ghost" data-a="import-merge">합치기</button>'
@@ -3410,7 +3473,7 @@ const PROMPT_HEAD =
     "너는 영단어 학습 자료를 정리하는 도우미야. 아래 자료를 Lexicon 플래시카드용 CSV로 바꿔줘.\n\n"
   + "[출력 형식]\n"
   + "- CSV만 출력. 설명도, 코드펜스도, 헤더 줄도 넣지 마.\n"
-  + "- 한 단어당 한 줄. 열 순서는 정확히 이 여섯 개:\n"
+  + "- 한 단어당 한 줄. 열 순서는 정확히 이 여덟 개:\n"
   + "  단어,뜻,예문,함께쓰는표현,태그,팩,비슷한말,반대말\n"
   + "- 쉼표나 큰따옴표가 들어가는 칸은 큰따옴표로 감싸고, 안의 큰따옴표는 두 번 써.\n"
   + "- 비는 칸은 그냥 비워 둬. 쉼표 개수는 모든 줄에서 같아야 해.\n\n"
@@ -3657,9 +3720,11 @@ document.addEventListener("click", e=>{
     toast(n+"개를 추가했습니다"); return;
   }
   if(a==="copy-prompt"){
-    const raw=$("#imp").value.trim();
-    if(!raw){ toast("단어를 먼저 붙여넣으세요"); return; }
-    copy(PROMPT_HEAD+raw);
+    /* 예전에는 단어를 먼저 넣어야만 복사됐습니다. 순서가 거꾸로였습니다 --
+       보통은 프롬프트를 먼저 받아 가서 AI 에 메모를 붙여넣습니다 */
+    const el = $("#imp"), raw = el ? el.value.trim() : "";
+    copy(raw ? (PROMPT_HEAD + raw)
+             : (PROMPT_HEAD + "(여기에 정리할 메모나 단어 목록을 붙여넣으세요)"));
     return;
   }
   if(a==="prov"){ D.s.provider=t.dataset.k; save(); render(); return; }
@@ -3724,6 +3789,7 @@ document.addEventListener("click", e=>{
           .then(()=>{ admLoad(); toast("지웠습니다"); })
           .catch(e=>toast("지우지 못했습니다: "+e.message)); });
     return; }
+  if(a==="help"){ helpOn[t.dataset.k] = !helpOn[t.dataset.k]; render(); return; }
   if(a==="reload"){
     try{ if(savePending) localStorage.setItem(KEY, JSON.stringify(D)); }catch(e){}
     location.reload(); return; }
@@ -3789,7 +3855,7 @@ document.addEventListener("click", e=>{
 
 function copy(text){
   if(navigator.clipboard&&window.isSecureContext){
-    navigator.clipboard.writeText(text).then(()=>toast("복사했습니다"),()=>fallback());
+    navigator.clipboard.writeText(text).then(()=>toast("복사했습니다. AI 에 붙여넣으세요"),()=>fallback());
   } else fallback();
   function fallback(){
     const ta=document.createElement("textarea"); ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
@@ -3943,6 +4009,9 @@ const SEED=[
 
 /* ══════════════════ 시작 ══════════════════ */
 load(); authLoad(); render(); paintSync(); initPullRefresh();
+/* 첫 손짓에 음성 엔진을 깨웁니다 */
+addEventListener("touchend", unlockTTS, {once:true, passive:true});
+addEventListener("mousedown", unlockTTS, {once:true});
 if(FB.ready && AUTH.uid) ensureAccess().then(()=>{ render(); if(AUTH.approved){ greet(); syncNow(true); } });
 else if(!FB.ready || isSolo()) setTimeout(greet, 260);
 /* 엔터로도 들어가지고, 암호 관리자가 알아보게 합니다 */
