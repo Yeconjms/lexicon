@@ -3215,21 +3215,34 @@ async function paintBadge(){
   }catch(e){}
 }
 
-/** 아이폰은 배지에도 알림 권한이 필요합니다 */
 async function askBadge(on){
-  if(!on){ D.s.badge = false; save(); paintBadge(); render(); return; }
+  if(!on){ D.s.badge = false; save(); badgeShown = -1; paintBadge(); render(); return; }
   if(!badgeOk()){ toast("이 브라우저는 아이콘 배지를 지원하지 않습니다"); render(); return; }
-  try{
-    if(typeof Notification !== "undefined" && Notification.permission === "default")
-      await Notification.requestPermission();
-  }catch(e){}
-  if(typeof Notification !== "undefined" && Notification.permission === "denied"){
-    D.s.badge = false; save(); render();
-    toast("알림이 차단되어 있습니다. 기기 설정에서 허용해 주세요");
-    return;
+
+  /* 알림 권한이 필요한 건 아이폰뿐입니다. 데스크톱 크롬은 권한 없이도 배지가 뜹니다.
+     예전에는 권한이 막혀 있으면 무조건 스위치를 도로 꺼버려서,
+     켜도 바로 꺼지고 배지는 끝내 안 보였습니다. */
+  if(isIOS()){
+    try{
+      if(typeof Notification !== "undefined" && Notification.permission === "default")
+        await Notification.requestPermission();
+    }catch(e){}
+    if(typeof Notification !== "undefined" && Notification.permission === "denied"){
+      D.s.badge = false; save(); render();
+      toast("알림이 막혀 있습니다. 설정 → Lexicon → 알림에서 허용해 주세요");
+      return;
+    }
   }
-  D.s.badge = true; save(); paintBadge(); render();
-  toast(isStandalone() ? "홈 화면 아이콘에 표시됩니다" : "홈 화면에 추가해야 아이콘에 보입니다");
+
+  D.s.badge = true; save(); badgeShown = -1;
+  /* 실제로 먹히는지 직접 불러 봅니다. 막혀 있으면 여기서 던집니다 */
+  let ok = true;
+  try{ await navigator.setAppBadge(1); await navigator.clearAppBadge(); }
+  catch(e){ ok = false; }
+  paintBadge(); render();
+  if(!ok) toast("이 기기에서는 배지를 띄울 수 없습니다");
+  else if(!isStandalone()) toast("설치한 앱 아이콘에만 보입니다. 브라우저 탭에서는 안 보입니다");
+  else toast("앱 아이콘에 표시됩니다");
 }
 
 /** 기기 달력에 "매일 이 시각" 알림을 하나 넣어 줍니다. 앱이 꺼져 있어도 기기가 울립니다 */
@@ -3288,11 +3301,17 @@ function notifyBox(){
         + '브라우저가 기기에 미리 알림을 예약해 두는 기능은 크롬에서 빠졌고 사파리에는 없습니다.<br>'
         + '대신 아래 두 가지가 같은 일을 합니다. 둘 다 공짜고 아이폰·갤럭시·컴퓨터에서 됩니다.');
 
-  h += '<div class="h2" style="margin:16px 0 8px">아이콘에 남은 장수</div>'
-    + sw("badge", "홈 화면 아이콘에 숫자 표시",
-         badgeOk() ? ("지금 " + n + "장. 앱을 닫아도 숫자가 남습니다")
+  h += '<div class="h2" style="margin:16px 0 8px">아이콘에 남은 장수' + helpBtn("badge") + '</div>'
+    + sw("badge", "앱 아이콘에 숫자 표시",
+         badgeOk() ? ("지금 " + n + "장" + (n ? "" : " — 0장이면 아무것도 안 보입니다"))
                    : "이 브라우저는 지원하지 않습니다",
-         !!D.s.badge, !badgeOk());
+         !!D.s.badge, !badgeOk())
+    + helpBox("badge",
+        '<b>설치한 앱 아이콘에만 보입니다.</b> 브라우저 탭으로 열었을 때는 안 보입니다.<br>'
+        + '<b>컴퓨터</b>는 <b>작업 표시줄</b>이나 독에 있는 아이콘에 뜹니다. '
+        + '바탕화면 바로가기 아이콘에는 뜨지 않습니다 — 윈도우가 그 자리에는 못 그립니다.<br>'
+        + '<b>아이폰</b>은 홈 화면 아이콘에 뜹니다. 알림 권한을 허용해야 합니다.<br>'
+        + '남은 장수가 0이면 숫자가 사라집니다. 고장이 아닙니다.');
 
   h += '<div class="h2" style="margin:16px 0 8px">매일 알림</div>'
     + '<p class="note" style="margin-top:0">기기 달력에 넣습니다. 앱이 꺼져 있어도 울립니다.</p>'
