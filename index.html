@@ -635,6 +635,7 @@ const DEFAULTS = {
   typeModes:{ko2en:true, spell:true, dictation:false},
   dailyNew:15, maxReview:100,
   lowData:false,
+  badge:false, remindAt:"21:00",
   autoSpeak:true, rate:0.9, voiceURI:"", lastPack:"",
   ownerUid:"", pushSig:"", syncedAt:0,
   provider:"none",                              // none | gemini | anthropic
@@ -1520,6 +1521,7 @@ function render(done){
   else if(view==="manage") m.innerHTML = viewManage();
   else if(view==="stats") m.innerHTML = viewStats();
   else m.innerHTML = viewSettings();
+  paintBadge();
   /* 새로 그린 요소에는 CSS 전환이 걸리지 않으므로, 다음 프레임에 클래스를 붙여 뒤집기를 재생합니다 */
   if(S && S.animate){
     S.animate=false;
@@ -3192,6 +3194,114 @@ function initPullRefresh(){
   addEventListener("touchcancel", () => { pulling = false; reset(); }, {passive:true});
 }
 
+/* ── 알림 ──────────────────────────────────────────────────────────
+   서버 없이 "정해진 시각에 앱이 스스로 알림을 띄우는" 방법은 없습니다.
+   - 예약 알림(Notification Triggers)은 크롬에서 빠졌고 사파리엔 처음부터 없습니다.
+   - 푸시 알림은 그 시각에 대신 보내 줄 서버가 있어야 합니다.
+   그래서 서버가 필요 없는 두 가지를 씁니다 — 아이콘 배지와 기기 달력 알림. */
+
+const badgeOk = () => "setAppBadge" in navigator;
+
+/** 홈 화면 아이콘 위에 오늘 남은 장수를 띄웁니다. 앱이 꺼져 있어도 숫자는 남습니다 */
+let badgeShown = -1;
+async function paintBadge(){
+  if(!badgeOk()) return;
+  const want = D.s.badge ? (dueToday().length + freshList().length) : 0;
+  if(want === badgeShown) return;   // render 마다 불리므로 바뀔 때만 건드립니다
+  badgeShown = want;
+  try{
+    if(want > 0) await navigator.setAppBadge(want);
+    else         await navigator.clearAppBadge();
+  }catch(e){}
+}
+
+/** 아이폰은 배지에도 알림 권한이 필요합니다 */
+async function askBadge(on){
+  if(!on){ D.s.badge = false; save(); paintBadge(); render(); return; }
+  if(!badgeOk()){ toast("이 브라우저는 아이콘 배지를 지원하지 않습니다"); render(); return; }
+  try{
+    if(typeof Notification !== "undefined" && Notification.permission === "default")
+      await Notification.requestPermission();
+  }catch(e){}
+  if(typeof Notification !== "undefined" && Notification.permission === "denied"){
+    D.s.badge = false; save(); render();
+    toast("알림이 차단되어 있습니다. 기기 설정에서 허용해 주세요");
+    return;
+  }
+  D.s.badge = true; save(); paintBadge(); render();
+  toast(isStandalone() ? "홈 화면 아이콘에 표시됩니다" : "홈 화면에 추가해야 아이콘에 보입니다");
+}
+
+/** 기기 달력에 "매일 이 시각" 알림을 하나 넣어 줍니다. 앱이 꺼져 있어도 기기가 울립니다 */
+function makeReminder(hhmm){
+  const m = /^(\d{1,2}):(\d{2})$/.exec(hhmm || "");
+  if(!m){ toast("시각을 골라 주세요"); return; }
+  const pad = x => String(x).padStart(2, "0");
+  const start = new Date();
+  start.setHours(+m[1], +m[2], 0, 0);
+  if(start.getTime() < Date.now()) start.setDate(start.getDate() + 1);
+  const end = new Date(start.getTime() + 10 * 60000);
+  const utc = d => d.getUTCFullYear() + pad(d.getUTCMonth()+1) + pad(d.getUTCDate())
+                 + "T" + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + "00Z";
+  const site = location.origin + location.pathname.replace(/[^/]*$/, "");
+
+  const ics = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Lexicon//KO",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    "BEGIN:VEVENT",
+    "UID:lexicon-daily-" + Date.now() + "@lexicon",
+    "DTSTAMP:" + utc(new Date()),
+    "DTSTART:" + utc(start),
+    "DTEND:" + utc(end),
+    "RRULE:FREQ=DAILY",
+    "SUMMARY:영단어 복습",
+    "DESCRIPTION:Lexicon 에서 오늘 몫을 끝내세요.",
+    "URL:" + site,
+    "BEGIN:VALARM",
+    "TRIGGER:PT0M",
+    "ACTION:DISPLAY",
+    "DESCRIPTION:영단어 복습",
+    "END:VALARM",
+    "END:VEVENT",
+    "END:VCALENDAR"
+  ].join("\r\n");
+
+  try{
+    const blob = new Blob([ics], {type:"text/calendar;charset=utf-8"});
+    const url = URL.createObjectURL(blob), a = document.createElement("a");
+    a.href = url; a.download = "lexicon-매일복습.ics"; a.click();
+    setTimeout(()=>URL.revokeObjectURL(url), 1500);
+    toast("달력 앱에서 '추가'를 누르면 매일 울립니다");
+  }catch(e){ toast("만들지 못했습니다: " + e.message); }
+}
+
+function notifyBox(){
+  const n = dueToday().length + freshList().length;
+  let h = '<p class="note" style="margin-top:0">앱이 꺼져 있을 때 스스로 알림을 띄우지는 못합니다.'
+    + helpBtn("noti") + '</p>'
+    + helpBox("noti",
+        '정해진 시각에 알림을 보내려면 <b>그때 대신 보내 줄 서버</b>가 있어야 합니다. '
+        + '이 앱은 서버 없이 도는 구조라 그 부분이 없습니다. '
+        + '브라우저가 기기에 미리 알림을 예약해 두는 기능은 크롬에서 빠졌고 사파리에는 없습니다.<br>'
+        + '대신 아래 두 가지가 같은 일을 합니다. 둘 다 공짜고 아이폰·갤럭시·컴퓨터에서 됩니다.');
+
+  h += '<div class="h2" style="margin:16px 0 8px">아이콘에 남은 장수</div>'
+    + sw("badge", "홈 화면 아이콘에 숫자 표시",
+         badgeOk() ? ("지금 " + n + "장. 앱을 닫아도 숫자가 남습니다")
+                   : "이 브라우저는 지원하지 않습니다",
+         !!D.s.badge, !badgeOk());
+
+  h += '<div class="h2" style="margin:16px 0 8px">매일 알림</div>'
+    + '<p class="note" style="margin-top:0">기기 달력에 넣습니다. 앱이 꺼져 있어도 울립니다.</p>'
+    + '<div class="row" style="margin-top:10px;flex-wrap:nowrap">'
+    + '<input class="field" type="time" id="s-remind" value="' + esc(D.s.remindAt || "21:00") + '" style="width:155px">'
+    + '<button class="btn" data-a="remind-make">달력에 넣기</button></div>';
+  return h;
+}
+
 function installBox(){
   if(isStandalone())
     return '<p class="note" style="margin-top:0"><b>이미 앱으로 쓰고 계십니다.</b> '
@@ -3389,6 +3499,7 @@ function viewSettings(){
     +'<button class="btn ghost" style="color:var(--rose)" data-a="reset-all">전체 삭제</button></div>'
     +'<p class="note">진도만 초기화하면 단어는 남고 복습 일정과 정답률만 돌아갑니다. 둘 다 되돌릴 수 없습니다.</p>';
   h+=setBox("데이터", !FB.ready ? "이 기기에만" : AUTH.uid ? "로그인됨" : "로그인 안 함", inner);
+  h+=setBox("알림", D.s.badge ? "아이콘에 표시 중" : "꺼짐", notifyBox());
   h+=setBox("앱처럼 쓰기", isStandalone() ? "앱으로 열림" : "홈 화면에 추가", installBox(), !isStandalone());
   if(FB.ready && ADMIN_UID && AUTH.uid === ADMIN_UID)
     { /* 기다리는 사람이 있으면 부제에 먼저 띄우고 칸도 펼쳐 둡니다 */
@@ -3754,6 +3865,9 @@ document.addEventListener("click", e=>{
           .catch(e=>toast("지우지 못했습니다: "+e.message)); });
     return; }
   if(a==="help"){ helpOn[t.dataset.k] = !helpOn[t.dataset.k]; render(); return; }
+  if(a==="remind-make"){
+    const el=$("#s-remind"); const v=el?el.value:"";
+    D.s.remindAt=v||"21:00"; save(); makeReminder(D.s.remindAt); return; }
   if(a==="reload"){
     try{ if(savePending) localStorage.setItem(KEY, JSON.stringify(D)); }catch(e){}
     location.reload(); return; }
@@ -3836,6 +3950,7 @@ document.addEventListener("change", e=>{
     if(k==="typing") D.s.typing=e.target.checked;
     else if(k==="autospeak") D.s.autoSpeak=e.target.checked;
     else if(k==="lowdata") D.s.lowData=e.target.checked;
+    else if(k==="badge"){ askBadge(e.target.checked); return; }
     else if(k==="keepmail"){ AUTH.keepMail=e.target.checked;
       keepEmail(e.target.checked ? ($("#au-email")?$("#au-email").value.trim():"") : ""); return; }
     else if(k.startsWith("t-")) D.s.typeModes[{"t-ko2en":"ko2en","t-spell":"spell","t-dict":"dictation"}[k]]=e.target.checked;
