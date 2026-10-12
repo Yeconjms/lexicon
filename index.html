@@ -1783,11 +1783,16 @@ function packStyleBox(){
 
 /* ── 팩 브라우저 ── */
 let packPath = "";   // "" = 최상위, "__none" = 분류 없음, 그 외 = 경로
+/* 보류한 카드는 복습에서 빠져 있으므로 정답률에 넣지 않습니다.
+   예전에는 D.cards 로 계산해서, 다 외워 보류해 둔 카드가 팩 정답률을 끌어올렸습니다
+   (실제 52%인데 71%로 표시). due·leech 는 이미 보류를 빼고 있어 한 함수 안에서도 기준이 달랐습니다.
+   n 은 팩에 든 단어 수이므로 보류까지 셉니다 — 대신 susp 를 함께 돌려줘 화면에서 밝힙니다. */
 function packStats(p){
   const cs=D.cards.filter(c=>inPack(c,p));
-  const seen=cs.reduce((s,c)=>s+c.seen,0), cor=cs.reduce((s,c)=>s+c.correct,0);
-  return { n:cs.length, due:dueAll(p).length, fresh:cs.filter(c=>c.seen===0&&!c.susp).length,
-    acc:seen?Math.round(cor/seen*100):null, leech:cs.filter(c=>c.leech&&!c.susp).length };
+  const act=cs.filter(c=>!c.susp);
+  const seen=act.reduce((s,c)=>s+c.seen,0), cor=act.reduce((s,c)=>s+c.correct,0);
+  return { n:cs.length, susp:cs.length-act.length, due:dueAll(p).length,
+    acc:seen?Math.round(cor/seen*100):null, leech:act.filter(c=>c.leech).length };
 }
 function childSegments(prefix){
   const set=new Map();
@@ -1817,14 +1822,21 @@ function viewPacks(){
       +'<span class="mono muted" style="font-size:12px">'
       + packTag(packPath) + esc(segs.join(" / "))+'</span></div>';
     const st=packStats(packPath);
+    /* 단추에 적는 수는 실제로 나올 장수여야 합니다. 예전에는 복습 단추가 밀린 것만 세어
+       새 단어가 빠졌고(8장이라 적고 12장이 나옴), 훑기 단추는 보류까지 세서
+       적은 수보다 적게 나왔습니다(15장이라 적고 12장이 나옴). */
+    const nRev = buildQueue({kind:"review", pack:packPath}).length;
+    const nSweep = sweepList(packPath).length;
     h+='<div class="grid4" style="margin-top:12px">'
       + stat(st.n,"단어") + stat(st.due,"복습 대기")
       + stat(st.acc===null?"—":st.acc+"%","정답률", st.acc!==null&&st.acc<70?"var(--rose)":"var(--green)")
       + stat(st.leech,"누수", st.leech?"var(--rose)":"")+'</div>'
+      +(st.susp?'<p class="note" style="margin:8px 0 0">단어 '+st.n+'개 중 '+st.susp
+        +'개는 복습에서 뺐습니다. 정답률과 누수는 뺀 것을 빼고 셌습니다.</p>':'')
       +'<div style="margin-top:12px;display:grid;gap:7px">'
-      +'<button class="btn wide" data-a="pack-review" '+(st.due?"":"disabled")+'>이 팩 복습 · '+st.due+'장</button>'
-      +'<button class="btn ghost wide" data-a="pack-sweep" '+(st.n?"":"disabled")+'>전체 훑기 · '+st.n+'장</button>'
-      +'<p class="note" style="margin:2px 0 0">복습은 오늘 차례가 된 것만 나오고 일정이 바뀝니다. '
+      +'<button class="btn wide" data-a="pack-review" '+(nRev?"":"disabled")+'>이 팩 복습 · '+nRev+'장</button>'
+      +'<button class="btn ghost wide" data-a="pack-sweep" '+(nSweep?"":"disabled")+'>전체 훑기 · '+nSweep+'장</button>'
+      +'<p class="note" style="margin:2px 0 0">복습은 오늘 차례가 된 것과 새 단어가 나오고 일정이 바뀝니다. '
       +'훑기는 차례와 상관없이 전부 보여주고 일정을 바꾸지 않습니다.</p>'
       +'</div>';
     h+='<div class="row" style="margin-top:10px">'
