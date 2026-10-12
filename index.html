@@ -235,11 +235,11 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
   100%{opacity:0;transform:scale(.5) translateY(-16px)}}
 
 /* 유의어 · 반의어 */
-.sa{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:9px;}
-.sa b{font-size:11px;font-weight:700;letter-spacing:.06em;opacity:.75;}
-.sa .syn{background:rgba(22,120,90,.16);color:#7FD8BC;}
-.sa .ant{background:rgba(166,57,74,.18);color:#F0A9B4;}
-.sa span{padding:3px 9px;border-radius:99px;font-size:12px;font-weight:600;}
+.sa{display:flex;flex-wrap:wrap;gap:7px;align-items:center;justify-content:center;margin-top:11px;}
+.sa b{font-size:12px;font-weight:700;letter-spacing:.04em;opacity:.9;}
+.sa .syn{background:rgba(22,120,90,.26);color:#9BE8CE;}
+.sa .ant{background:rgba(166,57,74,.28);color:#F8BFC8;}
+.sa span{padding:4px 11px;border-radius:99px;font-size:13.5px;font-weight:600;}
 
 /* 단어 목록 다중 필터 */
 .fchips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px;}
@@ -389,9 +389,13 @@ details.set .inner{padding:0 17px 18px;border-top:1px solid var(--line);margin-t
 .flipped .back{transform:rotateY(0deg);}
 .word{font-family:var(--serif);font-size:clamp(32px,9vw,50px);line-height:1.08;color:#fff;word-break:break-word;}
 .wordko{font-size:clamp(20px,5.5vw,28px);font-weight:600;line-height:1.4;color:#fff;}
-.sub{font-size:14px;color:#9DB2BF;line-height:1.65;max-width:420px;margin-top:14px;}
-.sub em{font-style:normal;color:#F0C674;font-family:var(--serif);}
-.sub.ex{font-family:var(--serif);font-size:15.5px;color:#CFE0EB;}
+/* 카드 뒷면 아랫부분 — 예문·함께 쓰는 표현·비슷한 말.
+   어두운 바탕에 12~15px 회색이라 잘 안 보인다는 지적이 있어 키우고 밝혔습니다.
+   단어와 뜻은 그대로 둡니다. 거긴 잘 보인다고 했습니다. */
+.sub{font-size:15px;color:#AEC3D2;line-height:1.65;max-width:470px;margin-top:14px;}
+.sub em{font-style:normal;color:#F5CE7E;font-family:var(--serif);}
+.sub.ex{font-family:var(--serif);font-size:clamp(16px,4.3vw,18.5px);color:#E4EEF5;line-height:1.55;}
+.sub.colloc{font-size:13.5px;color:#A9C1D2;margin-top:11px;line-height:1.6;}
 .hint{font-size:11.5px;color:#7E96A6;letter-spacing:.06em;margin-top:20px;font-weight:600;}
 .speak{width:44px;height:44px;border-radius:99px;border:1px solid rgba(255,255,255,.24);
   display:inline-flex;align-items:center;justify-content:center;color:#CFE0EB;font-size:17px;margin-top:18px;}
@@ -1631,7 +1635,7 @@ function viewCard(){
   if(S.result) back+='<div class="verdict v-'+S.result+'">'
     +(S.result==="ok"?"정답":S.result==="typo"?('오타 · 입력 "'+esc(S.input)+'"'):(S.input?('오답 · 입력 "'+esc(S.input)+'"'):"오답"))+'</div>';
   if(c.example) back+='<div class="sub ex">'+highlight(c.example,c.word)+'</div>';
-  if(c.collocation) back+='<div class="sub mono" style="font-size:12px;margin-top:8px">'+esc(c.collocation)+'</div>';
+  if(c.collocation) back+='<div class="sub mono colloc">'+esc(c.collocation)+'</div>';
   const saPart=(v,k,label)=>{
     const xs=String(v||"").split(/[;,/]/).map(x=>x.trim()).filter(Boolean);
     return xs.length ? '<div class="sa"><b>'+label+'</b>'
