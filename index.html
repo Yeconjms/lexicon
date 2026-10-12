@@ -2721,11 +2721,13 @@ function moodPanel(){
 }
 
 function viewStats(){
-  const seen=D.cards.reduce((s,c)=>s+c.seen,0), cor=D.cards.reduce((s,c)=>s+c.correct,0);
-  const acc=seen?Math.round(cor/seen*100):0;
-  const fresh=D.cards.filter(c=>c.seen===0).length;
-  const lrn=D.cards.filter(c=>c.seen>0&&c.interval<21).length;
-  const mat=D.cards.filter(c=>c.interval>=21).length;
+  /* 보류한 카드는 복습에서 빠져 있으므로 진도 집계에서도 뺍니다.
+     예전에는 D.cards 를 그대로 세서, 보류해 둔 카드가 "다 외운 것" 으로 잡혔습니다
+     (실제 7개인데 12개로 표시). 학습 탭은 줄곧 active() 를 쓰고 있어 서로 어긋나기도 했습니다. */
+  const act=active(), suspN=D.cards.length-act.length;
+  const fresh=act.filter(c=>c.seen===0).length;
+  const lrn=act.filter(c=>c.seen>0&&c.interval<21).length;
+  const mat=act.filter(c=>c.interval>=21).length;
   /* 최근 30일 실제 정답률 — 누적보다 지금 상태를 잘 보여줍니다 */
   let rr=0, rc=0;
   for(let i=0;i<30;i++){ const v=dayStat(dayKey(new Date(Date.now()-i*DAY))); rr+=v.reviews; rc+=v.correct; }
@@ -2733,16 +2735,21 @@ function viewStats(){
   /* ── 한 줄 진단 ── 숫자만 늘어놓으면 뭘 해야 할지 알 수 없으므로 판정을 먼저 보여줍니다.
      정답률 85~90%가 간격 반복의 통상 기준선입니다. 너무 높아도 간격이 짧다는 뜻입니다. */
   const fcAll=new Array(30).fill(0);
-  active().forEach(c=>{ if(c.seen===0) return;
+  act.forEach(c=>{ if(c.seen===0) return;
     const d=Math.floor((sod(c.due)-sod())/DAY);
     if(d>=0&&d<30) fcAll[d]++; else if(d<0) fcAll[0]++; });
   const peak=Math.max(1,...fcAll);
-  const avg=Math.round(fcAll.reduce((a,b)=>a+b,0)/30);
-  const over = D.s.maxReview>0 && peak>D.s.maxReview;
+  /* 밀린 카드는 전부 오늘 칸에 쌓입니다. 그걸 "앞으로 가장 많은 날" 로 치면
+     밀린 양을 미래의 부담으로 착각하게 됩니다 — 실제로 밀린 11장 때문에
+     "상한을 넘는 날이 있습니다" 가 떴습니다. 판정은 내일부터로 합니다. */
+  const future=fcAll.slice(1);
+  const peakF=Math.max(0,...future);
+  const avg=Math.round(future.reduce((a,b)=>a+b,0)/future.length);
+  const over = D.s.maxReview>0 && peakF>D.s.maxReview;
   const backlog=dueAll().length, todayDue=dueToday().length;
 
   let vTitle, vBody;
-  if(rr<20){
+  if(rr<30){
     vTitle="아직 판단하기엔 이릅니다";
     vBody="복습을 "+rr+"번 했습니다. 30번쯤 넘어가면 정답률이 의미를 갖기 시작합니다. 그때까지는 그냥 매일 하시면 됩니다.";
   }else if(racc<75){
@@ -2753,7 +2760,10 @@ function viewStats(){
     vBody="정답률 "+racc+"%는 이미 아는 것을 다시 보고 있다는 뜻일 수 있습니다. 채점할 때 <b>쉬움</b>을 더 적극적으로 눌러 간격을 벌리면 같은 시간에 더 많은 단어를 볼 수 있습니다.";
   }else if(over||backlog>todayDue*2){
     vTitle="정답률은 좋은데 양이 밀립니다";
-    vBody="정답률 "+racc+"%는 적정 범위입니다. 다만 앞으로 가장 많은 날이 "+peak+"장이라 하루 상한 "+D.s.maxReview+"장을 넘습니다. 상한은 일을 <b>미룰 뿐 줄이지 않습니다</b>. 하루 신규 단어를 줄이는 게 유일한 해법입니다.";
+    vBody="정답률 "+racc+"%는 적정 범위입니다. 다만 "
+      +(over?("앞으로 가장 많은 날이 "+peakF+"장이라 하루 상한 "+D.s.maxReview+"장을 넘습니다. ")
+            :("지금 밀린 카드가 "+backlog+"장입니다. "))
+      +"상한은 일을 <b>미룰 뿐 줄이지 않습니다</b>. 하루 신규 단어를 줄이는 게 유일한 해법입니다.";
   }else{
     vTitle="잘 되고 있습니다";
     vBody="최근 30일 정답률 "+racc+"%로 적정 범위(85~90%)에 있고, 앞으로 30일 복습량도 하루 평균 "+avg+"장이라 감당 가능합니다. 지금 속도를 유지하세요.";
@@ -2776,7 +2786,7 @@ function viewStats(){
     +'둘 다 시간이 새는 것이라 이 띠 안에 두는 게 목표입니다.</p></div>';
 
   /* ── 얼마나 내 것이 되었나 ── */
-  const tot=D.cards.length||1;
+  const tot=act.length||1;
   h+='<div class="panel"><div class="h2">얼마나 내 것이 되었나</div>'
     +'<div class="mixbar">'
     +'<i style="width:'+(mat/tot*100)+'%;background:var(--green)"></i>'
@@ -2787,7 +2797,8 @@ function viewStats(){
     +'<span><b style="background:var(--blue)"></b>외우는 중 <em>'+lrn+'</em></span>'
     +'<span><b style="background:#8FA6B5"></b>아직 안 본 것 <em>'+fresh+'</em></span></div>'
     +'<p class="note">복습 간격이 <b>21일</b>을 넘으면 "다 외운 것"으로 봅니다. '
-    +'이 초록이 늘어나는 게 실제 성과입니다 — 푼 카드 수는 늘어나도 초록이 안 늘면 헛돌고 있는 겁니다.</p></div>';
+    +'이 초록이 늘어나는 게 실제 성과입니다 — 푼 카드 수는 늘어나도 초록이 안 늘면 헛돌고 있는 겁니다.'
+    +(suspN?('<br>복습에서 뺀 '+suspN+'개는 세지 않았습니다.'):'')+'</p></div>';
 
   /* ── 앞으로 30일 복습량 예보 ── (fcAll·peak·avg 는 위 진단에서 이미 계산했습니다) */
   const fc=fcAll;
@@ -2797,9 +2808,11 @@ function viewStats(){
     +'</div><div class="row" style="justify-content:space-between;margin-top:6px">'
     +'<span class="mono muted" style="font-size:10px">오늘</span>'
     +'<span class="mono muted" style="font-size:10px">30일 뒤</span></div>'
-    +'<p class="note">하루 평균 '+avg+'장, 가장 많은 날 '+peak+'장. '
-    +(peak>(D.s.maxReview||9999)?'<b style="color:var(--rose)">상한을 넘는 날이 있습니다.</b> 하루 신규 단어를 줄이는 것을 권합니다.'
-      :'지금 속도는 감당 가능한 범위입니다.')+'</p></div>';
+    +'<p class="note"><b>내일부터</b> 하루 평균 '+avg+'장, 가장 많은 날 '+peakF+'장. '
+    +(over?'<b style="color:var(--rose)">상한을 넘는 날이 있습니다.</b> 하루 신규 단어를 줄이는 것을 권합니다.'
+      :'지금 속도는 감당 가능한 범위입니다.')
+    +(backlog?('<br>맨 왼쪽 칸은 오늘이고 <b>밀린 '+backlog+'장</b>이 모두 거기 쌓여 있습니다. '
+      +'밀린 양은 앞으로의 부담과 따로 봐야 합니다.'):'')+'</p></div>';
   const shade=n=>n===0?"#DCE3E8":n<5?"#B8D3C7":n<15?"#77B49B":n<40?"#3D9174":"#16785A";
   h+='<div class="panel"><div class="h2">최근 12주</div><div class="heat">';
   const off=new Date().getDay();
@@ -2810,7 +2823,7 @@ function viewStats(){
       h+='<div class="cell" title="'+k+' · '+n+'장" style="background:'+shade(n)+'"></div>'; }
     h+='</div>'; }
   h+='</div><p class="note">칸 하나가 하루입니다. 진할수록 그날 많이 봤다는 뜻입니다.</p></div>';
-  const weak=D.cards.filter(c=>c.seen>=2).sort((a,b)=>a.correct/a.seen-b.correct/b.seen||b.lapses-a.lapses).slice(0,10);
+  const weak=act.filter(c=>c.seen>=2).sort((a,b)=>a.correct/a.seen-b.correct/b.seen||b.lapses-a.lapses).slice(0,10);
   h+='<div class="panel"><div class="h2">발목 잡는 단어</div>';
   if(!weak.length) h+='<p class="note">두 번 이상 본 단어부터 집계됩니다.</p>';
   else h+='<p class="note" style="margin:0 0 10px">여기 있는 단어가 복습량을 늘리는 주범입니다. '
