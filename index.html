@@ -267,6 +267,18 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 .iconbtn.on{border-color:var(--ink);background:var(--paper);}
 .packbar{width:5px;border-radius:99px;flex:0 0 5px;align-self:stretch;min-height:36px;}
 
+/* 일주일 넘게 이어온 사람에게는 들어올 때 별이 쏟아집니다. 자주 보면 특별하지 않으니
+   7일 연속일 때만 띄웁니다 */
+.starrain{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:121;}
+.starrain i{position:absolute;top:-8%;font-style:normal;color:var(--star-deep);
+  text-shadow:0 1px 0 rgba(0,0,0,.1);animation:lxfall linear forwards;}
+@keyframes lxfall{
+  0%{opacity:0;transform:translateY(0) rotate(0) scale(.6)}
+  12%{opacity:1}
+  85%{opacity:1}
+  100%{opacity:0;transform:translateY(112vh) rotate(260deg) scale(1)}}
+@media (prefers-reduced-motion: reduce){ .starrain{display:none;} }
+
 /* 들어올 때 뜨는 인사 */
 /* grid + place-items 는 자식마다 한 줄씩 잡아 별과 문구가 따로 떨어집니다.
    세로 가운데 정렬은 flex 로 묶어야 합니다 */
@@ -483,12 +495,15 @@ details.set .inner{padding:0 17px 18px;border-top:1px solid var(--line);margin-t
   font-size:12.8px;line-height:1.65;color:var(--muted);}
 .hlpbox b{color:var(--ink);}
 /* 설정이 아니라 안내 — 설정 줄과 달라 보이게 바탕을 깔고 꺾쇠를 두지 않습니다 */
-.guide{margin-top:16px;background:rgba(42,76,125,.06);border:1px solid rgba(42,76,125,.15);
-  border-radius:13px;padding:15px 16px;}
-.guide.done{background:rgba(22,120,90,.07);border-color:rgba(22,120,90,.18);}
-.guide .gtitle{display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:700;color:var(--blue);}
-.guide.done .gtitle{color:var(--green);}
-.guide .gtitle i{font-style:normal;font-size:12px;}
+.guide{margin-top:16px;border-radius:14px;padding:16px 17px;
+  background:linear-gradient(135deg, rgba(246,219,99,.26), rgba(233,196,60,.12));
+  border:1px solid rgba(181,130,14,.3);
+  box-shadow:0 2px 10px rgba(181,130,14,.12);}
+.guide.done{background:rgba(22,120,90,.07);border-color:rgba(22,120,90,.2);box-shadow:none;}
+.guide .gtitle{display:flex;align-items:center;gap:8px;font-size:15.5px;font-weight:700;color:var(--deep);}
+.guide.done .gtitle{color:var(--green);font-size:14.5px;}
+.guide .gtitle i{font-style:normal;font-size:16px;color:var(--star-deep);line-height:1;}
+.guide.done .gtitle i{font-size:12px;color:var(--green);}
 .guide p{margin:8px 0 0;font-size:12.8px;color:var(--muted);line-height:1.7;}
 .guide p b{color:var(--ink);}
 .guide .row{margin-top:12px;}
@@ -2764,6 +2779,24 @@ function greet(){
   const g = GREETS[i];
   const line = greetLine() || g.t[Math.floor(Math.random()*g.t.length)];
 
+  /* 7일 넘게 이어왔으면 별이 쏟아집니다 */
+  if(streak() >= 7){
+    const rain = document.createElement("div");
+    rain.className = "starrain"; rain.id = "starrain";
+    let bits = "";
+    for(let i=0;i<22;i++){
+      const left = Math.round(Math.random()*96);
+      const dur  = (2.2 + Math.random()*1.6).toFixed(2);
+      const del  = (Math.random()*0.9).toFixed(2);
+      const size = (11 + Math.random()*13).toFixed(0);
+      bits += '<i style="left:'+left+'%;font-size:'+size+'px;'
+            + 'animation-duration:'+dur+'s;animation-delay:'+del+'s">★</i>';
+    }
+    rain.innerHTML = bits;
+    document.body.appendChild(rain);
+    setTimeout(()=>{ const r=document.getElementById("starrain"); if(r) r.remove(); }, 4200);
+  }
+
   const w = document.createElement("div");
   w.className = "greet"; w.id = "greet";
   /* 7일 이상 이어왔으면 인사할 때도 광채가 돕니다 */
@@ -3496,7 +3529,7 @@ function appGuide(){
     how = '<p><b>크롬</b> 주소창 오른쪽 끝의 설치 아이콘</p>';
 
   return '<div class="guide">'
-    + '<div class="gtitle"><i>◇</i>앱으로 쓰면 더 편합니다</div>'
+    + '<div class="gtitle"><i>★</i>앱으로 쓰면 더 편합니다</div>'
     + '<p>홈 화면에 추가하면 주소창 없이 열리고 <b>로그인이 유지됩니다.</b>'
     + helpBtn("pwa") + '</p>'
     + helpBox("pwa",
