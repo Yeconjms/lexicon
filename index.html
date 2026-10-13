@@ -441,6 +441,15 @@ details.set .inner{padding:0 17px 18px;border-top:1px solid var(--line);margin-t
    아래 줄로 내리고 오른쪽에 모읍니다 */
 .itemacts{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;margin-top:9px;}
 .itemacts .btn{flex:0 0 auto;}
+/* 목록에서 펼쳐 보는 추가 정보 — 카드 뒷면과 달리 밝은 바탕이라 색을 따로 둡니다 */
+.wmore{margin-top:9px;padding:10px 12px;background:rgba(42,76,125,.05);border-radius:10px;
+  display:flex;flex-direction:column;gap:7px;}
+.wrow{display:flex;gap:9px;align-items:baseline;flex-wrap:wrap;font-size:13px;}
+.wrow>b{flex:0 0 auto;font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.03em;}
+.wrow .mono{font-size:12.5px;color:var(--ink);line-height:1.6;}
+.wp{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12.5px;font-weight:600;margin:0 5px 4px 0;}
+.wp.syn{background:rgba(22,120,90,.14);color:var(--green);}
+.wp.ant{background:rgba(166,57,74,.14);color:var(--rose);}
 .admbar{display:flex;align-items:center;justify-content:space-between;gap:10px;
   padding:10px 0 2px;font-size:13.5px;color:var(--muted);}
 .hlp{display:inline-block;width:19px;height:19px;line-height:19px;text-align:center;
@@ -1623,6 +1632,27 @@ function viewStudyHome(done){
   h+='<p class="note">오답 집중과 팩 훑기는 복습 일정을 바꾸지 않고 통계에만 반영됩니다.</p>';
   return h;
 }
+/* 목록에서는 뜻과 예문까지만 보여주고, 함께 쓰는 표현·비슷한 말·반대말은 접어 둡니다.
+   넣어 놓고 어디서도 볼 수 없다는 지적이 있어 "자세히" 로 펼칠 수 있게 했습니다. */
+const moreOn = {};
+const hasExtra = c => !!((c.collocation||"").trim() || (c.syn||"").trim() || (c.ant||"").trim());
+const moreBtn = c => hasExtra(c)
+  ? '<button class="btn sm ghost" data-a="word-more" data-id="'+c.id+'">'
+    + (moreOn[c.id] ? "접기" : "자세히") + '</button>' : '';
+const pills = (v,k) => {
+  const xs = String(v||"").split(/[;,/]/).map(x=>x.trim()).filter(Boolean).slice(0,6);
+  return xs.length ? xs.map(x=>'<span class="wp '+k+'">'+esc(x)+'</span>').join("") : "";
+};
+function wordExtra(c){
+  if(!hasExtra(c) || !moreOn[c.id]) return "";
+  let h = '<div class="wmore">';
+  if((c.collocation||"").trim())
+    h += '<div class="wrow"><b>함께 쓰는 표현</b><span class="mono">'+esc(c.collocation)+'</span></div>';
+  if((c.syn||"").trim()) h += '<div class="wrow"><b>비슷한 말</b><span>'+pills(c.syn,"syn")+'</span></div>';
+  if((c.ant||"").trim()) h += '<div class="wrow"><b>반대말</b><span>'+pills(c.ant,"ant")+'</span></div>';
+  return h + '</div>';
+}
+
 const stat=(v,l,c)=>'<div class="stat"><b'+(c?' style="color:'+c+'"':'')+'>'+v+'</b><span>'+l+'</span></div>';
 
 /* ── 카드 ── */
@@ -1900,18 +1930,20 @@ function viewPacks(){
       || a.word.localeCompare(b.word));
     h+='<div class="panel"><div class="h2">단어 '+sorted.length+'개 · 많이 틀린 순</div>';
     sorted.forEach(c=>{ const acc=c.seen?Math.round(c.correct/c.seen*100):null;
-      h+='<div class="item"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap">'
-        +'<div style="flex:1;min-width:0"><div class="itemw">'+esc(c.word)
+      h+='<div class="item">'
+        +'<div class="itemw">'+esc(c.word)
         +(c.leech?' <span class="chip rev">누수</span>':'')
         +(c.susp?' <span class="chip">보류</span>':'')+'</div>'
         +'<div class="itemm">'+esc(c.meaning||"—")+'</div>'
         +(c.example?'<div class="itemex">'+esc(c.example)+'</div>':'')
-        +'<div class="meta">'+(c.seen===0?"아직 안 봄":("실패 "+c.lapses+"회 · 정답률 "+acc+"% · "+c.interval+"일 간격"))+'</div></div>'
-        +'<div class="row" style="flex-wrap:nowrap">'
-        +(TTS.ok?'<button class="btn sm ghost" data-a="say-w" data-id="'+c.id+'">♪</button>':'')
+        +'<div class="meta">'+(c.seen===0?"아직 안 봄":("실패 "+c.lapses+"회 · 정답률 "+acc+"% · "+c.interval+"일 간격"))+'</div>'
+        + wordExtra(c)
+        +'<div class="itemacts">'
+        + moreBtn(c)
+        +(TTS.ok?'<button class="btn sm ghost" data-a="say-w" data-id="'+c.id+'">♪ 발음</button>':'')
         +'<button class="btn sm ghost" data-a="susp" data-id="'+c.id+'">'+(c.susp?"재개":"빼기")+'</button>'
         +'<button class="btn sm ghost" data-a="edit-go" data-id="'+c.id+'">수정</button>'
-        +'</div></div></div>';
+        +'</div></div>';
     });
     h+='</div>';
   }
@@ -2009,7 +2041,9 @@ function viewManage(){
       +'<div class="meta">'+(c.pack?esc(c.pack)+' · ':'')
       +(c.seen===0?"신규":(c.interval+"일 간격 · "+fmtD(c.due)+" 예정 · "+c.correct+"/"+c.seen))
       +(c.lapses?" · 실패 "+c.lapses:"")+'</div>'
+      + wordExtra(c)
       +'<div class="itemacts">'
+      + moreBtn(c)
       +(TTS.ok?'<button class="btn sm ghost" data-a="say-w" data-id="'+c.id+'">♪ 발음</button>':'')
       +(c.auto?'<button class="btn sm ghost" style="color:var(--green)" data-a="confirm" data-id="'+c.id+'">확인</button>':'')
       +'<button class="btn sm ghost" data-a="susp" data-id="'+c.id+'">'+(c.susp?"재개":"빼기")+'</button>'
@@ -2056,6 +2090,10 @@ function importPanel(){
       + (importPreview.dup ? ' · 이미 있음 ' + importPreview.dup : '')
       + (importPreview.missing ? ' · <b style="color:var(--amber)">뜻 없음 ' + importPreview.missing + '</b>' : '')
       + '</p>';
+    if(importPreview.odd)
+      h += '<div class="warn"><b>' + importPreview.odd + '줄은 칸이 밀렸을 수 있습니다.</b> '
+        + '따옴표로 감싸지 않은 쉼표가 들어가면 뒤쪽 칸이 한 칸씩 밀립니다. '
+        + '아래 미리보기에서 뜻이 이상한 줄이 있으면, 쉼표가 든 칸을 큰따옴표로 감싸서 다시 붙여넣으세요.</div>';
     h += importPreview.fresh.slice(0,6).map(x =>
         '<div class="item" style="padding:7px 0"><span class="itemw" style="font-size:15px">' + esc(x.word) + '</span> '
       + '<span class="itemm" style="display:inline">'
@@ -3577,17 +3615,49 @@ const sw=(k,t,d,on,dis)=>'<label class="sw"><input type="checkbox" data-sw="'+k+
   +'<span><b>'+t+'</b>'+(d?'<span>'+d+'</span>':'')+'</span></label>';
 
 /* ══════════════════ CSV ══════════════════ */
+/* 붙여넣는 글은 AI 가 뱉은 그대로일 때가 많습니다. 코드펜스·설명 문장·마크다운 표·
+   굽은 따옴표·번호 접두사가 섞여 들어와 단어 칸에 "```csv" 같은 게 그대로 박혔습니다.
+   들어오기 전에 걸러냅니다. */
 function parseRows(text){
-  const delim = text.includes("\t") ? "\t" : ",";
+  let t = String(text||"").replace(/\r\n?/g, "\n")
+    /* 굽은 따옴표를 곧은 것으로. 그대로 두면 따옴표 짝이 안 맞아 칸이 통째로 밀립니다 */
+    .replace(/[“”„‟]/g, '"').replace(/[‘’‚‛]/g, "'");
+  let lines = t.split("\n").filter(l => !/^\s*```/.test(l));   // 코드펜스 줄 버리기
+
+  /* 마크다운 표로 받아오는 경우 — | 로 감싼 줄과 |---| 구분선 */
+  const live = lines.filter(l => l.trim());
+  if(live.length > 1 && live.filter(l => /^\s*\|.*\|\s*$/.test(l)).length >= live.length * 0.7)
+    return live
+      .filter(l => !/^\s*\|[\s:|-]+\|\s*$/.test(l))
+      .map(l => l.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map(c => c.trim()))
+      .filter(r => r.some(c => c));
+
+  /* 구분자는 줄마다 세어 많은 쪽을 씁니다. 예문에 탭 하나가 섞였다고 전체를 TSV 로 읽으면
+     "mitigate,완화하다,He" 가 통째로 한 단어가 됩니다 */
+  const n = (s, ch) => s.split(ch).length - 1;
+  const delim = lines.reduce((a,l)=>a+n(l,"\t"),0) > lines.reduce((a,l)=>a+n(l,","),0) ? "\t" : ",";
+
+  t = lines.join("\n");
   const rows=[]; let f="", row=[], q=false;
-  for(let i=0;i<text.length;i++){ const ch=text[i];
-    if(q){ if(ch==='"'&&text[i+1]==='"'){f+='"';i++;} else if(ch==='"') q=false; else f+=ch; }
+  for(let i=0;i<t.length;i++){ const ch=t[i];
+    if(q){ if(ch==='"'&&t[i+1]==='"'){f+='"';i++;} else if(ch==='"') q=false; else f+=ch; }
     else if(ch==='"') q=true;
     else if(ch===delim){ row.push(f); f=""; }
     else if(ch==="\n"){ row.push(f); rows.push(row); row=[]; f=""; }
-    else if(ch!=="\r") f+=ch; }
+    else f+=ch; }
   if(f||row.length){ row.push(f); rows.push(row); }
-  return rows.filter(r=>r.some(c=>c.trim()));
+
+  /* "1." "- " 같은 목록 기호 떼기 */
+  rows.forEach(r => { if(r[0]!==undefined)
+    r[0] = r[0].replace(/^\s*(?:\d+[.)]|[-*•·–—])\s+/, "").trim(); });
+
+  const kept = rows.filter(r => r.some(c => c.trim()));
+  /* 표처럼 생긴 입력에서는 칸이 하나뿐인 줄("아래는 CSV 입니다:")을 설명으로 보고 버립니다.
+     단어만 한 줄에 하나씩 넣는 방식도 지원하므로, 전체가 한 칸짜리일 때는 손대지 않습니다 */
+  const wide = kept.filter(r => r.length > 1).length;
+  if(wide >= Math.max(2, kept.length * 0.5))
+    return kept.filter(r => r.length > 1 || /^[A-Za-z][A-Za-z' \-]*$/.test((r[0]||"").trim()));
+  return kept;
 }
 let importPreview=null, importPack="";
 function doPreview(){
@@ -3605,7 +3675,11 @@ function doPreview(){
     pack:((r[5]||"").trim()||importPack), syn:(r[6]||"").trim(), ant:(r[7]||"").trim()
   })).filter(x=>x.word);
   const fresh=items.filter(x=>!have.has(x.word.toLowerCase()));
-  importPreview={items, fresh, dup:items.length-fresh.length, missing:fresh.filter(x=>!x.meaning).length, raw};
+  /* 칸이 여덟 개를 넘으면 어딘가에 따옴표 없는 쉼표가 들어간 것입니다. 그러면 뒤쪽 칸이
+     통째로 한 칸씩 밀려 예문 자리에 뜻 조각이 들어갑니다. 조용히 넘기지 않고 알립니다 */
+  const odd=body.filter(r=>r.length>8).length;
+  importPreview={items, fresh, dup:items.length-fresh.length,
+    missing:fresh.filter(x=>!x.meaning).length, odd, raw};
   render(); $("#imp").value=raw;
 }
 const PROMPT_HEAD =
@@ -3616,19 +3690,34 @@ const PROMPT_HEAD =
   + "  단어,뜻,예문,함께쓰는표현,태그,팩,비슷한말,반대말\n"
   + "- 쉼표나 큰따옴표가 들어가는 칸은 큰따옴표로 감싸고, 안의 큰따옴표는 두 번 써.\n"
   + "- 비는 칸은 그냥 비워 둬. 쉼표 개수는 모든 줄에서 같아야 해.\n\n"
+  + "[가장 중요한 원칙]\n"
+  + "- **억지로 채우지 마. 빈 칸이 억지보다 낫다.**\n"
+  + "  확실하지 않거나 실제로 그렇게 쓰이지 않는 내용이면 그 칸은 그냥 비워 둬.\n"
+  + "  칸을 채우려고 지어내면 외우는 사람이 틀린 걸 외우게 돼. 비어 있으면 나중에 채우면 돼.\n"
+  + "- **글자 수를 억지로 줄이지 마.** 자연스러운 길이가 우선이야.\n"
+  + "  뜻만 사전처럼 짧게 쓰고, 나머지는 자연스러움을 먼저 봐.\n\n"
   + "[각 열에 넣을 것]\n"
   + "- 단어: 영어 표제어. 변형형이면 기본형으로 바꿔 (ran -> run, 복수형 -> 단수형).\n"
   + "  숙어나 구동사는 그대로 둬 (put up with).\n"
   + "- 뜻: 한국어 뜻 1~3개를 슬래시(/)로 구분. 문장이 아니라 사전처럼 짧게.\n"
   + "  (좋음: 완화하다/누그러뜨리다  나쁨: 어떤 것을 덜 심각하게 만드는 것을 뜻한다)\n"
-  + "- 예문: 자료에 그 단어가 들어간 문장이나 대사가 있으면 그것을 그대로 써.\n"
-  + "  없으면 15단어 이내의 자연스러운 영어 문장을 하나 만들어.\n"
-  + "- 함께쓰는표현: 그 단어가 보통 어떤 말과 붙어 다니는지 2~3개를 세미콜론(;)으로 구분.\n"
+  + "  다만 짧게 만들려고 뜻을 깎아내지는 마. 뜻이 달라지면 안 돼.\n"
+  + "- 예문: 자료에 그 단어가 들어간 문장이나 대사가 있으면 그것을 그대로 써. 그게 제일 좋아.\n"
+  + "  없으면 실제로 쓸 법한 영어 문장을 하나 만들어. 길이를 억지로 맞추지 말고\n"
+  + "  자연스러운 만큼 쓰면 돼. 단어를 끼워 넣으려고 어색한 문장을 만들 바에는 비워 둬.\n"
+  + "- 함께쓰는표현: **진짜로 자주 같이 쓰이는 짝만 써.** 떠오르는 게 없으면 비워 둬.\n"
+  + "  원어민이 실제로 그렇게 말하는지 자문해 보고, 아니면 넣지 마.\n"
+  + "  (좋음: mitigate the risk; mitigating circumstances\n"
+  + "   나쁨: do mitigate; very mitigate — 문법만 맞을 뿐 실제로 안 쓰는 조합)\n"
+  + "  2~3개까지, 세미콜론(;)으로 구분. 한 개만 확실하면 한 개만 써.\n"
   + "- 태그: 자료에 분류가 적혀 있으면 넣고, 없으면 비워 둬. 여러 개면 세미콜론(;)으로 구분.\n"
   + "- 팩: 자료에 출처나 회차가 적혀 있으면 계층을 슬래시로 표현해 (영 쉘던/S1/E02).\n"
   + "  없으면 비워 둬.\n"
-  + "- 비슷한말: 뜻이 가까운 영어 단어 1~3개를 쉼표로 구분. 없으면 비워 둬.\n"
-  + "- 반대말: 뜻이 반대인 영어 단어 1~2개를 쉼표로 구분. 없으면 비워 둬.\n\n"
+  + "- 비슷한말: **바꿔 써도 뜻이 통하는 단어만.** 1~3개를 쉼표로 구분.\n"
+  + "  느슨하게 관련만 있는 단어는 넣지 마. 마땅한 게 없으면 비워 둬 — 그런 단어가 많아.\n"
+  + "- 반대말: **정말로 반대 뜻인 단어만.** 1~2개를 쉼표로 구분.\n"
+  + "  **반대말이 없는 단어가 대부분이야. 그럴 땐 반드시 비워 둬.**\n"
+  + "  억지로 반대말을 만들어 내지 마.\n\n"
   + "[자료 읽는 법]\n"
   + "- 자료는 정리되어 있지 않을 수 있어. 줄바꿈, 번호, 하이픈, 메모가 섞여 있어도 알아서 추려.\n"
   + "- 한 줄에 단어와 뜻이 같이 적혀 있으면 그 뜻을 살리되 위 형식에 맞게 다듬어.\n"
@@ -3927,6 +4016,7 @@ document.addEventListener("click", e=>{
           .catch(e=>toast("지우지 못했습니다: "+e.message)); });
     return; }
   if(a==="help"){ helpOn[t.dataset.k] = !helpOn[t.dataset.k]; render(); return; }
+  if(a==="word-more"){ const id=t.dataset.id; moreOn[id] = !moreOn[id]; render(); return; }
   if(a==="remind-make"){
     const el=$("#s-remind"); const v=el?el.value:"";
     D.s.remindAt=v||"21:00"; save(); makeReminder(D.s.remindAt); return; }
