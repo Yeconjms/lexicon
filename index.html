@@ -482,6 +482,17 @@ details.set .inner{padding:0 17px 18px;border-top:1px solid var(--line);margin-t
 .hlpbox{background:rgba(42,76,125,.055);border-radius:10px;padding:10px 12px;margin-top:9px;
   font-size:12.8px;line-height:1.65;color:var(--muted);}
 .hlpbox b{color:var(--ink);}
+/* 설정이 아니라 안내 — 설정 줄과 달라 보이게 바탕을 깔고 꺾쇠를 두지 않습니다 */
+.guide{margin-top:16px;background:rgba(42,76,125,.06);border:1px solid rgba(42,76,125,.15);
+  border-radius:13px;padding:15px 16px;}
+.guide.done{background:rgba(22,120,90,.07);border-color:rgba(22,120,90,.18);}
+.guide .gtitle{display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:700;color:var(--blue);}
+.guide.done .gtitle{color:var(--green);}
+.guide .gtitle i{font-style:normal;font-size:12px;}
+.guide p{margin:8px 0 0;font-size:12.8px;color:var(--muted);line-height:1.7;}
+.guide p b{color:var(--ink);}
+.guide .row{margin-top:12px;}
+.guide .hlpbox{background:rgba(255,255,255,.6);}
 .aibox{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);}
 .itemw{font-family:var(--serif);font-size:17.5px;font-weight:600;}
 .itemm{font-size:13.5px;color:var(--muted);margin-top:2px;}
@@ -3459,40 +3470,40 @@ function notifyBox(){
   return h;
 }
 
-function installBox(){
+/* ── 앱으로 쓰기 안내 ──────────────────────────────────────────────
+   이건 설정이 아니라 안내입니다. 한 번 하고 나면 다시 볼 일이 없습니다.
+   설정 줄 사이에 끼워 두면 토글처럼 보여서, 바탕을 깔고 꺾쇠 없이 따로 둡니다.
+   설치하고 나면 안내는 사라지고 새로고침 단추만 남습니다. */
+function appGuide(){
   if(isStandalone())
-    return '<p class="note" style="margin-top:0"><b>이미 앱으로 쓰고 계십니다.</b> '
-      + '주소창 없이 열리고, 로그인이 풀리지 않습니다.</p>';
+    return '<div class="guide done">'
+      + '<div class="gtitle"><i>◆</i>앱으로 열려 있습니다</div>'
+      + '<p>주소창이 없으니 <b>맨 위에서 아래로 당겨</b> 새로고침하세요.</p>'
+      + '<div class="row"><button class="btn ghost" data-a="reload">새로고침</button></div>'
+      + '</div>';
 
-  let h = '<p class="note" style="margin-top:0">홈 화면에 추가하면 주소창 없이 앱처럼 열리고 '
-    + '<b>로그인이 유지됩니다.</b>' + helpBtn("pwa") + '</p>'
+  let how;
+  if(installPrompt)
+    how = '<div class="row"><button class="btn" data-a="pwa-install">홈 화면에 추가</button></div>';
+  else if(isIOS())
+    how = '<p><b>사파리</b> 아래 공유 단추(네모에 위 화살표) → <b>홈 화면에 추가</b><br>'
+        + '<span style="opacity:.7">크롬 등 다른 브라우저에는 이 메뉴가 없습니다.</span></p>';
+  else if(/SamsungBrowser/i.test(navigator.userAgent||""))
+    how = '<p><b>삼성 인터넷</b> 아래 줄 세 개(≡) → <b>현재 페이지 추가</b> → <b>홈 화면</b></p>';
+  else if(/Android/i.test(navigator.userAgent||""))
+    how = '<p><b>크롬</b> 오른쪽 위 점 세 개 → <b>앱 설치</b> 또는 <b>홈 화면에 추가</b></p>';
+  else
+    how = '<p><b>크롬</b> 주소창 오른쪽 끝의 설치 아이콘</p>';
+
+  return '<div class="guide">'
+    + '<div class="gtitle"><i>◇</i>앱으로 쓰면 더 편합니다</div>'
+    + '<p>홈 화면에 추가하면 주소창 없이 열리고 <b>로그인이 유지됩니다.</b>'
+    + helpBtn("pwa") + '</p>'
     + helpBox("pwa",
         '아이폰 사파리는 홈 화면에 추가하지 않은 사이트의 저장 내용을 한동안 안 들어오면 지웁니다. '
-        + '그때 다시 로그인하게 됩니다. 추가해 두면 그 대상에서 빠집니다.');
-
-  /* 쓰는 브라우저에 맞는 길만 보여줍니다. 전부 늘어놓으면 자기 것을 못 찾습니다 */
-  if(installPrompt)
-    h += '<div class="row" style="margin-top:10px">'
-      + '<button class="btn" data-a="pwa-install">홈 화면에 추가</button></div>';
-  else if(isIOS())
-    h += '<p class="note" style="margin-top:10px"><b>아이폰 · 사파리</b><br>'
-      + '아래 공유 단추(네모에 위 화살표) → <b>홈 화면에 추가</b>.<br>'
-      + '<span style="opacity:.7">크롬 등 다른 브라우저에는 이 메뉴가 없습니다.</span></p>';
-  else if(/SamsungBrowser/i.test(navigator.userAgent||""))
-    h += '<p class="note" style="margin-top:10px"><b>삼성 인터넷</b><br>'
-      + '아래 줄 세 개(≡) → <b>현재 페이지 추가</b> → <b>홈 화면</b>.</p>';
-  else if(/Android/i.test(navigator.userAgent||""))
-    h += '<p class="note" style="margin-top:10px"><b>안드로이드 · 크롬</b><br>'
-      + '오른쪽 위 점 세 개 → <b>앱 설치</b> 또는 <b>홈 화면에 추가</b>.</p>';
-  else
-    h += '<p class="note" style="margin-top:10px"><b>컴퓨터 · 크롬</b><br>'
-      + '주소창 오른쪽 끝의 설치 아이콘.</p>';
-
-  h += '<div class="h2" style="margin:16px 0 8px">새로고침</div>'
-    + '<p class="note" style="margin-top:0">앱에서는 <b>맨 위에서 아래로 당기면</b> 됩니다.</p>'
-    + '<div class="row" style="margin-top:10px">'
-    + '<button class="btn ghost" data-a="reload">새로고침</button></div>';
-  return h;
+        + '그때 다시 로그인하게 됩니다. 추가해 두면 그 대상에서 빠집니다.')
+    + how
+    + '</div>';
 }
 
 function accountBox(){
@@ -3656,7 +3667,7 @@ function viewSettings(){
     +'<p class="note">진도만 초기화하면 단어는 남고 복습 일정과 정답률만 돌아갑니다. 둘 다 되돌릴 수 없습니다.</p>';
   boxes+=setBox("데이터", !FB.ready ? "이 기기에만" : AUTH.uid ? "로그인됨" : "로그인 안 함", inner);
   boxes+=setBox("알림", D.s.badge ? "아이콘에 표시 중" : "꺼짐", notifyBox());
-  boxes+=setBox("앱처럼 쓰기", isStandalone() ? "앱으로 열림" : "홈 화면에 추가", installBox());
+
   if(FB.ready && ADMIN_UID && AUTH.uid === ADMIN_UID)
     { /* 기다리는 사람이 있으면 부제에 먼저 띄우고 칸도 펼쳐 둡니다 */
     const wait = admList ? admList.filter(u=>u.uid!==ADMIN_UID && u.ok!==true).length : 0;
@@ -3665,6 +3676,7 @@ function viewSettings(){
       adminBox(), wait>0); }
 
   h+='<div class="setlist">'+boxes+'</div>'
+    + appGuide()
     +'<p class="note">단어를 넣고 고치는 일은 <b>단어 탭</b>에서 합니다. 여기는 학습 방식과 저장 설정입니다.</p>';
   return h;
 }
