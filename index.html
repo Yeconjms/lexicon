@@ -81,6 +81,7 @@ nav .badge{position:absolute;transform:translate(15px,-4px);background:var(--ros
 .btn.sm{padding:7px 12px;font-size:12.5px;}
 .btn.wide{width:100%;text-align:center;}
 .field{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;}
+.field.num{padding:9px 8px;text-align:center;font-variant-numeric:tabular-nums;}
 .field:focus{border-color:var(--blue);outline:none;}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
 .chip{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:99px;background:rgba(42,76,125,.09);color:var(--blue);}
@@ -338,6 +339,13 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 
 /* ── 설정 접기 ── */
 details.set{background:var(--card);border:1px solid var(--line);border-radius:13px;margin-top:12px;}
+/* 접는 묶음이 카드 다섯 장으로 흩어져 있으면 어디부터 볼지 알기 어렵습니다.
+   한 장 안의 목록으로 묶고 줄로만 나눕니다 */
+.setlist{background:var(--card);border:1px solid var(--line);border-radius:13px;
+  margin-top:14px;overflow:hidden;}
+.setlist details.set{background:none;border:0;border-radius:0;margin:0;}
+.setlist details.set + details.set{border-top:1px solid var(--line);}
+.setlist details.set[open]{background:rgba(42,76,125,.03);}
 details.set>summary{list-style:none;cursor:pointer;padding:15px 17px;display:flex;align-items:baseline;gap:9px;}
 details.set>summary::-webkit-details-marker{display:none;}
 details.set>summary strong{font-size:14.5px;font-weight:700;white-space:nowrap;flex:0 0 auto;}
@@ -372,6 +380,10 @@ details.set .inner{padding:0 17px 18px;border-top:1px solid var(--line);margin-t
 .drecent{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
 .drecent button{font-family:var(--serif);font-size:14px;padding:6px 12px;border-radius:99px;
   border:1px solid var(--line);background:var(--card);color:var(--ink);}
+/* 지우는 중에는 알약마다 × 가 붙습니다 */
+.drecent.editing button{border-color:rgba(166,57,74,.35);color:var(--rose);padding-right:9px;}
+.drecent.editing button i{font-style:normal;font-family:var(--sans);font-size:13px;
+  font-weight:700;margin-left:7px;opacity:.75;}
 .dcache{font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.6;}
 .speak.dark{margin-top:0;flex:0 0 auto;border-color:var(--line);color:var(--blue);background:var(--paper);}
 
@@ -663,7 +675,7 @@ const publicSettings = s => {
   return o;
 };
 let D = { v:2, cards:[], log:{}, packs:[], del:{}, packMeta:{}, s:{...DEFAULTS} };
-let view = "study";
+let view = "study", lastView = "study";
 
 function load(){
   try{
@@ -1527,6 +1539,13 @@ function render(done){
   else if(n>0){ b.textContent=n; b.classList.remove("hide"); }
   else b.classList.add("hide");
   document.querySelectorAll("#nav button").forEach(x=>x.classList.toggle("on", x.dataset.v===view));
+  /* 다른 탭에 갔다 오면 펼쳐 둔 설명과 "자세히" 는 닫습니다. 열어 둔 채로 돌아오면
+     화면이 길어져 있어 어디를 보던 중이었는지 알기 어렵습니다 */
+  if(lastView !== view){
+    lastView = view;
+    for(const k in helpOn) delete helpOn[k];
+    for(const k in moreOn) delete moreOn[k];
+  }
   const m=$("#main");
   if(view==="study") m.innerHTML = S ? viewCard() : viewStudyHome(done);
   else if(view==="dict") m.innerHTML = viewDict();
@@ -2355,6 +2374,23 @@ function dictRecent(n){
   return Object.keys(c).sort((a,b)=>c[b].t-c[a].t).slice(0,n).map(k=>(c[k].r&&c[k].r.q)||k);
 }
 
+/* 찾은 것이 쌓이면 어수선합니다. 고르고 지울 수 있어야 합니다 */
+function dictForget(q){
+  try{
+    const c = dictAll();
+    const key = String(q||"").trim().toLowerCase();
+    if(c[key] !== undefined){ delete c[key]; }
+    else {
+      /* 보이는 글자는 원문(r.q)이라 열쇠와 다를 수 있습니다 */
+      for(const k in c) if(((c[k].r && c[k].r.q) || k) === q){ delete c[k]; break; }
+    }
+    localStorage.setItem(DKEY, JSON.stringify(c));
+  }catch(e){}
+}
+function dictForgetAll(){ try{ localStorage.removeItem(DKEY); }catch(e){} }
+
+let dictEdit = false;   // 최근 목록을 지우는 중인지
+
 const DICT_PROMPT = q =>
   '영어 단어·구·숙어의 사전 정보를 JSON 객체 하나로만 출력하세요.\n'
   +'- q: 표제어. 동사는 원형으로, 숙어와 구동사는 입력 형태 그대로\n'
@@ -2601,9 +2637,19 @@ function viewDict(){
       +'<p>단어도 숙어도 됩니다. <b>put up with</b> 같은 것도요.<br>'
       +'마음에 드는 뜻 옆의 <b>+</b> 를 누르면 바로 외울 카드가 됩니다.</p></div>';
     if(rec.length)
-      h+='<div class="h2">최근에 찾은 것</div><div class="drecent">'
-        +rec.map(w=>'<button data-a="dict-recent" data-w="'+esc(w)+'">'+esc(w)+'</button>').join("")
-        +'</div><p class="dcache">한 번 찾은 것은 저장해 둬서 다시 찾을 때는 인터넷이 없어도 보입니다.</p>';
+      h+='<div class="row" style="justify-content:space-between;align-items:baseline">'
+        +'<div class="h2" style="margin:0">최근에 찾은 것</div>'
+        +'<div class="row" style="flex-wrap:nowrap;gap:12px">'
+        +'<button class="linkish" data-a="dict-edit">'+(dictEdit?"done":"고르기")+'</button>'
+        +(dictEdit?'<button class="linkish" style="color:var(--rose)" data-a="dict-clear">전부 비우기</button>':'')
+        +'</div></div>'
+        +'<div class="drecent'+(dictEdit?" editing":"")+'">'
+        +rec.map(w=>'<button data-a="'+(dictEdit?"dict-forget":"dict-recent")+'" data-w="'+esc(w)+'">'
+          +esc(w)+(dictEdit?'<i>×</i>':'')+'</button>').join("")
+        +'</div><p class="dcache">'
+        +(dictEdit ? '지울 것을 누르세요.'
+                   : '한 번 찾은 것은 저장해 둬서 다시 찾을 때는 인터넷이 없어도 보입니다.')
+        +'</p>';
     h+='</div>';
     return h;
   }
@@ -3407,9 +3453,7 @@ function installBox(){
     + '<b>로그인이 유지됩니다.</b>' + helpBtn("pwa") + '</p>'
     + helpBox("pwa",
         '아이폰 사파리는 홈 화면에 추가하지 않은 사이트의 저장 내용을 한동안 안 들어오면 지웁니다. '
-        + '그때 다시 로그인하게 됩니다. 추가해 두면 그 대상에서 빠집니다.<br>'
-        + '브라우저마다 저장 공간이 따로라, 사파리와 카카오톡 내부 브라우저와 앱은 각각 로그인해야 합니다. '
-        + '<b>앱 하나만 쓰는 것이 가장 편합니다.</b>');
+        + '그때 다시 로그인하게 됩니다. 추가해 두면 그 대상에서 빠집니다.');
 
   /* 쓰는 브라우저에 맞는 길만 보여줍니다. 전부 늘어놓으면 자기 것을 못 찾습니다 */
   if(installPrompt)
@@ -3492,9 +3536,9 @@ function viewSettings(){
   /* ── 자주 만지는 둘만 펼쳐 둡니다 ── */
   let h='<div class="panel"><div class="h2">하루 학습량'+helpBtn("daily")+'</div>'
     +'<div class="row" style="justify-content:space-between"><label style="font-size:14.5px;font-weight:600">하루 신규 단어</label>'
-    +'<input class="field" type="number" min="0" max="200" style="width:92px" id="s-new" value="'+s.dailyNew+'"></div>'
+    +'<input class="field num" type="number" min="0" max="200" style="width:84px" id="s-new" value="'+s.dailyNew+'"></div>'
     +'<div class="row" style="justify-content:space-between;margin-top:12px"><label style="font-size:14.5px;font-weight:600">하루 최대 복습</label>'
-    +'<input class="field" type="number" min="0" max="999" style="width:92px" id="s-max" value="'+s.maxReview+'"></div>'
+    +'<input class="field num" type="number" min="0" max="999" style="width:84px" id="s-max" value="'+s.maxReview+'"></div>'
     +'<p class="note">신규 '+s.dailyNew+'개/일이면 몇 달 뒤 하루 '
     +Math.round(s.dailyNew*7)+'~'+Math.round(s.dailyNew*10)+'장에서 균형을 잡습니다.</p>'
     +helpBox("daily",
@@ -3537,7 +3581,8 @@ function viewSettings(){
       +'<p class="note">기기에 설치된 음성만 쓸 수 있고 인터넷 데이터는 쓰지 않습니다. '
       +'목록은 음성이 준비된 뒤에 채워지므로 비어 보이면 잠시 뒤 다시 열어보세요.</p>';
   }
-  h+=setBox("문제 형식과 발음", s.typing?"타이핑 켜짐":"뒤집기만", inner);
+  let boxes="";
+  boxes+=setBox("문제 형식과 발음", s.typing?"타이핑 켜짐":"뒤집기만", inner);
 
   /* 2. 사전 — 무료가 기본, AI 는 각자 자기 키 */
   /* 무료 사전이 기본이고 AI 는 각자 자기 키로 더하는 것입니다.
@@ -3566,7 +3611,7 @@ function viewSettings(){
       +'<input class="field" id="s-model" placeholder="모델 이름" value="'+esc(s.model)+'" style="margin-top:8px">';
   if(s.provider!=="none")
     inner+='<div class="row" style="margin-top:10px"><button class="btn ghost" data-a="test-ai" id="testai">연결 테스트</button></div>';
-  h+=setBox("사전",
+  boxes+=setBox("사전",
     s.provider==="none"?"무료 사전":s.provider==="gemini"?(s.geminiKey?"무료 + 내 Gemini 키":"Gemini · 키 필요"):(s.apiKey?"무료 + 내 Claude 키":"Claude · 키 필요"),
     inner, s.provider!=="none" && !(s.provider==="gemini"?s.geminiKey:s.apiKey));
 
@@ -3594,17 +3639,18 @@ function viewSettings(){
     +'<button class="btn ghost" data-a="reset-prog">진도만 초기화</button>'
     +'<button class="btn ghost" style="color:var(--rose)" data-a="reset-all">전체 삭제</button></div>'
     +'<p class="note">진도만 초기화하면 단어는 남고 복습 일정과 정답률만 돌아갑니다. 둘 다 되돌릴 수 없습니다.</p>';
-  h+=setBox("데이터", !FB.ready ? "이 기기에만" : AUTH.uid ? "로그인됨" : "로그인 안 함", inner);
-  h+=setBox("알림", D.s.badge ? "아이콘에 표시 중" : "꺼짐", notifyBox());
-  h+=setBox("앱처럼 쓰기", isStandalone() ? "앱으로 열림" : "홈 화면에 추가", installBox(), !isStandalone());
+  boxes+=setBox("데이터", !FB.ready ? "이 기기에만" : AUTH.uid ? "로그인됨" : "로그인 안 함", inner);
+  boxes+=setBox("알림", D.s.badge ? "아이콘에 표시 중" : "꺼짐", notifyBox());
+  boxes+=setBox("앱처럼 쓰기", isStandalone() ? "앱으로 열림" : "홈 화면에 추가", installBox());
   if(FB.ready && ADMIN_UID && AUTH.uid === ADMIN_UID)
     { /* 기다리는 사람이 있으면 부제에 먼저 띄우고 칸도 펼쳐 둡니다 */
     const wait = admList ? admList.filter(u=>u.uid!==ADMIN_UID && u.ok!==true).length : 0;
-    h+=setBox("관리자",
+    boxes+=setBox("관리자",
       !admList ? "명부와 승인" : (wait ? ("대기 "+wait+"명") : (admList.length+"명")),
       adminBox(), wait>0); }
 
-  h+='<p class="note">단어를 넣고 고치는 일은 <b>단어 탭</b>에서 합니다. 여기는 학습 방식과 저장 설정입니다.</p>';
+  h+='<div class="setlist">'+boxes+'</div>'
+    +'<p class="note">단어를 넣고 고치는 일은 <b>단어 탭</b>에서 합니다. 여기는 학습 방식과 저장 설정입니다.</p>';
   return h;
 }
 const sw=(k,t,d,on,dis)=>'<label class="sw"><input type="checkbox" data-sw="'+k+'"'+(on?" checked":"")+(dis?" disabled":"")+'>'
@@ -3811,6 +3857,15 @@ document.addEventListener("click", e=>{
   if(a==="go-dict"){ view="dict"; render(); window.scrollTo(0,0); return; }
   if(a==="dict-go"){ const el=$("#d-q"); if(el) dictLook(el.value); return; }
   if(a==="dict-recent"){ dictLook(t.dataset.w); window.scrollTo(0,0); return; }
+  if(a==="dict-edit"){ dictEdit=!dictEdit; render(); return; }
+  if(a==="dict-forget"){ dictForget(t.dataset.w);
+    if(!dictRecent(1).length) dictEdit=false;
+    render(); return; }
+  if(a==="dict-clear"){
+    askYes("최근에 찾은 것을 전부 비울까요?",
+      "저장해 둔 검색 결과가 사라집니다. 담아 둔 단어는 그대로입니다.", "비우기", true)
+      .then(ok=>{ if(!ok) return; dictForgetAll(); dictEdit=false; render(); toast("비웠습니다"); });
+    return; }
   if(a==="dict-save"){ dictSave(+t.dataset.i); return; }
   if(a==="dict-say"){ if(dictR) speak(dictR.q); return; }
   if(a==="seed"){ D.cards=SEED.map(r=>newCard({word:r[0],meaning:r[1],example:r[2],collocation:r[3],tags:[r[4]],pack:"예시/매크로"})); syncPacks(); save(); render(); return; }
