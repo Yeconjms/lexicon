@@ -2090,10 +2090,6 @@ function importPanel(){
       + (importPreview.dup ? ' · 이미 있음 ' + importPreview.dup : '')
       + (importPreview.missing ? ' · <b style="color:var(--amber)">뜻 없음 ' + importPreview.missing + '</b>' : '')
       + '</p>';
-    if(importPreview.odd)
-      h += '<div class="warn"><b>' + importPreview.odd + '줄은 칸이 밀렸을 수 있습니다.</b> '
-        + '따옴표로 감싸지 않은 쉼표가 들어가면 뒤쪽 칸이 한 칸씩 밀립니다. '
-        + '아래 미리보기에서 뜻이 이상한 줄이 있으면, 쉼표가 든 칸을 큰따옴표로 감싸서 다시 붙여넣으세요.</div>';
     h += importPreview.fresh.slice(0,6).map(x =>
         '<div class="item" style="padding:7px 0"><span class="itemw" style="font-size:15px">' + esc(x.word) + '</span> '
       + '<span class="itemm" style="display:inline">'
@@ -3675,11 +3671,8 @@ function doPreview(){
     pack:((r[5]||"").trim()||importPack), syn:(r[6]||"").trim(), ant:(r[7]||"").trim()
   })).filter(x=>x.word);
   const fresh=items.filter(x=>!have.has(x.word.toLowerCase()));
-  /* 칸이 여덟 개를 넘으면 어딘가에 따옴표 없는 쉼표가 들어간 것입니다. 그러면 뒤쪽 칸이
-     통째로 한 칸씩 밀려 예문 자리에 뜻 조각이 들어갑니다. 조용히 넘기지 않고 알립니다 */
-  const odd=body.filter(r=>r.length>8).length;
   importPreview={items, fresh, dup:items.length-fresh.length,
-    missing:fresh.filter(x=>!x.meaning).length, odd, raw};
+    missing:fresh.filter(x=>!x.meaning).length, raw};
   render(); $("#imp").value=raw;
 }
 const PROMPT_HEAD =
@@ -3694,8 +3687,8 @@ const PROMPT_HEAD =
   + "- **억지로 채우지 마. 빈 칸이 억지보다 낫다.**\n"
   + "  확실하지 않거나 실제로 그렇게 쓰이지 않는 내용이면 그 칸은 그냥 비워 둬.\n"
   + "  칸을 채우려고 지어내면 외우는 사람이 틀린 걸 외우게 돼. 비어 있으면 나중에 채우면 돼.\n"
-  + "- **글자 수를 억지로 줄이지 마.** 자연스러운 길이가 우선이야.\n"
-  + "  뜻만 사전처럼 짧게 쓰고, 나머지는 자연스러움을 먼저 봐.\n\n"
+  + "- **짧게 만들려고 어색해지면 안 돼.** 길이보다 자연스러움이 먼저야.\n"
+  + "  다만 플래시카드라 한눈에 읽혀야 해. 짧고 자연스러운 쪽을 고르면 돼.\n\n"
   + "[각 열에 넣을 것]\n"
   + "- 단어: 영어 표제어. 변형형이면 기본형으로 바꿔 (ran -> run, 복수형 -> 단수형).\n"
   + "  숙어나 구동사는 그대로 둬 (put up with).\n"
@@ -3703,8 +3696,11 @@ const PROMPT_HEAD =
   + "  (좋음: 완화하다/누그러뜨리다  나쁨: 어떤 것을 덜 심각하게 만드는 것을 뜻한다)\n"
   + "  다만 짧게 만들려고 뜻을 깎아내지는 마. 뜻이 달라지면 안 돼.\n"
   + "- 예문: 자료에 그 단어가 들어간 문장이나 대사가 있으면 그것을 그대로 써. 그게 제일 좋아.\n"
-  + "  없으면 실제로 쓸 법한 영어 문장을 하나 만들어. 길이를 억지로 맞추지 말고\n"
-  + "  자연스러운 만큼 쓰면 돼. 단어를 끼워 넣으려고 어색한 문장을 만들 바에는 비워 둬.\n"
+  + "  없으면 실제로 쓸 법한 영어 문장을 하나 만들어.\n"
+  + "  **보통 8~15단어.** 그 단어를 어떤 상황에서 어떻게 쓰는지가 한눈에 보이면 충분해.\n"
+  + "  설명을 덧붙이거나 절을 여러 개 이어 붙여 길게 만들지 마. 플래시카드라 한눈에 읽혀야 해.\n"
+  + "  반대로 단어를 끼워 넣기만 한 맹탕 문장(He is mitigate.)도 쓸모없어.\n"
+  + "  쓰임이 드러나는 자연스러운 문장이 안 나오면 차라리 비워 둬.\n"
   + "- 함께쓰는표현: **진짜로 자주 같이 쓰이는 짝만 써.** 떠오르는 게 없으면 비워 둬.\n"
   + "  원어민이 실제로 그렇게 말하는지 자문해 보고, 아니면 넣지 마.\n"
   + "  (좋음: mitigate the risk; mitigating circumstances\n"
