@@ -576,7 +576,7 @@ details.set .inner{padding:0 17px 18px;border-top:1px solid var(--line);margin-t
       <button data-v="packs"><span class="ic">▤</span>팩</button>
       <button data-v="manage"><span class="ic">≡</span>단어</button>
       <button data-v="stats"><span class="ic">▦</span>통계</button>
-      <button data-v="settings"><span class="ic">⚙</span>설정</button>
+      <button data-v="settings"><span class="ic">⚙</span>설정<span class="badge hide" id="admbadge"></span></button>
     </nav>
   </header>
   <main id="main"></main>
@@ -697,7 +697,7 @@ const DEFAULTS = {
   typeModes:{ko2en:true, spell:true, dictation:false},
   dailyNew:15, maxReview:100,
   lowData:false,
-  badge:false, remindAt:"21:00",
+  badge:false, remindAt:"21:00", admSeenAt:0,
   autoSpeak:true, rate:0.9, voiceURI:"", lastPack:"",
   ownerUid:"", pushSig:"", syncedAt:0,
   provider:"none",                              // none | gemini | anthropic
@@ -1396,26 +1396,42 @@ function loadVoices(){
   try{ list = speechSynthesis.getVoices() || []; }catch(e){}
   TTS.voices = list.filter(isEnVoice);
 }
+/** 좋은 순으로 늘어놓습니다. 설정 목록과 자동 선택이 같은 기준을 쓰게 합니다 */
+function voicesByQuality(){
+  const b = bestVoice(true);
+  return b || [];
+}
 /** 쓸 만한 영어 음성을 고릅니다. 사용자가 고른 것이 있으면 그것을 씁니다 */
-function bestVoice(){
+function bestVoice(all){
   if(!TTS.ok) return null;
   let list = [];
   try{ list = (speechSynthesis.getVoices() || []).filter(isEnVoice); }catch(e){}
-  if(!list.length) return null;
-  const saved = list.find(v => v.voiceURI === D.s.voiceURI);
+  if(!list.length) return all ? [] : null;
+  const saved = all ? null : list.find(v => v.voiceURI === D.s.voiceURI);
   if(saved) return saved;
   /* 고르지 않았으면 품질이 나은 쪽을 자동으로 집습니다 */
+  /* 같은 "영어 음성" 이라도 품질 차이가 큽니다. 이름에 단서가 있습니다 —
+     Natural·Neural·Online 은 요즘 신경망 음성이고, Compact·Desktop·eSpeak 는 옛 합성음입니다.
+     실제로 아이폰에는 Compact 가, 윈도우에는 Desktop 이 같이 깔려 있어 그냥 두면
+     나쁜 쪽이 뽑히는 일이 있었습니다. */
   const score = v => {
+    const name = v.name || "";
     let n = 0;
     if(/^en[-_]?US/i.test(v.lang)) n += 4;
     else if(/^en[-_]?GB/i.test(v.lang)) n += 3;
+    else if(/^en[-_]?(AU|CA|IE|NZ)/i.test(v.lang)) n += 2;
     else n += 1;
-    if(/google|natural|neural|premium|enhanced|siri|samantha/i.test(v.name || "")) n += 3;
-    if(v.localService === false) n += 1;
+    if(/natural|neural|online/i.test(name)) n += 6;   // 가장 자연스러운 쪽
+    else if(/google/i.test(name)) n += 5;
+    else if(/premium|enhanced|siri/i.test(name)) n += 4;
+    else if(/samantha|aria|ava|jenny|guy/i.test(name)) n += 2;
+    if(/compact|espeak|desktop|novelty|eloquence/i.test(name)) n -= 6;   // 옛 합성음
+    if(v.localService === false) n += 2;              // 서버 음성이 대체로 낫습니다
     if(v.default) n += 1;
     return n;
   };
-  return list.slice().sort((a,b) => score(b) - score(a))[0];
+  const sorted = list.slice().sort((a,b) => score(b) - score(a));
+  return all ? sorted : sorted[0];
 }
 if(TTS.ok){
   loadVoices();
@@ -1435,8 +1451,16 @@ let ttsReady = false;
 function unlockTTS(){
   if(ttsReady || !TTS.ok) return;
   ttsReady = true;
-  try{ const u = new SpeechSynthesisUtterance(" "); u.volume = 0; speechSynthesis.speak(u); }catch(e){}
+  try{
+    const u = new SpeechSynthesisUtterance(" "); u.volume = 0;
+    speechSynthesis.speak(u);
+    /* 깨우기용 발화를 남겨 두면, 처음 ♪ 를 눌렀을 때 그것을 끊느라 cancel 이 돌고
+       크롬은 그 직후의 speak 를 자주 삼킵니다. 그래서 첫 발음만 조용했습니다.
+       깨운 즉시 치웁니다 — 엔진은 이미 손짓 안에서 열렸습니다. */
+    speechSynthesis.cancel();
+  }catch(e){}
 }
+let noVoiceToldAt = 0;
 function speak(text){
   if(!TTS.ok || !text) return;
   try{
@@ -1444,7 +1468,15 @@ function speak(text){
     u.rate = D.s.rate;
     const v = bestVoice();
     if(v){ u.voice = v; u.lang = v.lang || "en-US"; }
-    else u.lang = "en-US";   // 영어 음성이 하나도 없으면 이것밖에 할 수 없습니다
+    else {
+      u.lang = "en-US";   // 영어 음성이 하나도 없으면 이것밖에 할 수 없습니다
+      /* 설정 구석에만 적어 두면 "소리가 안 난다" 로 끝납니다. 누른 자리에서 알려줍니다.
+         매번 띄우면 성가시므로 한 번 알리고 10분은 쉽니다 */
+      if(Date.now() - noVoiceToldAt > 600000){
+        noVoiceToldAt = Date.now();
+        toast("이 기기에 영어 음성이 없습니다 — 설정 → 문제 형식과 발음 참고");
+      }
+    }
     /* 말하는 중일 때만 끊습니다. 매번 cancel 하면 첫 음절이 잘립니다 */
     if(speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
     speechSynthesis.speak(u);
@@ -1590,7 +1622,7 @@ function render(done){
   else if(view==="manage") m.innerHTML = viewManage();
   else if(view==="stats") m.innerHTML = viewStats();
   else m.innerHTML = viewSettings();
-  paintBadge();
+  paintBadge(); paintAdmBadge();
   /* 새로 그린 요소에는 CSS 전환이 걸리지 않으므로, 다음 프레임에 클래스를 붙여 뒤집기를 재생합니다 */
   if(S && S.animate){
     S.animate=false;
@@ -3000,6 +3032,12 @@ const setBox = (title, sub, inner, open) =>
 
    아래 번호를 비워 두면 관리자 기능과 승인 절차가 모두 꺼진 채로 동작합니다. */
 const ADMIN_UID = "fPqN8D8aATVfdbzmxubbSiTsWp83";
+/* 승인 절차를 켤지. **끄면 가입한 사람이 바로 씁니다.**
+   켜 두었더니 가입한 사람마다 "승인을 기다리고 있습니다" 화면에 갇혔고, 아래 탭까지
+   사라져서 "기능이 없다" 는 말을 들었다. 사용자가 직접 승인 없이 쓰게 해 달라고 했다.
+   명부 보기와 지우기는 이 값과 상관없이 그대로 된다.
+   다시 켜려면 true 로 바꾸고 보안 규칙의 users 쪽 ok 조건도 함께 되살려야 한다. */
+const REQUIRE_APPROVAL = false;
 
 const dbRoot = () => FB.dbURL.replace(/\/+$/,"");
 async function dbRead(path){
@@ -3047,7 +3085,7 @@ async function ensureAccess(){
     /* 반드시 true/false 여야 합니다. mine 이 없으면 null 이 되는데, 화면과 동기화가
        모두 `approved === false` 로만 막기 때문에 null 이면 갓 가입한 사람이
        승인 화면을 건너뛰고 들어와 401 만 쌓입니다 */
-    AUTH.approved = (AUTH.uid === ADMIN_UID) || !!(mine && mine.ok === true);
+    AUTH.approved = !REQUIRE_APPROVAL || (AUTH.uid === ADMIN_UID) || !!(mine && mine.ok === true);
   }catch(e){ AUTH.approved = true; }
 }
 
@@ -3066,6 +3104,38 @@ function viewPending(){
     + '<button class="btn ghost wide" data-a="au-solo">이 기기에서만 먼저 쓰기</button></div>';
 }
 
+/* 새로 가입한 사람 알리기 — 서버가 없으니 그 순간에 알릴 방법은 없습니다.
+   관리자가 앱을 열 때 명부를 조용히 읽어, 마지막으로 본 시각 뒤에 들어온 사람이 있으면
+   설정 탭에 숫자를 띄우고 토스트로 이름을 알립니다. 기기마다 따로 셉니다. */
+let admNew = 0;
+
+function paintAdmBadge(){
+  const b = $("#admbadge"); if(!b) return;
+  if(admNew > 0){ b.textContent = admNew; b.classList.remove("hide"); }
+  else b.classList.add("hide");
+}
+function admMarkSeen(){
+  D.s.admSeenAt = Date.now();
+  admNew = 0; save(); paintAdmBadge();
+}
+async function admCheckNew(){
+  if(!FB.ready || !ADMIN_UID || AUTH.uid !== ADMIN_UID) return;
+  try{
+    const d = await dbRead("directory");
+    const since = D.s.admSeenAt || 0;
+    const rows = Object.entries(d || {}).map(([uid, v]) => Object.assign({uid}, v || {}));
+    /* 처음 한 번은 알리지 않습니다 — 이미 있던 사람까지 "새로 왔다" 고 하면 안 됩니다 */
+    if(!since){ D.s.admSeenAt = Date.now(); save(); return; }
+    const fresh = rows.filter(u => u.uid !== ADMIN_UID && (u.at || 0) > since);
+    admNew = fresh.length;
+    paintAdmBadge();
+    if(admNew){
+      const who = fresh.map(u => u.nick || u.name || u.email || "이름 없음").slice(0, 3).join(", ");
+      toast("새로 가입: " + who + (admNew > 3 ? (" 외 " + (admNew - 3) + "명") : ""));
+    }
+  }catch(e){}
+}
+
 /* ── 설정 안의 관리자 칸 ── */
 let admList = null, admOpen = false, admBusy = false, admErr = "";
 
@@ -3075,6 +3145,7 @@ async function admLoad(){
     const d = await dbRead("directory");
     admList = Object.entries(d||{}).map(([uid,v]) => Object.assign({uid}, v||{}))
       .sort((a,b) => (b.at||0) - (a.at||0));
+    admMarkSeen();   // 목록을 봤으니 알림을 내립니다
 
   }catch(e){
     admErr = /40[13]/.test(e.message)
@@ -3632,7 +3703,8 @@ function viewSettings(){
         +'윈도우: 설정 → 시간 및 언어 → 음성에서 영어 음성 추가</div>';
     inner+='<div class="row" style="margin-top:10px"><select class="field" id="s-voice" style="flex:1;min-width:160px">'
       +'<option value="">자동 (영어 음성 중 좋은 것)</option>'
-      +enVoices.map(v=>'<option value="'+esc(v.voiceURI)+'"'+(s.voiceURI===v.voiceURI?" selected":"")+'>'+esc(v.name)+' ('+esc(v.lang)+')</option>').join("")
+      +voicesByQuality().map(v=>'<option value="'+esc(v.voiceURI)+'"'+(s.voiceURI===v.voiceURI?" selected":"")+'>'
+        +esc(v.name)+' ('+esc(v.lang)+')</option>').join("")
       +'</select><button class="btn ghost" data-a="test-voice">미리 듣기</button></div>'
       +'<div class="row" style="margin-top:12px"><label style="font-size:14px;font-weight:600;white-space:nowrap">속도 '+s.rate.toFixed(1)+'x</label>'
       +'<input type="range" min="0.6" max="1.3" step="0.1" id="s-rate" value="'+s.rate+'" style="flex:1"></div>'
@@ -4356,7 +4428,8 @@ load(); authLoad(); render(); paintSync(); initPullRefresh();
 /* 첫 손짓에 음성 엔진을 깨웁니다 */
 addEventListener("touchend", unlockTTS, {once:true, passive:true});
 addEventListener("mousedown", unlockTTS, {once:true});
-if(FB.ready && AUTH.uid) ensureAccess().then(()=>{ render(); if(AUTH.approved){ greet(); syncNow(true); } });
+if(FB.ready && AUTH.uid) ensureAccess().then(()=>{ render(); admCheckNew();
+  if(AUTH.approved){ greet(); syncNow(true); } });
 else if(!FB.ready || isSolo()) setTimeout(greet, 260);
 /* 엔터로도 들어가지고, 암호 관리자가 알아보게 합니다 */
 window.addEventListener("beforeinstallprompt", e=>{
