@@ -4236,6 +4236,10 @@ document.addEventListener("click", e=>{
       .then(ok=>{ if(!ok) return;
         freshToken()
           .then(()=>fetch(dbPath()+"?auth="+encodeURIComponent(AUTH.idToken),{method:"DELETE"}))
+          /* 명부 칸은 본인이 지울 수 없습니다 — 보안 규칙에서 통째 쓰기는 관리자만 됩니다.
+             그래서 쓸 수 있는 칸만 비우고 표시를 남깁니다. 안 그러면 관리자 명부에
+             누구인지도 모를 빈 줄이 남습니다. 관리자가 "지우기" 로 치우면 됩니다. */
+          .then(()=>dbWrite("directory/"+AUTH.uid, {nick:"(탈퇴한 계정)", seen:Date.now()}).catch(()=>{}))
           .then(()=>idt("delete",{idToken:AUTH.idToken}))
           .then(()=>{ authClear(); setSolo(false);
             D.cards=[]; D.log={}; D.packs=[]; D.del={}; D.s.ownerUid=""; D.s.pushSig="";
