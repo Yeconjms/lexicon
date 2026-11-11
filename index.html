@@ -685,7 +685,8 @@ function lev(a,b){ if(a===b)return 0; const m=a.length,n=b.length; if(!m)return 
     for(let j=1;j<=n;j++) c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));
     p=c; } return p[n]; }
 let toastT;
-function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("show");
+function toast(msg){ const t=$("#toast"); if(!t) return;   // 알림 칸이 없다고 터지지는 않게
+  t.textContent=msg; t.classList.add("show");
   clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("show"),2200); }
 
 /* 채점 품질을 별 개수로 돌려줍니다. 모름 1 · 애매 3 · 알아 4 · 쉬움 5 */
