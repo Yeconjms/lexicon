@@ -1958,6 +1958,16 @@ function soloProgress(){
   }
   return {done, total:gs.length, next:gs[done]||""};
 }
+/** 지금 볼 범위. **화면과 학습 시작이 같은 것을 써야** 합니다 —
+    따로 적었더니 단추는 "53장" 인데 세션은 273장이 열렸습니다 */
+function soloScope(){
+  const gs=soloGroups();
+  const sel=soloDays.filter(d=>gs.includes(d));
+  if(sel.length) return sel;
+  if(soloAll) return gs;
+  const nx=soloProgress().next;
+  return nx ? [nx] : gs;
+}
 /** 그 날 단어를 전부 꺼냅니다 — **하루 상한을 적용하지 않습니다.**
     교재가 Day 단위로 짜여 있으므로 "오늘 15장" 으로 끊으면 진도가 어긋납니다 */
 const soloQueue = scope => buildQueue({kind:"review", pack:scope, over:true});
@@ -2008,8 +2018,7 @@ function viewSolo(){
   /* 아무것도 안 고르면 **오늘의 Day 하나**가 기본입니다.
      30일치를 통째로 내주면 1,000장이 넘어 Day 단위 학습이 무너집니다.
      전부 보려면 "전체 보기" 를 누릅니다 */
-  const pr0=soloProgress();
-  const scope=sel.length ? sel : (soloAll ? groups : (pr0.next?[pr0.next]:groups));
+  const scope=soloScope();
   const cards=active().filter(c=>inPack(c,scope))
     .sort((a,b)=>a.pack.localeCompare(b.pack)||a.word.localeCompare(b.word));
   const due=soloQueue(scope).length;
@@ -4538,8 +4547,7 @@ document.addEventListener("click", e=>{
   /* 가린 칸을 누르면 그것만 잠깐 보입니다 (종이 단어장을 손으로 들추는 것과 같습니다) */
   if(a==="solo-peek"){ t.classList.toggle("hid"); return; }
   if(a==="solo-study"||a==="solo-spell"||a==="solo-sweep"){
-    const gs=soloGroups(), sel=soloDays.filter(d=>gs.includes(d));
-    const scope=sel.length?sel:(D.s.soloPack||"");
+    const scope=soloScope();
     if(a==="solo-sweep") startSession({kind:"sweep", pack:scope});
     else startSession({kind:"review", pack:scope, over:true,
       force:a==="solo-spell"?"type_ko2en":(D.s.ask||"")});

@@ -1,0 +1,57 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| compelling | 설득력 있는 | The speaker made some compelling arguments against immigration reform. |  | Day05;형용사;별3 | 해커스 보카/Day 05 | convincing, persuasive, cogent |  | [kəmpéliŋ] |
+| ultimately | 마침내, 결국 | After submitting his book to numerous publishers, the author ultimately succeeded in getting it published. | adj. ultimate | Day05;부사;별3 | 해커스 보카/Day 05 | eventually, finally, in the end, lastly |  | [ʌ́ltəmətli] |
+| bulk | 큰 규모, 대량 / 대부분 | Buying its supplies in bulk, the department store chain was able to sell for less than its competitors. | adj. bulky | Day05;명사;별3 | 해커스 보카/Day 05 | mass, large quantity, great quantity, majority, main part, huge, enormous |  | [bʌlk] |
+| incompatible | 양립할 수 없는 | Budget proposals submitted by different political parties are usually incompatible. |  | Day05;형용사;별3 | 해커스 보카/Day 05 | in conflict, discrepant, contradictory |  | [ìnkəmpǽtəbl] |
+| substantially | 상당히 / 대체로 | In the mid-1800s, the enrollment of females in American schools increased substantially. | adj. substantial | Day05;부사;별3 | 해커스 보카/Day 05 | significantly, considerably, largely, mainly |  | [səbstǽnʃəli] |
+| seek | 찾다, 조사하다 / 시도하다, 노력하다 | The investigator sought the truth regardless of the consequences. |  | Day05;동사;별3 | 해커스 보카/Day 05 | look for, search for, pursue, attempt, try, essay |  | [siːk] |
+| unanticipated | 예상하지 못한 | It is important to save money for unanticipated expenses. |  | Day05;형용사;별3 | 해커스 보카/Day 05 | not expected, unforeseen |  | [ʌ̀næntísəpèitid] |
+| merge | 합치다, 융합하다 | The team members decided to merge their ideas and make the presentation together. |  | Day05;동사;별3 | 해커스 보카/Day 05 | combine, blend, fuse |  | [məːrdʒ] |
+| encounter | 마주치다, 부닥치다 | Bill encountered many obstacles that delayed the publication of his book. |  | Day05;동사;별3 | 해커스 보카/Day 05 | meet with, experience, confront, face |  | [inkáuntər] |
+| residue | 잔여물 | Chalky residue on the sole of Vincent's shoe proved that he had recently visited the murder scene. |  | Day05;명사;별3 | 해커스 보카/Day 05 | remains, remnant, remainder |  | [rézədjùː] |
+| circumstance | 상황 | There are no circumstances under which rare books are allowed out of the library. |  | Day05;명사;별3 | 해커스 보카/Day 05 | condition, situation |  | [sə́ːrkəmstæ̀ns] |
+| astonishing | 놀라운, 눈부신 | Estonia's geography is astonishing because of its unusual and diverse mix of landscapes. |  | Day05;형용사;별3 | 해커스 보카/Day 05 | incredible, amazing, startling, astounding |  | [əstániʃiŋ] |
+| intermittently | 간헐적으로 | In eastern North America, it rains intermittently throughout the year. |  | Day05;부사;별3 | 해커스 보카/Day 05 | occasionally, periodically, from time to time |  | [ìntərmítntli] |
+| application | 응용, 이용 | A microcomputer has a wide range of applications for mobile businesses. |  | Day05;명사;별3 | 해커스 보카/Day 05 | use, utilization, employment |  | [æ̀pləkéiʃən] |
+| predominant | 주된, 주요한 | Blue is the predominant color in Van Gogh's Starry Night. | adv. predominantly | Day05;형용사;별3 | 해커스 보카/Day 05 | principal, main, primary, leading |  | [pridámənənt] |
+| remote | 멀리 떨어진 | While Watson was smoking, George would sit in a remote corner of the garden. |  | Day05;형용사;별3 | 해커스 보카/Day 05 | distant, secluded, removed, faint, slim |  | [rimóut] |
+| inordinate | 과도한 | The use of inordinate amounts of pesticide and synthetic fertilizer on crops is against the law. |  | Day05;형용사;별3 | 해커스 보카/Day 05 | excessive, exorbitant, undue |  | [inɔ́ːrdənət] |
+| launch | 시작하다 | The government is planning to launch a major forestry campaign. |  | Day05;동사;별2 | 해커스 보카/Day 05 | start, begin, initiate, commence |  | [lɔːntʃ] |
+| trend | 경향, 추세 | The current trend is towards more part-time employment. |  | Day05;명사;별2 | 해커스 보카/Day 05 | tendency, inclination, direction |  | [trend] |
+| embodiment | 전형, 구체화된 것 | Olympic athletes are often considered to be the embodiment of physical fitness. | v. embody | Day05;명사;별2 | 해커스 보카/Day 05 | concrete example, epitome |  | [imbádimənt] |
+| colonize | (동·식물이) 서식하다 / 식민지화하다 | Fire ants colonize grasslands whereas carpenter ants tend to live in wooded areas. |  | Day05;동사;별2 | 해커스 보카/Day 05 | inhabit, populate, conquer |  | [kálənàiz] |
+| affect | 영향을 미치다 | The scientists are currently studying how climate affects marine animal populations. |  | Day05;동사;별2 | 해커스 보카/Day 05 | influence, impact, act on, pretend, assume |  | [əfékt] |
+| speculation | 추측 | There was much speculation in the office as to who the new employee would be. | v. speculate | Day05;명사;별2 | 해커스 보카/Day 05 | supposition, conjecture, surmise |  | [spèkjuléiʃən] |
+| compound | (정도를) 더하다, 악화시키다 | The doctor said that scratching an insect bite would only compound the itchiness. |  | Day05;동사;별2 | 해커스 보카/Day 05 | add to, intensify, worsen, mixture, blend |  | [kəmpáund] |
+| fascinating | 매혹적인 | Jackson Pollock's paintings are characterized by fascinating combinations of colors and shapes. |  | Day05;형용사;별2 | 해커스 보카/Day 05 | extremely attractive, captivating, enthralling |  | [fǽsənèitiŋ] |
+| constellation | (유사한 것들의) 모임, 무리 | Jerusalem is a city that is known for its constellation of cultures. |  | Day05;명사;별2 | 해커스 보카/Day 05 | collection, combination, group |  | [kànstəléiʃən] |
+| unconsolidated | 굳지 않은 | Erosion rates are highest in places with unconsolidated soil. |  | Day05;형용사;별2 | 해커스 보카/Day 05 | loose, incoherent |  | [ʌ̀nkənsálədèitid] |
+| outstanding | 뛰어난 / 미지불의, 처리되지 않은 | The writer's speech was so outstanding that years later people still quote from it. |  | Day05;형용사;별2 | 해커스 보카/Day 05 | excellent, remarkable, prominent, unpaid, unsettled, owing |  | [àutstǽndiŋ] |
+| outcome | 결과 | The researchers were surprised by the outcome of the psychology experiment. |  | Day05;명사;별2 | 해커스 보카/Day 05 | result, consequence, conclusion |  | [áutkʌ̀m] |
+| document | 문서, 기록 | The archaeologists found ancient documents in a cave in the desert. |  | Day05;명사;별2 | 해커스 보카/Day 05 | record, report, paper, verify, support |  | [dákjumənt] |
+| intrinsically | 본질적으로 | Unlike money, gold and diamonds are considered to be intrinsically valuable. | adj. intrinsic | Day05;부사;별2 | 해커스 보카/Day 05 | fundamentally, essentially |  | [intrínsikəli] |
+| disputatious | 논쟁을 좋아하는 | The disagreement got heated quickly because both people involved were highly disputatious. | v. dispute | Day05;형용사;별2 | 해커스 보카/Day 05 | contentious, argumentative, quarrelsome |  | [dìspjutéiʃəs] |
+| diverse | 다양한; 다른 | Russell's genius lies in getting people of diverse backgrounds to work together. | n. diversity | Day05;형용사;별2 | 해커스 보카/Day 05 | varied, various, manifold, dissimilar |  | [dáivəːrs] |
+| eerie | 기묘한 | The book 1984 was an eerie prediction of the future. |  | Day05;형용사;별2 | 해커스 보카/Day 05 | odd, strange |  | [íəri] |
+| tenuous | 빈약한 | Germany provided a tenuous justification for its invasion of Poland in 1939. |  | Day05;형용사;별2 | 해커스 보카/Day 05 | weak, insubstantial |  | [ténjuəs] |
+| eradicate | 근절하다 | The US spends $50 billion per year trying to eradicate drug use. |  | Day05;동사;별2 | 해커스 보카/Day 05 | completely remove, root up, extirpate, eliminate |  | [irǽdəkèit] |
+| prone to | ~하기 쉬운 | Young children are prone to illness because their immune systems are not well developed. |  | Day05;숙어;별2 | 해커스 보카/Day 05 | susceptible to, likely to get |  |  |
+| lodge | 박히다 | The meteor flew in from outer space and lodged in the rock. |  | Day05;동사;별2 | 해커스 보카/Day 05 | embed, implant |  | [ladʒ] |
+| gather momentum | 탄력이 붙다 | Business at the new book shop was slow at first, but soon it started to gather momentum. |  | Day05;숙어;별2 | 해커스 보카/Day 05 | make progress, gain impetus |  |  |
+| viable | 생존 가능한 | A fetus is considered viable after it has endured 20 weeks inside the womb. | n. viability | Day05;형용사;별2 | 해커스 보카/Day 05 | able to survive |  | [váiəbl] |
+| impediment | 장애물 | If Ben puts his mind to something, no impediment can stop him from reaching his goals. | v. impede | Day05;명사;별2 | 해커스 보카/Day 05 | obstacle, obstruction, barrier |  | [impédəmənt] |
+| arid | 메마른 | To perform a construction project in an arid desert, a great amount of water is needed. | n. aridity | Day05;형용사;별2 | 해커스 보카/Day 05 | dry, barren, sterile, waterless |  | [ǽrid] |
+| credible | 믿을 수 있는 | Internet websites are not always credible sources of information. |  | Day05;형용사;별2 | 해커스 보카/Day 05 | believable, reliable, plausible |  | [krédəbl] |
+| vacate | 떠나다, 비우다 | The typhoon forced residents to vacate the area near the coast. | adj. vacant | Day05;동사;별2 | 해커스 보카/Day 05 | abandon, evacuate, void |  | [véikeit] |
+| cushion | 보호하다, 충격을 완화하다 | Exercise shoes have a layer of foam that cushions the foot from the impact of running. |  | Day05;동사;별1 | 해커스 보카/Day 05 | protect, buffer |  | [kúʃən] |
+| peculiar | 특유의, 독특한 / 이상한 | The idiomatic expression is peculiar to the British dialect of the English language. | n. peculiarity | Day05;형용사;별1 | 해커스 보카/Day 05 | unique, distinct, particular, strange, unusual, odd |  | [pikjúːljər] |
+| attributable to | ~에 기인하는 | The World Health Organization stated that 12 percent of global deaths is attributable to smoking. |  | Day05;숙어;별1 | 해커스 보카/Day 05 | caused by, ascribable to |  |  |
+| enact | (법률 등을) 제정하다 | The civil rights movement pressured Congress to enact a new law in 1964. | n. enactment | Day05;동사;별1 | 해커스 보카/Day 05 | make into law, establish, pass, adopt, stage, perform |  | [inǽkt] |
+| stratified | 층으로 이루어진 | Stratified rock helps geologists determine the age of geological deposits. |  | Day05;형용사;별1 | 해커스 보카/Day 05 | layered |  | [strǽtəfàid] |
+| with regard to | ~에 관하여 | Stricter regulations with regard to genetically modified foods are being considered. |  | Day05;숙어;별1 | 해커스 보카/Day 05 | in terms of, with respect to, concerning |  |  |
+| turbulent | 격동하는 | The increase in civil wars around the world is a sign of our turbulent times. | n. turbulence | Day05;형용사;별1 | 해커스 보카/Day 05 | violent, agitated, tumultuous |  | [tə́ːrbjulənt] |
+| appraisal | 평가 | Employees are given formal appraisals every six months. |  | Day05;명사;별1 | 해커스 보카/Day 05 | evaluation, assessment, estimation |  | [əpréizəl] |
+| erroneous | 잘못된 | All of the team agreed that it was an erroneous conclusion. |  | Day05;형용사;별1 | 해커스 보카/Day 05 | wrong, incorrect, mistaken, false |  | [iróuniəs] |
+| proponent | 지지자 | Huxley's grandfather was a famous biologist and proponent of Darwin's theories. |  | Day05;명사;별1 | 해커스 보카/Day 05 | supporter, advocate, adherent, partisan |  | [prəpóunənt] |
+| absolute | 절대적인, 완전한 | Mr. Jones developed a worldwide reputation as an absolute expert in his field of study. |  | Day05;형용사;별1 | 해커스 보카/Day 05 | unqualified, complete, utter |  | [ǽbsəlùːt] |
