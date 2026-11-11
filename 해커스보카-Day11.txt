@@ -1,0 +1,61 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| plausible | 그럴듯한 | The story seemed plausible, but witnesses said it was untrue. |  | Day11;형용사;별3 | 해커스 보카/Day 11 | possible, believable, likely, probable |  | [plɔ́ːzəbl] |
+| transform | 변형시키다, 바꾸다 | Generators transform physical energy into electrical energy. |  | Day11;동사;별3 | 해커스 보카/Day 11 | convert, change, alter |  | [trænsfɔ́ːrm] |
+| counterpart | (쌍을 이루는) 한 쪽; 동등한 것 | Medieval religious books often included beautiful illustrations as a counterpart to the written text. |  | Day11;명사;별3 | 해커스 보카/Day 11 | complement, equivalent |  | [káuntərpàːrt] |
+| nevertheless | 그럼에도 불구하고 | Beagles make excellent pets. Nevertheless, they can become unruly without proper training. |  | Day11;부사;별3 | 해커스 보카/Day 11 | in spite of that, however, still, yet, nonetheless |  | [nèvərðəlés] |
+| pronounced | 현저한 | The development of agricultural pesticides led to a pronounced increase in crop yields. | her pronounced confidence (단호한) | Day11;형용사;별3 | 해커스 보카/Day 11 | notable, striking, marked, significant, noticeable, distinct, strong, decided |  | [prənáunst] |
+| celebrated | 유명한 | General Sherman's march to the sea was probably the most celebrated military campaign in US history. |  | Day11;형용사;별3 | 해커스 보카/Day 11 | famous, renowned, well-known |  | [séləbrèitid] |
+| exceedingly | 대단히 | Prior to the 2008 economic crisis, real estate prices had become exceedingly expensive. |  | Day11;부사;별3 | 해커스 보카/Day 11 | highly, extremely, excessively, hugely |  | [iksíːdiŋli] |
+| chancy | 위험한 | Climbing Mt. Everest is chancy, as many people die on the mountain every year. |  | Day11;형용사;별3 | 해커스 보카/Day 11 | risky, perilous, dangerous |  | [tʃǽnsi] |
+| vertical | 수직의 | The three vertical bands of the French flag symbolize liberty, equality, and brotherhood. |  | Day11;형용사;별3 | 해커스 보카/Day 11 | upright, up-and-down, erect |  | [və́ːrtikəl] |
+| persist | 지속되다 | Fears persisted even after weather forecasters declared that the hurricane would not come ashore. | adj. persistent; n. persistence | Day11;동사;별3 | 해커스 보카/Day 11 | continue, last, endure, remain |  | [pərsíst] |
+| magnitude | 규모, 정도 | The magnitude of an earthquake is measured on the Richter scale. |  | Day11;명사;별3 | 해커스 보카/Day 11 | extent, size, degree, measure, amount |  | [mǽgnətjùːd] |
+| discern | 파악하다, 알아내다 | A leader must be able to discern the best course of action for the group. | discerning (통찰력이 있는) = astute, perceptive | Day11;동사;별3 | 해커스 보카/Day 11 | identify, detect, distinguish |  | [disə́ːrn] |
+| generate | 만들어 내다 | To generate enough electricity for the countryside, the mayor had 200 wind turbines built. |  | Day11;동사;별3 | 해커스 보카/Day 11 | produce, create |  | [dʒénərèit] |
+| eccentric | 별난, 특이한 | Vaudeville actors typically wore eccentric costumes on stage. |  | Day11;형용사;별3 | 해커스 보카/Day 11 | unusual, bizarre, peculiar, odd |  | [ikséntrik] |
+| alternative | 대안이 되는; 다른 / 대안 | The city encouraged people to take alternative means of transportation to help reduce traffic congestion. | v. alternate | Day11;형용사;명사;별3 | 해커스 보카/Day 11 | substitutive, different, substitute, choice, option |  | [ɔːltə́ːrnətiv] |
+| strategy | 전략, 방법 | The strategy of some predators is to camouflage themselves and wait perfectly still for hours. |  | Day11;명사;별3 | 해커스 보카/Day 11 | plan, method, scheme |  | [strǽtədʒi] |
+| refine | 개선하다 | The writing tutor suggested ways for the student to refine his essay and garner a better grade. | n. refinement | Day11;동사;별3 | 해커스 보카/Day 11 | improve, perfect |  | [riːfáin] |
+| precious | 귀중한 | The colonies were forced into providing precious metals to the mother country. |  | Day11;형용사;별2 | 해커스 보카/Day 11 | valuable, dear, priceless |  | [préʃəs] |
+| subtle | 미묘한, 감지하기 어려운 | The signs of dishonesty are so subtle that they often go undetected. |  | Day11;형용사;별2 | 해커스 보카/Day 11 | hard to recognize, hardly perceived, slight |  | [sʌ́tl] |
+| conducive to | ~에 도움이 되는 | Energetic teachers and fun lessons are conducive to student learning. |  | Day11;숙어;별2 | 해커스 보카/Day 11 | favorable to, helpful for, beneficial to |  |  |
+| preoccupied with | ~에 몰두한 | The crook made his getaway while officials were preoccupied with the fire he started. |  | Day11;숙어;별2 | 해커스 보카/Day 11 | concentrated on, absorbed in, immersed in |  |  |
+| swift | 재빠른 | With a swift movement, Maggie stood upright. | adv. swiftly | Day11;형용사;별2 | 해커스 보카/Day 11 | quick, speedy, fleet |  | [swift] |
+| menace | 위협하다 | The thief menaced the neighborhood for weeks before being caught. |  | Day11;동사;별2 | 해커스 보카/Day 11 | threaten, intimidate, frighten |  | [ménəs] |
+| akin to | ~과 유사한 | Ukrainians are culturally and racially akin to Russians. |  | Day11;숙어;별2 | 해커스 보카/Day 11 | similar to, like |  |  |
+| expend | (시간·에너지 등을) 쓰다 | Athletes expend more energy in hot and humid weather, so they are likely to feel tired more quickly. |  | Day11;동사;별2 | 해커스 보카/Day 11 | use, use up, spend, consume |  | [ikspénd] |
+| belittle | 경시하다 | Jane did not realize that she was belittling her colleagues by constantly interrupting them. |  | Day11;동사;별2 | 해커스 보카/Day 11 | disregard, underestimate |  | [bilítl] |
+| commend | 칭찬하다 | The general commended the soldiers for their bravery during the battle. |  | Day11;동사;별2 | 해커스 보카/Day 11 | admire, praise, compliment |  | [kəménd] |
+| sue | 고소하다 | The company sued its supplier for breach of contract. |  | Day11;동사;별2 | 해커스 보카/Day 11 | take a strong legal action against, charge |  | [suː] |
+| innovation | 혁신, 새로 도입한 것 | Built-in cameras and web browsing capabilities are amazing innovations in cellular phone technology. | adj. innovative | Day11;명사;별2 | 해커스 보카/Day 11 | new development, novelty, new idea |  | [ìnəvéiʃən] |
+| fragmentation | 붕괴, 분열 | The Cultural Revolution in China caused a fragmentation of societal ideals. |  | Day11;명사;별2 | 해커스 보카/Day 11 | destruction, disintegration, disruption |  | [frægməntéiʃən] |
+| mainly | 주로 | In California, rain occurs mainly during the winter months. |  | Day11;부사;별2 | 해커스 보카/Day 11 | principally, generally, primarily, chiefly |  | [méinli] |
+| sufficient | 충분한 | For most healthy adults, a few days of rest is sufficient to get over a cold. | adv. sufficiently | Day11;형용사;별2 | 해커스 보카/Day 11 | enough, adequate, ample |  | [səfíʃənt] |
+| abnormally | 이례적으로, 이상하게 | An abnormally rapid heart rate may indicate a serious health problem. |  | Day11;부사;별2 | 해커스 보카/Day 11 | unusually, oddly, exceptionally, atypically |  | [æbnɔ́ːrməli] |
+| barrier | 장벽, 장애물 | The mountains form a natural barrier between the two countries. | a bar to effective communication | Day11;명사;별2 | 해커스 보카/Day 11 | bar, obstacle, obstruction |  | [bǽriər] |
+| gigantic | 거대한 | The gigantic thunderstorm in Japan was much more serious than anyone had anticipated. |  | Day11;형용사;별2 | 해커스 보카/Day 11 | huge, immense, colossal |  | [dʒaigǽntik] |
+| reproduce | 복제하다, 모사하다 / 번식하다 | The director sometimes reproduces others' styles as homage to their work. |  | Day11;동사;별2 | 해커스 보카/Day 11 | copy, duplicate, imitate, breed, multiply, propagate |  | [rìːprədjúːs] |
+| allow | 허락하다 | Farmers allowed firefighters to use water from their ponds to put out the wildfire. |  | Day11;동사;별2 | 해커스 보카/Day 11 | enable, permit, let |  | [əláu] |
+| penetrate | 꿰뚫다 | A large iceberg penetrated the Titanic's steel frame and caused the ship to sink. |  | Day11;동사;별2 | 해커스 보카/Day 11 | pierce, go through, enter |  | [pénətrèit] |
+| device | 장치, 기구 | The smartphone is one of the most useful devices for communication. | v. devise | Day11;명사;별2 | 해커스 보카/Day 11 | mechanism, apparatus, appliance |  | [diváis] |
+| divergent | (의견 등이) 다른, 갈라지는 | In the debate, the political candidates discussed their divergent views. | v. diverge | Day11;형용사;별2 | 해커스 보카/Day 11 | varying, different, dissimilar |  | [daivə́ːrdʒənt] |
+| flaw | 결점 | In the play Cyrano De Bergerac, the protagonist's most obvious flaw is his grotesque nose. |  | Day11;명사;별2 | 해커스 보카/Day 11 | defect, fault, blemish, shortcoming |  | [flɔː] |
+| buffer | (충격을) 완화하다, 보호하다 | Installing thick windows in your home will buffer against the cold weather. |  | Day11;동사;별2 | 해커스 보카/Day 11 | protect, cushion |  | [bʌ́fər] |
+| refute | 논박하다 | Galileo refuted the theory that the Earth was at the center of the universe. |  | Day11;동사;별2 | 해커스 보카/Day 11 | disprove, rebut, prove false |  | [rifjúːt] |
+| domestic | 가정의 | If both the husband and wife work, they should share the domestic chores. | v. domesticate (길들이다) = tame, train | Day11;형용사;별1 | 해커스 보카/Day 11 | household, home, family |  | [dəméstik] |
+| on the spur of the moment | 충동적으로 | On the spur of the moment, Lucy and Henry drove to the beach to enjoy the unexpectedly warm day. |  | Day11;숙어;별1 | 해커스 보카/Day 11 | without planning, on impulse |  |  |
+| temperate | (기후 등이) 온화한 | Fruits such as apples and pears grow in temperate climates. |  | Day11;형용사;별1 | 해커스 보카/Day 11 | moderate, mild, clement |  | [témpərət] |
+| consistent with | ~과 일치하는 | Erica chose a major that was consistent with her goal of being a doctor. |  | Day11;숙어;별1 | 해커스 보카/Day 11 | in agreement with, congruent with |  |  |
+| splendor | 장려함, 화려함 | The splendor of the massive statues on Easter Island impressed early European explorers. | adj. splendid | Day11;명사;별1 | 해커스 보카/Day 11 | magnificence, grandeur, majesty |  | [spléndər] |
+| prosper | 번창하다, 성공하다 | Careful planning and good opportunities can help a business prosper. | n. prosperity; adj. prosperous | Day11;동사;별1 | 해커스 보카/Day 11 | succeed, flourish, thrive |  | [práspər] |
+| brew | 일어나려고 하다 | Meteorologists use radar and satellite imaging to determine whether a typhoon is brewing. |  | Day11;동사;별1 | 해커스 보카/Day 11 | develop, loom, be on the way |  | [bruː] |
+| persevere | 인내하며 계속하다 | Despite his injury, the marathon runner persevered until the end of the race. |  | Day11;동사;별1 | 해커스 보카/Day 11 | continue, carry on, persist |  | [pə̀ːrsəvíər] |
+| bias | 편견 | Some nutritionists have a strong bias against genetically modified food. |  | Day11;명사;별1 | 해커스 보카/Day 11 | prejudice |  | [báiəs] |
+| administer | 관리하다 / (약 등을) 주다, 투여하다 | An external consultant has been hired to administer the large governmental grant. |  | Day11;동사;별1 | 해커스 보카/Day 11 | manage, supervise, conduct, give, provide |  | [ædmínistər] |
+| groundless | 근거 없는 | Although Sarah knew her fear of the dark was groundless, she still used a nightlight. |  | Day11;형용사;별1 | 해커스 보카/Day 11 | unfounded, baseless |  | [gráundlis] |
+| arouse | 자극하다 | The strange sight in the distance aroused Watson's curiosity, so he moved closer to get a better look. | arouse Jane from sleep (깨우다) | Day11;동사;별1 | 해커스 보카/Day 11 | stimulate, provoke, incite, awake |  | [əráuz] |
+| occupy | (주의·마음을) 끌다 | Basic needs, such as food and shelter, occupied the minds of early humans. |  | Day11;동사;별1 | 해커스 보카/Day 11 | engross, engage, absorb |  | [ákjupài] |
+| virtual | 거의 ~과 다름없는, 사실상의 | A further reduction in the size of the Arctic ice cap is a virtual certainty. | adv. virtually | Day11;형용사;별1 | 해커스 보카/Day 11 | almost complete |  | [və́ːrtʃuəl] |
+| unexplored | 다루어지지 않은, 논의되지 않은 | The student wrote a paper on some of the unexplored aspects of social media. |  | Day11;형용사;별1 | 해커스 보카/Day 11 | uncovered |  | [ʌ̀niksplɔ́ːrd] |
+| tuned to | ~과 일치된 | An employee who is tuned to the goals of management is more likely to be promoted. |  | Day11;숙어;별1 | 해커스 보카/Day 11 | in agreement with |  |  |
