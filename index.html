@@ -778,6 +778,7 @@ const CARD_STATE = ["ef","reps","step","st","interval","lapses","lapseIvl","due"
 /* ══════════════════ 데이터 ══════════════════ */
 const DEFAULTS = {
   soloPack:"",           // 따로 공부할 팩 — 일반 학습에서 빠집니다
+  soloInit:false,        // 위 값을 한 번 자동으로 잡아 봤는지 (autoSolo 참고)
   ask:"",                // 세션 형식 ("" = 설정대로). 기기별이라 동기화되지 않습니다
   front:"en",            // en | ko | mix
   typing:false,          // 타이핑 문제 섞기
@@ -822,7 +823,19 @@ function fixLoaded(){
     if(c.ipa===undefined) c.ipa="";
     if(c.due===undefined) c.due=sod();
     if(c.st===undefined) c.st=cardSt(c); });
-  migrateLog(); syncPacks();
+  migrateLog(); syncPacks(); autoSolo();
+}
+
+/** 해커스 보카처럼 **따로 두어야 할 팩**이 처음 들어오면 한 번만 자동으로 잡아 줍니다.
+    안 잡으면 토플 단어 500여 개가 기존 학습에 그대로 섞여 나옵니다 — 사용자가
+    섞이지 않게 해 달라고 명시한 부분입니다.
+    `soloInit` 은 **한 번만** 서므로, 뒤에 설정에서 "없음" 으로 바꾸면 그 선택이 남습니다.
+    `allPacks()` 는 아래에 `const` 로 선언되어 여기서는 아직 못 부릅니다 — `D.cards` 를 직접 봅니다. */
+function autoSolo(){
+  if(D.s.soloInit) return;
+  if(D.s.soloPack){ D.s.soloInit=true; save(); return; }
+  if(!D.cards.some(c=>String(c.pack||"").split("/")[0]==="해커스 보카")) return;
+  D.s.soloPack = "해커스 보카"; D.s.soloInit = true; save();
 }
 let saveT, savePending=false;
 function save(){ savePending=true; clearTimeout(saveT); saveT=setTimeout(()=>{
@@ -1761,6 +1774,9 @@ function checkTyped(){
 /* ══════════════════ 렌더 ══════════════════ */
 let prevS=false;
 function render(done){
+  /* 가져오기로 해커스 보카가 막 들어왔을 수도 있으므로 여기서도 한 번 봅니다.
+     `soloInit` 이 서면 바로 빠져나오므로 비용은 없습니다 */
+  autoSolo();
   /* 학습이 끝난 그 순간에 밀어 둔 동기화를 한 번 내보냅니다 (scheduleSync 의 설명 참고) */
   if(prevS && !S) scheduleSync();
   prevS = !!S;

@@ -1,0 +1,57 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| disperse | 흩어지게 하다; 퍼뜨리다 | The smoke from the fire was rapidly dispersed by the strong winds. | n. dispersal | Day06;동사;별3 | 해커스 보카/Day 06 | scatter, dissipate, spread, disseminate |  | [dispə́ːrs] |
+| adjacent | 인접한 | In addition to the World Trade Center, adjacent buildings were damaged on 9/11. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | nearby, neighboring, adjoining |  | [ədʒéisnt] |
+| sequence | 연속 / 순서 | A sequence of political events in the West caused war to break out. | adv. sequentially | Day06;명사;별3 | 해커스 보카/Day 06 | progression, series, string, succession, order |  | [síːkwəns] |
+| detect | 발견하다, 인지하다 | The scientists detected a trace of toxic chemicals in the city's water supply. |  | Day06;동사;별3 | 해커스 보카/Day 06 | discover, find, identify, recognize, sense |  | [ditékt] |
+| flexible | 유연한; 적응성 있는 | The tongue is a flexible organ that helps produce a wide variety of sounds. | n. flexibility | Day06;형용사;별3 | 해커스 보카/Day 06 | pliable, bendable, adaptable, adjustable |  | [fléksəbl] |
+| surpass | 능가하다 | The student's art project surpassed the teacher's expectation. |  | Day06;동사;별3 | 해커스 보카/Day 06 | exceed, outrun, be higher than, excel |  | [sərpǽs] |
+| invariable | 변함없는 | There has been an invariable struggle for justice in Cuba since the 1950s. | adv. invariably | Day06;형용사;별3 | 해커스 보카/Day 06 | constant, consistent, unchanging |  | [invɛ́əriəbl] |
+| dramatic | 극적인, 인상적인 | Alaska has dramatic changes in temperature throughout the year. | adv. dramatically | Day06;형용사;별3 | 해커스 보카/Day 06 | striking, significant, impressive |  | [drəmǽtik] |
+| master | 습득하다 / 제어하다 | Amanda has mastered several languages, including French and German. | n. mastery | Day06;동사;별3 | 해커스 보카/Day 06 | learn thoroughly, learn, acquire, control, manage |  | [mǽstər] |
+| assimilate | (지식 등을) 흡수하다, 이해하다 | The research indicates that the human mind can assimilate languages most rapidly before the age of seven. |  | Day06;동사;별3 | 해커스 보카/Day 06 | absorb, take in, digest, accommodate, adjust |  | [əsíməlèit] |
+| overwhelming | 압도적인, 굉장한 | Due to the overwhelming evidence, the jury convicted the man of the crime. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | powerful, enormous, compelling, tremendous |  | [òuvərhwélmiŋ] |
+| curious | 호기심이 강한 / 이상한, 별난 | A child who is curious about the world will often do well in school. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | inquisitive, questioning, inquiring, strange, mysterious, extraordinary |  | [kjúəriəs] |
+| alteration | 변화, 수정 | The tailor made an alteration to Kelly's wedding dress allowing it to drape more loosely about her shoulders. | v. alter | Day06;명사;별3 | 해커스 보카/Day 06 | change, modification |  | [ɔ̀ːltəréiʃən] |
+| consequence | 결과 / 중요성 | The economic depression in the US was unique in its consequences. | adj. consequent; adv. consequently | Day06;명사;별3 | 해커스 보카/Day 06 | result, effect, ramification, outcome, importance, significance |  | [kánsəkwèns] |
+| deceive | 속이다 | The company was accused of engaging in a deliberate effort to deceive its shareholders. |  | Day06;동사;별3 | 해커스 보카/Day 06 | mislead, delude, cheat |  | [disíːv] |
+| ample | 넓은, 광대한 / 풍부한 | The backyard of the house has ample room for a swimming pool and a large garden. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | sizable, large, spacious, vast, plentiful, abundant, more than enough |  | [ǽmpl] |
+| resilient | 금방 회복하는 | After injury, young people are usually more resilient than old people. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | quick to recover, easy to recover |  | [rizíljənt] |
+| detach | 분리하다 | The inner lining of the coat can be detached to make the coat less bulky. | n. detachment | Day06;동사;별2 | 해커스 보카/Day 06 | separate, disconnect, disengage, unconcern, indifference |  | [ditǽtʃ] |
+| account | (사건 등에 대한) 기술, 보고 | John Reed wrote a famous account of the Russian Revolution. |  | Day06;명사;별2 | 해커스 보카/Day 06 | description, report, narrative |  | [əkáunt] |
+| equilibrium | 균형 | A market is considered to be stable when supply and demand are in equilibrium. |  | Day06;명사;별2 | 해커스 보카/Day 06 | balance, symmetry |  | [ìːkwəlíbriəm] |
+| surmise | 추측하다 | Without any hard evidence to rely upon, researchers can only surmise how the death of King Tutankhamen occurred. |  | Day06;동사;별2 | 해커스 보카/Day 06 | infer, guess, speculate, suspect |  | [sərmáiz] |
+| unsuitable | 적합하지 않은 | Films that are rated R are unsuitable for children under the age of 17. |  | Day06;형용사;별2 | 해커스 보카/Day 06 | inappropriate, unfit, improper |  | [ʌ̀nsúːtəbl] |
+| imaginative | 창의적인 | Imaginative people often find unconventional solutions to difficult problems. |  | Day06;형용사;별2 | 해커스 보카/Day 06 | creative, inventive, original |  | [imǽdʒənətiv] |
+| imposing | 인상적인 | The Empire State Building is an imposing structure situated in the heart of New York City. |  | Day06;형용사;별2 | 해커스 보카/Day 06 | impressive, striking |  | [impóuziŋ] |
+| vitality | 활력 | A person's vitality is affected by what he or she eats and how much sleep he or she gets. | adj. vital | Day06;명사;별2 | 해커스 보카/Day 06 | energy, liveliness, vigor |  | [vaitǽləti] |
+| vehicle | 수단, 매체 | In democracies, voting is the primary vehicle for social change. |  | Day06;명사;별2 | 해커스 보카/Day 06 | means, medium, instrument |  | [víːikl] |
+| hitherto | 지금까지 | The rose bushes that had hitherto looked dead suddenly produced flowers. |  | Day06;부사;별2 | 해커스 보카/Day 06 | previously, so far, until now |  | [híðərtùː] |
+| plague | 괴롭히다 | Frequent delays plagued the construction project, but finally it was completed. |  | Day06;동사;별2 | 해커스 보카/Day 06 | cause a problem for, bother, annoy, epidemic, infection |  | [pleig] |
+| domain | 영역 | In the domain of art, nobody is more famous than Leonardo da Vinci. |  | Day06;명사;별2 | 해커스 보카/Day 06 | area, field |  | [douméin] |
+| indifferent | 무관심한 | Many of Thomas Edison's inventions did not succeed because the public was indifferent. |  | Day06;형용사;별2 | 해커스 보카/Day 06 | uninterested, unconcerned, careless |  | [indífərənt] |
+| champion | 옹호하다 | John Dewey championed the idea that students should actively participate in the learning process. |  | Day06;동사;별2 | 해커스 보카/Day 06 | support, promote, advocate, endorse |  | [tʃǽmpiən] |
+| deteriorate | 악화되다 | My grandmother's health deteriorated last year, but she's much better now. |  | Day06;동사;별2 | 해커스 보카/Day 06 | get worse, degenerate |  | [ditíəriərèit] |
+| assault | 폭행하다, 공격하다 | John was arrested last night because he assaulted his neighbor during a noise dispute. |  | Day06;동사;별2 | 해커스 보카/Day 06 | attack, aggress, assail |  | [əsɔ́ːlt] |
+| appropriate | 적절한 | Brittany's clothes were not appropriate for a job interview. |  | Day06;형용사;별2 | 해커스 보카/Day 06 | suitable, proper, applicable |  | [əpróupriət] |
+| adept | 능숙한 | The restaurant's new chef is adept at preparing both Italian and French cuisine. |  | Day06;형용사;별2 | 해커스 보카/Day 06 | skillful, proficient, deft, adroit |  | [ədépt] |
+| indeed | 사실은 | Indeed, technological innovations have dramatically reduced the demand for manual labor. |  | Day06;부사;별2 | 해커스 보카/Day 06 | in truth, in fact |  | [indíːd] |
+| pursuit | 취미, 오락 | Pursuits such as playing cards or reading books can prevent dementia in the elderly. | v. pursue | Day06;명사;별2 | 해커스 보카/Day 06 | interest, pastime, hobby, search, quest |  | [pərsúːt] |
+| incite | 자극하다 | The love poem incited Todd's emotions and he asked his girlfriend to marry him. |  | Day06;동사;별2 | 해커스 보카/Day 06 | stimulate, provoke, inflame, spur |  | [insáit] |
+| guarantee | 보장하다 | The linking of medical institutions will guarantee better health care systems. |  | Day06;동사;별2 | 해커스 보카/Day 06 | ensure, secure, warrant |  | [gæ̀rəntíː] |
+| prosperity | 번영 | In the 1800s, economic freedom brought the US great prosperity. | v. prosper | Day06;명사;별2 | 해커스 보카/Day 06 | economic well-being, wealth, fortune |  | [praspérəti] |
+| primarily | 주로 / 원래, 처음에 | Members of the country club were primarily wealthy old men. |  | Day06;부사;별2 | 해커스 보카/Day 06 | mostly, mainly, chiefly, originally, at first, initially |  | [praimérəli] |
+| erupt | 폭발하다 | In 1980, Mount St. Helens erupted and destroyed the surrounding forest. |  | Day06;동사;별2 | 해커스 보카/Day 06 | explode, burst, blow up |  | [irʌ́pt] |
+| trace | 자취, 흔적 | The results of the blood test showed traces of an illegal drug in the patient's blood. |  | Day06;명사;별1 | 해커스 보카/Day 06 | evidence, vestige, imprint, mark, track down, trail |  | [treis] |
+| prestigious | 명성이 있는 | Harvard University is one of the most prestigious colleges in North America. |  | Day06;형용사;별1 | 해커스 보카/Day 06 | highly regarded, esteemed, respected |  | [prestídʒəs] |
+| shape | (영향을 미쳐) 형성하다 | Experiences that occur during childhood can shape a person's personality. |  | Day06;동사;별1 | 해커스 보카/Day 06 | affect, form, influence |  | [ʃeip] |
+| inflict | (고통 등을) 주다, 가하다 | Harsh weather can inflict serious damage on fruit crops. |  | Day06;동사;별1 | 해커스 보카/Day 06 | cause, administer, exact |  | [inflíkt] |
+| portion | 부분 | Some portions of the massive sculpture are made of metal, while others are made of stone. |  | Day06;명사;별1 | 해커스 보카/Day 06 | part, segment, fragment |  | [pɔ́ːrʃən] |
+| coincidence | 우연의 일치 | According to the police, the suspect's presence during the robbery was a coincidence. |  | Day06;명사;별1 | 해커스 보카/Day 06 | chance happening |  | [kouínsidəns] |
+| propel | 몰아대다 | The store's security guard propelled the unruly customer out the door. |  | Day06;동사;별1 | 해커스 보카/Day 06 | push, force, drive, impel |  | [prəpél] |
+| thoroughly | 철저히, 완전히 | The professor covered the collapse of the Mayan civilization thoroughly in class. | adj. thorough | Day06;부사;별1 | 해커스 보카/Day 06 | completely, entirely |  | [θə́ːrouli] |
+| contemplate | 곰곰이 생각하다 | John accepted a teaching position in Vancouver while he contemplated the future. |  | Day06;동사;별1 | 해커스 보카/Day 06 | consider, ponder |  | [kántəmplèit] |
+| unethical | 비윤리적인 | The students protested against the unethical treatment of animals by researchers. |  | Day06;형용사;별1 | 해커스 보카/Day 06 | improper, immoral |  | [ʌnéθikəl] |
+| replicate | 모사하다, 복제하다 | Janine tried to replicate the clothing style she saw in a fashion magazine. |  | Day06;동사;별1 | 해커스 보카/Day 06 | reproduce, copy, duplicate |  | [réplikèit] |
+| hasty | 황급한, 서두르는 | Overwhelmed by the Russian winter, Napoleon's army performed a hasty retreat out of the country. | v. hasten | Day06;형용사;별1 | 해커스 보카/Day 06 | hurried, rushed |  | [héisti] |
+| representative | 나타내는; 전형적인 | The fact that many celebrities attended the award show was representative of its importance. | v. represent | Day06;형용사;별1 | 해커스 보카/Day 06 | indicative, typical, exemplary, delegate |  | [rèprizéntətiv] |

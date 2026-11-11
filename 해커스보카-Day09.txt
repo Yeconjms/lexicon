@@ -1,0 +1,60 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| initiate | 시작하다 | The government has initiated several new welfare policies to assist the poor. | n. initiative | Day09;동사;별3 | 해커스 보카/Day 09 | start, begin, originate, commence |  | [iníʃièit] |
+| tremendous | 엄청난 | The Arab-Israeli conflict has had a tremendous impact on the world economy. |  | Day09;형용사;별3 | 해커스 보카/Day 09 | great, large, gigantic, huge |  | [triméndəs] |
+| breakthrough | 큰 발전 | The discovery of a cure for AIDS would be a huge breakthrough for modern medicine. |  | Day09;명사;별3 | 해커스 보카/Day 09 | sudden advance, progress |  | [bréikθrùː] |
+| cope with | ~에 대처하다, ~을 다루다 | The soccer players coped with heavy rain and a muddy field as they played the game. |  | Day09;숙어;별3 | 해커스 보카/Day 09 | deal with, manage, handle |  |  |
+| inducement | 유인(책), 장려 | The research shows that the greatest inducement to productivity in the workplace is managerial style. | v. induce | Day09;명사;별3 | 해커스 보카/Day 09 | incentive, incitement, lure |  | [indjúːsmənt] |
+| irreversible | 돌이킬 수 없는 | Long exposure to freezing temperatures can cause irreversible damage to skin. |  | Day09;형용사;별3 | 해커스 보카/Day 09 | irreparable, irrevocable, irremediable |  | [ìrivə́ːrsəbl] |
+| comprise | 포함하다 / ~으로 구성되다 | The textbook comprises a large number of detailed illustrations and charts. |  | Day09;동사;별3 | 해커스 보카/Day 09 | include, encompass, consist of, be made up of, be composed of |  | [kəmpráiz] |
+| culmination | 정점, 최고조 | Being promoted to company president was the culmination of Timothy's 20-year career. | v. culminate (끝나다) = end, finish, terminate | Day09;명사;별3 | 해커스 보카/Day 09 | high point, apex, pinnacle |  | [kʌ̀lmənéiʃən] |
+| allegiance | 충성, 헌신 | Immigrants must promise their allegiance to their new country. |  | Day09;명사;별3 | 해커스 보카/Day 09 | loyalty, fidelity, commitment, dedication |  | [əlíːdʒəns] |
+| notable | 주목할 만한; 중요한 | Professor Dixon's notable achievements in academia earned him the respect and admiration of his colleagues. | adv. notably | Day09;형용사;별3 | 해커스 보카/Day 09 | remarkable, outstanding, important |  | [nóutəbl] |
+| idiosyncrasy | 특징, 이상한 점 | An idiosyncrasy of modern life is that people are busier than ever despite technology. |  | Day09;명사;별3 | 해커스 보카/Day 09 | peculiarity, eccentricity, oddity |  | [ìdiəsíŋkrəsi] |
+| minute | 아주 작은 | Bacteria are so minute that they can only be observed using a microscope. | adv. minutely | Day09;형용사;별3 | 해커스 보카/Day 09 | tiny, very small, diminutive |  | [mainjúːt] |
+| markedly | 현저하게 | The Moon's density is markedly less than the Earth's. | adj. marked | Day09;부사;별3 | 해커스 보카/Day 09 | significantly, noticeably, considerably, substantially |  | [máːrkidli] |
+| phenomenon | 현상, 사건 | The Great Red Spot on Jupiter is one of many natural phenomena that fascinate astronomers. | adj. phenomenal; 복수형 phenomena | Day09;명사;별3 | 해커스 보카/Day 09 | occurrence, incident |  | [finámənàn] |
+| disseminate | 퍼뜨리다 | The rumor about Kate's mysterious absence was disseminated by word of mouth. | n. dissemination | Day09;동사;별3 | 해커스 보카/Day 09 | spread, disperse, distribute |  | [disémənèit] |
+| current | 현재의 | If one wants to see the current trends in fashion, there is no better place to visit than Paris. | adv. currently | Day09;형용사;별3 | 해커스 보카/Day 09 | present, existing |  | [kə́ːrənt] |
+| detrimental | 해로운 | Drinking and smoking have been proven to be detrimental to health. |  | Day09;형용사;별3 | 해커스 보카/Day 09 | harmful, injurious, damaging, pernicious |  | [dètrəméntl] |
+| presume | ~이라고 생각하다, 추정하다 | Biologists presume that a massive asteroid was responsible for the extinction of the dinosaurs. |  | Day09;동사;별2 | 해커스 보카/Day 09 | believe, accept as true |  | [prizúːm] |
+| anarchy | 무질서, 혼란 | During the protests, anarchy filled the city's streets. |  | Day09;명사;별2 | 해커스 보카/Day 09 | disorder, chaos, disorganization |  | [ǽnərki] |
+| snake | 구불구불 가다 | The highway snakes through the mountains and has many incredible views along the way. |  | Day09;동사;별2 | 해커스 보카/Day 09 | wind, meander, curve, twist |  | [sneik] |
+| sophisticated | 정교한, 고도로 발달한 | A more sophisticated approach was needed to solve the problem. | sophisticated styles and tastes (세련된) | Day09;형용사;별2 | 해커스 보카/Day 09 | complex, highly developed, cultured, refined |  | [səfístəkèitid] |
+| derive | 유래하다; 얻다 | The name of Colorado's Pueblo County is derived from the Spanish word for "village." |  | Day09;동사;별2 | 해커스 보카/Day 09 | originate, trace, obtain, gain |  | [diráiv] |
+| sole | 유일한 | In the movie, the sole survivor of a plane crash learns to live on a deserted island. | adv. solely | Day09;형용사;별2 | 해커스 보카/Day 09 | only, single, solitary |  | [soul] |
+| embellish | 장식하다 | Louis XIV embellished his palaces with luxurious furniture. | n. embellishment | Day09;동사;별2 | 해커스 보카/Day 09 | decorate, make attractive, adorn, beautify, ornament |  | [imbéliʃ] |
+| antagonize | ~의 반감을 사다; 대항하다 | The author antagonized her critics by writing angry responses to reviews on her website. |  | Day09;동사;별2 | 해커스 보카/Day 09 | anger, aggravate, counteract |  | [æntǽgənàiz] |
+| yearn | 갈망하다 | After more than a decade of war, everyone in the two countries yearned for peace. | yearn over the poor (동정하다) | Day09;동사;별2 | 해커스 보카/Day 09 | long, desire, crave, pine, sympathize, feel compassion |  | [jəːrn] |
+| permit | 허락하다 | Visitors to national parks are not permitted to have campfires during the dry season. |  | Day09;동사;별2 | 해커스 보카/Day 09 | allow, let, approve |  | [pərmít] |
+| scarcity | 부족 | A scarcity of fish damaged the seaside town's economy. | adj. scarce | Day09;명사;별2 | 해커스 보카/Day 09 | lack, shortage, insufficiency, deficiency |  | [skɛ́ərsəti] |
+| renounce | 포기하다, 버리다 | Monks renounce material possessions and live a very simple life. |  | Day09;동사;별2 | 해커스 보카/Day 09 | give up, reject, relinquish |  | [rináuns] |
+| keep in check | 제어하다, 억제하다 | If government spending is not kept in check, economic problems will result. |  | Day09;숙어;별2 | 해커스 보카/Day 09 | limit, control, restrict, restrain |  |  |
+| subsistence | 생존 | Early humans relied on hunting as their primary means of subsistence. | v. subsist | Day09;명사;별2 | 해커스 보카/Day 09 | survival, existence, living |  | [səbsístəns] |
+| annually | 매년 | Interest on the bank loan is usually calculated annually. | adj. annual | Day09;부사;별2 | 해커스 보카/Day 09 | each year, yearly, every year |  | [ǽnjuəli] |
+| emerge | 나타나다 | Every 17 years, cicadas emerge by the millions in North America. | n. emergence | Day09;동사;별2 | 해커스 보카/Day 09 | appear, loom, spring up, come out, develop |  | [imə́ːrdʒ] |
+| customary | 습관적인, 관례적인 | It is customary to burn an American flag when it becomes torn. |  | Day09;형용사;별2 | 해커스 보카/Day 09 | habitual, traditional, typical, accustomed |  | [kʌ́stəmèri] |
+| widely | 널리 | Franz Schubert's compositions did not become widely known until many years after his death. |  | Day09;부사;별2 | 해커스 보카/Day 09 | extensively, broadly |  | [wáidli] |
+| assign | 지정하다 | The teacher assigned a seat to each student. |  | Day09;동사;별2 | 해커스 보카/Day 09 | specify, designate, appoint |  | [əsáin] |
+| equivocal | 모호한 | The president was criticized for giving equivocal responses about his immigration policy during an interview. |  | Day09;형용사;별2 | 해커스 보카/Day 09 | ambiguous, vague, obscure, uncertain |  | [ikwívəkəl] |
+| release | 석방하다 / 방출하다 | Johnson will be released from prison tomorrow. |  | Day09;동사;별2 | 해커스 보카/Day 09 | free, liberate, loose, emit, give off, discharge, exude |  | [rilíːs] |
+| essentially | 기본적으로, 본질적으로 | Dogs are essentially loyal companions, but a mistreated or untrained pet may still run away. | adj. essential | Day09;부사;별2 | 해커스 보카/Day 09 | basically, fundamentally, primarily |  | [isénʃəli] |
+| oversee | 감독하다 | It is the job of the manager to oversee factory workers. |  | Day09;동사;별2 | 해커스 보카/Day 09 | supervise, control, superintend |  | [òuvərsíː] |
+| rapidly | 급속히, 빨리 | Theodore's health declined rapidly, and in 1933, he died of cancer. | adj. rapid | Day09;부사;별2 | 해커스 보카/Day 09 | quickly, fast |  | [rǽpidli] |
+| acknowledge | 인정하다 | The professor acknowledged the unrealistic deadline for the assignment and changed it. | n. acknowledgement (감사) = appreciation, gratitude | Day09;동사;별2 | 해커스 보카/Day 09 | recognize, admit, accept |  | [æknálidʒ] |
+| rough | 울퉁불퉁한, 거친 | The merchants completed the trip over the rough mountain road. | adv. roughly | Day09;형용사;별2 | 해커스 보카/Day 09 | uneven, rugged, bumpy, coarse |  | [rʌf] |
+| preclude | 막다 / 배제하다 | According to Adam Smith, the feudal system precluded economic progress. |  | Day09;동사;별1 | 해커스 보카/Day 09 | prevent, stop, hinder, rule out, exclude |  | [priklúːd] |
+| portable | 휴대용의 | Engineers are developing new portable medical devices that can be taken wherever you go. |  | Day09;형용사;별1 | 해커스 보카/Day 09 | able to be carried, mobile, movable |  | [pɔ́ːrtəbl] |
+| presumable | 그럴듯한, 있음직한 | An undetected gas leak was the presumable cause of the explosion. | v. presume; adv. presumably | Day09;형용사;별1 | 해커스 보카/Day 09 | probable, likely, possible |  | [prizúːməbl] |
+| calculatedly | 계획적으로 | Spaces in the seminar have been calculatedly limited to facilitate more intimate discussions. |  | Day09;부사;별1 | 해커스 보카/Day 09 | deliberately, intentionally, knowingly |  | [kǽlkjulèitidli] |
+| deviation | 일탈 | Jenny is a talented skater and her poor performance in the competition was a deviation from the norm. | v. deviate | Day09;명사;별1 | 해커스 보카/Day 09 | departure, divergence, aberration |  | [dìːviéiʃən] |
+| hairline | 아주 가느다란 | The contractor noted that the hairline cracks in the wall needed to be repaired before they got bigger. |  | Day09;형용사;별1 | 해커스 보카/Day 09 | slight, thin |  | [hɛ́ərlàin] |
+| formulate | 고안하다, 발전시키다 / 명확히 말하다 | The marketing department is formulating a plan to attract more clients. |  | Day09;동사;별1 | 해커스 보카/Day 09 | develop, devise, forge, state, specify, express |  | [fɔ́ːrmjulèit] |
+| astute | 통찰력 있는; 영악한 | The professor was impressed with Daniel's astute observations about the poem. |  | Day09;형용사;별1 | 해커스 보카/Day 09 | insightful, shrewd, clever, sharp |  | [əstjúːt] |
+| reliable | 신뢰할 수 있는 | Jane wanted to know if there was someone reliable in her life. |  | Day09;형용사;별1 | 해커스 보카/Day 09 | dependable, trustworthy, credible |  | [riláiəbl] |
+| take precedence over | ~보다 우선하다 | In a hospital emergency room, patients with severe trauma take precedence over people with minor injuries. |  | Day09;숙어;별1 | 해커스 보카/Day 09 | be more important than, come before |  |  |
+| allusion | (간접적인) 언급, 암시 | During his presentation, the speaker made an allusion to one of the scenes in Shakespeare's Macbeth. | delusion 망상 / illusion 환상 | Day09;명사;별1 | 해커스 보카/Day 09 | reference, mention, implication, suggestion |  | [əlúːʒən] |
+| locomotion | 이동 능력 | The invention of the airplane took human locomotion to a higher level. |  | Day09;명사;별1 | 해커스 보카/Day 09 | movement, motion |  | [lòukəmóuʃən] |
+| principally | 주로 | Edgar Allen Poe principally wrote poems and short stories, although he did produce one play. | adj. principal | Day09;부사;별1 | 해커스 보카/Day 09 | mainly |  | [prínsəpəli] |
+| rebellion | 반란 | The rebellion of British colonists in North America led to the formation of the United States. |  | Day09;명사;별1 | 해커스 보카/Day 09 | uprising, revolt |  | [ribéljən] |
+| revive | 회복하다, 소생하다 | The economy revived following an extended period of increased consumer spending. |  | Day09;동사;별1 | 해커스 보카/Day 09 | recover |  | [riváiv] |

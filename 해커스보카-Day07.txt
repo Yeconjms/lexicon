@@ -1,0 +1,56 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| considerable | 상당한 / 중요한 | Plankton is gaining considerable interest among marine scientists. | adv. considerably | Day07;형용사;별3 | 해커스 보카/Day 07 | substantial, a large amount of, large, meaningful, significant |  | [kənsídərəbl] |
+| dominate | 지배하다 / 압도적으로 우세하다 | The Spartans were a strong military force that dominated Ancient Greece. | n. dominance | Day07;동사;별3 | 해커스 보카/Day 07 | control, govern, rule, be widespread in, ascendancy, supremacy |  | [dámənèit] |
+| ratio | 비율 | The ratio of women in the workforce is higher than ever. |  | Day07;명사;별3 | 해커스 보카/Day 07 | proportion, rate, percentage |  | [réiʃou] |
+| duplicate | 복제하다 / 되풀이하다 | It is considered stealing to illegally duplicate a copyrighted work without permission. |  | Day07;동사;별3 | 해커스 보카/Day 07 | copy, reproduce, imitate, repeat |  | [djúːplikèit] |
+| barely | 거의 ~않게 / 간신히 | There has been barely any evidence that taking zinc helps prevent colds. |  | Day07;부사;별3 | 해커스 보카/Day 07 | hardly, scarcely, almost not, just, only just |  | [bɛ́ərli] |
+| strew | 흩뿌리다 | The tsunami strewed debris over several miles of shoreline. |  | Day07;동사;별3 | 해커스 보카/Day 07 | scatter, sprinkle, disperse |  | [struː] |
+| legitimately | 합법적으로, 정당하게 | The president was elected legitimately through a nationwide vote. | adj. legitimate | Day07;부사;별3 | 해커스 보카/Day 07 | properly, lawfully, legally, reasonable, logical |  | [lidʒítəmətli] |
+| encapsulate | 요약하다 | The paper includes a concluding paragraph that encapsulates the main points. |  | Day07;동사;별3 | 해커스 보카/Day 07 | summarize, sum up, condense |  | [inkǽpsjulèit] |
+| relatively | 비교적으로 | Roses have a relatively stronger fragrance than sunflowers. | adj. relative | Day07;부사;별3 | 해커스 보카/Day 07 | comparatively, by comparison |  | [rélətivli] |
+| hazard | 위험 | Reduced regulation created hazards to public health and safety. | adj. hazardous | Day07;명사;별3 | 해커스 보카/Day 07 | risk, danger, peril, jeopardy |  | [hǽzərd] |
+| paramount | 최고의, 중요한 | The company's paramount concern was its declining sales. |  | Day07;형용사;별3 | 해커스 보카/Day 07 | supreme, prime, chief |  | [pǽrəmàunt] |
+| unwieldy | (크기·무게 때문에) 다루기 힘든 | Heavy vehicles such as trucks and tractors can be unwieldy to operate. |  | Day07;형용사;별3 | 해커스 보카/Day 07 | difficult to manage, awkward |  | [ʌ̀nwíːldi] |
+| subsequent | 그 다음의 | The first earthquake was strong, but luckily the subsequent ones were weak. | adv. subsequently | Day07;형용사;별3 | 해커스 보카/Day 07 | succeeding, following, later, following in time |  | [sʌ́bsikwənt] |
+| striking | 현저한 | There was a striking difference in the building's appearance after the renovation. | adv. strikingly | Day07;형용사;별3 | 해커스 보카/Day 07 | noticeable, remarkable, attention-getting |  | [stráikiŋ] |
+| extended | 장기간에 걸친 | Images of Venus indicate that the planet may have had extended periods of geological activity. |  | Day07;형용사;별3 | 해커스 보카/Day 07 | long-lasting, prolonged |  | [iksténdid] |
+| ephemeral | 단명하는; 덧없는 | A mayfly is an ephemeral insect that has a lifespan of less than 48 hours. |  | Day07;형용사;별3 | 해커스 보카/Day 07 | short-lived, living for a short time, temporary |  | [ifémərəl] |
+| rigid | 엄격한 / 굳은, 경직된 | The rules at the military boot camp are so rigid that many drop out on the first day. | adv. rigidly | Day07;형용사;별3 | 해커스 보카/Day 07 | strict, exact, severe, rigorous, stiff, hard, firm |  | [rídʒid] |
+| chief | 주요한 | Victorian writer Alfred Lord Tennyson was a chief influence on the poet T.S. Eliot. |  | Day07;형용사;별2 | 해커스 보카/Day 07 | major, main, primary, principal, leader, head |  | [tʃiːf] |
+| severity | 심함 | The effects of black widow spider bites vary widely in severity, from mild skin irritation to death. | adj. severe; adv. severely | Day07;명사;별2 | 해커스 보카/Day 07 | seriousness |  | [səvérəti] |
+| typical of | ~을 대표하는 | Family-owned stores were typical of nineteenth-century American commercial establishments. |  | Day07;숙어;별2 | 해커스 보카/Day 07 | characteristic of, representative of |  |  |
+| enable | 가능하게 하다 | Smartphones enable people to share information with others easily. |  | Day07;동사;별2 | 해커스 보카/Day 07 | allow, permit, facilitate |  | [inéibl] |
+| empirical | 실험상의, 실험에 의한 | The scientists studied the rats' movements in order to gain empirical evidence about their behavior. |  | Day07;형용사;별2 | 해커스 보카/Day 07 | based on observation, experimental |  | [impírikəl] |
+| controversy | 논쟁 | How to distribute education funding is a controversy in many school districts. | adj. controversial | Day07;명사;별2 | 해커스 보카/Day 07 | dispute, debate, disagreement, contention |  | [kántrəvə̀ːrsi] |
+| accomplish | 성취하다 | To accomplish its plan for a new building, the community center must raise a lot of money. |  | Day07;동사;별2 | 해커스 보카/Day 07 | achieve, execute, work out, put through |  | [əkámpliʃ] |
+| set | 고정된 / 놓다 | Doctors recommend sticking to a set sleeping schedule in order to get good rest. |  | Day07;형용사;동사;별2 | 해커스 보카/Day 07 | fixed, settled, situate, place, put |  | [set] |
+| lag | 지연 | There is a slight lag between the transmission and reception of an electronic signal. |  | Day07;명사;별2 | 해커스 보카/Day 07 | delay, linger, dawdle |  | [læg] |
+| exude | (액체·냄새 등을) 발산하다 | Human skin exudes sweat as a cooling mechanism. |  | Day07;동사;별2 | 해커스 보카/Day 07 | give off, release, emit |  | [igzúːd] |
+| interplay | 상호 작용 | The interplay of supply and demand helps determine the price of goods. |  | Day07;명사;별2 | 해커스 보카/Day 07 | interaction, reciprocity |  | [íntərplèi] |
+| precede | ~에 앞서다 | A recovery in airline stocks typically precedes a rebound in the economy. |  | Day07;동사;별2 | 해커스 보카/Day 07 | come before, antecede, forerun |  | [prisíːd] |
+| manipulation | 조작 | The manipulation of people's personal information without consent is a criminal offense. | v. manipulate | Day07;명사;별2 | 해커스 보카/Day 07 | deliberate alteration |  | [mənìpjuléiʃən] |
+| dry | 건조한 | Mars has a very dry environment, although some frozen water lies below the surface. | n. dryness | Day07;형용사;별2 | 해커스 보카/Day 07 | arid, rainless, parched |  | [drai] |
+| assist with | ~을 돕다 | Financial advisors assist with managing and increasing their clients' personal wealth. |  | Day07;숙어;별2 | 해커스 보카/Day 07 | help with, aid, support |  |  |
+| acute | 극심한 | The Environmental Protection Agency has documented many cases of acute injury and death from fires. |  | Day07;형용사;별2 | 해커스 보카/Day 07 | severe, intense, extreme, keen, sharp |  | [əkjúːt] |
+| article | 물품 | Every single article in the museum is more than a thousand years old. |  | Day07;명사;별2 | 해커스 보카/Day 07 | object, item, thing |  | [áːrtikl] |
+| scrutiny | 정밀 검사 | After much scrutiny, experts determined that the painting was authentic. | v. scrutinize | Day07;명사;별2 | 해커스 보카/Day 07 | close observation, examination, inspection |  | [skrúːtəni] |
+| recompense | 보상 | Bobby offered to mow his neighbor's lawn as recompense for accidentally breaking her window with his baseball. |  | Day07;명사;별2 | 해커스 보카/Day 07 | repayment, compensation |  | [rékəmpèns] |
+| reflect | 나타내다 / 숙고하다 | Chants of "Encore!" reflected the crowd's enjoyment of the performance. |  | Day07;동사;별2 | 해커스 보카/Day 07 | show, indicate, display, demonstrate, meditate, think, consider, ponder |  | [riflékt] |
+| immeasurably | 대단히 | Quality of life has improved immeasurably because of modern technology. |  | Day07;부사;별2 | 해커스 보카/Day 07 | greatly, extremely |  | [iméʒərəbli] |
+| rudiments | 기초, 기본 | George mastered the rudiments of Russian grammar in one year. |  | Day07;명사;별2 | 해커스 보카/Day 07 | basics, elements, fundamentals |  | [rúːdəmənts] |
+| mortality | 사망 | In the 19th century, world mortality rates declined due to advances in medicine. | adj. mortal | Day07;명사;별2 | 해커스 보카/Day 07 | death, lethal, fatal |  | [mɔːrtǽləti] |
+| awkward | 서투른 | A child's awkward first steps are an important milestone in his or her physical development. |  | Day07;형용사;별2 | 해커스 보카/Day 07 | clumsy, unskillful |  | [ɔ́ːkwərd] |
+| constrain | 강요하다 / 억제하다 | The threat of social exclusion constrains people to behave in culturally acceptable ways. |  | Day07;동사;별2 | 해커스 보카/Day 07 | oblige, bind, force, pressure, inhibit, restrain, restrict |  | [kənstréin] |
+| turmoil | 소란, 동요 | When the electricity went out across the city, it created turmoil among the residents. |  | Day07;명사;별2 | 해커스 보카/Day 07 | unrest, agitation, stir |  | [tə́ːrmɔil] |
+| property | 특성 / 재산 | Professor Kim discussed the properties of gas molecules in detail during the lecture. |  | Day07;명사;별1 | 해커스 보카/Day 07 | characteristic, character, quality, estate, possession, havings |  | [prápərti] |
+| fuel | 연료를 공급하다; 자극하다 | Coal fueled the engines used in the steamships of the 19th century. |  | Day07;동사;별1 | 해커스 보카/Day 07 | give energy to, encourage |  | [fjúːəl] |
+| majestic | 위엄 있는, 웅대한 | The bald eagle is so majestic that the US made the animal its national bird. |  | Day07;형용사;별1 | 해커스 보카/Day 07 | magnificent, grand, august |  | [mədʒéstik] |
+| preeminent | 뛰어난 | Marcel Duchamp was one of the preeminent artists of the 20th century. |  | Day07;형용사;별1 | 해커스 보카/Day 07 | outstanding, distinguished, foremost |  | [priémənənt] |
+| crude | 가공하지 않은 | Dietary experts believe that crude sea salt contains more nutrients than its refined counterparts. |  | Day07;형용사;별1 | 해커스 보카/Day 07 | rough, primitive, raw, unrefined |  | [kruːd] |
+| variety | 다양성 / 종류 | The variety of trees is a result of millions of years of evolution. |  | Day07;명사;별1 | 해커스 보카/Day 07 | diversity, multiplicity, type, species, sort, kind |  | [vəráiəti] |
+| typically | 보통 | Pain relief tablets typically take ten to thirty minutes to start working. |  | Day07;부사;별1 | 해커스 보카/Day 07 | usually, normally, ordinarily |  | [típikəli] |
+| supplementary | 추가의 | These days, many people work a second job for supplementary income. |  | Day07;형용사;별1 | 해커스 보카/Day 07 | additional, extra, supplemental |  | [sʌ̀pləméntəri] |
+| reduce | 감소시키다 | The poor tobacco crops of 1755 greatly reduced the amount of tobacco exports. |  | Day07;동사;별1 | 해커스 보카/Day 07 | decrease, diminish, cut |  | [ridʒúːs] |
+| subject | 피실험자 / (싫은 일 등을) 겪게 하다 | The subjects in the medical experiment have been screened for health issues. |  | Day07;명사;동사;별1 | 해커스 보카/Day 07 | participant, expose |  | [sʌ́bdʒikt] |
+| flee | 도망치다, 벗어나다 | Although many criminals attempted to flee Alcatraz Prison, it was nearly escape-proof. |  | Day07;동사;별1 | 해커스 보카/Day 07 | run away from, escape, abscond |  | [fliː] |

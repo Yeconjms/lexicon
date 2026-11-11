@@ -1,0 +1,59 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| modify | 바꾸다, 조정하다 | Many software settings can be modified to improve the performance of a computer. |  | Day10;동사;별3 | 해커스 보카/Day 10 | change, alter, adjust, adapt |  | [mádəfài] |
+| initially | 처음에 | Ben initially supported Roger's plan, but later opposed it. | v. initiate; adj. initial | Day10;부사;별3 | 해커스 보카/Day 10 | at first, originally, primarily |  | [iníʃəli] |
+| critical | 중요한 / 위독한, 위험한 | Air traffic controllers must make critical decisions every day that affect the lives of many people. | adv. critically | Day10;형용사;별3 | 해커스 보카/Day 10 | most important, crucial, essential, dangerous, risky |  | [krítikəl] |
+| luminous | 빛나는 | The luminous object that appeared over Europe in AD 1066 was Halley's Comet. | a concise and luminous explanation (명쾌한) | Day10;형용사;별3 | 해커스 보카/Day 10 | brilliant, bright, shining, glowing, clear, explicit |  | [lúːmənəs] |
+| facilitate | 용이하게 하다 | Freedom of information laws facilitate access to government documents for researchers. |  | Day10;동사;별3 | 해커스 보카/Day 10 | ease, make easy, help, assist, aid |  | [fəsílətèit] |
+| refinement | 개선 | For 14 years, Alfred Wegener made numerous refinements to his theory of continental drift. | v. refine | Day10;명사;별3 | 해커스 보카/Day 10 | small improvement, advancement, enhancement |  | [riːfáinmənt] |
+| attribute | 특성 / ~의 탓(덕)으로 돌리다 | The prime minister's ability to speak eloquently is considered one of his greatest attributes. |  | Day10;명사;동사;별3 | 해커스 보카/Day 10 | characteristic, trait, quality, property, ascribe, credit, impute, refer |  | [ǽtrəbjùːt] |
+| belch | 분출하다 | Volcanoes can belch toxic fumes without warning. |  | Day10;동사;별3 | 해커스 보카/Day 10 | suddenly emit, discharge, erupt, vent |  | [beltʃ] |
+| underrate | 과소평가하다 | Many parents underrate the importance of playing with their children. |  | Day10;동사;별3 | 해커스 보카/Day 10 | undervalue, underestimate, belittle |  | [ʌ̀ndərréit] |
+| immense | 거대한 | The immense statue of the Greek goddess Athena attracted many tourists to the Acropolis. | adv. immensely | Day10;형용사;별3 | 해커스 보카/Day 10 | large, enormous, huge, tremendous |  | [iméns] |
+| virtue | 미덕 / 장점 | According to legend, King Arthur was both a great warrior and a man of virtue. |  | Day10;명사;별3 | 해커스 보카/Day 10 | goodness, merit, desirable quality, strength |  | [və́ːrtʃuː] |
+| bustling | 붐비는, 떠들썩한 | During the summer, the sidewalks and shops near the beach are bustling with people. | v. bustle (서두르다) = rush, hasten | Day10;형용사;별3 | 해커스 보카/Day 10 | busy, lively |  | [bʌ́sliŋ] |
+| distinct | 다른, 별개의 / 뚜렷한 | Each region of Italy maintains its own distinct traditions. | n. distinction | Day10;형용사;별3 | 해커스 보카/Day 10 | different, separate, discrete, definite, clear and recognizable |  | [distíŋkt] |
+| thriving | 번영하는 | Our town used to be very small, but it has grown into a thriving community. |  | Day10;형용사;별3 | 해커스 보카/Day 10 | prosperous, successful, flourishing |  | [θráiviŋ] |
+| obvious | 분명한 | It was obvious that Fred didn't understand what Wilma meant. |  | Day10;형용사;별3 | 해커스 보카/Day 10 | evident, clear, apparent, conspicuous |  | [ábviəs] |
+| exceptional | 이례적인 | The Ancient Greek Olympians displayed an exceptional amount of strength and endurance. | adv. exceptionally | Day10;형용사;별3 | 해커스 보카/Day 10 | extraordinary, abnormal, unusual |  | [iksépʃənl] |
+| cumbersome | 다루기 힘든 | Although the cultivator looks cumbersome, it is actually easy to use. |  | Day10;형용사;별3 | 해커스 보카/Day 10 | difficult to handle, burdensome, awkward |  | [kʌ́mbərsəm] |
+| boon | 큰 이익, 혜택 | Due to so many people purchasing gifts, the Christmas season is always a boon to retail stores. |  | Day10;명사;별2 | 해커스 보카/Day 10 | great benefit, advantage |  | [buːn] |
+| optimum | 최고의 | Machines achieve optimum performance when they are properly maintained and regularly used. |  | Day10;형용사;별2 | 해커스 보카/Day 10 | best, most favorable, supreme |  | [áptəməm] |
+| uniformly | 균일하게, 한결같이 | If the paint is not spread uniformly on the wall, there will be variations in color when it dries. | adj. uniform | Day10;부사;별2 | 해커스 보카/Day 10 | evenly, regularly, consistently |  | [júːnəfɔ̀ːrmli] |
+| unleash | (속박을) 풀다 | We took our dogs to the fenced park so that we could unleash them and let them run free. |  | Day10;동사;별2 | 해커스 보카/Day 10 | release, unloose |  | [ʌnlíːʃ] |
+| acquire | 얻다 | Some people acquired great wealth by investing in the stock market. |  | Day10;동사;별2 | 해커스 보카/Day 10 | obtain, gain, procure, earn |  | [əkwáiər] |
+| enigma | 수수께끼 | Even today, the origin of Egypt's great pyramids is an enigma. | adj. enigmatic | Day10;명사;별2 | 해커스 보카/Day 10 | mystery, puzzle, riddle |  | [ənígmə] |
+| steadfast | 변함없는, 단호한 | It is the president's steadfast belief that Congress needs more women. | adv. steadfastly | Day10;형용사;별2 | 해커스 보카/Day 10 | unwavering, firm, enduring, resolute |  | [stédfæst] |
+| dainty | 우아한, 섬세한 | At the wedding, the decorations included thousands of dainty flowers. |  | Day10;형용사;별2 | 해커스 보카/Day 10 | delicate, exquisite, refined |  | [déinti] |
+| anomaly | 이례적인 것, 예외 | Modern airplanes are very safe, so crashes are anomalies. |  | Day10;명사;별2 | 해커스 보카/Day 10 | irregularity, abnormality, exception |  | [ənáməli] |
+| splendid | 멋진 | The Palace of Versailles is a splendid example of French architecture. | n. splendor | Day10;형용사;별2 | 해커스 보카/Day 10 | marvelous, magnificent |  | [spléndid] |
+| rapport | (친밀한) 관계 | The friendly teacher had a strong rapport with his students. |  | Day10;명사;별2 | 해커스 보카/Day 10 | bond, relationship, link, tie |  | [ræpɔ́ːr] |
+| question | ~에 대해 이의를 제기하다 | Some people question the educational value of certain testing methods, such as multiple-choice exams. | questioning (미심쩍어하는) = suspicious, doubtful | Day10;동사;별2 | 해커스 보카/Day 10 | take a critical look at, dispute |  | [kwéstʃən] |
+| scatter | 흩뿌리다 | The man scattered grass seeds all over the lawn. |  | Day10;동사;별2 | 해커스 보카/Day 10 | disperse, dissipate, distribute, spread out, widely spread |  | [skǽtər] |
+| escalate | 확대되다, 증대하다 | The demonstration quickly escalated when a protestor threw a glass bottle at the police. |  | Day10;동사;별2 | 해커스 보카/Day 10 | intensify, increase, mount, rise |  | [éskəlèit] |
+| temporary | 일시적인 | The pill caused a few temporary side effects. |  | Day10;형용사;별2 | 해커스 보카/Day 10 | short-lived, makeshift, for a limited time, transitory |  | [témpərèri] |
+| attest | 증명하다, 입증하다 | Three witnesses signed the will to attest its authenticity. |  | Day10;동사;별2 | 해커스 보카/Day 10 | confirm, support, prove |  | [ətést] |
+| fortify | 강화하다 | To prepare for war, the general had his men fortify the walls of the fort. |  | Day10;동사;별2 | 해커스 보카/Day 10 | strengthen, reinforce |  | [fɔ́ːrtəfài] |
+| remove | 제거하다 | A plastic surgeon can remove scars using a laser. |  | Day10;동사;별2 | 해커스 보카/Day 10 | eliminate, extract, withdraw |  | [rimúːv] |
+| end | 목적, 목표 | The end of the project is to increase agricultural yields in Sub-Saharan Africa. | the end of one's tolerance (한계) | Day10;명사;별2 | 해커스 보카/Day 10 | purpose, goal, aim, limit, boundary |  | [end] |
+| plentiful | 풍부한 | Fish and plankton are plentiful in the sea. |  | Day10;형용사;별2 | 해커스 보카/Day 10 | abundant, bountiful, rich |  | [pléntifəl] |
+| make it | (제시간에) 도착하다 | Despite the traffic congestion downtown, all the fans managed to make it on time for the concert. | make it as a singer (성공하다) | Day10;숙어;별2 | 해커스 보카/Day 10 | arrive, get on, succeed |  |  |
+| devastate | 완전히 파괴하다 | The logging industry has devastated many tropical rainforests in South America. | n. devastation | Day10;동사;별2 | 해커스 보카/Day 10 | destroy, demolish, ravage, ruin |  | [dévəstèit] |
+| eminently | 대단히, 현저히 | The city's new subway system is eminently practical. | adj. eminent | Day10;부사;별2 | 해커스 보카/Day 10 | exceptionally, highly, extremely |  | [émənəntli] |
+| subtraction | 삭감, 공제 | Many teachers opposed the subtraction of funds for art and music. |  | Day10;명사;별2 | 해커스 보카/Day 10 | decrease, deduction, reduction |  | [səbtrǽkʃən] |
+| as a rule of thumb | 경험적으로 보아 대개 | As a rule of thumb, people should visit the dentist for a check-up every six months. |  | Day10;숙어;별2 | 해커스 보카/Day 10 | in general |  |  |
+| blur | 흐리게 하다 | The new political party blurred the lines between conservatives and liberals. |  | Day10;동사;별2 | 해커스 보카/Day 10 | make less distinct, obscure, cloud |  | [bləːr] |
+| relay | 전달하다 | In the 19th century, news reports were relayed by telegram. |  | Day10;동사;별1 | 해커스 보카/Day 10 | transfer, communicate, transmit, impart |  | [ríːlei] |
+| expandable | 펼칠 수 있는, 확장할 수 있는 | The dining room table is expandable to accommodate dinner guests. | v. expand | Day10;형용사;별1 | 해커스 보카/Day 10 | able to be enlarged, extendable |  | [ikspǽndəbl] |
+| scrupulous | 세심한, 꼼꼼한 / 양심적인 | The police officer was praised for his scrupulous performance of duties. |  | Day10;형용사;별1 | 해커스 보카/Day 10 | careful, fastidious, meticulous, honest, moral |  | [skrúːpjuləs] |
+| approximately | 대략 | Approximately 25 percent of the world's electricity is used by the US alone. | adj. approximate; n. approximation | Day10;부사;별1 | 해커스 보카/Day 10 | about, roughly, nearly |  | [əpráksəmətli] |
+| paradoxical | 역설적인 | Einstein thought that using violence to restore peace was paradoxical. | adv. paradoxically; n. paradox | Day10;형용사;별1 | 해커스 보카/Day 10 | seemingly contradictory, ironic |  | [pæ̀rədáksikəl] |
+| source | 근원, 기원 | Located in central Africa, Lake Victoria is the source of the Nile River. |  | Day10;명사;별1 | 해커스 보카/Day 10 | origin, beginning, derivation |  | [sɔːrs] |
+| adhere | 부착되다, 달라붙다 | The glue that covers a stamp's back allows it to adhere to an envelope. |  | Day10;동사;별1 | 해커스 보카/Day 10 | stick, cleave, cling |  | [ædhíər] |
+| available | 구할 수 있는 | Books were available to the masses for the first time with the invention of Gutenberg's printing press. |  | Day10;형용사;별1 | 해커스 보카/Day 10 | accessible, obtainable |  | [əvéiləbl] |
+| get rid of | ~을 없애다 | Meditation has become a popular way for people to get rid of stress. |  | Day10;숙어;별1 | 해커스 보카/Day 10 | eliminate, remove, dispose of |  |  |
+| repel | 물리치다 | The high walls of Medieval castles made it easy to repel attackers. | adj. repellent (혐오감을 주는) = disgusting, repulsive | Day10;동사;별1 | 해커스 보카/Day 10 | drive away, beat off |  | [ripél] |
+| maximize | 극대화하다 | Manufacturers set prices for their products that will maximize their potential profits. |  | Day10;동사;별1 | 해커스 보카/Day 10 | increase to the greatest possible degree |  | [mǽksəmàiz] |
+| outermost | 가장 바깥의 | Neptune is the outermost planet in the solar system. |  | Day10;형용사;별1 | 해커스 보카/Day 10 | farthest away, farthest, most remote |  | [áutərmòust] |
+| bind | 묶다 | For hygiene reasons, restaurant employees with long hair must bind it before they start work. |  | Day10;동사;별1 | 해커스 보카/Day 10 | tie, fasten |  | [baind] |
+| visible | 눈에 띄는, 명백한 | The symptoms of the life-threatening disease may not be visible for several years after infection. |  | Day10;형용사;별1 | 해커스 보카/Day 10 | perceptible |  | [vízəbl] |
