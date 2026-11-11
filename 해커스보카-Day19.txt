@@ -1,0 +1,58 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| forage | (식량 등을) 찾아다니다 / 사료, 먹이 | Steve was surprised to find a raccoon foraging in his garbage can. |  | Day19;동사;명사;별3 | 해커스 보카/Day 19 | seek for food, search, hunt, rummage, feed, fodder, food |  | [fɔ́ːridʒ] |
+| erect | 세우다, 건설하다 | Nearly $4.8 billion was used to erect more than 200 waste disposal facilities. | an erect statue (똑바로 선) | Day19;동사;별3 | 해커스 보카/Day 19 | build, construct, raise, set up, upright, straight |  | [irékt] |
+| integral | 필수적인 / 완전한, 빠진 것이 없는 | Sufficient sleep is an integral part of overall good health. |  | Day19;형용사;별3 | 해커스 보카/Day 19 | essential, crucial, indispensable, complete |  | [íntigrəl] |
+| precisely | 정확하게 | Measure the cake ingredients precisely before adding them to the mixing bowl. | adj. precise; n. precision | Day19;부사;별3 | 해커스 보카/Day 19 | exactly, accurately, correctly, with precision |  | [prisáisli] |
+| handle | 처리하다 | Workers should handle the complaints in the same order as they are received. |  | Day19;동사;별3 | 해커스 보카/Day 19 | process, manage, deal with |  | [hǽndl] |
+| objective | 목적, 목표 / 편견 없는 | The objective of astronomers has always been to add knowledge to the field of astronomy. |  | Day19;명사;형용사;별3 | 해커스 보카/Day 19 | purpose, aim, goal, unbiased, impartial |  | [əbdʒéktiv] |
+| deviate | 벗어나다 | In the past, sailors looked at the stars so that they would not deviate from their course. | n. deviation | Day19;동사;별3 | 해커스 보카/Day 19 | depart, turn aside, diverge, stray |  | [díːvièit] |
+| vigor | 활력, 힘 | Parasites can cause a wide range of symptoms, from headaches to loss of vigor. | adj. vigorous | Day19;명사;별3 | 해커스 보카/Day 19 | energy, strength, vitality |  | [vígər] |
+| decisive | 결정적인, 명백한 | A decisive victory for the North, the Battle of Gettysburg led to the end of the Civil War. |  | Day19;형용사;별3 | 해커스 보카/Day 19 | significant, definitive, definite |  | [disáisiv] |
+| primordial | 최초의 | In the primordial stage of cell division, enzymes that are necessary for replication are synthesized. |  | Day19;형용사;별3 | 해커스 보카/Day 19 | beginning, original, earliest |  | [praimɔ́ːrdiəl] |
+| cluster | (떼를 지어) 모이다, 모으다 | The autograph seekers clustered around the celebrity following the awards ceremony. | a cluster of students (무리) | Day19;동사;별3 | 해커스 보카/Day 19 | gather, group, assemble, bunch, clump |  | [klʌ́stər] |
+| revise | 수정하다, 변경하다 | Scientists revised their earlier claims that the ozone layer would recover by 2050. |  | Day19;동사;별3 | 해커스 보카/Day 19 | change, modify, alter, edit, correct |  | [riváiz] |
+| obscure | 흐릿한, 불분명한 | Jane had trouble identifying the obscure figures in the old photograph. |  | Day19;형용사;별3 | 해커스 보카/Day 19 | unclear, uncertain, hidden, dim, faint |  | [əbskjúər] |
+| rebound | 다시 일어서다; 회복되다 / 회복 | The American economy rebounded from the Great Depression only when the World War II began. |  | Day19;동사;명사;별3 | 해커스 보카/Day 19 | recover, rally, bounce back, recovery, return |  | [ribáund] |
+| thus | 따라서 | New drugs can lower blood pressure, thus reducing the risk of stroke. |  | Day19;부사;별3 | 해커스 보카/Day 19 | consequently, therefore, accordingly |  | [ðʌs] |
+| minutely | 자세하게 | A human being's brain activity can now be minutely examined. | adj. minute | Day19;부사;별3 | 해커스 보카/Day 19 | in detail, meticulously |  | [mainjúːtli] |
+| tend | 돌보다 | Alice asked her neighbors to tend her garden when she went away on vacation. | tend to sleep late (~하는 경향이 있다) | Day19;동사;별3 | 해커스 보카/Day 19 | take care of, look after, care for, foster, be inclined, be likely |  | [tend] |
+| impact | 영향 | The printing press had a major impact on history. |  | Day19;명사;별2 | 해커스 보카/Day 19 | influence, effect, repercussion |  | [ímpækt] |
+| luxuriant | 무성한 | Tracts of luxuriant plant life cover the Amazon River's basin. |  | Day19;형용사;별2 | 해커스 보카/Day 19 | rich, abundant, exuberant, opulent |  | [lʌgʒúəriənt] |
+| altogether | 완전히 | Quitting smoking altogether is difficult, so many people fail several times before succeeding. |  | Day19;부사;별2 | 해커스 보카/Day 19 | fully, completely, entirely, totally, wholly |  | [ɔ̀ːltəgéðər] |
+| astounding | 놀라운 | Copernicus made the astounding discovery that the Earth revolves around the Sun. | adv. astoundingly | Day19;형용사;별2 | 해커스 보카/Day 19 | amazing, astonishing, surprising |  | [əstáundiŋ] |
+| propagation | 보급, 전파 | The propagation of Christianity throughout the Roman Empire occurred over a period of centuries. | v. propagate | Day19;명사;별2 | 해커스 보카/Day 19 | spread, dissemination |  | [prɑ̀pəgéiʃən] |
+| encroach | 침입하다 | The hunters were fined heavily for encroaching on the farmer's property. | n. encroachment | Day19;동사;별2 | 해커스 보카/Day 19 | trespass, invade, intrude |  | [inkróutʃ] |
+| bizarre | 이상한, 기괴한 | Everyone stared at the young woman because her dress was so bizarre. |  | Day19;형용사;별2 | 해커스 보카/Day 19 | strange, odd, erratic, exotic, irregular |  | [bizáːr] |
+| elevate | 들어 올리다 | Without cranes, it would be nearly impossible to elevate the large steel beams of skyscrapers. |  | Day19;동사;별2 | 해커스 보카/Day 19 | raise, lift, heave, hoist |  | [éləvèit] |
+| superb | 훌륭한 | Fans cheered wildly at the athlete's superb performance. |  | Day19;형용사;별2 | 해커스 보카/Day 19 | excellent, outstanding, magnificent |  | [supə́ːrb] |
+| accommodate | 수용하다 / 적응하다, 맞추다 | The resorts were carefully planned to accommodate large numbers of tourists. |  | Day19;동사;별2 | 해커스 보카/Day 19 | lodge, make room for, hold, adjust to, suit, adapt, fit |  | [əkámədèit] |
+| infinite | 무한한 | Scientists disagree as to whether the universe is infinite or whether it has boundaries. | indefinite (명확하지 않은) = uncertain, undefined | Day19;형용사;별2 | 해커스 보카/Day 19 | limitless, unlimited, immeasurable, boundless |  | [ínfənət] |
+| glimpse into | ~을 흘끗 봄 | The travel magazine gives readers a glimpse into cultures around the world. |  | Day19;숙어;별2 | 해커스 보카/Day 19 | brief view into, quick look into |  |  |
+| mold | 형성하다, 만들다 | The Grand Canyon was molded by water and wind over an extended period of time. |  | Day19;동사;별2 | 해커스 보카/Day 19 | shape, form, fashion |  | [mould] |
+| wary | 경계하는 | Taiwan's government was wary of becoming economically dependent on China. |  | Day19;형용사;별2 | 해커스 보카/Day 19 | cautious, distrustful, watchful |  | [wɛ́əri] |
+| expansion | 팽창, 확장 | The development of new colonies led to the expansion of the British Empire. | v. expand; adj. expansive | Day19;명사;별2 | 해커스 보카/Day 19 | spread, growth |  | [ikspǽnʃən] |
+| autonomy | 자치(권) | The powers of the American federal government limit the autonomy of individual states. | adj. autonomous | Day19;명사;별2 | 해커스 보카/Day 19 | self-rule, independence |  | [ɔːtánəmi] |
+| complaint | 불만, 항의 | Student complaints of being overworked must be taken seriously by instructors. |  | Day19;명사;별2 | 해커스 보카/Day 19 | protest, grievance |  | [kəmpléint] |
+| subordinate | 종속적인 | In the US, municipal and state courts are subordinate to federal ones. | subordinate an opponent (복종시키다) | Day19;형용사;별2 | 해커스 보카/Day 19 | secondary, subject, dependent, subdue |  | [səbɔ́ːrdənət] |
+| thrive | 번성하다 | Slavery in America thrived because there was a scarcity of labor. |  | Day19;동사;별2 | 해커스 보카/Day 19 | do well, prosper, flourish |  | [θraiv] |
+| by and large | 대체로 | By and large, the members of Jinny's team agreed on the terms of the contract. |  | Day19;숙어;별2 | 해커스 보카/Day 19 | for the most part, on the whole |  |  |
+| unique to | ~ 특유의 | A brain area unique to humans is responsible for analytical planning. |  | Day19;숙어;별2 | 해커스 보카/Day 19 | existing only in, exclusive to |  |  |
+| annual | 연간의 | Rainforests typically receive between two and five meters of annual rainfall. | adv. annually | Day19;형용사;별2 | 해커스 보카/Day 19 | yearly |  | [ǽnjuəl] |
+| frigid | 몹시 추운 | The frigid temperatures drove most people to stay indoors. |  | Day19;형용사;별2 | 해커스 보카/Day 19 | cold, freezing, frosty |  | [frídʒid] |
+| appreciate | 인식하다 | A good educator appreciates that each child has different strengths and weaknesses. | appreciate his efforts (고마워하다) | Day19;동사;별2 | 해커스 보카/Day 19 | recognize, understand, perceive, be grateful for, be thankful for |  | [əpríːʃièit] |
+| apparatus | 기구, 장치 | The hospital did not have the necessary apparatus for taking X-rays. |  | Day19;명사;별2 | 해커스 보카/Day 19 | equipment, device |  | [æ̀pərǽtəs] |
+| engender | 야기하다 | A friendly work environment engenders good relationships between co-workers. |  | Day19;동사;별2 | 해커스 보카/Day 19 | cause, bring about, generate |  | [indʒéndər] |
+| adverse | 부정적인 | President Bush's speech received an adverse reaction from most European leaders. |  | Day19;형용사;별1 | 해커스 보카/Day 19 | negative, unfavorable, not favorable, harmful |  | [ædvə́ːrs] |
+| accomplished | 숙련된 | Robin is an accomplished sculptor. |  | Day19;형용사;별1 | 해커스 보카/Day 19 | skilled, proficient |  | [əkámpliʃt] |
+| conceal | 숨기다, 감추다 | Police officers found the cocaine concealed inside the doll. |  | Day19;동사;별1 | 해커스 보카/Day 19 | hide, cover, obscure |  | [kənsíːl] |
+| uniform | 일정한, 한결같은 | Using a mold will ensure every cookie is uniform in size and shape. | adv. uniformly | Day19;형용사;별1 | 해커스 보카/Day 19 | consistent, even, invariable |  | [júːnəfɔ̀ːrm] |
+| complement | 금상첨화격 요소, 보완물 | Wine experts recommend white wine as the perfect complement to salmon. | compliment (칭찬) = praise, admiration | Day19;명사;별1 | 해커스 보카/Day 19 | supplement |  | [kámpləmənt] |
+| refrain from | ~을 삼가다 | Museum visitors are asked to refrain from taking photographs of the exhibits. |  | Day19;숙어;별1 | 해커스 보카/Day 19 | avoid, abstain from, keep from |  |  |
+| column | 기둥 | In coastal areas, houses are often built on columns to protect against flooding by ocean waves. |  | Day19;명사;별1 | 해커스 보카/Day 19 | pillar, post |  | [káləm] |
+| underscore | 강조하다 | In the lecture, Dr. Jones underscored that exercise is the only cure for obesity. |  | Day19;동사;별1 | 해커스 보카/Day 19 | emphasize, reinforce, underline, accentuate |  | [ʌ́ndərskɔ̀ːr] |
+| inspire | 영감을 주다 | A real person inspired Charles Dickens to write his classic, A Christmas Carol. |  | Day19;동사;별1 | 해커스 보카/Day 19 | motivate, fire the imagination of |  | [inspáiər] |
+| swell | 팽창하다, 팽창시키다 | California's population swelled during the Gold Rush. |  | Day19;동사;별1 | 해커스 보카/Day 19 | increase, expand, enlarge |  | [swel] |
+| deficient | 부족한 | Plants may turn from green to yellow if they are deficient in nitrogen. | n. deficiency (결핍) = deprivation, lack | Day19;형용사;별1 | 해커스 보카/Day 19 | not enough, insufficient, inadequate |  | [difíʃənt] |
+| indiscriminately | 무차별로, 가리지 않고 | The police indiscriminately arrested people at the site of the demonstration. |  | Day19;부사;별1 | 해커스 보카/Day 19 | randomly |  | [ìndiskrímənətli] |
+| to some extent | 어느 정도까지 | University students are, to some extent, free to select their own courses. |  | Day19;숙어;별1 | 해커스 보카/Day 19 | within limits |  |  |

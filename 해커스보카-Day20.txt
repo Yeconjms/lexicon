@@ -1,0 +1,57 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| harness | (자연의 힘 등을) 이용하다 | The ancient Egyptians harnessed the power of water for agriculture. |  | Day20;동사;별3 | 해커스 보카/Day 20 | utilize, put to use, employ |  | [háːrnis] |
+| prestige | 명성, 위신 | Being enrolled at a top university gives a student prestige. |  | Day20;명사;별3 | 해커스 보카/Day 20 | high regard, status |  | [prestíːʒ] |
+| radically | 철저하게; 근본적으로 | Developments in computer technology led to radically different methods of communication. | adj. radical | Day20;부사;별3 | 해커스 보카/Day 20 | extremely, completely, essentially |  | [rǽdikəli] |
+| exhibit | 보이다, 나타내다 | The dancer exhibited grace and dignity despite her foot injury. |  | Day20;동사;별3 | 해커스 보카/Day 20 | show, display, present, demonstrate, set forth |  | [igzíbit] |
+| deposit | 놓다, 두다 | Express mail must be deposited in the pickup box by noon for next-day delivery. | a deposit of silt (침전물) | Day20;동사;별3 | 해커스 보카/Day 20 | lay, place, lay down, set down, leave behind, accumulation, sediment |  | [dipázit] |
+| shatter | 산산이 부수다 | A tornado shattered the windows of nearby houses last night. |  | Day20;동사;별3 | 해커스 보카/Day 20 | break, destroy, smash |  | [ʃǽtər] |
+| barren | 척박한, 불모의 | The barren soil of the Rocky Mountains provides few nutrients to the grass. |  | Day20;형용사;별3 | 해커스 보카/Day 20 | infertile, sterile, lifeless, unable to sustain life |  | [bǽrən] |
+| consent | 동의하다 | Not all Native American tribes consented to having their land taken away by the government. | n. consensus | Day20;동사;별3 | 해커스 보카/Day 20 | agree, assent |  | [kənsént] |
+| give rise to | ~을 초래하다 | Jake's dramatic weight gain gave rise to several health problems. |  | Day20;숙어;별3 | 해커스 보카/Day 20 | cause, produce, provoke, bring about |  |  |
+| size up | 평가하다 | A company must size up its competition before entering a new market. |  | Day20;숙어;별3 | 해커스 보카/Day 20 | evaluate, measure, assess, appraise |  |  |
+| mimic | 흉내 내다, 모방하다 | Many insects mimic twigs or leaves for protection. |  | Day20;동사;별3 | 해커스 보카/Day 20 | imitate, copy, reproduce |  | [mímik] |
+| contiguous | 인접한 | The US and Canada are contiguous nations that share the world's longest border. | contagious (전염성의) = infectious, transmissible | Day20;형용사;별3 | 해커스 보카/Day 20 | neighboring, adjacent, adjoining |  | [kəntígjuəs] |
+| engage | 참여시키다, (대화 등에) 끌어들이다 / 예약하다 / 고용하다 | The lawyer engaged his colleagues in a conversation about legal ethics. | n. engagement (교전) = combat, battle | Day20;동사;별3 | 해커스 보카/Day 20 | involve, reserve, book, hire |  | [ingéidʒ] |
+| initial | 최초의 | The theory based on the team's initial research was disproven by later studies. | v. initiate; adv. initially | Day20;형용사;별3 | 해커스 보카/Day 20 | first, original, earliest |  | [iníʃəl] |
+| essential | 근본적인 / 필수적인 | The Earth itself is the most essential natural resource. | adv. essentially | Day20;형용사;별3 | 해커스 보카/Day 20 | fundamental, indispensable, required |  | [isénʃəl] |
+| pertinent | 관련된 | The detective wanted to know all the pertinent details. |  | Day20;형용사;별3 | 해커스 보카/Day 20 | relevant, related, germane |  | [pə́ːrtənənt] |
+| traumatic | 정신적 충격이 큰 | Psychologists help patients to recover from traumatic experiences. | n. trauma | Day20;형용사;별3 | 해커스 보카/Day 20 | highly stressful, upsetting, disturbing |  | [trəmǽtik] |
+| on the whole | 대체로 | On the whole, Africa is a warm continent, but some areas have cold weather. |  | Day20;숙어;별2 | 해커스 보카/Day 20 | in general, generally, overall, by and large |  |  |
+| dispersal | 확산, 분산 | Wind is one of the primary factors in the dispersal of dandelion seeds. | disposal (처분, 폐기) = removal, clearance | Day20;명사;별2 | 해커스 보카/Day 20 | distribution, scattering |  | [dispə́ːrsəl] |
+| sought-after | 수요가 많은, 인기 있는 | Water is a sought-after resource in areas of Pakistan suffering from severe drought. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | desired, desirable, in demand |  | [sɔ́ːtæ̀ftər] |
+| expand | 확장시키다, 확장하다 | In 1803, the Louisiana Purchase expanded the territory of the US by 828,000 square miles. | n. expansion; adj. expansive | Day20;동사;별2 | 해커스 보카/Day 20 | enlarge, increase, swell, bloat |  | [ikspǽnd] |
+| mastery | 통제력, 지배 / 전문적 지식 | The best way to gain mastery over one's fears is to confront them. | v. master | Day20;명사;별2 | 해커스 보카/Day 20 | control, expertise |  | [mǽstəri] |
+| perpetually | 끊임없이 | Wind power plants may be established in places where the wind blows perpetually. |  | Day20;부사;별2 | 해커스 보카/Day 20 | continually, incessantly, ceaselessly |  | [pərpétʃuəli] |
+| evacuate | 대피하다, 비우고 떠나다 | Flooding forced the building's residents to evacuate. |  | Day20;동사;별2 | 해커스 보카/Day 20 | move out |  | [ivǽkjuèit] |
+| excrete | 배설하다, 방출하다 | Certain types of frogs native to South America excrete toxins through their skin. | execrate (혐오하다) = loathe, despise | Day20;동사;별2 | 해커스 보카/Day 20 | expel, discharge, eject |  | [ikskríːt] |
+| gradually | 서서히 | The scars from the accident are gradually disappearing, but there will always be a small mark on Kevin's forehead. |  | Day20;부사;별2 | 해커스 보카/Day 20 | slowly, little by little |  | [grǽdʒuəli] |
+| affluent | 풍부한 / 부유한 | Ancient Rome received an affluent supply of grain from Egypt. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | plentiful, abundant, wealthy, rich, well-off |  | [ǽfluənt] |
+| stationary | 움직이지 않는 | A stationary target is easy to aim at. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | unmoving, motionless, immobile |  | [stéiʃənèri] |
+| cling to | ~에 달라붙다 | Static electricity can make light objects cling to one another. |  | Day20;숙어;별2 | 해커스 보카/Day 20 | stick to, hold tightly, adhere to |  |  |
+| endow | 기부하다 / (능력·재능 등을) 부여하다 | The successful businessman endowed his college with a generous monetary gift. | n. endowment (재능) = talent, gift | Day20;동사;별2 | 해커스 보카/Day 20 | donate, grant, provide, endue |  | [indáu] |
+| verging on | ~에 가까운, 거의 ~인 | The critic's comments were so harsh that they were verging on insults. |  | Day20;숙어;별2 | 해커스 보카/Day 20 | bordering on |  |  |
+| contemptuous | 업신여기는 | The presidential candidate made contemptuous statements about his opponents. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | scornful, disdainful |  | [kəntémptʃuəs] |
+| accelerate | 속도를 높이다 | The airplane accelerated as it headed down the runway. |  | Day20;동사;별2 | 해커스 보카/Day 20 | increase in speed, speed up |  | [æksélərèit] |
+| confirm | 확인하다 | Multiple studies have confirmed the connection between smoking and cancer. |  | Day20;동사;별2 | 해커스 보카/Day 20 | ascertain, verify |  | [kənfə́ːrm] |
+| harsh | 가혹한 | Conditions in the prison camp were unbearably harsh. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | severe, rigorous, inclement |  | [haːrʃ] |
+| mere subsistence | 최저 생계 수단, 생필품 | Technological advances have helped many farmers make a profit and work for more than mere subsistence. |  | Day20;숙어;별2 | 해커스 보카/Day 20 | basic living necessaries |  |  |
+| adherent | 지지자 | The senator's adherents donated money for his reelection campaign. | v. adhere | Day20;명사;별2 | 해커스 보카/Day 20 | supporter, advocate |  | [ædhíərənt] |
+| invaluable | 매우 귀중한 | Clean air is an invaluable asset that is crucial for health in all societies. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | precious, priceless, valuable |  | [invǽljuəbl] |
+| successive | 연속적인 | The successive victories won by the team qualified it for the national championship tournament. | adv. successively; n. succession | Day20;형용사;별2 | 해커스 보카/Day 20 | sequential, consecutive, serial |  | [səksésiv] |
+| coating | 코팅, 칠, 입힌 것 | A chemical coating is applied to smartphone screens to make them more durable. |  | Day20;명사;별2 | 해커스 보카/Day 20 | layer, film |  | [kóutiŋ] |
+| resume | 다시 시작하다 | The conference will resume after a short break for lunch. |  | Day20;동사;별2 | 해커스 보카/Day 20 | restart, begin again, recommence |  | [rizúːm] |
+| dual | 이중의 | After the addition of the camera feature, many cellular phones began to serve a dual purpose. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | double, twofold |  | [djúːəl] |
+| composite | 합성물 | An alloy is a composite of metals joined together to form a new material. |  | Day20;명사;별2 | 해커스 보카/Day 20 | mixture, compound |  | [kəmpázit] |
+| illuminate | 밝게 하다; 명확하게 하다 | During the expedition deep into the forest, the explorers used lanterns to illuminate the way. |  | Day20;동사;별1 | 해커스 보카/Day 20 | light, brighten, clarify |  | [ilúːmənèit] |
+| allure | 매혹하다 | The beautiful Sirens in Greek mythology allured countless men and drove them to their death. | invite customers into the shop (매혹하다) | Day20;동사;별1 | 해커스 보카/Day 20 | attract, invite, appeal, lure |  | [əlúər] |
+| rekindle | 다시 불붙이다, 되살아나게 하다 | Going to see a classical music concert rekindled Ben's love of the violin. |  | Day20;동사;별1 | 해커스 보카/Day 20 | renew, arouse, reawaken |  | [riːkíndl] |
+| devastation | 파괴 | The devastation of cities and villages is inevitable in wartime. | v. devastate | Day20;명사;별1 | 해커스 보카/Day 20 | destruction, demolition, ruin |  | [dèvəstéiʃən] |
+| tentative | 망설이는, 불확실한 | Though the results were tentative, the experiment seemed to promise a cure for the disease. | adv. tentatively; n. tentativeness | Day20;형용사;별1 | 해커스 보카/Day 20 | uncertain, unsure |  | [téntətiv] |
+| suppose | 추측하다 | As Steve's wife didn't answer the phone, he supposed that she was out. |  | Day20;동사;별1 | 해커스 보카/Day 20 | assume, presume, surmise |  | [səpóuz] |
+| primitive | 초기의 / 발달되지 않은 | Most primitive cave paintings are representations of animals. |  | Day20;형용사;별1 | 해커스 보카/Day 20 | early, primeval, simple, rudimentary |  | [prímətiv] |
+| interrupt | 중단시키다 | Frequent technical problems with the computer equipment interrupted the flow of Charlie's presentation. |  | Day20;동사;별1 | 해커스 보카/Day 20 | break off |  | [ìntərʌ́pt] |
+| conform | 따르다 | Many companies expect their employees to conform to a strict dress code. |  | Day20;동사;별1 | 해커스 보카/Day 20 | comply, obey, follow |  | [kənfɔ́ːrm] |
+| combine | 결합시키다 | The artist combined rich colors and interesting patterns in his work. |  | Day20;동사;별1 | 해커스 보카/Day 20 | incorporate, mix, unite |  | [kəmbáin] |
+| terminal | 마지막의 | All passengers are required to get off the train at the terminal station. | a terminal illness (불치의) | Day20;형용사;별1 | 해커스 보카/Day 20 | final, last, fatal, deadly |  | [tə́ːrmənl] |
+| point out | 지적하다, 언급하다 | The article pointed out that more funding is needed for public education. |  | Day20;숙어;별1 | 해커스 보카/Day 20 | state, indicate, show |  |  |
