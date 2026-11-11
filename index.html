@@ -1803,7 +1803,18 @@ function render(done){
   }
   const m=$("#main");
   if((view==="study"||view==="solo") && S) pruneQueue();
-  if(S) m.innerHTML = viewCard();           // 학습 중에는 어느 화면에서 들어왔든 카드입니다
+  /* **카드는 학습 화면에서만 그립니다.** 예전에는 `S` 가 살아 있기만 하면 어느 탭을 눌러도
+     카드를 다시 그렸습니다. 그래서 `카드 수정` 단추가 `view="manage"` 로 바꿔 놔도
+     곧바로 덮어써져 **아무 일도 일어나지 않았고**, 학습 중에는 사전·팩·단어·통계·설정이
+     전부 막혀 있었습니다. 세션은 `S` 에 남아 있으므로 학습 탭으로 돌아오면 그대로 이어집니다 */
+  /* 학습 중에 다른 탭으로 나오면 **어느 탭에서든** 돌아갈 길을 보여 줍니다.
+     예전에는 이 띠가 단어 탭에만 있어서, 사전이나 설정으로 나오면
+     세션이 살아 있다는 것 자체가 안 보였습니다 */
+  const bar = (S && view!=="study" && view!=="solo")
+    ? '<div class="panel" style="padding:11px 15px"><div class="row" style="justify-content:space-between">'
+      +'<span class="note" style="margin:0">학습이 진행 중입니다 ('+(S.idx+1)+'/'+S.queue.length+')</span>'
+      +'<button class="btn sm" data-a="resume">학습으로 돌아가기</button></div></div>' : '';
+  if((view==="study"||view==="solo") && S) m.innerHTML = viewCard();
   else if(view==="study") m.innerHTML = viewStudyHome(done);
   else if(view==="solo") m.innerHTML = viewSolo();
   else if(view==="dict") m.innerHTML = viewDict();
@@ -1811,6 +1822,7 @@ function render(done){
   else if(view==="manage") m.innerHTML = viewManage();
   else if(view==="stats") m.innerHTML = viewStats();
   else m.innerHTML = viewSettings();
+  if(bar) m.insertAdjacentHTML("afterbegin", bar);
   paintBadge(); paintAdmBadge();
   /* 새로 그린 요소에는 CSS 전환이 걸리지 않으므로, 다음 프레임에 클래스를 붙여 뒤집기를 재생합니다 */
   if(S && S.animate){
@@ -2042,7 +2054,15 @@ function viewSolo(){
   let h='<div class="panel solopanel">'
     +'<div class="row" style="justify-content:space-between;align-items:baseline">'
     +'<div class="h2" style="margin:0">'+esc(root)+'</div>'
-    +'<button class="linkish" data-a="solo-back">학습으로</button></div>';
+    +'<button class="linkish" data-a="solo-back">학습으로</button></div>'
+    /* 새 Day 가 올라왔을 때 **앱 안에서** 받아 올 길입니다. 파일을 따로
+       내려받아 가져오기 하지 않아도 됩니다 */
+    +(root===BOOK.pack
+      ? '<div class="row" style="justify-content:space-between;align-items:center;margin-top:8px">'
+        +'<span class="note" style="margin:0">교재에 Day 가 더 올라왔으면 받아 옵니다</span>'
+        +'<button class="btn sm ghost" data-a="book-pull"'+(bookBusy?" disabled":"")+'>'
+        +(bookBusy?'<span class="spin"></span>받는 중':'새 단어 받기')+'</button></div>'
+      : '');
 
   /* Day 고르기 — **달력처럼 네모 격자**로 늘어놓습니다. 30일치가 칩으로 흘러가면
      어디가 어딘지 알기 어렵습니다. 네모 안에 날짜를 크게 쓰고, 오늘 볼 장수는
@@ -2437,9 +2457,7 @@ function viewManage(){
     return true; });
   const e=editing?byId(editing):null;
   const curPack = e ? e.pack : (packPath && packPath!=="__none" ? packPath : (D.s.lastPack||""));
-  let h = S ? '<div class="panel" style="padding:11px 15px"><div class="row" style="justify-content:space-between">'
-    +'<span class="note" style="margin:0">학습이 진행 중입니다 ('+(S.idx+1)+'/'+S.queue.length+')</span>'
-    +'<button class="btn sm" data-a="resume">학습으로 돌아가기</button></div></div>' : '';
+  let h = "";   /* 학습 중 안내 띠는 render() 가 모든 탭에 똑같이 붙입니다 */
   /* 빨리 넣는 데 필요한 건 단어와 뜻뿐입니다. 나머지는 접어 둡니다 */
   const hasDetail = !!(e && (e.example || e.collocation || e.syn || e.ant || (e.tags||[]).length));
   h+='<div class="panel"><div class="h2">'+(e?"단어 수정":"단어 추가")+'</div>'
@@ -2556,6 +2574,13 @@ function importPanel(){
     + (impCan ? '<button class="btn" data-a="commit">' + impLabel + '</button>' : '')
     + (importPreview && aiReady() && importPreview.missing
         ? '<button class="btn ghost" data-a="bulk-fill" id="bulkbtn">뜻 ' + importPreview.missing + '개 채우기</button>' : '')
+    + '</div>'
+    /* 교재 단어는 앱과 같은 자리에 올라가 있으므로 파일을 내려받을 필요가 없습니다.
+       이 기기에 아직 없는 사람은 여기서 한 번에 받습니다 */
+    + '<div class="row" style="margin-top:10px;align-items:center">'
+    + '<button class="btn sm ghost" data-a="book-pull"'+(bookBusy?" disabled":"")+'>'
+    + (bookBusy?'<span class="spin"></span>받는 중':BOOK.pack+' 받기')+'</button>'
+    + '<span class="note" style="margin:0;flex:1">이미 있는 단어는 진도를 그대로 두고 빈 칸만 채웁니다.</span>'
     + '</div>';
 
   if(P0){
@@ -4347,6 +4372,22 @@ function isHeaderRow(r){
   return hit >= 2 || (r.length === 1 && hit === 1);
 }
 
+/** 읽어 들인 한 줄을 카드 내용으로 바꿉니다. 단어가 아니면 `null` 입니다.
+    **붙여넣기 가져오기와 교재 받기가 이 한 곳을 같이 씁니다** —
+    둘이 따로 읽으면 한쪽만 고쳐져 같은 파일이 다르게 들어갑니다. */
+function rowToItem(r, fallbackPack){
+  /* AI 가 번호 열을 붙여 오는 일이 있습니다 — 첫 칸이 숫자뿐이면 밀어냅니다 */
+  let c=r;
+  if(c.length>=3 && /^\d+[.)]?$/.test(String(c[0]||"").trim())) c=c.slice(1);
+  const word=normWord(c[0]||"");
+  if(!wordish(word)) return null;                   // 구분선·번호·설명 줄
+  return { word, meaning:(c[1]||"").trim(), example:(c[2]||"").trim(),
+    collocation:(c[3]||"").trim(),
+    tags:(c[4]||"").split(/[;|,]/).map(t=>t.trim()).filter(Boolean),
+    pack:((c[5]||"").trim()||fallbackPack||""), syn:(c[6]||"").trim(),
+    ant:(c[7]||"").trim(), ipa:(c[8]||"").trim() };
+}
+
 function doPreview(){
   const raw=$("#imp").value;
   const pv=$("#imp-pack")?$("#imp-pack").value:"";
@@ -4363,16 +4404,9 @@ function doPreview(){
 
   const seen=new Set(), items=[], dups=[], inbatch=[];
   body.forEach(r=>{
-    /* AI 가 번호 열을 붙여 오는 일이 있습니다 — 첫 칸이 숫자뿐이면 밀어냅니다 */
-    let c=r;
-    if(c.length>=3 && /^\d+[.)]?$/.test(String(c[0]||"").trim())) c=c.slice(1);
-    const word=normWord(c[0]||"");
-    if(!wordish(word)) return;                      // 구분선·번호·설명 줄
-    const it={ word, meaning:(c[1]||"").trim(), example:(c[2]||"").trim(),
-      collocation:(c[3]||"").trim(),
-      tags:(c[4]||"").split(/[;|,]/).map(t=>t.trim()).filter(Boolean),
-      pack:((c[5]||"").trim()||importPack), syn:(c[6]||"").trim(), ant:(c[7]||"").trim(), ipa:(c[8]||"").trim() };
-    const k=word.toLowerCase();
+    const it=rowToItem(r, importPack);
+    if(!it) return;
+    const k=it.word.toLowerCase();
     /* 같은 묶음 안에서 겹친 줄은 첫 줄만 씁니다. 예전에는 둘 다 들어가서
        같은 단어 카드가 두 장 생겼습니다 */
     if(seen.has(k)){ inbatch.push(it); return; }
@@ -4385,6 +4419,56 @@ function doPreview(){
     dupMode:(importPreview&&importPreview.dupMode)||"skip",
     missing:fresh.filter(x=>!x.meaning).length, raw };
   render(); $("#imp").value=raw;
+}
+
+/* ══════════════════ 교재 단어 받기 ══════════════════
+   해커스 보카 Day 파일은 앱과 **같은 자리에 함께 올라가 있습니다**.
+   예전에는 Day 를 더 넣어도 사용자가 파일을 직접 가져오기 해야 보여서,
+   올려 두기만 하고 "앱에 업데이트가 안 된다" 가 됐습니다. 이 단추가 그걸 메웁니다.
+
+   - 쓰는 것은 **같은 출처의 파일뿐**이라 키도 권한도 필요 없습니다.
+   - 읽기는 `parseRows` + `rowToItem` 으로 붙여넣기 가져오기와 **같은 길**을 탑니다.
+   - 이미 있는 단어는 **덮어쓰지 않고** `fillCard()` 로 빈 칸만 채웁니다 —
+     진도(seen·interval·due)는 건드리지 않습니다.
+   - 서비스워커는 `.txt` 를 캐시하지 않습니다(sw.js). 안 그러면 고쳐 올려도 옛것을 읽습니다. */
+const BOOK = { pack:"해커스 보카", max:30,
+  file:n=>"해커스보카-Day"+String(n).padStart(2,"0")+".txt" };
+let bookBusy=false;
+
+async function pullBook(){
+  if(bookBusy) return; bookBusy=true; render();
+  const have=new Map();
+  D.cards.forEach(c=>{ const k=normWord(c.word).toLowerCase(); if(k&&!have.has(k)) have.set(k,c); });
+  let added=0, filled=0, days=0, miss=0, netErr=0;
+  try{
+    /* 아직 안 올라간 Day 에서 멈춥니다. 한 번 빠진 것이 있어도 뒤를 보도록
+       **연속 세 번** 비었을 때만 그만둡니다 */
+    for(let n=1; n<=BOOK.max && miss<3; n++){
+      let text=null;
+      try{
+        const res=await fetchT(BOOK.file(n)+"?t="+Date.now(), 15000);
+        if(res.ok) text=await res.text(); else miss++;
+      }catch(e){ miss++; netErr++; }
+      if(text===null) continue;
+      miss=0; days++;
+      const rows=parseRows(text);
+      const body=(rows.length && isHeaderRow(rows[0])) ? rows.slice(1) : rows;
+      body.forEach(r=>{
+        const it=rowToItem(r, BOOK.pack);
+        if(!it) return;
+        const k=it.word.toLowerCase();
+        const cur=have.get(k);
+        if(cur){ if(fillCard(cur,it)) filled++; return; }
+        const c=newCard(it); D.cards.push(c); have.set(k,c); added++;
+      });
+    }
+  } finally { bookBusy=false; }
+  if(days){ syncPacks(); save(); }
+  render();
+  if(!days){ toast(netErr?"받지 못했습니다 — 인터넷 연결을 확인하세요":"받을 교재 파일이 없습니다"); return; }
+  toast([ "Day "+days+"일치 확인",
+          added?added+"개 추가":"", filled?filled+"개 채움":"" ]
+        .filter(Boolean).join(" · ") + (added||filled?"":" · 새로운 것 없음"));
 }
 
 /** 이미 있는 카드에 가져온 내용을 **덮어쓰지 않고** 합칩니다.
@@ -4703,6 +4787,7 @@ document.addEventListener("click", e=>{
   if(a==="front"){ D.s.front=t.dataset.k; save(); render(); return; }
   if(a==="test-voice"){ speak("The underlying trend is improving."); return; }
   if(a==="preview"){ doPreview(); return; }
+  if(a==="book-pull"){ pullBook(); return; }
   if(a==="csv-pick"){ const el=$("#csvin"); if(el){ el.value=""; el.click(); } return; }
   if(a==="pack-color"){ const v=t.dataset.i;
     setPackMeta(packPath, {c: v==="" ? null : +v}); return; }

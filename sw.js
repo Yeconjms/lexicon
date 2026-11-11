@@ -1,5 +1,5 @@
 /* Lexicon 오프라인 캐시 */
-const CACHE = "lexicon-v2";
+const CACHE = "lexicon-v3";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", e => {
@@ -17,6 +17,11 @@ self.addEventListener("activate", e => {
 self.addEventListener("fetch", e => {
   const url = new URL(e.request.url);
   if (e.request.method !== "GET" || url.origin !== location.origin) return;
+
+  // 교재 단어 파일(.txt)은 캐시하지 않고 그냥 지나보냅니다.
+  // 캐시 우선으로 잡아 두면 파일을 고쳐 올려도 앱이 옛 내용을 계속 읽습니다.
+  // 앱이 켜져 있을 때만 쓰는 파일이라 오프라인에 둘 이유도 없습니다.
+  if (url.pathname.endsWith(".txt")) return;
 
   const isDoc = e.request.mode === "navigate" || url.pathname.endsWith(".html") || url.pathname.endsWith("/");
 
