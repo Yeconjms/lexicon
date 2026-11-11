@@ -1,0 +1,61 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| lethal | 치명적인 | The black mamba is one of the world's most lethal snakes. |  | Day14;형용사;별3 | 해커스 보카/Day 14 | deadly, dangerous, fatal, pernicious |  | [líːθəl] |
+| modest | 그리 크지(많지) 않은; 수수한 | The apartment Janet lives in is a modest one, but it satisfies her needs. | a modest personality (겸손한) | Day14;형용사;별3 | 해커스 보카/Day 14 | small, not large, limited, simple, humble, unpretentious |  | [mádist] |
+| component | 구성 요소 | Nitrogen is one of the major components of the air humans breathe. |  | Day14;명사;별3 | 해커스 보카/Day 14 | element, constituent, ingredient, part, factor |  | [kəmpóunənt] |
+| exploitation | (부당한) 이용, 착취 | The Keating-Owen Act of 1916 was an early attempt to address the exploitation of child labor. | v. exploit | Day14;명사;별3 | 해커스 보카/Day 14 | use, abuse, misuse |  | [èksplɔitéiʃən] |
+| relic | 유물, 나머지 | In the jungle, archaeologists uncovered pottery and other relics from an ancient civilization. |  | Day14;명사;별3 | 해커스 보카/Day 14 | remains, remnant, vestige |  | [rélik] |
+| profoundly | 깊이; 대단히 | The death of the popular king profoundly affected the emotions of his subjects. | adj. profound | Day14;부사;별3 | 해커스 보카/Day 14 | deeply, completely, strongly |  | [prəfáundli] |
+| deflect | 방향을 바꾸다 | Barriers were erected to deflect traffic away from the construction site. |  | Day14;동사;별3 | 해커스 보카/Day 14 | change the direction of, divert |  | [diflékt] |
+| highlight | 강조하다 | The burglary highlighted the company's need to upgrade its security system. |  | Day14;동사;별3 | 해커스 보카/Day 14 | emphasize, stress, underline, accent |  | [hàiláit] |
+| exert | (힘·능력 등을) 가하다, 행사하다 | Oil drills exert a tremendous amount of force and can easily break through hard rock. | n. exertion (노력) = effort, strain | Day14;동사;별3 | 해커스 보카/Day 14 | apply, exercise, employ, put forth, wield |  | [igzə́ːrt] |
+| potential | 잠재적인 / 가능성 | Chameleons change color to blend into the background when they detect a potential predator nearby. | adv. potentially | Day14;형용사;명사;별3 | 해커스 보카/Day 14 | possible, prospective, latent, possibility |  | [pəténʃəl] |
+| recurring | 되풀이되는 | Darcy had to see a therapist because he kept having recurring nightmares about drowning. |  | Day14;형용사;별3 | 해커스 보카/Day 14 | repeated, recurrent |  | [rikə́ːriŋ] |
+| meager | 불충분한 | Lincoln's meager education aroused his desire to learn. |  | Day14;형용사;별3 | 해커스 보카/Day 14 | scanty, scarce, very low, deficient |  | [míːgər] |
+| prevail | 널리 퍼지다, 만연하다 / 이기다 | In Alaska's cold and harsh climate, evergreen trees such as spruce prevail. | adj. prevalent | Day14;동사;별3 | 해커스 보카/Day 14 | be dominant, dominate, be widespread, be prevalent, triumph |  | [privéil] |
+| exclusively | 오로지, 전적으로 | The St. Patrick's Day party was an exclusively Irish affair. | v. exclude; adj. exclusive | Day14;부사;별3 | 해커스 보카/Day 14 | solely, only, entirely, totally |  | [iksklúːsivli] |
+| consensus | 합의 | After a long meeting, the two sides were finally able to reach a consensus. | v. consent | Day14;명사;별3 | 해커스 보카/Day 14 | agreement, consent |  | [kənsénsəs] |
+| now and then | 가끔 | Nicholas rarely eats meat, but he eats seafood now and then. |  | Day14;숙어;별3 | 해커스 보카/Day 14 | occasionally, from time to time, at times |  |  |
+| discrete | 별개의 | Researchers have found that many newly married couples keep their money in discrete accounts. |  | Day14;형용사;별3 | 해커스 보카/Day 14 | separate, distinct, individual |  | [diskríːt] |
+| anchor | 고정시키다 | The panel was firmly anchored by two large bolts. |  | Day14;동사;별2 | 해커스 보카/Day 14 | hold in place, secure, fasten |  | [ǽŋkər] |
+| improbable | 있음직하지 않은 | Winning the lottery is highly improbable. |  | Day14;형용사;별2 | 해커스 보카/Day 14 | unlikely, implausible, doubtful |  | [imprábəbl] |
+| pragmatic | 실용적인 | The politician promised to take a pragmatic approach to governance rather than strictly follow his party's ideology. |  | Day14;형용사;별2 | 해커스 보카/Day 14 | practical, utilitarian |  | [prægmǽtik] |
+| undisputed | 모두가 인정하는 | Sir Isaac Newton is the undisputed father of modern optics. |  | Day14;형용사;별2 | 해커스 보카/Day 14 | acknowledged, accepted, recognized |  | [ʌ̀ndispjúːtid] |
+| allocation | 할당, 배분 | The allocation of funds is a challenge for any government. | v. allocate | Day14;명사;별2 | 해커스 보카/Day 14 | distribution, assignment, allotment |  | [æ̀ləkéiʃən] |
+| inconclusive | 결정적이지 않은 | Doctors ordered a second test since the results of the first test were inconclusive. |  | Day14;형용사;별2 | 해커스 보카/Day 14 | not definitive, indecisive |  | [ìnkənklúːsiv] |
+| withstand | 견디다 | His mother doesn't think Bill is capable of withstanding hardship for long. | resist the temptation (견디다) | Day14;동사;별2 | 해커스 보카/Day 14 | endure, resist, sustain |  | [wiθstǽnd] |
+| cornerstone | 토대, 기초 | The cornerstone of a healthy relationship is honest communication. |  | Day14;명사;별2 | 해커스 보카/Day 14 | foundation, basic element, basis, underpinning |  | [kɔ́ːrnərstòun] |
+| marvelous | 놀라운 | It's really marvelous what modern medicine can do to relieve the pain of patients. | v. marvel (놀라다) = be amazed, admire | Day14;형용사;별2 | 해커스 보카/Day 14 | wonderful, astonishing, amazing |  | [máːrvələs] |
+| clue | 단서, 증거 | Because the painting was not signed, experts originally had no clue about who painted it. |  | Day14;명사;별2 | 해커스 보카/Day 14 | information, indication, evidence, trace, sign |  | [kluː] |
+| unintentionally | 의도치 않게 | Helen expressed her regret to Tommy even though she had damaged his car unintentionally. |  | Day14;부사;별2 | 해커스 보카/Day 14 | inadvertently, accidentally, unconsciously |  | [ʌ̀ninténʃənəli] |
+| peak | 정점, 절정 | The flu season is expected to reach its peak in late January. |  | Day14;명사;별2 | 해커스 보카/Day 14 | height, pinnacle, summit, maximum |  | [piːk] |
+| continual | 끊임없는 | Doris finally got a refund for the faulty microwave after making continual complaints. |  | Day14;형용사;별2 | 해커스 보카/Day 14 | constant, incessant, ceaseless |  | [kəntínjuəl] |
+| thorough | 철저한 | A thorough proofreading is done on each issue of the magazine before it is sent to the printers. | adv. thoroughly | Day14;형용사;별2 | 해커스 보카/Day 14 | complete, exhaustive, intensive |  | [θə́ːrou] |
+| accurate | 정확한 | The movie was praised for giving an accurate depiction of what happens in a war. | adv. accurately | Day14;형용사;별2 | 해커스 보카/Day 14 | precise, correct, exact, true |  | [ǽkjurət] |
+| mobilize | 동원하다 | To prepare for any possible hostilities to come, the military was mobilized. | mobile (이동할 수 있는) = movable, portable | Day14;동사;별2 | 해커스 보카/Day 14 | put into action, deploy |  | [móubəlàiz] |
+| given that | ~을 고려하면 | Given that dogs are descendants of wolves, it is not surprising that they look similar. |  | Day14;숙어;별2 | 해커스 보카/Day 14 | accepting that, considering that |  |  |
+| cargo | 화물, 짐 | The sailors unloaded the cargo from the ship. |  | Day14;명사;별2 | 해커스 보카/Day 14 | shipment, load, freight, burden |  | [káːrgou] |
+| solitary | 외딴; 외로운 | The neighborhood kids made it a Halloween tradition to visit the solitary house on the hill. |  | Day14;형용사;별2 | 해커스 보카/Day 14 | isolated, secluded, remote, alone, lonely |  | [sálətèri] |
+| slightly | 약간 | This year's bar exam was slightly harder than the one last year. | adj. slight | Day14;부사;별2 | 해커스 보카/Day 14 | a little, somewhat, a bit |  | [sláitli] |
+| deliberately | 일부러 | The teacher deliberately used simple terms to explain the complex concept to the students. | adj. deliberate | Day14;부사;별2 | 해커스 보카/Day 14 | intentionally, consciously, on purpose |  | [dilíbərətli] |
+| unthinkable | 상상도 할 수 없는 | It seems unthinkable that people once worked and studied without using the Internet. |  | Day14;형용사;별2 | 해커스 보카/Day 14 | inconceivable, unimaginable |  | [ʌ̀nθíŋkəbl] |
+| coinage | 신조어 | The online community has added several coinages to the English language. |  | Day14;명사;별2 | 해커스 보카/Day 14 | creation, innovation |  | [kɔ́inidʒ] |
+| obligation | 의무, 책임 | In Israel, it is the obligation of all citizens to serve in the military. | v. obligate | Day14;명사;별2 | 해커스 보카/Day 14 | responsibility, duty, liability |  | [àbləgéiʃən] |
+| reconcile | 화해시키다 | The international mediator attempted to reconcile the two countries. |  | Day14;동사;별2 | 해커스 보카/Day 14 | bring together, reunite |  | [rékənsàil] |
+| severe | 엄한, 가혹한 | The schoolmaster firmly believed in severe disciplinary measures. | adv. severely; n. severity | Day14;형용사;별2 | 해커스 보카/Day 14 | harsh, extreme, rigorous, strict |  | [səvíər] |
+| foremost | 으뜸가는 | Colin Powell is considered by many to be the foremost African-American government official in US history. |  | Day14;형용사;별2 | 해커스 보카/Day 14 | most respected, most important, preeminent, supreme |  | [fɔ́ːrmòust] |
+| surge | 급증하다 | After the country hosted its first World Cup, interest in soccer among the local population surged. |  | Day14;동사;별1 | 해커스 보카/Day 14 | increase, rise, wax |  | [səːrdʒ] |
+| hasten | 재촉하다 | The Great Depression hastened the development of social services, such as social security. | adj. hasty | Day14;동사;별1 | 해커스 보카/Day 14 | accelerate, rush, hurry, speed up |  | [heisn] |
+| tentatively | 머뭇거리며 | Jack often speaks tentatively in meetings because he lacks confidence. | adj. tentative; n. tentativeness | Day14;부사;별1 | 해커스 보카/Day 14 | without certainty, uncertainly, hesitantly |  | [téntətivli] |
+| scorn | 비웃다, 경멸하다 | Henry was tired of being scorned by his classmates because of his height. |  | Day14;동사;별1 | 해커스 보카/Day 14 | ridicule, disdain, sneer, despise |  | [skɔːrn] |
+| throughout | ~ 동안, 내내 | The amusement park is open throughout the year, even in the winter. |  | Day14;전치사;별1 | 해커스 보카/Day 14 | during every part of, during the whole of |  | [θruːáut] |
+| pitfall | 위험, 어려움 | A sudden downturn in the stock market is one of the pitfalls of investing. | befall (생기다) / downfall 몰락 | Day14;명사;별1 | 해커스 보카/Day 14 | difficulty, trouble |  | [pítfɔ̀ːl] |
+| coupled with | ~과 결합된 | A lack of exercise coupled with a high-calorie diet can lead to obesity. |  | Day14;숙어;별1 | 해커스 보카/Day 14 | together with, combined with |  |  |
+| huge | 거대한 | The French owned a huge amount of land in the western part of the US during the 18th century. |  | Day14;형용사;별1 | 해커스 보카/Day 14 | enormous, large, massive, mammoth, gigantic |  | [hjuːdʒ] |
+| span | 기간 / 걸치다 | The paper briefly summarizes the vast problems during the war's eleven-year span. |  | Day14;명사;동사;별1 | 해커스 보카/Day 14 | duration, period, length, extend across, cover, cross |  | [spæn] |
+| hollow | 속이 빈 | Oil tankers are large ships that have hollow containers which can be filled with petroleum for transport. |  | Day14;형용사;별1 | 해커스 보카/Day 14 | empty, vacant, void, unfilled |  | [hálou] |
+| appreciable | 주목할 만한 | In some Amazonian villages, there is no appreciable difference between modern and ancient lifestyles. | adv. appreciably | Day14;형용사;별1 | 해커스 보카/Day 14 | significant, noticeable, considerable |  | [əpríːʃiəbl] |
+| shield | 보호하다 | Lisa brings an umbrella to shield herself from the hot sun during the summer months. |  | Day14;동사;별1 | 해커스 보카/Day 14 | protect, defend, safeguard |  | [ʃiːld] |
+| spearhead | 앞장서다 | Nelson Mandela spearheaded South Africa's struggle for independence. |  | Day14;동사;별1 | 해커스 보카/Day 14 | lead, lead the way, head |  | [spíərhèd] |
+| methodically | 체계적으로 | Astronomers methodically count the number of sunspots that occur each year. | adj. methodical | Day14;부사;별1 | 해커스 보카/Day 14 | systematically |  | [məθádikəli] |
+| manage to | 간신히 ~하다 | With a lot of effort, the team managed to win the championship game. |  | Day14;숙어;별1 | 해커스 보카/Day 14 | be able to |  |  |

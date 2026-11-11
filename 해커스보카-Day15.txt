@@ -1,0 +1,58 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| intact | 손상되지 않은 | The machine remained intact despite the explosion. |  | Day15;형용사;별3 | 해커스 보카/Day 15 | undamaged, unbroken, whole, complete, unaffected |  | [intǽkt] |
+| albeit | 비록 ~이지만 | Many developing economies are growing steadily, albeit slowly. |  | Day15;접속사;별3 | 해커스 보카/Day 15 | although, though, even though |  | [ɔːlbíːit] |
+| complex | 복잡한 / 복합 건물; 복합체 | Biologists seek to understand how complex species evolved from simpler ones. | an involved story (복잡한) | Day15;형용사;명사;별3 | 해커스 보카/Day 15 | intricate, complicated, elaborate, involved, group of buildings, system |  | [kəmpléks] |
+| conventional | 전통적인; 통례의 | In ancient times, conventional farming practices included the use of organic fertilizer. | adv. conventionally; n. convention | Day15;형용사;별3 | 해커스 보카/Day 15 | traditional, customary, standard, usual |  | [kənvénʃənl] |
+| reasonable | 합리적인 / (가격이) 적당한 | It seems reasonable to be tough on habitual criminals. |  | Day15;형용사;별3 | 해커스 보카/Day 15 | sensible, rational, logical, sufficient |  | [ríːzənəbl] |
+| attainment | 성취 | It takes many years of practice to reach that level of attainment in chess. | v. attain | Day15;명사;별3 | 해커스 보카/Day 15 | achievement, accomplishment, fulfillment |  | [ətéinmənt] |
+| progressively | 점진적으로 | The government must clean up the air by setting progressively tighter pollution limits on power plants. | adj. progressive | Day15;부사;별3 | 해커스 보카/Day 15 | increasingly |  | [prəgrésivli] |
+| drawback | 결점 | One drawback of the book is that it does not contain any English translations. | setback 방해 / cutback 삭감 | Day15;명사;별3 | 해커스 보카/Day 15 | disadvantage, problem, defect, shortcoming |  | [drɔ́ːbæ̀k] |
+| suppress | 억제하다, 참다 / 진압하다 | Jonas was unable to suppress his anger. |  | Day15;동사;별3 | 해커스 보카/Day 15 | hold back, restrain, stop by force |  | [səprés] |
+| incidentally | 덧붙여 말하자면, 그런데 | Nathan is on vacation today; incidentally, he'll be gone all week. |  | Day15;부사;별3 | 해커스 보카/Day 15 | by the way |  | [ìnsədéntəli] |
+| tactic | 전략 | Prohibitionists achieved their goals because of their group tactics. | tacit (무언의) = implicit, implied | Day15;명사;별3 | 해커스 보카/Day 15 | strategy, maneuver |  | [tǽktik] |
+| substantial | 상당한 | As a salesperson, Howard takes a substantial number of business trips every year. | adv. substantially | Day15;형용사;별3 | 해커스 보카/Day 15 | fairly large, considerable, significant, noticeable |  | [səbstǽnʃəl] |
+| verify | 입증하다 | The Hubble Space Telescope helped scientists verify the existence of black holes. |  | Day15;동사;별3 | 해커스 보카/Day 15 | confirm, establish the truth of, validate |  | [vérəfài] |
+| sustained | 지속적인 | Running a marathon requires sustained physical activity and great endurance. |  | Day15;형용사;별3 | 해커스 보카/Day 15 | constant, continued, uninterrupted, prolonged |  | [səstéind] |
+| radical | 근본적인 / 극단적인, 과격한 | The president promised to make radical changes to the country's health care system. | adv. radically | Day15;형용사;별3 | 해커스 보카/Day 15 | fundamental, basic, extreme, drastic |  | [rǽdikəl] |
+| prime | 최고의, 주요한 | The prime time for bird watching is early morning, when there are few people to disturb the wildlife. |  | Day15;형용사;별3 | 해커스 보카/Day 15 | peak, high-quality, superior, main |  | [praim] |
+| grasp | 이해하다 | Only a few students could grasp Professor Benton's physics lecture. | grasp the handle tightly (꽉 잡다) | Day15;동사;별3 | 해커스 보카/Day 15 | understand, catch, comprehend, apprehend, grip, seize |  | [græsp] |
+| prominently | 눈에 띄게 | Economic issues are expected to figure prominently in the upcoming election. | adj. prominent; n. prominence | Day15;부사;별2 | 해커스 보카/Day 15 | very noticeably, conspicuously, notably |  | [prámənəntli] |
+| precipitate | 재촉하다, 촉진하다 | The protest by the labor union precipitated changes in the company's policies. |  | Day15;동사;별2 | 해커스 보카/Day 15 | bring about, cause, give rise to, trigger |  | [prisípətèit] |
+| interlock | 서로 맞물리다 | According to the theory of continental drift, the Himalayas were formed when two large land masses interlocked. |  | Day15;동사;별2 | 해커스 보카/Day 15 | link, connect, join |  | [ìntərlák] |
+| accordingly | 그에 따라서 | Sam was told to speak briefly; accordingly, he shortened his speech. |  | Day15;부사;별2 | 해커스 보카/Day 15 | consequently, for that reason |  | [əkɔ́ːrdiŋli] |
+| relevant | 관련된, 적절한 | During the investigation, the committee looked at all relevant facts in the case. |  | Day15;형용사;별2 | 해커스 보카/Day 15 | applicable, pertinent, germane |  | [réləvənt] |
+| remarkably | 신기하게도 | The sky was full of very dark clouds, but remarkably it did not rain. | adj. remarkable | Day15;부사;별2 | 해커스 보카/Day 15 | surprisingly |  | [rimáːrkəbli] |
+| disputable | 논란의 여지가 있는 | The scientist's claim was controversial because it was based on disputable evidence. | v. dispute | Day15;형용사;별2 | 해커스 보카/Day 15 | challengeable, debatable, arguable |  | [dispjúːtəbl] |
+| ambitious | 야심 있는 | As a military leader who conquered a huge portion of the ancient world, Alexander the Great was highly ambitious. |  | Day15;형용사;별2 | 해커스 보카/Day 15 | desiring success, aspiring |  | [æmbíʃəs] |
+| congeal | 굳다, 응고하다 | Once the chef took the meat out of the oven, it began to cool down and a layer of fat congealed over it. |  | Day15;동사;별2 | 해커스 보카/Day 15 | solidify, harden, stiffen, condense |  | [kəndʒíːl] |
+| cautious | 신중한, 조심성 있는 | The hikers chose a cautious approach in the unfamiliar territory. |  | Day15;형용사;별2 | 해커스 보카/Day 15 | careful, wary, prudent, discreet |  | [kɔ́ːʃəs] |
+| realm | 영역, 범위 | The microscope allowed for many new discoveries in the realm of biology. |  | Day15;명사;별2 | 해커스 보카/Day 15 | area, field, sphere, domain |  | [relm] |
+| dam | (둑으로) 막다 | To construct their shelters, beavers dam streams with pieces of wood they have collected. |  | Day15;동사;별2 | 해커스 보카/Day 15 | block, obstruct |  | [dæm] |
+| flattery | 아첨 | Mike often uses flattery to get his boss's attention. |  | Day15;명사;별2 | 해커스 보카/Day 15 | praise |  | [flǽtəri] |
+| amplify | 확대하다, 증대하다 | Scientific farming can amplify the production of wheat. | n. amplification | Day15;동사;별2 | 해커스 보카/Day 15 | increase, magnify, enlarge, expand |  | [ǽmpləfài] |
+| dimension | 크기, 규모 | Lucy should accurately measure the dimensions of her office before ordering a desk. |  | Day15;명사;별2 | 해커스 보카/Day 15 | size, magnitude |  | [diménʃən] |
+| deplete | 다 써버리다; 대폭 감소시키다 | The family depleted their savings to renovate the house they bought recently. | exhaust fossil fuels (다 써버리다) | Day15;동사;별2 | 해커스 보카/Day 15 | exhaust, empty, use up, reduce |  | [diplíːt] |
+| characteristic | 특유의 / 특징, 특성 | The ostrich's characteristic size and speed set it apart from other birds. |  | Day15;형용사;명사;별2 | 해커스 보카/Day 15 | distinctive, peculiar, special, quality, feature, trait |  | [kæ̀riktərístik] |
+| ice sheet | 대륙 빙하 | Fjords are coastal landforms formed millions of years ago by massive ice sheets. |  | Day15;명사;별2 | 해커스 보카/Day 15 | glacier |  |  |
+| spectator | 관객, 구경꾼 | The tennis match attracted over 30,000 spectators. |  | Day15;명사;별2 | 해커스 보카/Day 15 | viewer, onlooker |  | [spékteitər] |
+| bountifully | 풍부하게 | In mountain meadows, wildflowers bloom bountifully in the spring. | adj. bountiful | Day15;부사;별2 | 해커스 보카/Day 15 | abundantly, copiously, plentifully, exuberantly |  | [báuntifəli] |
+| suffer paralysis | 마비를 겪다 | People who have serious neck injuries may suffer paralysis as a result. |  | Day15;숙어;별2 | 해커스 보카/Day 15 | lose the ability to move |  |  |
+| variation | 변동, 차이 | In Canada, the variation in temperature between the summer and winter is dramatic. |  | Day15;명사;별2 | 해커스 보카/Day 15 | variance, fluctuation, difference |  | [vɛ̀əriéiʃən] |
+| periphery | 주변 | The outer periphery of a hurricane is generally made up of rainbands. |  | Day15;명사;별2 | 해커스 보카/Day 15 | edge, boundary, border, fringe |  | [pərífəri] |
+| apparently | 외관상으로는 | The book Jeff purchased at the used bookstore had yellow pages, so it was apparently old. | apparently damaged (명백히) | Day15;부사;별2 | 해커스 보카/Day 15 | seemingly, ostensibly, outwardly, evidently, clearly |  | [əpǽrəntli] |
+| far-reaching | 광범위한 | If a large meteor hit the Earth, it would have far-reaching consequences for all organisms. |  | Day15;형용사;별2 | 해커스 보카/Day 15 | extensive, widespread, broad |  | [fáːrìːtʃiŋ] |
+| embody | 구체적으로 나타내다 / 포함하다 | Literature often embodies the social ideals of either the author or the author's culture. | n. embodiment | Day15;동사;별2 | 해커스 보카/Day 15 | incarnate, represent, manifest, contain, incorporate |  | [imbádi] |
+| evade | 피하다 | Camouflage is one technique animals use to evade predators. |  | Day15;동사;별1 | 해커스 보카/Day 15 | escape, avoid, elude, dodge, shun |  | [ivéid] |
+| against | ~에 붙여, ~에 가까이 | In some European cities, modern buildings were built directly against Medieval walls. |  | Day15;전치사;별1 | 해커스 보카/Day 15 | next to, beside |  | [əgénst] |
+| due to | ~로 인한, ~에 기인하는 | Falling real estate prices due to decreased demand is a cause for concern. |  | Day15;숙어;별1 | 해커스 보카/Day 15 | caused by, owing to, attributable to |  |  |
+| classify | 분류하다 | It is the job of scientists to classify all living organisms into groups that can be applied universally. |  | Day15;동사;별1 | 해커스 보카/Day 15 | categorize, arrange, assort |  | [klǽsəfài] |
+| oblige | 강요하다 | Roman emperors obliged their subjects to pay taxes, and those who refused were punished severely. | oblige the police with information (돕다) | Day15;동사;별1 | 해커스 보카/Day 15 | force, require, compel, assist, benefit |  | [əbláidʒ] |
+| identical | 동일한 | These two laptops are identical in size and weight, but they have different processing power. |  | Day15;형용사;별1 | 해커스 보카/Day 15 | same, indistinguishable, equal |  | [aidéntikəl] |
+| intimately | 친밀하게 | Friends who spend a lot of time together often get to know each other intimately. | adj. intimate | Day15;부사;별1 | 해커스 보카/Day 15 | closely |  | [íntəmətli] |
+| questionable | 의심스러운 | The report's conclusions are questionable because the sample used was very small. |  | Day15;형용사;별1 | 해커스 보카/Day 15 | doubtful, suspicious, dubious |  | [kwéstʃənəbl] |
+| spot | 발견하다 | Almost instinctively, Luis spotted the lack of conviction in Ellen's tone. | a popular spot for coffee (장소) | Day15;동사;별1 | 해커스 보카/Day 15 | detect, see, find, place, site |  | [spat] |
+| immerse | (물에) 잠그다, 담그다 | Temporary spring lakes form in the valleys after the mountain snow melts and immerses everything in water. |  | Day15;동사;별1 | 해커스 보카/Day 15 | cover, plunge, dip |  | [imə́ːrs] |
+| not in consensus with | (의견이) ~와 일치하지 않는 | Residents of the city are not in consensus with the mayor about his plan to close the park. |  | Day15;숙어;별1 | 해커스 보카/Day 15 | not in agreement with |  |  |
+| be tempted to | ~하고 싶어지다 | Sarah was tempted to buy the car when she saw the low price. |  | Day15;숙어;별1 | 해커스 보카/Day 15 | be inclined to |  |  |
+| inception | 시작, 개시 | Since its inception, the anti-smoking campaign has raised a lot of money. |  | Day15;명사;별1 | 해커스 보카/Day 15 | beginning |  | [insépʃən] |
