@@ -278,6 +278,9 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
   padding:9px 0;border-bottom:1px solid var(--line);}
 .wcell{min-width:0;overflow-wrap:anywhere;}
 .wword{font-family:var(--serif);font-size:16.5px;font-weight:600;}
+.wipa{display:block;font-family:var(--mono);font-size:11px;font-weight:400;color:var(--muted);margin-top:1px;}
+/* 발음기호 — 카드에서는 단어 바로 아래 작게 */
+.ipa{font-family:var(--mono);font-size:13px;color:#9FB6C6;margin-top:5px;letter-spacing:.01em;}
 .wmean{font-size:13.5px;color:var(--muted);}
 .wsyn{grid-column:1 / -1;font-family:var(--serif);font-size:13px;color:var(--green);}
 .wsay{grid-row:1;grid-column:3;}
@@ -794,6 +797,7 @@ function fixLoaded(){
     if(c.lapseIvl===undefined) c.lapseIvl=0;
     if(c.syn===undefined) c.syn="";
     if(c.ant===undefined) c.ant="";
+    if(c.ipa===undefined) c.ipa="";
     if(c.due===undefined) c.due=sod();
     if(c.st===undefined) c.st=cardSt(c); });
   migrateLog(); syncPacks();
@@ -1080,7 +1084,7 @@ function mergeData(p){
       myTime > theirTime ? null  :        // 내가 더 나중에 고쳤다
       theirTime > myTime ? their :        // 저쪽이 더 나중이다
       mine               ? null : their;  // 시각이 같으면 빈 칸만 채운다
-    ["meaning","example","collocation","syn","ant","pack"].forEach(f=>{
+    ["meaning","example","collocation","syn","ant","ipa","pack"].forEach(f=>{
       const v = pick(cur[f]||"", inc[f]||"");
       if(v !== null){ cur[f]=v; changed=true; }
     });
@@ -1250,7 +1254,7 @@ function packSelect(id, val){
 
 
 function newCard(f){ return Object.assign({
-  id:uid(), word:"", meaning:"", example:"", collocation:"", syn:"", ant:"", tags:[], pack:"", auto:false,
+  id:uid(), word:"", meaning:"", example:"", collocation:"", syn:"", ant:"", ipa:"", tags:[], pack:"", auto:false,
   susp:false, leech:false,
   ef:2.5, reps:0, step:0, st:0, interval:0, lapses:0, lapseIvl:0, seen:0, correct:0, due:sod(),
   createdAt:Date.now(), updatedAt:Date.now()
@@ -1994,9 +1998,7 @@ function viewSolo(){
   h+='<div style="margin-top:13px;display:grid;gap:8px">'
     +'<button class="btn solo wide" data-a="solo-study" '+(due?"":"disabled")+'>'
     +(due?("암기 시작 · "+due+"장"):"오늘 몫을 다 했습니다")+'</button>'
-    +(capped?'<p class="note" style="margin:0">고른 날에 '+cards.length+'개가 있지만 '
-      +'하루 상한(신규 '+D.s.dailyNew+' · 복습 '+(D.s.maxReview||"무제한")+')만큼만 꺼냅니다. '
-      +'더 하려면 끝낸 뒤 이어서 할지 물어봅니다.</p>':'')
+    +(capped?'<p class="note" style="margin:0">하루 상한만큼만 나옵니다. 끝내면 더 할지 물어봅니다.</p>':'')
     +'<div class="row" style="gap:7px">'
     +'<button class="btn ghost solo" style="flex:1" data-a="solo-spell" '+(due?"":"disabled")+'>스펠링</button>'
     +'<button class="btn ghost solo" style="flex:1" data-a="solo-sweep" '+(cards.length?"":"disabled")+'>전체 훑기 '+cards.length+'</button>'
@@ -2013,7 +2015,8 @@ function viewSolo(){
 
   h+='<div class="wbook">'+cards.slice(0,400).map(c=>
       '<div class="wrow2">'
-      +'<div class="wcell wword'+(soloHide==="word"?" hid":"")+'" data-a="solo-peek">'+esc(c.word)+'</div>'
+      +'<div class="wcell wword'+(soloHide==="word"?" hid":"")+'" data-a="solo-peek">'+esc(c.word)
+      +(c.ipa?'<span class="wipa"> '+esc(c.ipa)+'</span>':'')+'</div>'
       +'<div class="wcell wmean'+(soloHide==="mean"?" hid":"")+'" data-a="solo-peek">'+esc(c.meaning||"—")+'</div>'
       +(c.syn?'<div class="wcell wsyn'+(soloHide==="mean"?" hid":"")+'" data-a="solo-peek">'
         +esc(String(c.syn).split(/[;,/]/).map(x=>x.trim()).filter(Boolean).slice(0,6).join(", "))+'</div>':'')
@@ -2030,6 +2033,7 @@ function viewCard(){
   const typing=S.mode.startsWith("type_");
   let front="";
   if(S.mode==="en2ko") front='<div class="word">'+esc(c.word)+'</div>'
+      +(c.ipa?'<div class="ipa">'+esc(c.ipa)+'</div>':'')
       +'<div class="hint">탭해서 뜻 보기</div>'
       + (TTS.ok?'<button class="speak corner" data-a="say" data-t="w">♪</button>':'');
   else if(S.mode==="ko2en_flip") front='<div class="wordko">'+esc(c.meaning)+'</div>'
@@ -2043,6 +2047,7 @@ function viewCard(){
   else front='<div class="wordko">'+esc(c.meaning)+'</div>'+typeBox();   // 예문이 없어진 경우 대체
 
   let back='<div class="word">'+esc(c.word)+'</div>'
+    +(c.ipa?'<div class="ipa">'+esc(c.ipa)+'</div>':'')
     +'<div class="wordko" style="font-size:19px;margin-top:11px;color:#CFE0EB">'+esc(c.meaning)+'</div>';
   if(S.result) back+='<div class="verdict v-'+S.result+'">'
     +(S.result==="ok"?"정답":S.result==="typo"?('오타 · 입력 "'+esc(S.input)+'"'):(S.input?('오답 · 입력 "'+esc(S.input)+'"'):"오답"))+'</div>';
@@ -4158,7 +4163,7 @@ const sw=(k,t,d,on,dis)=>'<label class="sw"><input type="checkbox" data-sw="'+k+
     꼬리의 번 칸을 먼저 떼고, 그래도 칸이 남으면 넘친 만큼을 예문(세 번째 칸)에 다시 붙입니다.
     넘친 칸이 예문에서 나왔다는 보장은 없지만, 쇼표가 들어가는 칸은 예문이 거의 전부이고
     미리보기에 결과가 그대로 보이므로 이상하면 거기서 눈에 땅니다 */
-const IMP_COLS = 8;
+const IMP_COLS = 9;
 function fixShift(r){
   if(r.length <= IMP_COLS) return r;
   const a = r.slice();
@@ -4286,7 +4291,7 @@ function doPreview(){
     const it={ word, meaning:(c[1]||"").trim(), example:(c[2]||"").trim(),
       collocation:(c[3]||"").trim(),
       tags:(c[4]||"").split(/[;|,]/).map(t=>t.trim()).filter(Boolean),
-      pack:((c[5]||"").trim()||importPack), syn:(c[6]||"").trim(), ant:(c[7]||"").trim() };
+      pack:((c[5]||"").trim()||importPack), syn:(c[6]||"").trim(), ant:(c[7]||"").trim(), ipa:(c[8]||"").trim() };
     const k=word.toLowerCase();
     /* 같은 묶음 안에서 겹친 줄은 첫 줄만 씁니다. 예전에는 둘 다 들어가서
        같은 단어 카드가 두 장 생겼습니다 */
@@ -4308,7 +4313,7 @@ function doPreview(){
     카드를 두 장으로 늘리면 기기 간 병합에서 한 장이 다른 장을 덮습니다 */
 function fillCard(cur, inc){
   let hit=false;
-  ["meaning","example","collocation","syn","ant"].forEach(k=>{
+  ["meaning","example","collocation","syn","ant","ipa"].forEach(k=>{
     if(!String(cur[k]||"").trim() && String(inc[k]||"").trim()){ cur[k]=inc[k]; hit=true; }
   });
   const tags=new Set((cur.tags||[]).map(t=>String(t).trim()).filter(Boolean));
