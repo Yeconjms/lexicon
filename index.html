@@ -241,6 +241,50 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 .sa .syn{background:rgba(22,120,90,.26);color:#9BE8CE;}
 .sa .ant{background:rgba(166,57,74,.28);color:#F8BFC8;}
 .sa span{padding:4px 11px;border-radius:99px;font-size:13.5px;font-weight:600;}
+/* 비슷한 말은 토플에서 **실제로 출제되는 것**이라 뒷면의 주인공입니다.
+   뜻 바로 아래에 두고 예문보다 크게 씁니다. 영어니까 세리프를 씁니다.
+   반대말은 그대로 작게 둡니다 — 비중이 다릅니다 */
+.sa.big{margin-top:13px;gap:8px;}
+.sa.big span{font-family:var(--serif);font-size:17px;padding:6px 14px;letter-spacing:.01em;}
+.sa.big b{display:block;width:100%;text-align:center;margin-bottom:3px;font-size:11.5px;}
+
+/* 세션 형식 고르기 */
+.modepick{display:flex;gap:5px;margin-top:10px;}
+.modepick .mp{flex:1;padding:7px 4px;border:1px solid var(--line);border-radius:9px;
+  background:transparent;color:var(--muted);font:inherit;font-size:12px;font-weight:600;cursor:pointer;}
+.modepick .mp.on{border-color:var(--accent);color:var(--ink);background:rgba(42,76,125,.08);}
+
+/* 따로 공부하는 팩 — 일반 학습과 **색으로 구별**합니다 */
+.solobox{display:block;width:100%;text-align:left;margin-top:14px;padding:14px 15px;
+  border:0;border-radius:15px;cursor:pointer;font:inherit;
+  background:linear-gradient(135deg,#4B3A8F,#2F2A63);color:#F2EEFF;}
+.solohd{font-size:16.5px;font-weight:800;letter-spacing:-.01em;}
+.solosub{font-size:12.5px;opacity:.85;margin-top:3px;}
+.sologo{font-size:12.5px;font-weight:700;opacity:.9;margin-top:9px;}
+.btn.solo{background:#4B3A8F;border-color:#4B3A8F;color:#F2EEFF;}
+.btn.ghost.solo{background:transparent;color:#4B3A8F;border-color:#9A8BD8;}
+.solopanel .h2{color:#4B3A8F;}
+.fchip em{font-style:normal;color:var(--green);font-weight:700;margin-left:5px;}
+.fchip.on em{color:#D8FFEE;}
+.fchip.c-day{border-color:rgba(75,58,143,.35);color:#4B3A8F;}
+.fchip.c-day.on{background:#4B3A8F;}
+.daychips{gap:5px;margin-top:8px;}
+.daychips .fchip{padding:5px 0;font-size:12.5px;min-width:46px;text-align:center;}
+.seg.sm button{font-size:11.5px;padding:5px 7px;white-space:nowrap;}
+
+/* 단어장 — 가리고 외우기 */
+.wbook{margin-top:10px;border-top:1px solid var(--line);}
+.wrow2{display:grid;grid-template-columns:1fr 1fr auto;gap:4px 10px;align-items:baseline;
+  padding:9px 0;border-bottom:1px solid var(--line);}
+.wcell{min-width:0;overflow-wrap:anywhere;}
+.wword{font-family:var(--serif);font-size:16.5px;font-weight:600;}
+.wmean{font-size:13.5px;color:var(--muted);}
+.wsyn{grid-column:1 / -1;font-family:var(--serif);font-size:13px;color:var(--green);}
+.wsay{grid-row:1;grid-column:3;}
+/* 가린 칸은 눌러서 들춥니다 — 종이 단어장을 손으로 가리는 것과 같습니다 */
+.wcell.hid{color:transparent;background:rgba(127,127,127,.16);border-radius:6px;cursor:pointer;
+  user-select:none;}
+.wcell.hid::selection{background:transparent;}
 
 /* 단어 목록 다중 필터 */
 .fchips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px;}
@@ -708,6 +752,8 @@ const CARD_STATE = ["ef","reps","step","st","interval","lapses","lapseIvl","due"
 
 /* ══════════════════ 데이터 ══════════════════ */
 const DEFAULTS = {
+  soloPack:"",           // 따로 공부할 팩 — 일반 학습에서 빠집니다
+  ask:"",                // 세션 형식 ("" = 설정대로). 기기별이라 동기화되지 않습니다
   front:"en",            // en | ko | mix
   typing:false,          // 타이핑 문제 섞기
   typeModes:{ko2en:true, spell:true, dictation:false},
@@ -1372,12 +1418,25 @@ const streak = () => { let n=0; for(let i=0;i<400;i++){ const k=dayKey(new Date(
 
 /* ══════════════════ 큐 ══════════════════ */
 const active = () => D.cards.filter(c=>!c.susp);
-const inPack = (c,p) => !p ? true : (p==="__none" ? !c.pack : (c.pack===p || c.pack.startsWith(p+"/")));
+/** p 는 팩 경로 하나, 또는 **여러 개의 배열**입니다 (Day 1~3 처럼 범위를 고를 때) */
+const inPack = (c,p) => {
+  if(!p || (Array.isArray(p) && !p.length)) return true;
+  if(Array.isArray(p)) return p.some(x=>inPack(c,x));
+  return p==="__none" ? !c.pack : (c.pack===p || c.pack.startsWith(p+"/"));
+};
+/** 일반 학습이 훑는 범위.
+    팩을 집어 들어간 것이 아니면 **"따로 공부할 팩"(`D.s.soloPack`)은 뺍니다.**
+    토플처럼 따로 집중해야 하는 묶음이 기존 단어와 섞여 나오면
+    "예전 것 누적이라 학습을 못 누르겠다" 가 됩니다 — 사용자가 실제로 그랬습니다.
+    `dueAll`·`freshAll`·`weakList`·`sweepList` 가 모두 이걸 써야
+    학습 홈의 네 칸과 시작 장수가 어긋나지 않습니다 */
+const inScope = (c,p) => p ? inPack(c,p)
+  : (!D.s.soloPack || !inPack(c, D.s.soloPack));
 const todayDone = () => dayStat(dayKey()).reviews;
 
 /** 밀린 것 전부 (오래 밀린 순) */
 function dueAll(p){ const now=Date.now();
-  return active().filter(c=>c.seen>0 && c.due<=now && inPack(c,p)).sort((a,b)=>a.due-b.due); }
+  return active().filter(c=>c.seen>0 && c.due<=now && inScope(c,p)).sort((a,b)=>a.due-b.due); }
 /** 오늘 상한 안에서 꺼낼 수 있는 것 */
 function dueToday(p){ const room=D.s.maxReview>0?Math.max(0,D.s.maxReview-todayDone()):Infinity;
   return dueAll(p).slice(0, room===Infinity?undefined:room); }
@@ -1388,11 +1447,11 @@ function freshList(p){ const used=dayStat(dayKey()).newSeen;
   return freshAll(p).slice(0, Math.max(0, D.s.dailyNew-used)); }
 /** 하루 신규 상한을 무시한, 꺼낼 수 있는 새 카드 전부 (상한 넘겨 하기에서 씁니다) */
 function freshAll(p){ const now=Date.now();
-  return active().filter(c=>c.seen===0 && c.due<=now && inPack(c,p)); }
-function weakList(p){ return active().filter(c=>inPack(c,p) && (c.lapses>0||(c.seen>=2&&c.correct/c.seen<0.7)))
+  return active().filter(c=>c.seen===0 && c.due<=now && inScope(c,p)); }
+function weakList(p){ return active().filter(c=>inScope(c,p) && (c.lapses>0||(c.seen>=2&&c.correct/c.seen<0.7)))
   .sort((a,b)=>b.lapses-a.lapses||(a.correct/(a.seen||1))-(b.correct/(b.seen||1))).slice(0,40); }
 /** 팩 전체 훑기 (일정 무시) */
-function sweepList(p){ return active().filter(c=>inPack(c,p))
+function sweepList(p){ return active().filter(c=>inScope(c,p))
   .sort((a,b)=>b.lapses-a.lapses||(a.correct/(a.seen||1))-(b.correct/(b.seen||1))); }
 
 function buildQueue(o){
@@ -1690,7 +1749,9 @@ function render(done){
   if(S){ b.textContent="●"; b.classList.remove("hide"); }
   else if(n>0){ b.textContent=n; b.classList.remove("hide"); }
   else b.classList.add("hide");
-  document.querySelectorAll("#nav button").forEach(x=>x.classList.toggle("on", x.dataset.v===view));
+  /* 토플 화면은 탭바에 없으므로 들어온 자리인 "학습" 을 켜 둡니다 */
+  const navV = view==="solo" ? "study" : view;
+  document.querySelectorAll("#nav button").forEach(x=>x.classList.toggle("on", x.dataset.v===navV));
   /* 다른 탭에 갔다 오면 펼쳐 둔 설명과 "자세히" 는 닫습니다. 열어 둔 채로 돌아오면
      화면이 길어져 있어 어디를 보던 중이었는지 알기 어렵습니다 */
   if(lastView !== view){
@@ -1699,8 +1760,10 @@ function render(done){
     for(const k in moreOn) delete moreOn[k];
   }
   const m=$("#main");
-  if(view==="study" && S) pruneQueue();
-  if(view==="study") m.innerHTML = S ? viewCard() : viewStudyHome(done);
+  if((view==="study"||view==="solo") && S) pruneQueue();
+  if(S) m.innerHTML = viewCard();           // 학습 중에는 어느 화면에서 들어왔든 카드입니다
+  else if(view==="study") m.innerHTML = viewStudyHome(done);
+  else if(view==="solo") m.innerHTML = viewSolo();
   else if(view==="dict") m.innerHTML = viewDict();
   else if(view==="packs") m.innerHTML = viewPacks();
   else if(view==="manage") m.innerHTML = viewManage();
@@ -1808,13 +1871,14 @@ function viewStudyHome(done){
     +'<div style="margin-top:15px;display:grid;gap:8px">'
     +'<button class="btn wide" data-a="start" '+(q?"":"disabled")+'>'
     +(q?("시작 · "+q+"장"+((today+fl)>q?(" (오늘 남은 "+(today+fl)+"장 중)"):"")):"오늘 복습할 카드 없음")+'</button>'
-    +'<div class="row" style="gap:8px">'
-    /* 한→영 스펠링은 설정의 "타이핑 섞기" 로도 되지만 그건 무작위로 끼워 넣는 것입니다.
-       **작정하고 철자만 쓰고 싶을 때**가 따로 있어서 세션 종류로 뺐습니다 */
-    +'<button class="btn ghost" style="flex:1" data-a="start-spell" '+(q?"":"disabled")+'><svg class="ico-svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.3 1.9l2.8 2.8L5.3 13.5l-3.6.8.8-3.6z"/><path d="M9.5 3.7l2.8 2.8"/></svg> 스펠링</button>'
-    +'<button class="btn ghost" style="flex:1" data-a="start-focus" '+(wl?"":"disabled")+'>오답 집중 '+wl+'</button>'
+    +'<button class="btn ghost wide" data-a="start-focus" '+(wl?"":"disabled")+'>오답 집중 · '+wl+'장</button>'
     +'</div>'
-    +'</div>';
+    /* 형식은 **시작하는 자리에서** 고르게 합니다. 한→영 플래시카드는 설정의
+       "카드 앞면" 으로, 스펠링은 "타이핑 섞기" 로 되던 것인데 둘 다 설정 깊은 곳에
+       묻혀 있어 사용자가 있는 줄 몰랐습니다 */
+    + modePicker()
+    +'</div>'
+    + soloBanner();
   if(backlog>today) h+='<div class="warn">밀린 카드가 '+backlog+'장입니다. 하루 최대 '+D.s.maxReview
     +'장까지만 꺼내므로 나머지는 다음 날로 넘어갑니다. 계속 쌓이면 설정에서 <b>하루 신규 단어</b>를 줄이세요.</div>';
   else if(!q) h+='<p class="note">오늘 예정된 카드를 다 봤습니다. 팩 탭에서 특정 범위만 훑어볼 수 있습니다.</p>';
@@ -1847,6 +1911,118 @@ function wordExtra(c){
 
 const stat=(v,l,c)=>'<div class="stat"><b'+(c?' style="color:'+c+'"':'')+'>'+v+'</b><span>'+l+'</span></div>';
 
+/* ── 세션 형식 고르기 ──────────────────────────────────────────
+   한→영 플래시카드는 설정의 "카드 앞면" 으로, 스펠링은 "타이핑 섞기" 로
+   되던 것입니다. 둘 다 설정 깊은 곳에 묻혀 있어 **있는 줄 모르는 상태**였습니다.
+   고르는 자리를 시작 단추 옆으로 옮겼습니다. `D.s.ask` 는 기기별 설정이라
+   `payloadJSON()` 에 실리지 않습니다 */
+const ASK_MODES=[["","설정대로"],["en2ko","영 → 한"],["ko2en_flip","한 → 영"],["type_ko2en","스펠링"]];
+const modePicker=()=>'<div class="modepick">'
+  + ASK_MODES.map(m=>'<button class="mp'+((D.s.ask||"")===m[0]?" on":"")
+      +'" data-a="ask-mode" data-k="'+m[0]+'">'+m[1]+'</button>').join("")
+  + '</div>';
+
+/** 따로 공부하기로 한 팩의 전용 진입점.
+    **학습 홈의 일반 시작과 섞이지 않습니다** — `inScope()` 가 이 팩을 빼기 때문에
+    네 칸 숫자에도 안 잡히고 여기서만 나옵니다. 색을 달리해 한눈에 구별되게 했습니다 */
+function soloBanner(){
+  const p=D.s.soloPack; if(!p) return "";
+  const total=active().filter(c=>inPack(c,p)).length;
+  if(!total) return "";
+  const n=buildQueue({kind:"review", pack:p}).length;
+  return '<button class="solobox" data-a="solo-open">'
+    +'<div class="solohd">'+esc(p)+'</div>'
+    +'<div class="solosub">단어 '+total+'개 · 오늘 볼 것 '+n+'장</div>'
+    +'<div class="sologo">열기 →</div></button>';
+}
+
+/* ── 따로 공부하는 팩의 전용 화면 (단어장처럼) ──────────────────────
+   종이 단어장은 **손으로 가리고 외웁니다.** 플래시카드 한 장씩만으로는
+   "쭉 훑어보기" 가 안 돼서, 목록 + 가리기 + 암기 시작을 한 화면에 뒀습니다. */
+let soloDays=[], soloHide="";   // soloHide: "" | "mean" | "word"
+
+/** 그 팩 바로 아래 묶음들 (Day 01, Day 02 …) */
+function soloGroups(){
+  const root=D.s.soloPack; if(!root) return [];
+  const set=new Set();
+  active().forEach(c=>{
+    if(!inPack(c,root)) return;
+    const rest=c.pack.slice(root.length).replace(/^\//,"");
+    set.add(rest ? root+"/"+rest.split("/")[0] : root);
+  });
+  return [...set].sort();
+}
+function viewSolo(){
+  const root=D.s.soloPack;
+  if(!root) return '<div class="panel"><div class="empty"><h3>따로 공부할 팩이 없습니다</h3>'
+    +'<p>설정 → 하루 학습량에서 정할 수 있습니다.</p></div></div>';
+  const groups=soloGroups();
+  const sel=soloDays.filter(d=>groups.includes(d));
+  const scope=sel.length?sel:groups;
+  const cards=active().filter(c=>inPack(c,scope))
+    .sort((a,b)=>a.pack.localeCompare(b.pack)||a.word.localeCompare(b.word));
+  const due=buildQueue({kind:"review", pack:scope}).length;
+
+  let h='<div class="panel solopanel">'
+    +'<div class="row" style="justify-content:space-between;align-items:baseline">'
+    +'<div class="h2" style="margin:0">'+esc(root)+'</div>'
+    +'<button class="linkish" data-a="solo-back">학습으로</button></div>';
+
+  /* Day 고르기 — 여러 개를 겹쳐 고를 수 있습니다 (누적 학습).
+     30일치라 칩이 길어지므로 **숫자만** 적습니다. "Day 01" 을 다 적으면 여덟 줄이 됩니다.
+     `c-day` 를 꼭 붙일 것 — `.fchip.on` 은 흰 글자만 주고 배경은 `c-*` 에서 옵니다.
+     빠뜨리면 고른 칩이 흰 바탕에 흰 글자가 되어 **글씨가 사라집니다** */
+  h+='<div class="row" style="justify-content:space-between;align-items:baseline;margin-top:12px">'
+    +'<div class="h2" style="margin:0;font-size:13.5px">어느 날을 볼까요'+helpBtn("soloday")+'</div>'
+    + (sel.length?'<button class="linkish" data-a="solo-day" data-k="">전체 보기</button>':'')
+    +'</div>'
+    + helpBox("soloday",'여러 날을 함께 누르면 <b>누적해서</b> 봅니다 — Day 1 → 1·2 → 1·2·3 처럼요.<br>'
+      +'칩 안의 <em>초록 숫자</em>는 그날 오늘 볼 장수입니다. 아무것도 안 고르면 전체입니다.')
+    +'<div class="fchips daychips">'
+    + groups.map(g=>{
+        const label=(g.slice(root.length).replace(/^\//,"")||"전체").replace(/^Day\s*/i,"");
+        const d=buildQueue({kind:"review", pack:g}).length;
+        return '<button class="fchip c-day'+(sel.includes(g)?" on":"")+'" data-a="solo-day" data-k="'+esc(g)+'">'
+          + esc(label)+(d?'<em>'+d+'</em>':'')+'</button>';
+      }).join("")
+    +'</div>';
+
+  /* 진도 나가기.
+     고른 범위가 하루 상한보다 많으면 **왜 적게 나오는지** 적어 줍니다 —
+     "24개인데 왜 15장?" 이 되지 않도록 */
+  const capped = cards.length>due && due>0;
+  h+='<div style="margin-top:13px;display:grid;gap:8px">'
+    +'<button class="btn solo wide" data-a="solo-study" '+(due?"":"disabled")+'>'
+    +(due?("암기 시작 · "+due+"장"):"오늘 몫을 다 했습니다")+'</button>'
+    +(capped?'<p class="note" style="margin:0">고른 날에 '+cards.length+'개가 있지만 '
+      +'하루 상한(신규 '+D.s.dailyNew+' · 복습 '+(D.s.maxReview||"무제한")+')만큼만 꺼냅니다. '
+      +'더 하려면 끝낸 뒤 이어서 할지 물어봅니다.</p>':'')
+    +'<div class="row" style="gap:7px">'
+    +'<button class="btn ghost solo" style="flex:1" data-a="solo-spell" '+(due?"":"disabled")+'>스펠링</button>'
+    +'<button class="btn ghost solo" style="flex:1" data-a="solo-sweep" '+(cards.length?"":"disabled")+'>전체 훑기 '+cards.length+'</button>'
+    +'</div></div>';
+
+  /* 단어장 — 가리고 외우기 */
+  h+='<div class="h2" style="margin:16px 0 7px">단어장 '+cards.length+'개</div>'
+    +'<div class="seg sm" style="width:100%">'
+    + [["","다 보기"],["mean","뜻 가림"],["word","단어 가림"]].map(o=>
+        '<button style="flex:1" data-a="solo-hide" data-k="'+o[0]+'"'+(soloHide===o[0]?' class="on"':'')+'>'+o[1]+'</button>').join("")
+    +'</div>'
+    +'<p class="note" style="margin:5px 0 0">가린 칸을 누르면 그것만 잠깐 보입니다. '
+    +'종이 단어장을 손으로 가리고 외우는 것과 같습니다.</p>';
+
+  h+='<div class="wbook">'+cards.slice(0,400).map(c=>
+      '<div class="wrow2">'
+      +'<div class="wcell wword'+(soloHide==="word"?" hid":"")+'" data-a="solo-peek">'+esc(c.word)+'</div>'
+      +'<div class="wcell wmean'+(soloHide==="mean"?" hid":"")+'" data-a="solo-peek">'+esc(c.meaning||"—")+'</div>'
+      +(c.syn?'<div class="wcell wsyn'+(soloHide==="mean"?" hid":"")+'" data-a="solo-peek">'
+        +esc(String(c.syn).split(/[;,/]/).map(x=>x.trim()).filter(Boolean).slice(0,6).join(", "))+'</div>':'')
+      +(TTS.ok?'<button class="btn sm ghost ico wsay" data-a="say-w" data-id="'+c.id+'" aria-label="발음 듣기">♪</button>':'')
+      +'</div>').join("")+'</div>'
+    +(cards.length>400?'<p class="note">앞의 400개만 표시했습니다. 날을 좁혀 보세요.</p>':'');
+  return h+'</div>';
+}
+
 /* ── 카드 ── */
 function viewCard(){
   const c=byId(S.queue[S.idx]); if(!c) return viewStudyHome();
@@ -1870,14 +2046,18 @@ function viewCard(){
     +'<div class="wordko" style="font-size:19px;margin-top:11px;color:#CFE0EB">'+esc(c.meaning)+'</div>';
   if(S.result) back+='<div class="verdict v-'+S.result+'">'
     +(S.result==="ok"?"정답":S.result==="typo"?('오타 · 입력 "'+esc(S.input)+'"'):(S.input?('오답 · 입력 "'+esc(S.input)+'"'):"오답"))+'</div>';
+  const saPart=(v,k,label,big)=>{
+    const xs=String(v||"").split(/[;,/]/).map(x=>x.trim()).filter(Boolean);
+    return xs.length ? '<div class="sa'+(big?" big":"")+'"><b>'+label+'</b>'
+      + xs.slice(0, big?8:5).map(x=>'<span class="'+k+'">'+esc(x)+'</span>').join("") + '</div>' : "";
+  };
+  /* 순서가 곧 비중입니다. 토플은 "이 단어와 바꿔 쓸 수 있는 것" 을 묻는 시험이라
+     **비슷한 말을 뜻 바로 아래, 예문보다 위에** 둡니다.
+     예전에는 맨 아래 작은 알약이라 눈에 안 띈다고 사용자가 지적했습니다 */
+  back += saPart(c.syn,"syn","비슷한 말",true);
   if(c.example) back+='<div class="sub ex">'+highlight(c.example,c.word)+'</div>';
   if(c.collocation) back+='<div class="sub mono colloc">'+esc(c.collocation)+'</div>';
-  const saPart=(v,k,label)=>{
-    const xs=String(v||"").split(/[;,/]/).map(x=>x.trim()).filter(Boolean);
-    return xs.length ? '<div class="sa"><b>'+label+'</b>'
-      + xs.slice(0,5).map(x=>'<span class="'+k+'">'+esc(x)+'</span>').join("") + '</div>' : "";
-  };
-  back += saPart(c.syn,"syn","비슷한 말") + saPart(c.ant,"ant","반대말");
+  back += saPart(c.ant,"ant","반대말");
   if(TTS.ok) back+='<button class="speak corner" data-a="say" data-t="e">♪</button>';
 
   let bottom="";
@@ -3836,6 +4016,20 @@ function viewSettings(){
       '<b>복습량은 신규 단어 수가 정합니다.</b> 밀리기 시작하면 신규부터 줄이세요.<br>'
       +'최대 복습은 넘는 만큼 다음 날로 미룹니다. 일을 미룰 뿐 줄이지는 않습니다. 0 = 무제한.<br>'
       +'Anki도 이 둘만 씁니다(기본 신규 20 · 복습 200).')
+    /* 따로 공부할 팩 — 토플처럼 집중해야 하는 묶음을 일반 학습에서 빼 둡니다 */
+    +'<div class="row" style="justify-content:space-between;margin-top:14px;align-items:baseline">'
+    +'<label style="font-size:14.5px;font-weight:600">따로 공부할 팩'+helpBtn("solo")+'</label>'
+    +'<select class="field" id="s-solo" style="width:56%">'
+    +'<option value=""'+(!s.soloPack?' selected':'')+'>없음</option>'
+    /* **최상위 이름을 잘라서 모읍니다.** `allPacks()` 는 `해커스 보카/Day 01` 처럼
+       전체 경로라, 경로에 "/" 가 없는 것만 고르면 목록이 통째로 비어 버립니다 */
+    + [...new Set(allPacks().map(p=>p.split("/")[0]).filter(Boolean))].sort().map(p=>
+        '<option value="'+esc(p)+'"'+(s.soloPack===p?' selected':'')+'>'+esc(p)+'</option>').join("")
+    +'</select></div>'
+    +helpBox("solo",
+      '고른 팩은 <b>학습 탭의 시작·네 칸 숫자에서 빠집니다.</b> 대신 학습 화면 아래에 '
+      +'전용 단추가 생기고, 거기서 Day를 골라 단어장처럼 보거나 암기할 수 있습니다.<br>'
+      +'토플 단어가 기존 단어와 섞여 나오지 않게 하려고 둔 것입니다.')
     +'</div>';
 
   h+='<div class="panel"><div class="h2">카드 앞면</div><div class="seg" id="seg-front">'
@@ -4267,9 +4461,28 @@ document.addEventListener("click", e=>{
   if(a==="edit-now"){ editing=t.dataset.id; view="manage"; render(); window.scrollTo(0,0); return; }
   if(a==="resume"){ view="study"; render(); return; }
   if(a==="quit"){ S=null; render(); return; }
-  if(a==="start"){ startSession({kind:"review"}); return; }
+  if(a==="start"){ startSession({kind:"review", force:D.s.ask||""}); return; }
   if(a==="start-spell"){ startSession({kind:"review", force:"type_ko2en"}); return; }
-  if(a==="start-focus"){ startSession({kind:"focus"}); return; }
+  if(a==="start-focus"){ startSession({kind:"focus", force:D.s.ask||""}); return; }
+  if(a==="ask-mode"){ D.s.ask=t.dataset.k; save(); render(); return; }
+  /* 따로 공부할 팩은 전용 화면으로만 들어갑니다 — 일반 학습과 섞이지 않습니다 */
+  if(a==="solo-open"){ view="solo"; render(); window.scrollTo(0,0); return; }
+  if(a==="solo-back"){ view="study"; render(); return; }
+  if(a==="solo-day"){
+    const k=t.dataset.k;
+    if(!k) soloDays=[];
+    else { const i=soloDays.indexOf(k); if(i<0) soloDays.push(k); else soloDays.splice(i,1); }
+    render(); return; }
+  if(a==="solo-hide"){ soloHide=t.dataset.k; render(); return; }
+  /* 가린 칸을 누르면 그것만 잠깐 보입니다 (종이 단어장을 손으로 들추는 것과 같습니다) */
+  if(a==="solo-peek"){ t.classList.toggle("hid"); return; }
+  if(a==="solo-study"||a==="solo-spell"||a==="solo-sweep"){
+    const gs=soloGroups(), sel=soloDays.filter(d=>gs.includes(d));
+    const scope=sel.length?sel:(D.s.soloPack||"");
+    if(a==="solo-sweep") startSession({kind:"sweep", pack:scope});
+    else startSession({kind:"review", pack:scope,
+      force:a==="solo-spell"?"type_ko2en":(D.s.ask||"")});
+    return; }
 
   /* 사전 */
   if(a==="go-dict"){ view="dict"; render(); window.scrollTo(0,0); return; }
@@ -4618,6 +4831,7 @@ document.addEventListener("change", e=>{
     });
     return;
   }
+  if(e.target.id==="s-solo"){ D.s.soloPack=e.target.value||""; soloDays=[]; save(); render(); return; }
   if(e.target.id==="s-new"){ D.s.dailyNew=Math.max(0,+e.target.value||0); save(); render(); return; }
   if(e.target.id==="s-max"){ D.s.maxReview=Math.max(0,+e.target.value||0); save(); render(); return; }
   if(e.target.id==="s-gkey"){ D.s.geminiKey=e.target.value.trim(); save(); return; }
