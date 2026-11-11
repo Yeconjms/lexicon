@@ -1110,6 +1110,12 @@ function doPackDelete(){
 function scheduleSync(){
   if(!FB.ready || !AUTH.uid || AUTH.approved === false) return;
   if(syncing){ syncDirty=true; return; }   // 동기화 중 생긴 변경은 끝난 뒤 다시 올립니다
+  /* **학습 중에는 미룹니다.** Realtime Database 는 조건부 읽기가 없어 받을 때 전체를
+     내려받습니다. 단어가 2,500개면 한 번 주고받는 데 2.6MB 이고, 한 장에 8초 넘게 걸리면
+     (토플 단어는 보통 그렇습니다) **카드마다 한 번씩** 돌아 100장에 260MB 가 됩니다.
+     채점은 localStorage 에 바로 저장되므로 미뤄도 잃는 것이 없고,
+     세션이 끝날 때(render)와 화면을 떠날 때(visibilitychange) 한 번에 올립니다 */
+  if(S){ syncDirty=true; return; }
   clearTimeout(syncT);
   syncT=setTimeout(()=>syncNow(true), D.s.lowData ? 60000 : 8000);
 }
@@ -1668,7 +1674,11 @@ function checkTyped(){
 }
 
 /* ══════════════════ 렌더 ══════════════════ */
+let prevS=false;
 function render(done){
+  /* 학습이 끝난 그 순간에 밀어 둔 동기화를 한 번 내보냅니다 (scheduleSync 의 설명 참고) */
+  if(prevS && !S) scheduleSync();
+  prevS = !!S;
   /* 로그인이 켜져 있고 아직 안 들어왔으면 로그인 화면만 보여줍니다 */
   const gate = FB.ready && !AUTH.uid && !isSolo();
   const wait = FB.ready && AUTH.uid && AUTH.approved === false && !isSolo();
