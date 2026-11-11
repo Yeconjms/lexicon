@@ -509,6 +509,22 @@ details.set .inner{padding:0 17px 18px;border-top:1px solid var(--line);margin-t
 .guide .row{margin-top:12px;}
 .guide .hlpbox{background:rgba(255,255,255,.6);}
 .aibox{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);}
+/* 가져오기 — 이미 있는 단어를 보여주고 고르게 하는 칸 */
+.dupbox{margin-top:12px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;
+  background:rgba(127,127,127,.05);}
+.duphd{font-size:13.5px;font-weight:700;margin-bottom:7px;}
+.duprow{padding:5px 0;border-top:1px solid var(--line);}
+.duprow:first-of-type{border-top:0;}
+.duprow b{font-family:var(--serif);font-size:15px;margin-right:6px;}
+.duprow span{font-size:12.5px;color:var(--muted);}
+.duprow i{display:block;font-size:12px;color:var(--muted);font-style:normal;margin-top:2px;}
+.dupsel{display:flex;flex-direction:column;gap:6px;margin-top:10px;}
+.dupopt{display:block;width:100%;text-align:left;padding:8px 10px;border:1px solid var(--line);
+  border-radius:10px;background:transparent;color:inherit;font:inherit;cursor:pointer;}
+.dupopt b{display:block;font-size:13.5px;font-weight:700;}
+.dupopt span{display:block;font-size:12px;color:var(--muted);margin-top:1px;line-height:1.45;}
+.dupopt.on{border-color:var(--accent);background:rgba(127,127,127,.09);}
+.dupwarn{margin:9px 0 0;font-size:12.5px;line-height:1.55;color:var(--rose);}
 .itemw{font-family:var(--serif);font-size:17.5px;font-weight:600;}
 .itemm{font-size:13.5px;color:var(--muted);margin-top:2px;}
 .itemex{font-family:var(--serif);font-size:13px;color:var(--muted);margin-top:4px;line-height:1.5;}
@@ -2180,7 +2196,17 @@ const helpBtn = k => '<button class="hlp'+(helpOn[k]?" on":"")+'" data-a="help" 
 const helpBox = (k, html) => helpOn[k] ? '<div class="hlpbox">'+html+'</div>' : '';
 
 function importPanel(){
-  const n = importPreview ? importPreview.fresh.length : 0;
+  /* 단추에 적는 수는 실제로 일어날 일과 같아야 합니다 —
+     "건너뛰기" 면 새것만, "합치기" 면 합칠 개수까지 같이 적습니다 */
+  const P0 = importPreview;
+  const n = P0 ? P0.fresh.length : 0;
+  const dupN = P0 ? P0.dups.length : 0;
+  const dMode = P0 ? P0.dupMode : "skip";
+  const willAdd = n + (dMode === "add" ? dupN : 0);
+  const willFill = dMode === "fill" ? dupN : 0;
+  const impCan = willAdd > 0 || willFill > 0;
+  const impLabel = (willAdd && willFill) ? (willAdd + "개 넣고 " + willFill + "개 합치기")
+    : willFill ? (willFill + "개 합치기") : (willAdd + "개 넣기");
   let h = '<div class="panel"><div class="h2">여러 개 한 번에 넣기'
     + helpBtn("imp") + '</div>'
     + helpBox("imp",
@@ -2193,25 +2219,60 @@ function importPanel(){
     + 'style="font-family:var(--mono);font-size:13px;margin-top:8px" '
     + 'placeholder="sarcasm&#10;condescending&#10;&#10;또는&#10;sarcasm,비꼬기,&quot;That was sarcasm.&quot;"></textarea>'
     + '<div class="row" style="margin-top:10px">'
-    + '<button class="btn' + (n ? ' ghost' : '') + '" data-a="preview">확인하기</button>'
+    + '<button class="btn' + (impCan ? ' ghost' : '') + '" data-a="preview">확인하기</button>'
     + '<button class="btn ghost" data-a="csv-pick">파일에서</button>'
     + '<input type="file" id="csvin" accept=".csv,.tsv,.txt,text/csv,text/plain" style="display:none">'
-    + (n ? '<button class="btn" data-a="commit">' + n + '개 넣기</button>' : '')
+    + (impCan ? '<button class="btn" data-a="commit">' + impLabel + '</button>' : '')
     + (importPreview && aiReady() && importPreview.missing
         ? '<button class="btn ghost" data-a="bulk-fill" id="bulkbtn">뜻 ' + importPreview.missing + '개 채우기</button>' : '')
     + '</div>';
 
-  if(importPreview){
-    h += '<p class="note">' + importPreview.items.length + '줄 읽음'
-      + (importPreview.dup ? ' · 이미 있음 ' + importPreview.dup : '')
-      + (importPreview.missing ? ' · <b style="color:var(--amber)">뜻 없음 ' + importPreview.missing + '</b>' : '')
+  if(P0){
+    h += '<p class="note">' + P0.items.length + '줄 읽음'
+      + (dupN ? ' · 이미 있음 ' + dupN : '')
+      + (P0.inbatch.length ? ' · 글 안에서 겹침 ' + P0.inbatch.length : '')
+      + (P0.missing ? ' · <b style="color:var(--amber)">뜻 없음 ' + P0.missing + '</b>' : '')
       + '</p>';
-    h += importPreview.fresh.slice(0,6).map(x =>
+    h += P0.fresh.slice(0,6).map(x =>
         '<div class="item" style="padding:7px 0"><span class="itemw" style="font-size:15px">' + esc(x.word) + '</span> '
       + '<span class="itemm" style="display:inline">'
       + (x.meaning ? esc(x.meaning) : '<span style="color:var(--amber)">뜻 없음</span>') + '</span></div>').join("");
-    if(importPreview.fresh.length > 6)
-      h += '<p class="note">외 ' + (importPreview.fresh.length - 6) + '개</p>';
+    if(P0.fresh.length > 6)
+      h += '<p class="note">외 ' + (P0.fresh.length - 6) + '개</p>';
+
+    /* 이미 있는 단어를 **조용히 버리지 않습니다.** 무엇이 어디에 있어서 빠지는지
+       보여주고 사용자가 고릅니다. 예전에는 "이미 있음 3" 숫자만 띄워서,
+       무엇이 빠졌는지도 왜 빠졌는지도 확인할 길이 없었습니다 */
+    if(dupN){
+      h += '<div class="dupbox"><div class="duphd">이미 있는 단어 ' + dupN + '개</div>'
+        + P0.dups.slice(0,8).map(d =>
+            '<div class="duprow"><b>' + esc(d.it.word) + '</b>'
+          + '<span>' + esc(d.cur.pack || '분류 없음') + ' · '
+          + esc(d.cur.meaning || '뜻 없음') + '</span>'
+          + (d.it.pack && d.it.pack !== d.cur.pack
+              ? '<i>넣으려는 곳: ' + esc(d.it.pack) + '</i>' : '')
+          + '</div>').join("")
+        + (dupN > 8 ? '<p class="note">외 ' + (dupN - 8) + '개</p>' : '')
+        + '<div class="dupsel">'
+        + [["skip","건너뛰기","그대로 둡니다"],
+           ["fill","기존 카드에 합치기","빈 칸만 채우고 팩이 다르면 태그로 남깁니다. 진도는 그대로"],
+           ["add","따로 추가","같은 단어 카드가 두 장이 됩니다"]]
+          .map(o => '<button class="dupopt' + (dMode===o[0] ? ' on' : '')
+            + '" data-a="dup-mode" data-k="' + o[0] + '">'
+            + '<b>' + o[1] + '</b><span>' + o[2] + '</span></button>').join("")
+        + '</div>'
+        + (dMode === "add"
+            ? '<p class="dupwarn">같은 단어가 두 장이면 <b>다른 기기와 맞출 때 한 장이 다른 장을 덮고, '
+              + '한 장을 지우면 둘 다 지워집니다.</b> 팩을 나누려면 "합치기" 가 안전합니다 — '
+              + '카드는 한 장으로 두고 새 팩 이름을 태그로 남깁니다.</p>'
+            : '')
+        + '</div>';
+    }
+    if(P0.inbatch.length)
+      h += '<p class="note">붙여넣은 글 안에서 '
+        + esc(P0.inbatch.map(x=>x.word).slice(0,5).join(", "))
+        + (P0.inbatch.length>5 ? ' 외 ' + (P0.inbatch.length-5) + '개' : '')
+        + ' 가 두 번 나왔습니다 — 첫 줄만 넣습니다.</p>';
   }
 
   /* AI 로 정리하기 — 단어를 먼저 넣어야만 복사되던 것이 가장 헷갈리는 부분이었습니다.
@@ -3898,24 +3959,108 @@ function parseRows(text){
   return kept;
 }
 let importPreview=null, importPack="";
+
+/* ── 붙여넣은 표에서 단어 칸 추려내기 ───────────────────────────────
+   AI 가 주는 표는 모양이 일정하지 않습니다. 여기서 걸러 두지 않으면
+   머리말 줄이나 구분선이 그대로 카드가 되고, 그다음부터 그것들이
+   "이미 있는 단어" 로 잡혀 **멀쩡한 단어가 조용히 빠집니다.**
+   사용자가 "없는 단어인데 이미 있다고 한다" 고 보고한 것이 이것이었습니다. */
+
+/** 보이지 않는 문자와 꾸밈을 떼어 낸 단어. 가져올 때는 저장 전에 이걸 거칩니다 */
+function normWord(w){
+  /* 순서가 중요합니다 — 꼬리 장식(`)`)을 먼저 떼면 "(v.)" 가 "(v." 가 되어
+     품사 규칙이 더는 맞지 않습니다. 품사 꼬리를 먼저 뗍니다 */
+  return String(w||"")
+    .replace(/[​-‍﻿]/g, "")                   // 폭 없는 공백 — trim() 이 못 뗍니다
+    .replace(/\s*[(\[][^)\]]*[)\]]\s*$/, "")                 // 뒤에 붙은 (v.) [동사]
+    .replace(/\s*,\s*(?:n|v|adj|adv|prep|conj)\.?\s*$/i, "") // , adj.
+    .replace(/^\s*[(\[][^)\]]*[)\]]\s*/, "")                 // 앞에 붙은 (구어) [美]
+    .replace(/^[\s*_`"'«»“”‘’(\[]+/, "")                     // **굵게** · "따옴표" · (괄호
+    .replace(/[\s*_`"'«»“”‘’)\]]+$/, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+/** 영어 단어·숙어로 볼 수 있는가. 구분선(---, ———)과 번호 줄을 버립니다 */
+const wordish = w => /[A-Za-z]/.test(w);
+
+const IMP_LABELS = ["단어","word","영어","영단어","표제어","어휘","vocabulary","vocab",
+  "뜻","의미","meaning","definition","정의","한국어","해석",
+  "예문","example","sentence","문장",
+  "함께쓰는표현","연어","collocation",
+  "태그","tag","tags","분류", "팩","pack","덱","deck","출처",
+  "비슷한말","유의어","synonym","synonyms", "반대말","반의어","antonym","antonyms"]
+  .map(s=>s.replace(/\s/g,"").toLowerCase());
+
+/** 첫 줄이 머리말인가 — 칸 두 개 이상이 열 이름이면 머리말로 봅니다.
+    **첫 줄에만 적용합니다** (`pack`/`팩` 같은 단어가 진짜 카드일 수도 있으니).
+    예전에는 첫 칸이 정확히 "단어"/"word" 일 때만 버려서, "영단어" 나
+    "단어(영어)" 로 오면 머리말이 카드로 들어갔습니다 */
+function isHeaderRow(r){
+  if(!r || !r.length) return false;
+  const hit = r.filter(c => IMP_LABELS.includes(
+    String(c||"").toLowerCase().replace(/[\s()[\]:·]/g, ""))).length;
+  return hit >= 2 || (r.length === 1 && hit === 1);
+}
+
 function doPreview(){
   const raw=$("#imp").value;
   const pv=$("#imp-pack")?$("#imp-pack").value:"";
   importPack = pv==="__new" ? "" : pv;
   const rows=parseRows(raw);
   if(!rows.length){ toast("읽을 내용이 없습니다"); return; }
-  const head=rows[0].map(c=>c.trim().toLowerCase());
-  const body=(head[0]==="word"||head[0]==="단어")?rows.slice(1):rows;
-  const have=new Set(D.cards.map(c=>c.word.toLowerCase()));
-  const items=body.map(r=>({
-    word:(r[0]||"").trim(), meaning:(r[1]||"").trim(), example:(r[2]||"").trim(),
-    collocation:(r[3]||"").trim(), tags:(r[4]||"").split(/[;|]/).map(t=>t.trim()).filter(Boolean),
-    pack:((r[5]||"").trim()||importPack), syn:(r[6]||"").trim(), ant:(r[7]||"").trim()
-  })).filter(x=>x.word);
+  const body = isHeaderRow(rows[0]) ? rows.slice(1) : rows;
+
+  /* 기존 카드는 정규화한 소문자 단어로 찾습니다. **어느 카드인지도 함께 쥐고 있어야**
+     미리보기에서 "어느 팩에 있는 무슨 뜻인지" 를 보여줄 수 있습니다 */
+  const have=new Map();
+  D.cards.forEach(c=>{ const k=normWord(c.word).toLowerCase();
+    if(k && !have.has(k)) have.set(k,c); });
+
+  const seen=new Set(), items=[], dups=[], inbatch=[];
+  body.forEach(r=>{
+    /* AI 가 번호 열을 붙여 오는 일이 있습니다 — 첫 칸이 숫자뿐이면 밀어냅니다 */
+    let c=r;
+    if(c.length>=3 && /^\d+[.)]?$/.test(String(c[0]||"").trim())) c=c.slice(1);
+    const word=normWord(c[0]||"");
+    if(!wordish(word)) return;                      // 구분선·번호·설명 줄
+    const it={ word, meaning:(c[1]||"").trim(), example:(c[2]||"").trim(),
+      collocation:(c[3]||"").trim(),
+      tags:(c[4]||"").split(/[;|,]/).map(t=>t.trim()).filter(Boolean),
+      pack:((c[5]||"").trim()||importPack), syn:(c[6]||"").trim(), ant:(c[7]||"").trim() };
+    const k=word.toLowerCase();
+    /* 같은 묶음 안에서 겹친 줄은 첫 줄만 씁니다. 예전에는 둘 다 들어가서
+       같은 단어 카드가 두 장 생겼습니다 */
+    if(seen.has(k)){ inbatch.push(it); return; }
+    seen.add(k); items.push(it);
+    const cur=have.get(k);
+    if(cur) dups.push({it, cur});
+  });
   const fresh=items.filter(x=>!have.has(x.word.toLowerCase()));
-  importPreview={items, fresh, dup:items.length-fresh.length,
-    missing:fresh.filter(x=>!x.meaning).length, raw};
+  importPreview={ items, fresh, dups, inbatch,
+    dupMode:(importPreview&&importPreview.dupMode)||"skip",
+    missing:fresh.filter(x=>!x.meaning).length, raw };
   render(); $("#imp").value=raw;
+}
+
+/** 이미 있는 카드에 가져온 내용을 **덮어쓰지 않고** 합칩니다.
+    빈 칸만 채우고 태그를 더하며, 진도(seen·interval·due)는 건드리지 않습니다.
+    팩은 한 곳만 가질 수 있으므로, 다른 팩으로 들어온 것은 **태그로 남깁니다** —
+    카드를 두 장으로 늘리면 기기 간 병합에서 한 장이 다른 장을 덮습니다 */
+function fillCard(cur, inc){
+  let hit=false;
+  ["meaning","example","collocation","syn","ant"].forEach(k=>{
+    if(!String(cur[k]||"").trim() && String(inc[k]||"").trim()){ cur[k]=inc[k]; hit=true; }
+  });
+  const tags=new Set((cur.tags||[]).map(t=>String(t).trim()).filter(Boolean));
+  const before=tags.size;
+  (inc.tags||[]).forEach(t=>{ if(t) tags.add(String(t).trim()); });
+  if(inc.pack){
+    if(!cur.pack){ cur.pack=inc.pack; hit=true; }
+    else if(inc.pack!==cur.pack) tags.add(inc.pack);
+  }
+  if(tags.size!==before) hit=true;
+  if(hit){ cur.tags=[...tags]; touch(cur); }
+  return hit;
 }
 const PROMPT_HEAD =
     "너는 영단어 학습 자료를 정리하는 도우미야. 아래 자료를 Lexicon 플래시카드용 표로 바꿔줘.\n\n"
@@ -4204,10 +4349,22 @@ document.addEventListener("click", e=>{
     const el=$("#csvin"); if(el){ el.value=""; el.click(); }
     return; }
   if(a==="bulk-fill"){ bulkFill(); return; }
+  if(a==="dup-mode"){
+    if(importPreview){ importPreview.dupMode=t.dataset.k; render(); }
+    return; }
   if(a==="commit"){
-    D.cards=D.cards.concat(importPreview.fresh.map(x=>newCard(x)));
-    const n=importPreview.fresh.length; importPreview=null; syncPacks(); save(); render();
-    toast(n+"개를 추가했습니다"); return;
+    const P=importPreview; if(!P) return;
+    let added=0, filled=0;
+    if(P.fresh.length){ D.cards=D.cards.concat(P.fresh.map(x=>newCard(x))); added=P.fresh.length; }
+    if(P.dupMode==="add" && P.dups.length){
+      P.dups.forEach(d=>D.cards.push(newCard(d.it))); added+=P.dups.length;
+    } else if(P.dupMode==="fill" && P.dups.length){
+      P.dups.forEach(d=>{ if(fillCard(d.cur, d.it)) filled++; });
+    }
+    importPreview=null; syncPacks(); save(); render();
+    toast([added?added+"개를 추가했습니다":"", filled?filled+"개를 합쳤습니다":""]
+      .filter(Boolean).join(" · ") || "바뀐 것이 없습니다");
+    return;
   }
   if(a==="copy-prompt"){
     /* 예전에는 단어를 먼저 넣어야만 복사됐습니다. 순서가 거꾸로였습니다 --
