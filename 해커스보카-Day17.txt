@@ -1,0 +1,58 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| prolonged | 오래 계속되는 | People exposed to loud noise for a prolonged period of time may suffer hearing loss. |  | Day17;형용사;별3 | 해커스 보카/Day 17 | lengthy, extended, protracted |  | [prəlɔ́ːŋd] |
+| relative | 상대적인 | The church offered relative peace and quiet in the chaotic city. | adv. relatively | Day17;형용사;별3 | 해커스 보카/Day 17 | comparable |  | [rélətiv] |
+| ultimate | 최종의, 궁극적인 / 근본적인 | The ultimate objective of Hinkley's research is to expand the Earth's natural resources. | adv. ultimately | Day17;형용사;별3 | 해커스 보카/Day 17 | eventual, final, supreme, fundamental, basic, primary |  | [ʌ́ltəmət] |
+| brittle | 부러지기 쉬운, 깨지기 쉬운 | The old woman's bones were so brittle that her leg broke when she slipped on ice. |  | Day17;형용사;별3 | 해커스 보카/Day 17 | easily broken, breakable, fragile |  | [brítl] |
+| pioneer | 선구자 / 개척하다 | Steve Jobs was a technology pioneer who revolutionized the computer industry. |  | Day17;명사;동사;별3 | 해커스 보카/Day 17 | leader, founder, first develop, first start, first use, introduce |  | [pàiəníər] |
+| heritage | 유산; 전통 | Museums are an important means by which a country can conserve its cultural heritage. |  | Day17;명사;별3 | 해커스 보카/Day 17 | inheritance, legacy, tradition |  | [héritidʒ] |
+| impetus | 자극 | Einstein's work provided the impetus for a major shift in the study of physics. | impetuous (성급한) = hasty, rash | Day17;명사;별3 | 해커스 보카/Day 17 | motivation, stimulus, spur, impulse |  | [ímpətəs] |
+| threshold | 한계점, 기준점 | Due to the heavy rain, the dam reached its threshold for water containment and broke. |  | Day17;명사;별3 | 해커스 보카/Day 17 | limit, margin |  | [θréʃhould] |
+| intensify | 강화하다 | Free trade agreements are designed to intensify economic ties between member countries. | adj. intense; n. intensity | Day17;동사;별3 | 해커스 보카/Day 17 | reinforce, strengthen, enhance |  | [inténsəfài] |
+| orchestrate | 조직하다 | The military leaders orchestrated a scheme that overthrew the democratically elected government. |  | Day17;동사;별3 | 해커스 보카/Day 17 | coordinate, organize |  | [ɔ́ːrkəstrèit] |
+| hamper | 방해하다 | Waterfalls hamper the progress of salmon as they migrate upstream. |  | Day17;동사;별3 | 해커스 보카/Day 17 | obstruct, impede, hinder, restrict, prevent |  | [hǽmpər] |
+| inhospitable | 불친절한 / 살기에 부적당한 | The inhospitable tribe never welcomed any outsiders into its village. |  | Day17;형용사;별3 | 해커스 보카/Day 17 | unfavorable, unfriendly, not suitable, uninhabitable |  | [inháspitəbl] |
+| roughly | 대략 | The US has spent roughly $2 billion a year on AIDS-related issues since 1989. | adj. rough | Day17;부사;별3 | 해커스 보카/Day 17 | approximately, nearly, about |  | [rʌ́fli] |
+| prevalent | 일반적인, 널리 퍼진 | The most prevalent diseases of our times are related to modern lifestyle. | v. prevail | Day17;형용사;별3 | 해커스 보카/Day 17 | common, general, widespread |  | [prévələnt] |
+| orientation | 성향, 경향 / 오리엔테이션 | Researchers have discovered that most people prefer friends with a similar political orientation. | v. orient (적응하다) = adjust, adapt | Day17;명사;별3 | 해커스 보카/Day 17 | perspective, inclination, disposition, introduction, induction |  | [ɔ̀ːriəntéiʃən] |
+| converge | 모이다 | Curious onlookers began to converge at the scene of the crime. |  | Day17;동사;별3 | 해커스 보카/Day 17 | come together, meet, move closer, gather |  | [kənvə́ːrdʒ] |
+| inflate | 부풀다, 부풀리다 | The hot-air balloon slowly inflated and took off. | n. inflation | Day17;동사;별3 | 해커스 보카/Day 17 | swell, bloat, expand, enlarge |  | [infléit] |
+| terrain | 지역, 지형 | Under Diane's direction, crew members will search the terrain for meteorites. |  | Day17;명사;별2 | 해커스 보카/Day 17 | land, landscape, territory, area |  | [təréin] |
+| critically | 결정적으로 | The first few years of a child's development are critically important. | adj. critical | Day17;부사;별2 | 해커스 보카/Day 17 | fundamentally, decisively, crucially |  | [krítikəli] |
+| in earnest | 진지하게 | The president spoke in earnest about the growing social problems. |  | Day17;숙어;별2 | 해커스 보카/Day 17 | seriously, earnestly, solemnly |  |  |
+| agile | 민첩한 | For such huge beasts, brown bears are amazingly agile and can easily chase down prey in open areas. | the river otter's active movements (민첩한) | Day17;형용사;별2 | 해커스 보카/Day 17 | nimble, quick, active |  | [ǽdʒəl] |
+| standstill | 정지, 멈춤 | A labor strike can bring a company's production to a standstill. |  | Day17;명사;별2 | 해커스 보카/Day 17 | complete stop, halt |  | [stǽndstìl] |
+| persuasively | 설득력 있게 | In sales, the ability to talk persuasively to customers is essential. |  | Day17;부사;별2 | 해커스 보카/Day 17 | convincingly, compellingly |  | [pərswéisivli] |
+| miraculous | 기적적인, 놀라운 | The child's miraculous escape from the burning building was caught on camera. |  | Day17;형용사;별2 | 해커스 보카/Day 17 | amazing, astonishing, marvelous, unbelievable |  | [mirǽkjuləs] |
+| intangible | 무형의 | Particle physics is primarily concerned with intangible objects. |  | Day17;형용사;별2 | 해커스 보카/Day 17 | nonmaterial, impalpable, incorporeal |  | [intǽndʒəbl] |
+| secure | 확보하다 / 안전한 | The manager approved Foster's plan to secure necessary information. | secure the ship's anchor (고정시키다) | Day17;동사;형용사;별2 | 해커스 보카/Day 17 | obtain, get, acquire, procure, safe, fasten, chain |  | [sikjúər] |
+| subsist | 생존하다 | The shipwrecked sailors had to subsist on the few fish they could catch each day. | n. subsistence | Day17;동사;별2 | 해커스 보카/Day 17 | survive, endure, exist |  | [səbsíst] |
+| undoubtedly | 확실히 | Babe Ruth is undoubtedly one of the greatest baseball players of all time. |  | Day17;부사;별2 | 해커스 보카/Day 17 | certainly, definitely, without question |  | [ʌndáutidli] |
+| dispose of | ~을 처리하다 | Area residents can dispose of their Christmas trees by dropping them off at the city's recycling center. |  | Day17;숙어;별2 | 해커스 보카/Day 17 | get rid of |  |  |
+| archive | 공식 기록 | In the past few decades, the government has converted many archives from paper to electronic form. |  | Day17;명사;별2 | 해커스 보카/Day 17 | official document, record |  | [áːrkaiv] |
+| regenerate | 재건하다, 재생시키다 | The public school system was regenerated by a dramatic increase in government funding. |  | Day17;동사;별2 | 해커스 보카/Day 17 | renew, revive, revitalize |  | [ridʒénərèit] |
+| mode | 방식, 형태 | The North Americans showed a desire for an effective mode of transportation. | in an orderly fashion (방식으로) | Day17;명사;별2 | 해커스 보카/Day 17 | method, form, fashion, style |  | [moud] |
+| commemorate | 기념하다 | To commemorate the victory, Napoleon awarded everyone in his army a medal. |  | Day17;동사;별2 | 해커스 보카/Day 17 | celebrate, memorialize |  | [kəmémərèit] |
+| imprecise | 부정확한 | Predicting earthquakes is an imprecise science because of the limited data available. |  | Day17;형용사;별2 | 해커스 보카/Day 17 | inexact, inaccurate |  | [ìmprisáis] |
+| state | 명시하다 | A passport states a traveler's name, birth date, and nationality. |  | Day17;동사;별2 | 해커스 보카/Day 17 | indicate, specify, express |  | [steit] |
+| anticipate | 예상하다 | Michelle did not prepare much for the exam, so she did not anticipate such an excellent result. | anticipate the film's release (고대하다) | Day17;동사;별2 | 해커스 보카/Day 17 | expect, foresee, predict, forecast, await, look forward to |  | [æntísəpèit] |
+| henceforth | 지금부터는 | The court ruled that the company is henceforth required to offer health insurance to its employees. |  | Day17;부사;별2 | 해커스 보카/Day 17 | from now on, hereafter |  | [hènsfɔ́ːrθ] |
+| transparent | 투명한, 명백한 | The conglomerate makes its financial records as transparent as possible. |  | Day17;형용사;별2 | 해커스 보카/Day 17 | clear, obvious, lucid, limpid |  | [trænspɛ́ərənt] |
+| prominence | 중요성 | The right to equal pay began gaining prominence in the US in 1942. | adj. prominent; adv. prominently | Day17;명사;별2 | 해커스 보카/Day 17 | importance, greatness |  | [prámənəns] |
+| incorporate | 통합하다 | Louise traced how Americans incorporate nature into their urban and suburban lives. |  | Day17;동사;별2 | 해커스 보카/Day 17 | include, combine, integrate |  | [inkɔ́ːrpərèit] |
+| meticulous | 꼼꼼한 | A meticulous doctor checks the patient's medical records for allergies before prescribing medicine. | adv. meticulously | Day17;형용사;별2 | 해커스 보카/Day 17 | careful, thorough, precise |  | [mətíkjuləs] |
+| dismantle | 분해하다 | Before they could transport the bed, the movers had to dismantle its huge wooden frame. |  | Day17;동사;별2 | 해커스 보카/Day 17 | take apart, disassemble, break down |  | [dismǽntl] |
+| lavish | 풍부한, 호화로운 | Under the Christmas tree were lavish gifts, which were donated by local charities, for all of the children. | lavish praise on the actors (아낌없이 주다) | Day17;형용사;별2 | 해커스 보카/Day 17 | rich, deluxe, luxurious, shower, heap |  | [lǽviʃ] |
+| dynamic | 역동적인 / 원동력, 힘 | The Ugrós is a dynamic folk dance from Hungary that features jumping couples. |  | Day17;형용사;명사;별1 | 해커스 보카/Day 17 | active, energetic, vigorous, robust, energy, power, driving force |  | [dainǽmik] |
+| overlook | 간과하다 | Economists tend to overlook factors that cannot be easily quantified. |  | Day17;동사;별1 | 해커스 보카/Day 17 | miss, fail to notice |  | [òuvərlúk] |
+| dormant | 활동하지 않는, 휴면 중인 | In many horror movies, a monster lies dormant until roused by a careless human. |  | Day17;형용사;별1 | 해커스 보카/Day 17 | inactive, torpid |  | [dɔ́ːrmənt] |
+| exempt | 면제된 | Single people who earn less than $10,000 per year are exempt from paying income taxes. |  | Day17;형용사;별1 | 해커스 보카/Day 17 | free, immune, not subject to, excused |  | [igzémpt] |
+| as a whole | 전체적으로 | Viewed as a whole, the thirteen original US colonies had a population of 2.4 million. |  | Day17;숙어;별1 | 해커스 보카/Day 17 | generally, overall, all together, by and large |  |  |
+| rather | 오히려 / 좀, 약간 | The rain did not stop. Rather, it became stronger. |  | Day17;부사;별1 | 해커스 보카/Day 17 | instead, somewhat, slightly |  | [rǽðər] |
+| justify | 옹호하다, (정당성을) 증명하다 | The debate club taught its members how to justify their opinions with logic and facts. | n. justification (변명) = excuse, explanation | Day17;동사;별1 | 해커스 보카/Day 17 | support, prove, give a rational basis of |  | [dʒʌ́stəfài] |
+| chaotic | 무질서한 | Kindergarten classes can become chaotic if children are not constantly engaged in some form of activity. |  | Day17;형용사;별1 | 해커스 보카/Day 17 | disorganized, disordered, anarchic |  | [keiátik] |
+| commence | 시작하다 | The film festival commenced on Saturday morning and lasted until Sunday night. |  | Day17;동사;별1 | 해커스 보카/Day 17 | begin, start, originate, initiate |  | [kəméns] |
+| improvised | 즉흥의 | Some comedians do not prepare jokes in advance and instead give improvised performances. |  | Day17;형용사;별1 | 해커스 보카/Day 17 | unplanned, unprepared, unrehearsed |  | [ímprəvàizd] |
+| stem from | ~에서 유래하다 | The rise in fuel prices stemmed from the energy crisis of the 1970s. |  | Day17;숙어;별1 | 해커스 보카/Day 17 | originate from, derive from, arise from |  |  |
+| judiciously | 현명하게, 분별 있게 | Good rulers judiciously use their power instead of abusing it. |  | Day17;부사;별1 | 해커스 보카/Day 17 | wisely, sensibly, prudently |  | [dʒuːdíʃəsli] |
+| tolerate | 용인하다, 허용하다 | The manager stated that inappropriate behavior in the workplace would not be tolerated. |  | Day17;동사;별1 | 해커스 보카/Day 17 | accept, allow, permit |  | [tálərèit] |
