@@ -254,22 +254,34 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
   background:transparent;color:var(--muted);font:inherit;font-size:12px;font-weight:600;cursor:pointer;}
 .modepick .mp.on{border-color:var(--accent);color:var(--ink);background:rgba(42,76,125,.08);}
 
-/* 따로 공부하는 팩 — 일반 학습과 **색으로 구별**합니다 */
+/* 따로 공부하는 팩 — 일반 학습과 **색으로 구별**합니다.
+   해커스 보카 교재 색(청록)을 그대로 씁니다 */
 .solobox{display:block;width:100%;text-align:left;margin-top:14px;padding:14px 15px;
   border:0;border-radius:15px;cursor:pointer;font:inherit;
-  background:linear-gradient(135deg,#4B3A8F,#2F2A63);color:#F2EEFF;}
+  background:linear-gradient(135deg,#17A89E,#0E7C74);color:#EAFBF9;}
 .solohd{font-size:16.5px;font-weight:800;letter-spacing:-.01em;}
-.solosub{font-size:12.5px;opacity:.85;margin-top:3px;}
-.sologo{font-size:12.5px;font-weight:700;opacity:.9;margin-top:9px;}
-.btn.solo{background:#4B3A8F;border-color:#4B3A8F;color:#F2EEFF;}
-.btn.ghost.solo{background:transparent;color:#4B3A8F;border-color:#9A8BD8;}
-.solopanel .h2{color:#4B3A8F;}
+.solosub{font-size:12.5px;opacity:.88;margin-top:3px;}
+.sologo{font-size:12.5px;font-weight:700;opacity:.92;margin-top:9px;}
+.btn.solo{background:#17A89E;border-color:#17A89E;color:#fff;}
+.btn.ghost.solo{background:transparent;color:#0E7C74;border-color:#7FD4CD;}
+.solopanel .h2{color:#0E7C74;}
+/* Day 달력 — 네모가 순서대로 */
+.daygrid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:9px;}
+.daycell{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:2px;padding:9px 0 8px;border:1px solid var(--line);border-radius:12px;
+  background:var(--card);color:var(--ink);font:inherit;cursor:pointer;}
+.daycell b{font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:-.02em;}
+.daycell em{font-style:normal;font-size:11px;font-weight:700;color:#0E7C74;}
+.daycell i{font-style:normal;font-size:11px;color:var(--line);}
+.daycell.on{background:#17A89E;border-color:#17A89E;color:#fff;}
+.daycell.on em{color:#D6FBF7;}
+.daycell.on i{color:rgba(255,255,255,.45);}
+.daycell i{font-style:normal;font-size:11px;color:var(--muted);opacity:.65;}
+.daycell.fin{border-color:#7FD4CD;background:rgba(23,168,158,.08);}
+.daycell.fin em{color:#0E7C74;}
+.daycell.fin.on{background:#17A89E;}
 .fchip em{font-style:normal;color:var(--green);font-weight:700;margin-left:5px;}
 .fchip.on em{color:#D8FFEE;}
-.fchip.c-day{border-color:rgba(75,58,143,.35);color:#4B3A8F;}
-.fchip.c-day.on{background:#4B3A8F;}
-.daychips{gap:5px;margin-top:8px;}
-.daychips .fchip{padding:5px 0;font-size:12.5px;min-width:46px;text-align:center;}
 .seg.sm button{font-size:11.5px;padding:5px 7px;white-space:nowrap;}
 
 /* 단어장 — 종이 단어장처럼 한 줄에 하나씩, 가리고 외웁니다.
@@ -1935,24 +1947,45 @@ const modePicker=()=>'<div class="modepick">'
       +'" data-a="ask-mode" data-k="'+m[0]+'">'+m[1]+'</button>').join("")
   + '</div>';
 
+/** 몇 번째 날까지 끝냈는가 — 그 날 단어를 **모두 한 번 이상 본** 날까지 셉니다.
+    해커스 보카는 "하루에 한 Day" 로 나가는 교재라, 남은 장수보다 진도가 중요합니다 */
+function soloProgress(){
+  const gs=soloGroups(); let done=0;
+  for(const g of gs){
+    const cs=active().filter(c=>inPack(c,g));
+    if(cs.length && cs.every(c=>c.seen>0)) done++; else break;
+  }
+  return {done, total:gs.length, next:gs[done]||""};
+}
+/** 그 날 단어를 전부 꺼냅니다 — **하루 상한을 적용하지 않습니다.**
+    교재가 Day 단위로 짜여 있으므로 "오늘 15장" 으로 끊으면 진도가 어긋납니다 */
+const soloQueue = scope => buildQueue({kind:"review", pack:scope, over:true});
+
 /** 따로 공부하기로 한 팩의 전용 진입점.
     **학습 홈의 일반 시작과 섞이지 않습니다** — `inScope()` 가 이 팩을 빼기 때문에
     네 칸 숫자에도 안 잡히고 여기서만 나옵니다. 색을 달리해 한눈에 구별되게 했습니다 */
 function soloBanner(){
   const p=D.s.soloPack; if(!p) return "";
-  const total=active().filter(c=>inPack(c,p)).length;
-  if(!total) return "";
-  const n=buildQueue({kind:"review", pack:p}).length;
+  if(!active().some(c=>inPack(c,p))) return "";
+  const pr=soloProgress();
+  /* 끝낸 날과 다음 날을 **같은 표기로** 적습니다 —
+     한쪽은 "Day 1", 다른쪽은 "Day 02" 로 나오면 어색합니다 */
+  const short = g => String(g||"").replace(/^.*\//,"");
+  const gs = soloGroups();
+  const sub = (pr.total && pr.done>=pr.total)
+    ? (short(gs[gs.length-1])+"까지 다 끝냈습니다")
+    : (pr.done ? (short(gs[pr.done-1])+"까지 끝냈습니다 · 오늘은 "+short(pr.next))
+               : ("아직 시작 전 · 오늘은 "+short(pr.next)));
   return '<button class="solobox" data-a="solo-open">'
     +'<div class="solohd">'+esc(p)+'</div>'
-    +'<div class="solosub">단어 '+total+'개 · 오늘 볼 것 '+n+'장</div>'
+    +'<div class="solosub">'+esc(sub)+'</div>'
     +'<div class="sologo">열기 →</div></button>';
 }
 
 /* ── 따로 공부하는 팩의 전용 화면 (단어장처럼) ──────────────────────
    종이 단어장은 **손으로 가리고 외웁니다.** 플래시카드 한 장씩만으로는
    "쭉 훑어보기" 가 안 돼서, 목록 + 가리기 + 암기 시작을 한 화면에 뒀습니다. */
-let soloDays=[], soloHide="";   // soloHide: "" | "mean" | "word"
+let soloDays=[], soloHide="", soloAll=false;   // soloHide: "" | "mean" | "word"
 
 /** 그 팩 바로 아래 묶음들 (Day 01, Day 02 …) */
 function soloGroups(){
@@ -1971,39 +2004,44 @@ function viewSolo(){
     +'<p>설정 → 하루 학습량에서 정할 수 있습니다.</p></div></div>';
   const groups=soloGroups();
   const sel=soloDays.filter(d=>groups.includes(d));
-  const scope=sel.length?sel:groups;
+  /* 아무것도 안 고르면 **오늘의 Day 하나**가 기본입니다.
+     30일치를 통째로 내주면 1,000장이 넘어 Day 단위 학습이 무너집니다.
+     전부 보려면 "전체 보기" 를 누릅니다 */
+  const pr0=soloProgress();
+  const scope=sel.length ? sel : (soloAll ? groups : (pr0.next?[pr0.next]:groups));
   const cards=active().filter(c=>inPack(c,scope))
     .sort((a,b)=>a.pack.localeCompare(b.pack)||a.word.localeCompare(b.word));
-  const due=buildQueue({kind:"review", pack:scope}).length;
+  const due=soloQueue(scope).length;
 
   let h='<div class="panel solopanel">'
     +'<div class="row" style="justify-content:space-between;align-items:baseline">'
     +'<div class="h2" style="margin:0">'+esc(root)+'</div>'
     +'<button class="linkish" data-a="solo-back">학습으로</button></div>';
 
-  /* Day 고르기 — 여러 개를 겹쳐 고를 수 있습니다 (누적 학습).
-     30일치라 칩이 길어지므로 **숫자만** 적습니다. "Day 01" 을 다 적으면 여덟 줄이 됩니다.
-     `c-day` 를 꼭 붙일 것 — `.fchip.on` 은 흰 글자만 주고 배경은 `c-*` 에서 옵니다.
-     빠뜨리면 고른 칩이 흰 바탕에 흰 글자가 되어 **글씨가 사라집니다** */
-  h+='<div class="row" style="justify-content:space-between;align-items:baseline;margin-top:12px">'
-    +'<div class="h2" style="margin:0;font-size:13.5px">어느 날을 볼까요'+helpBtn("soloday")+'</div>'
-    + (sel.length?'<button class="linkish" data-a="solo-day" data-k="">전체 보기</button>':'')
+  /* Day 고르기 — **달력처럼 네모 격자**로 늘어놓습니다. 30일치가 칩으로 흘러가면
+     어디가 어딘지 알기 어렵습니다. 네모 안에 날짜를 크게 쓰고, 오늘 볼 장수는
+     아래 작은 글씨로 떼어 놓습니다. 붙여 쓰면 "01 15" 가 "0115" 로 읽힙니다 */
+  h+='<div class="row" style="justify-content:space-between;align-items:baseline;margin-top:14px">'
+    +'<div class="h2" style="margin:0">어느 날을 볼까요'+helpBtn("soloday")+'</div>'
+    + '<button class="linkish" data-a="solo-all">'+(soloAll||sel.length?"오늘 것만":"전체 보기")+'</button>'
     +'</div>'
     + helpBox("soloday",'여러 날을 함께 누르면 <b>누적해서</b> 봅니다 — Day 1 → 1·2 → 1·2·3 처럼요.<br>'
-      +'칩 안의 <em>초록 숫자</em>는 그날 오늘 볼 장수입니다. 아무것도 안 고르면 전체입니다.')
-    +'<div class="fchips daychips">'
+      +'네모 아래 <em>초록 숫자</em>는 그날 오늘 볼 장수입니다. 아무것도 안 고르면 전체입니다.')
+    +'<div class="daygrid">'
     + groups.map(g=>{
         const label=(g.slice(root.length).replace(/^\//,"")||"전체").replace(/^Day\s*/i,"");
-        const d=buildQueue({kind:"review", pack:g}).length;
-        return '<button class="fchip c-day'+(sel.includes(g)?" on":"")+'" data-a="solo-day" data-k="'+esc(g)+'">'
-          + esc(label)+(d?'<em>'+d+'</em>':'')+'</button>';
+        const cs=active().filter(c=>inPack(c,g));
+        const fin=cs.length && cs.every(c=>c.seen>0);
+        return '<button class="daycell'+(sel.includes(g)?" on":"")+(fin?" fin":"")+'" data-a="solo-day" data-k="'+esc(g)+'"'
+          +' aria-label="Day '+esc(label)+' 단어 '+cs.length+'개'+(fin?" 끝내" :"")+'">'
+          +'<b>'+esc(label)+'</b>'+(fin?'<em>✓</em>':'<i>'+cs.length+'</i>')+'</button>';
       }).join("")
     +'</div>';
 
   /* 진도 나가기.
      고른 범위가 하루 상한보다 많으면 **왜 적게 나오는지** 적어 줍니다 —
      "24개인데 왜 15장?" 이 되지 않도록 */
-  const capped = cards.length>due && due>0;
+  const capped = false;   // 해커스는 Day 단위라 상한을 안 걸어 가리지 않습니다
   h+='<div style="margin-top:13px;display:grid;gap:8px">'
     +'<button class="btn solo wide" data-a="solo-study" '+(due?"":"disabled")+'>'
     +(due?("암기 시작 · "+due+"장"):"오늘 몫을 다 했습니다")+'</button>'
@@ -4491,17 +4529,18 @@ document.addEventListener("click", e=>{
   if(a==="solo-back"){ view="study"; render(); return; }
   if(a==="solo-day"){
     const k=t.dataset.k;
-    if(!k) soloDays=[];
+    if(!k){ soloDays=[]; soloAll=false; }
     else { const i=soloDays.indexOf(k); if(i<0) soloDays.push(k); else soloDays.splice(i,1); }
     render(); return; }
   if(a==="solo-hide"){ soloHide=t.dataset.k; render(); return; }
+  if(a==="solo-all"){ soloAll=!(soloAll||soloDays.length); soloDays=[]; render(); return; }
   /* 가린 칸을 누르면 그것만 잠깐 보입니다 (종이 단어장을 손으로 들추는 것과 같습니다) */
   if(a==="solo-peek"){ t.classList.toggle("hid"); return; }
   if(a==="solo-study"||a==="solo-spell"||a==="solo-sweep"){
     const gs=soloGroups(), sel=soloDays.filter(d=>gs.includes(d));
     const scope=sel.length?sel:(D.s.soloPack||"");
     if(a==="solo-sweep") startSession({kind:"sweep", pack:scope});
-    else startSession({kind:"review", pack:scope,
+    else startSession({kind:"review", pack:scope, over:true,
       force:a==="solo-spell"?"type_ko2en":(D.s.ask||"")});
     return; }
 
