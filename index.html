@@ -1378,8 +1378,11 @@ function dueToday(p){ const room=D.s.maxReview>0?Math.max(0,D.s.maxReview-todayD
 /** 아직 안 본 카드 중 오늘 꺼낼 수 있는 만큼.
     due 도 함긼 봅니다 — 안 보면 "오늘 넘기기"가 새 단어에는 듣지 않아,
     "내일 다시 나옵니다" 라고 말해 두고 같은 날 바로 다시 나옵니다 */
-function freshList(p){ const used=dayStat(dayKey()).newSeen, now=Date.now();
-  return active().filter(c=>c.seen===0 && c.due<=now && inPack(c,p)).slice(0, Math.max(0, D.s.dailyNew-used)); }
+function freshList(p){ const used=dayStat(dayKey()).newSeen;
+  return freshAll(p).slice(0, Math.max(0, D.s.dailyNew-used)); }
+/** 하루 신규 상한을 무시한, 꺼낼 수 있는 새 카드 전부 (상한 넘겨 하기에서 씁니다) */
+function freshAll(p){ const now=Date.now();
+  return active().filter(c=>c.seen===0 && c.due<=now && inPack(c,p)); }
 function weakList(p){ return active().filter(c=>inPack(c,p) && (c.lapses>0||(c.seen>=2&&c.correct/c.seen<0.7)))
   .sort((a,b)=>b.lapses-a.lapses||(a.correct/(a.seen||1))-(b.correct/(b.seen||1))).slice(0,40); }
 /** 팩 전체 훑기 (일정 무시) */
@@ -1392,7 +1395,10 @@ function buildQueue(o){
   if(o.kind==="focus") ids=weakList(o.pack).map(c=>c.id);
   else if(o.kind==="sweep") ids=sweepList(o.pack).map(c=>c.id);
   else{
-    const due=dueToday(o.pack), fr=freshList(o.pack);
+    /* over = 오늘 상한을 넘겨 이어서 하기. 차례가 된 것은 전부, 신규도 전부 꺼냅니다.
+       일정 계산은 그대로이므로 넘겨서 해도 간격이 망가지지 않습니다 */
+    const due=o.over?dueAll(o.pack):dueToday(o.pack);
+    const fr =o.over?freshAll(o.pack):freshList(o.pack);
     ids=[]; let i=0;
     due.forEach((c,k)=>{ ids.push(c.id); if(k%3===2&&i<fr.length) ids.push(fr[i++].id); });
     while(i<fr.length) ids.push(fr[i++].id);
@@ -1517,6 +1523,18 @@ function pickMode(c){
   if(t.dictation && TTS.ok) pool.push("type_dict");
   return pool[Math.floor(Math.random()*pool.length)];
 }
+/** 세션을 한 가지 형식으로 고정했을 때 쓰는 모드.
+    그 형식이 불가능한 카드는 가능한 쪽으로 돌립니다 — 뜻이 비어 있으면 한→영을
+    낼 수 없고, 예문에 그 단어가 없으면 빈칸을 만들 수 없습니다 */
+function forcedMode(c, f){
+  if(f==="type_ko2en") return (c.meaning||"").trim() ? "type_ko2en" : "en2ko";
+  if(f==="type_spell") return (c.example && hasWord(c.example,c.word)) ? "type_spell"
+    : ((c.meaning||"").trim() ? "type_ko2en" : "en2ko");
+  return f;
+}
+/** 이 카드에 쓸 형식. 세션이 고정 형식이면 그것을, 아니면 설정대로 섞습니다 */
+const modeFor = c => (S && S.force) ? forcedMode(c, S.force) : pickMode(c);
+
 const hasWord=(ex,w)=>new RegExp("\\b"+escRe(w)+"\\w*\\b","i").test(ex);
 function blankOut(ex,w){ const re=new RegExp("\\b("+escRe(w)+"\\w*)\\b","i"); const m=ex.match(re);
   return { text: ex.replace(re,"______"), surface: m?m[1]:w }; }
@@ -1527,11 +1545,34 @@ const byId = id => D.cards.find(c=>c.id===id);
 function startSession(o){
   o=o||{kind:"review"};
   const q=buildQueue(o);
-  if(!q.length){ toast("학습할 카드가 없습니다"); return; }
+  if(!q.length){ offerMore(o); return; }
   S={queue:q, idx:0, flipped:false, animate:false, undo:[], kind:o.kind, pack:o.pack||"",
-     noSched:o.kind!=="review", result:null, right:0, input:""};
-  S.mode=pickMode(byId(q[0]));
+     noSched:o.kind!=="review", force:o.force||"", over:!!o.over,
+     result:null, right:0, input:""};
+  S.mode=modeFor(byId(q[0]));
   view="study"; render(); afterCard();
+}
+
+/** 꺼낼 카드가 없을 때 — **왜 없는지와 무엇을 할 수 있는지**를 알려줍니다.
+    예전에는 "학습할 카드가 없습니다" 한 줄이라, 오늘 상한을 다 썼을 때
+    사용자는 앱이 막힌 것인지 끝난 것인지 구별할 수 없었습니다.
+    Anki 도 상한에 걸리면 "오늘 몫을 늘리기" 를 따로 둡니다 */
+function offerMore(o){
+  o=o||{};
+  if(o.kind!=="review" || o.over){ toast("학습할 카드가 없습니다"); return; }
+  const left = buildQueue({kind:"review", pack:o.pack, over:true}).length;
+  if(!left){
+    toast(o.pack ? "이 팩에는 더 볼 카드가 없습니다" : "오늘 몫을 다 했습니다");
+    return;
+  }
+  const cap = D.s.maxReview>0 ? D.s.maxReview : 0;
+  askYes("오늘 상한을 다 썼습니다",
+    (cap?("하루 최대 복습 "+cap+"장을 이미 채웠습니다. "):"")
+    + "차례가 된 카드가 " + left + "장 더 남아 있습니다.\n\n"
+    + "지금 이어서 하면 일정은 정상대로 잡힙니다. 다만 매일 상한을 넘겨 하면 "
+    + "다음 날 밀리는 양이 늘어납니다 — 자주 그러게 되면 설정에서 하루 신규 단어를 줄이세요.",
+    "상한 넘겨 " + left + "장 더 하기")
+    .then(ok=>{ if(ok) startSession({...o, over:true}); });
 }
 function afterCard(){
   const c=byId(S.queue[S.idx]); if(!c) return;
@@ -1572,7 +1613,7 @@ function grade(q){
   S.idx++;
   if(S.idx>=S.queue.length){ const done={total:S.queue.length,right:S.right,best:S.best||0}; S=null; render(done); return; }
   S.flipped=false; S.result=null; S.input=""; S.animate=false;
-  S.mode=pickMode(byId(S.queue[S.idx]));
+  S.mode=modeFor(byId(S.queue[S.idx]));
   render(); afterCard();
 }
 
@@ -1599,7 +1640,7 @@ function buryCard(){
   S.queue=S.queue.filter((id,i)=>!(id===c.id&&i>=S.idx));
   if(S.idx>=S.queue.length){ const done={total:S.idx,right:S.right}; S=null; render(done); toast("내일 다시 나옵니다"); return; }
   S.flipped=false; S.result=null; S.input=""; S.animate=false;
-  S.mode=pickMode(byId(S.queue[S.idx]));
+  S.mode=modeFor(byId(S.queue[S.idx]));
   render(); afterCard(); toast("내일 다시 나옵니다");
 }
 /** 学習 중에 다른 탭에서 지운 단어가 큐에 남아 있을 수 있습니다.
@@ -1611,7 +1652,7 @@ function pruneQueue(){
   if(!kept.length || idx>=kept.length){ S=null; toast("지운 단어만 남아 학습을 마쳤습니다"); return; }
   S.queue=kept; S.idx=idx;
   S.flipped=false; S.result=null; S.input=""; S.animate=false;
-  S.mode=pickMode(byId(S.queue[S.idx]));
+  S.mode=modeFor(byId(S.queue[S.idx]));
   toast("지운 단어는 건너뛰었습니다");
 }
 function checkTyped(){
@@ -1663,8 +1704,14 @@ function render(done){
        짧은 타이머를 같이 걸어 둘 중 하나만 올려도 뒤집히게 합니다.
        요소는 적용 지점에서 다시 찾습니다 — 사이에 다시 그려졌을 수 있어서입니다 */
     let flipDone=false;
+    const forId = S.queue[S.idx];   // 이 전환은 "이 카드" 를 위한 것입니다
     const playFlip=()=>{
       if(flipDone) return; flipDone=true;
+      /* 그 사이 다음 카드로 넘어갔으면 아무것도 하지 않습니다.
+         예전에는 뒤집은 직후 빠르게 채점하면 남은 타이머가 **다음 카드의 뒷면을 열어
+         답을 미리 보여줬습니다** (S.flipped 는 false 인데 화면만 뒤집힘).
+         손으로도 스와이프 채점이나 Space→3 연타로 닿습니다 */
+      if(!S || !S.flipped || S.queue[S.idx]!==forId) return;
       const el=$("#flipwrap"); if(el) el.classList.add("flipped");
     };
     if($("#flipwrap")){
@@ -1751,7 +1798,12 @@ function viewStudyHome(done){
     +'<div style="margin-top:15px;display:grid;gap:8px">'
     +'<button class="btn wide" data-a="start" '+(q?"":"disabled")+'>'
     +(q?("시작 · "+q+"장"+((today+fl)>q?(" (오늘 남은 "+(today+fl)+"장 중)"):"")):"오늘 복습할 카드 없음")+'</button>'
-    +'<button class="btn ghost wide" data-a="start-focus" '+(wl?"":"disabled")+'>오답 집중 · '+wl+'장</button>'
+    +'<div class="row" style="gap:8px">'
+    /* 한→영 스펠링은 설정의 "타이핑 섞기" 로도 되지만 그건 무작위로 끼워 넣는 것입니다.
+       **작정하고 철자만 쓰고 싶을 때**가 따로 있어서 세션 종류로 뺐습니다 */
+    +'<button class="btn ghost" style="flex:1" data-a="start-spell" '+(q?"":"disabled")+'><svg class="ico-svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.3 1.9l2.8 2.8L5.3 13.5l-3.6.8.8-3.6z"/><path d="M9.5 3.7l2.8 2.8"/></svg> 스펠링</button>'
+    +'<button class="btn ghost" style="flex:1" data-a="start-focus" '+(wl?"":"disabled")+'>오답 집중 '+wl+'</button>'
+    +'</div>'
     +'</div>';
   if(backlog>today) h+='<div class="warn">밀린 카드가 '+backlog+'장입니다. 하루 최대 '+D.s.maxReview
     +'장까지만 꺼내므로 나머지는 다음 날로 넘어갑니다. 계속 쌓이면 설정에서 <b>하루 신규 단어</b>를 줄이세요.</div>';
@@ -1995,9 +2047,13 @@ function viewPacks(){
         +'개는 복습에서 뺐습니다. 정답률과 누수는 뺀 것을 빼고 셌습니다.</p>':'')
       +'<div style="margin-top:12px;display:grid;gap:7px">'
       +'<button class="btn wide" data-a="pack-review" '+(nRev?"":"disabled")+'>이 팩 복습 · '+nRev+'장</button>'
-      +'<button class="btn ghost wide" data-a="pack-sweep" '+(nSweep?"":"disabled")+'>전체 훑기 · '+nSweep+'장</button>'
-      +'<p class="note" style="margin:2px 0 0">복습은 오늘 차례가 된 것과 새 단어가 나오고 일정이 바뀝니다. '
-      +'훑기는 차례와 상관없이 전부 보여주고 일정을 바꾸지 않습니다.</p>'
+      +'<div class="row" style="gap:7px">'
+      +'<button class="btn ghost" style="flex:1" data-a="pack-spell" '+(nRev?"":"disabled")+'><svg class="ico-svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.3 1.9l2.8 2.8L5.3 13.5l-3.6.8.8-3.6z"/><path d="M9.5 3.7l2.8 2.8"/></svg> 스펠링</button>'
+      +'<button class="btn ghost" style="flex:1" data-a="pack-sweep" '+(nSweep?"":"disabled")+'>전체 훑기 '+nSweep+'</button>'
+      +'</div>'
+      +'<p class="note" style="margin:2px 0 0">복습과 스펠링은 오늘 차례가 된 것과 새 단어가 나오고 일정이 바뀝니다. '
+      +'<b>여기서 한 것도 오늘 학습과 정답률에 그대로 들어갑니다.</b><br>'
+      +'훑기는 차례와 상관없이 전부 보여주지만 일정을 바꾸지 않습니다.</p>'
       +'</div>';
     h+='<div class="row" style="margin-top:10px">'
       +'<button class="btn sm ghost" data-a="pack-csv">CSV로 내보내기</button>'
@@ -4202,6 +4258,7 @@ document.addEventListener("click", e=>{
   if(a==="resume"){ view="study"; render(); return; }
   if(a==="quit"){ S=null; render(); return; }
   if(a==="start"){ startSession({kind:"review"}); return; }
+  if(a==="start-spell"){ startSession({kind:"review", force:"type_ko2en"}); return; }
   if(a==="start-focus"){ startSession({kind:"focus"}); return; }
 
   /* 사전 */
@@ -4241,6 +4298,7 @@ document.addEventListener("click", e=>{
     }catch(err){ copy(csv); }
     return; }
   if(a==="pack-review"){ startSession({kind:"review", pack:packPath}); return; }
+  if(a==="pack-spell"){ startSession({kind:"review", pack:packPath, force:"type_ko2en"}); return; }
   if(a==="pack-sweep"){ startSession({kind:"sweep", pack:packPath}); return; }
   if(a==="susp"){ const c=byId(t.dataset.id); c.susp=!c.susp; if(!c.susp) c.leech=false; touch(c);
     if(S && S.queue.includes(c.id) && c.susp){ S.queue=S.queue.filter((id,i)=>!(id===c.id&&i>S.idx)); }
