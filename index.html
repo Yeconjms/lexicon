@@ -4547,7 +4547,6 @@ document.addEventListener("click", e=>{
   if(a==="resume"){ view="study"; render(); return; }
   if(a==="quit"){ S=null; render(); return; }
   if(a==="start"){ startSession({kind:"review", force:D.s.ask||""}); return; }
-  if(a==="start-spell"){ startSession({kind:"review", force:"type_ko2en"}); return; }
   if(a==="start-focus"){ startSession({kind:"focus", force:D.s.ask||""}); return; }
   if(a==="ask-mode"){ D.s.ask=t.dataset.k; save(); render(); return; }
   /* 따로 공부할 팩은 전용 화면으로만 들어갑니다 — 일반 학습과 섞이지 않습니다 */
@@ -4977,10 +4976,20 @@ document.addEventListener("input", e=>{
     e.target.previousElementSibling.textContent="속도 "+D.s.rate.toFixed(1)+"x"; }
 });
 let searchT;
-document.addEventListener("keyup", e=>{
-  if(e.target.id==="m-q"){ clearTimeout(searchT); searchT=setTimeout(()=>{ mq=e.target.value;
-    const pos=e.target.selectionStart; render(); const el=$("#m-q"); if(el){ el.focus(); el.setSelectionRange(pos,pos);} },250); }
-});
+/** 검색칸은 **`keyup` 과 `input` 을 둘 다 듣는다.**
+    `keyup` 만 듣던 때는 **오른쪽 눌러 붙여넣기** 로 넣은 글자에 아무 반응이 없었다
+    (키를 누른 적이 없으니 `keyup` 이 안 온다). 자동 채우기와 입력칸의 × 도 같다.
+    `input` 만으로 바꾸지 않은 이유는 한글 조합 중에도 매번 오기 때문이다 —
+    조합 중에 `render()` 가 돌면 글자가 끊긴다. 그래서 `isComposing` 일 때는 건너뛴다. */
+function searchKick(e){
+  if(e.target.id!=="m-q" || e.isComposing) return;
+  clearTimeout(searchT);
+  searchT=setTimeout(()=>{ const el0=$("#m-q"); if(!el0) return; mq=el0.value;
+    const pos=el0.selectionStart; render();
+    const el=$("#m-q"); if(el){ el.focus(); el.setSelectionRange(pos,pos); } },250);
+}
+document.addEventListener("keyup", searchKick);
+document.addEventListener("input", searchKick);
 document.addEventListener("keydown", e=>{
   if(e.target.id==="typein"&&e.key==="Enter"){ checkTyped(); return; }
   if(e.target.id==="d-q"&&e.key==="Enter"){ e.preventDefault(); dictLook(e.target.value); return; }
