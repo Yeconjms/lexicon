@@ -2052,7 +2052,7 @@ function soloBanner(){
 /* ── 따로 공부하는 팩의 전용 화면 (단어장처럼) ──────────────────────
    종이 단어장은 **손으로 가리고 외웁니다.** 플래시카드 한 장씩만으로는
    "쭉 훑어보기" 가 안 돼서, 목록 + 가리기 + 암기 시작을 한 화면에 뒀습니다. */
-let soloDays=[], soloHide="", soloAll=false, soloBook=false;   // soloHide: "" | "mean" | "word"
+let soloDays=[], soloHide="", soloAll=false, soloTab="study";   // soloHide: "" | "mean" | "word"
 
 /** 그 팩 바로 아래 묶음들 (Day 01, Day 02 …) */
 function soloGroups(){
@@ -2082,15 +2082,10 @@ function viewSolo(){
   let h='<div class="panel solopanel">'
     +'<div class="row" style="justify-content:space-between;align-items:baseline">'
     +'<div class="h2" style="margin:0">'+esc(root)+'</div>'
-    +'<button class="linkish" data-a="solo-back">학습으로</button></div>'
-    /* 새 Day 가 올라왔을 때 **앱 안에서** 받아 올 길입니다. 파일을 따로
-       내려받아 가져오기 하지 않아도 됩니다 */
-    +(root===BOOK.pack
-      ? '<div class="row" style="justify-content:space-between;align-items:center;margin-top:8px">'
-        +'<span class="note" style="margin:0">교재에 Day 가 더 올라왔으면 받아 옵니다</span>'
-        +'<button class="btn sm ghost" data-a="book-pull"'+(bookBusy?" disabled":"")+'>'
-        +(bookBusy?'<span class="spin"></span>받는 중':'새 단어 받기')+'</button></div>'
-      : '');
+    +'<button class="linkish" data-a="solo-back">학습으로</button></div>';
+  /* 예전에는 여기에 `새 단어 받기` 줄이 있었습니다. `bookAutoCheck()` 가 하루에
+     한 번 알아서 받아 오므로 뺐습니다 — 이미 다 받은 사람에게는 쓸데없는 줄입니다.
+     직접 받고 싶으면 단어 탭 가져오기에 단추가 남아 있습니다 */
 
   /* **진도를 맨 위에 둡니다.** 전용 화면을 열면 달력부터 나와서 "내가 어디까지
      했는지" 가 안 보였습니다. 학습 홈 배너에만 있던 것을 화면 안으로 올렸습니다.
@@ -2133,6 +2128,17 @@ function viewSolo(){
       }).join("")
     +'</div>';
 
+  /* **암기와 단어장을 탭으로 나눕니다.** 예전에는 단어장이 화면 맨 아래
+     `펼치기` 뒤에 접혀 있어서, 사용자가 가장 유용하다고 한 기능이 묻혔습니다.
+     그렇다고 늘 펼쳐 두면 화면이 9,000px 을 넘깁니다. 날짜 고르기는 둘 다
+     쓰므로 탭 **위**에 두고, 탭은 아랫부분만 바꿉니다 */
+  h+='<div class="seg" style="width:100%;margin-top:14px">'
+    + [["study","암기"],["book","단어장 "+cards.length]].map(o=>
+        '<button style="flex:1" data-a="solo-tab" data-k="'+o[0]+'"'
+        +(soloTab===o[0]?' class="on"':'')+'>'+o[1]+'</button>').join("")
+    +'</div>';
+  if(soloTab==="book") return h + wordBook(cards, "날을") + '</div>';
+
   /* 진도 나가기.
      고른 범위가 하루 상한보다 많으면 **왜 적게 나오는지** 적어 줍니다 —
      "24개인데 왜 15장?" 이 되지 않도록 */
@@ -2154,27 +2160,27 @@ function viewSolo(){
     +'<button class="btn ghost solo wide" data-a="solo-sweep" '+(cards.length?"":"disabled")+'>전체 훑기 '+cards.length+'</button>'
     +'</div>';
 
-  /* 단어장 — 가리고 외우기.
-     **기본은 접어 둡니다.** 30일치를 다 받으면 이 화면이 9,000px 을 넘겨서,
-     달력을 보려고 열 때마다 단어 목록을 지나쳐 스크롤해야 했습니다.
-     단어장은 "쭉 훑어볼 때" 쓰는 것이라 늘 펼쳐 둘 이유가 없습니다 */
-  h+='<div class="row" style="justify-content:space-between;align-items:baseline;margin:16px 0 0">'
-    +'<div class="h2" style="margin:0">단어장 '+cards.length+'개</div>'
-    +'<button class="linkish" data-a="solo-book">'+(soloBook?"접기":"펼치기")+'</button></div>';
-  if(!soloBook) return h+'</div>';
+  return h + '</div>';
+}
 
-  h+='<div class="seg sm" style="width:100%;margin-top:7px">'
+/** 종이 단어장처럼 **가리고 외우는 목록**.
+    플래시카드 한 장씩으로는 "쭉 훑어보기" 가 안 되기 때문에 둡니다 — 사용자가
+    가장 유용하다고 한 기능입니다. 한 줄에 단어 하나씩 세로로 쌓습니다
+    (단어/발음 · 뜻 · 비슷한 말). 중요도(별)는 태그에 실려 있습니다.
+
+    **교재 전용 화면과 팩 화면이 이 한 곳을 같이 씁니다.** 따로 만들면 한쪽만
+    고쳐져 두 화면이 다르게 보입니다. 가린 칸을 누르면 그것만 들춰집니다
+    (`solo-peek` 가 `hid` 를 토글). */
+function wordBook(cards, narrowWord){
+  const stars=c=>{ const t=(c.tags||[]).find(x=>/^별[123]$/.test(x));
+    return t ? '<span class="wstar">'+"★".repeat(+t.slice(1))+'</span>' : ""; };
+  return '<div class="seg sm" style="width:100%;margin-top:11px">'
     + [["","다 보기"],["mean","뜻 가림"],["word","단어 가림"]].map(o=>
         '<button style="flex:1" data-a="solo-hide" data-k="'+o[0]+'"'+(soloHide===o[0]?' class="on"':'')+'>'+o[1]+'</button>').join("")
     +'</div>'
     +'<p class="note" style="margin:5px 0 0">가린 칸을 누르면 그것만 잠깐 보입니다. '
-    +'종이 단어장을 손으로 가리고 외우는 것과 같습니다.</p>';
-
-  /* 한 줄에 단어 하나씩 세로로 쌓습니다 — 단어/발음 · 뜻 · 동의어.
-     중요도(별)는 태그에 실려 있습니다 */
-  const stars=c=>{ const t=(c.tags||[]).find(x=>/^별[123]$/.test(x));
-    return t ? '<span class="wstar">'+"★".repeat(+t.slice(1))+'</span>' : ""; };
-  h+='<div class="wbook">'+cards.slice(0,400).map(c=>
+    +'종이 단어장을 손으로 가리고 외우는 것과 같습니다.</p>'
+    + (cards.length ? '<div class="wbook">'+cards.slice(0,400).map(c=>
       '<div class="wrow2">'
       +'<div class="wtop">'
       +'<div class="wcell wword'+(soloHide==="word"?" hid":"")+'" data-a="solo-peek">'+esc(c.word)
@@ -2186,8 +2192,8 @@ function viewSolo(){
       +(c.syn?'<div class="wcell wsyn'+(soloHide==="mean"?" hid":"")+'" data-a="solo-peek">'
         +esc(String(c.syn).split(/[;,/]/).map(x=>x.trim()).filter(Boolean).join(" · "))+'</div>':'')
       +'</div>').join("")+'</div>'
-    +(cards.length>400?'<p class="note">앞의 400개만 표시했습니다. 날을 좁혀 보세요.</p>':'');
-  return h+'</div>';
+      : '<p class="note">이 범위에 단어가 없습니다.</p>')
+    +(cards.length>400?'<p class="note">앞의 400개만 표시했습니다. '+(narrowWord||"범위를")+' 좁혀 보세요.</p>':'');
 }
 
 /* ── 카드 ── */
@@ -2354,6 +2360,7 @@ function packStyleBox(){
 
 /* ── 팩 브라우저 ── */
 let packPath = "";   // "" = 최상위, "__none" = 분류 없음, 그 외 = 경로
+let packTab = "study";   // 팩 화면 아랫부분 — "study" | "book"
 /* 보류한 카드는 복습에서 빠져 있으므로 정답률에 넣지 않습니다.
    예전에는 D.cards 로 계산해서, 다 외워 보류해 둔 카드가 팩 정답률을 끌어올렸습니다
    (실제 52%인데 71%로 표시). due·leech 는 이미 보류를 빼고 있어 한 함수 안에서도 기준이 달랐습니다.
@@ -2398,6 +2405,9 @@ function viewPacks(){
        적은 수보다 적게 나왔습니다(15장이라 적고 12장이 나옴). */
     const nRev = buildQueue({kind:"review", pack:packPath}).length;
     const nSweep = sweepList(packPath).length;
+    /* 단어장 탭에 쓸 목록 — 하위 팩까지 포함해 팩 이름·단어 순으로 늘어놓습니다 */
+    const pcards = active().filter(c=>inPack(c,packPath))
+      .sort((a,b)=>String(a.pack).localeCompare(String(b.pack))||a.word.localeCompare(b.word));
     h+='<div class="grid4" style="margin-top:12px">'
       + stat(st.n,"단어") + stat(st.due,"복습 대기")
       + stat(st.acc===null?"—":st.acc+"%","정답률", st.acc!==null&&st.acc<70?"var(--rose)":"var(--green)")
@@ -2407,7 +2417,16 @@ function viewPacks(){
       /* **문제 형식을 여기서도 고릅니다.** 예전에는 `스펠링` 단추 하나뿐이라
          팩 복습에서는 한→영을 아예 낼 수 없었습니다. 학습 홈·전용 화면과
          **같은 `modePicker()`** 를 써서 어디서나 같은 자리에 같은 모양으로 둡니다 */
-      +'<div style="margin-top:12px;display:grid;gap:7px">'
+      /* **이 팩에 무슨 단어가 있는지 볼 길이 없었습니다.** 단어 탭에서 팩으로
+         걸러 봐야 했는데, 거기는 고치고 지우는 목록이라 "가리고 외우기" 가 안 됩니다.
+         교재 전용 화면과 **같은 `wordBook()`** 을 씁니다 */
+      +'<div class="seg" style="width:100%;margin-top:12px">'
+      + [["study","학습"],["book","단어장 "+pcards.length]].map(o=>
+          '<button style="flex:1" data-a="pack-tab" data-k="'+o[0]+'"'
+          +(packTab===o[0]?' class="on"':'')+'>'+o[1]+'</button>').join("")
+      +'</div>';
+    if(packTab==="book") h+= wordBook(pcards, "팩을");
+    else h+='<div style="margin-top:12px;display:grid;gap:7px">'
       +'<button class="btn wide" data-a="pack-review" '+(nRev?"":"disabled")+'>이 팩 복습 · '+nRev+'장</button>'
       + modePicker()
       +'<button class="btn ghost wide" data-a="pack-sweep" '+(nSweep?"":"disabled")+'>전체 훑기 '+nSweep+'</button>'
@@ -4745,7 +4764,7 @@ document.addEventListener("click", e=>{
     render(); return; }
   if(a==="solo-hide"){ soloHide=t.dataset.k; render(); return; }
   if(a==="solo-all"){ soloAll=!(soloAll||soloDays.length); soloDays=[]; render(); return; }
-  if(a==="solo-book"){ soloBook=!soloBook; render(); return; }
+  if(a==="solo-tab"){ soloTab=t.dataset.k; render(); window.scrollTo(0,0); return; }
   /** **오늘 할 날과 그 앞 이틀**을 한 번에 고릅니다. 누적 학습(Day 1 → 1·2 → 1·2·3)이
       이 교재의 핵심인데 날짜를 하나씩 눌러야 해서 실제로는 잘 안 쓰게 됐습니다.
       사흘로 잡은 것은 잊을 때쯤 다시 보기 위해서입니다 — 더 늘리면 하루 분량이 150장을 넘습니다 */
@@ -4799,6 +4818,7 @@ document.addEventListener("click", e=>{
       toast(cs.length+"개를 "+name+" 로 내보냈습니다");
     }catch(err){ copy(csv); }
     return; }
+  if(a==="pack-tab"){ packTab=t.dataset.k; render(); return; }
   /* 형식은 `modePicker()` 로 고릅니다 — 학습 홈·전용 화면과 같은 `D.s.ask` 를 씁니다 */
   if(a==="pack-review"){ startSession({kind:"review", pack:packPath, force:D.s.ask||""}); return; }
   if(a==="pack-sweep"){ startSession({kind:"sweep", pack:packPath}); return; }
