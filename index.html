@@ -13,6 +13,8 @@
 <title>Lexicon — 영단어 플래시카드</title>
 <style>
 :root{
+  /* 통통하고 모서리가 둥근 별 — 최근 12주 히트맵이 씁니다 */
+  --starmask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 63.6 31.2 88 37.6 72.1 57.2 73.5 82.4 50 73.2 26.5 82.4 27.9 57.2 12 37.6 36.4 31.2Z' fill='black' stroke='black' stroke-width='16' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E");
   --paper:#EBEFF2; --card:#FFFFFF; --ink:#16232E; --muted:#5F7580; --line:#D3DCE1;
   --blue:#2A4C7D; --green:#16785A; --rose:#A6394A; --amber:#B5820E; --deep:#1B2C3A;
   --sans:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Segoe UI','Malgun Gothic',system-ui,sans-serif;
@@ -155,7 +157,27 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 /* ── 표정에 쓰는 조각들 ──
    선 색은 전부 --star-ink 를 따라갑니다. 몸 색이 바뀌면 선도 같이 바뀌어야 하기 때문입니다 */
 .st-mouth{fill:var(--star-ink);}
+/* 선글라스 — 렌즈는 짙게, 다리는 같은 색 선, 빛 반사는 흰 사선 두 개 */
+.st-shade{fill:#2C3136;}
+.st-shadebar{stroke:#2C3136;stroke-width:2.4;stroke-linecap:round;fill:none;}
+.st-glint{stroke:#fff;stroke-width:1.5;stroke-linecap:round;fill:none;opacity:.6;}
 .st-tongue{fill:#E2695F;}
+/* 쏟아지는 별 — 입에서 흘러나와 아래로 떨어집니다. 몸통(`.lexi`)에 붙은
+   애니메이션과 **다른 요소**라 서로 덮어쓰지 않습니다 */
+/* 쏟아지는 무지개 — 점선을 흘려 보내 쏟아지는 것처럼 보이게 합니다 */
+.st-rbow path{fill:none;stroke-width:5.2;stroke-linecap:round;opacity:.92;
+  stroke-dasharray:9 7;animation:lxflow .9s linear infinite;}
+@keyframes lxflow{to{stroke-dashoffset:-16;}}
+@media (prefers-reduced-motion:reduce){ .st-rbow path{animation:none;stroke-dasharray:none;} }
+.st-spill{fill:#F6DB63;stroke:#8A6A12;stroke-width:1.2;stroke-linejoin:round;
+  opacity:0;animation:lxspill 1.9s ease-in infinite;}
+@keyframes lxspill{
+  0%{opacity:0;transform:translateY(-12px) scale(.45);}
+  20%{opacity:1;}
+  72%{opacity:1;}
+  100%{opacity:0;transform:translateY(15px) scale(1);}
+}
+@media (prefers-reduced-motion:reduce){ .st-spill{animation:none;opacity:1;} }
 .st-teeth{fill:none;stroke:var(--star);stroke-width:1.6;stroke-linecap:round;}
 .st-fist{fill:var(--star);stroke:var(--star-ink);stroke-width:2.3;}
 .st-coil{fill:none;stroke:var(--star-ink);stroke-width:1.9;stroke-linecap:round;}
@@ -185,6 +207,13 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 .lexi.hot .st-fist{fill:#E8604A;stroke:#6E1C12;}
 .lexi.hot .st-vein{fill:#5E1109;}
 /* 화남 — 아직 시뻘겋진 않고 달아오르는 중 */
+/* 감당 못 할 때 — **빨강은 무서워서** 발그레한 살구색으로 바꿨습니다.
+   볼터치를 진하게 올려 "허덕이지만 귀엽게" 보이도록 했습니다 */
+.lexi.peach .st-fill{fill:#F79B86;}
+.lexi.peach .st-ink,.lexi.peach .st-ink2,.lexi.peach .st-limb{stroke:#8C4631;}
+.lexi.peach .st-eye,.lexi.peach .st-mouth{fill:#8C4631;}
+.lexi.peach .st-blush{fill:#E2574A;opacity:.52;}
+.lexi.peach .st-fist{fill:#F79B86;stroke:#8C4631;}
 .lexi.warm .st-fill{fill:#F0A23C;}
 .lexi.warm .st-ink,.lexi.warm .st-ink2,.lexi.warm .st-limb{stroke:#6B3410;}
 .lexi.warm .st-eye,.lexi.warm .st-mouth{fill:#6B3410;}
@@ -619,6 +648,25 @@ details.set .inner{padding:0 17px 18px;border-top:1px solid var(--line);margin-t
 .heat{display:flex;gap:3px;overflow-x:auto;padding-bottom:4px;}
 .heat .col{display:flex;flex-direction:column;gap:3px;}
 .cell{width:11px;height:11px;border-radius:2px;background:#DCE3E8;flex-shrink:0;}
+/* 최근 12주 — **네모 대신 별.** 노랑이 진할수록 그날 많이 봤다는 뜻입니다.
+   `clip-path` 로 깎으므로 칸마다 SVG 를 그리지 않아도 됩니다 (84칸입니다) */
+/* 고정 폭이면 12주가 화면을 넘겨 가로 스크롤이 생깁니다. **칸이 폭에 맞춰 늘어나게** 둡니다 */
+.heat.stars{gap:4px;overflow:visible;}
+.heat.stars .col{gap:4px;flex:1;min-width:0;}
+/* **통통하고 모서리가 둥근 별.** 안쪽 꼭짓점을 바깥의 58% 까지 밀어 살을 붙이고,
+   굵은 선을 `stroke-linejoin:round` 로 둘러 모서리를 깎았습니다 — 마스코트 별과
+   같은 결입니다. `clip-path` 로는 각이 져서 가시처럼 날카로워집니다.
+   마스크 하나를 84칸이 같이 쓰므로 칸마다 SVG 를 그리지 않습니다 */
+.heat.stars .cell{width:100%;height:auto;aspect-ratio:1;border-radius:0;clip-path:none;
+  -webkit-mask:var(--starmask) center/contain no-repeat;
+          mask:var(--starmask) center/contain no-repeat;}
+/* 얼마나 내 것이 되었나 — **별에 가까울수록 진한 금색**이 되도록 둡니다 */
+.goldrow{display:flex;align-items:center;gap:9px;}
+.goldstar{font-size:22px;line-height:1;color:#E8A317;flex-shrink:0;}
+.goldrow .mixbar{flex:1;height:17px;}
+.goldsay{display:flex;align-items:center;gap:10px;margin-top:11px;padding:9px 11px;
+  border:1px solid var(--line);border-radius:13px;background:rgba(246,219,99,.14);}
+.goldsay span{font-size:13px;font-weight:600;line-height:1.45;}
 .bar{height:7px;border-radius:4px;background:var(--line);overflow:hidden;}
 .fc{display:flex;align-items:flex-end;gap:2px;height:70px;}
 .fcbar{flex:1;height:100%;display:flex;align-items:flex-end;}
@@ -2361,6 +2409,8 @@ function packStyleBox(){
 /* ── 팩 브라우저 ── */
 let packPath = "";   // "" = 최상위, "__none" = 분류 없음, 그 외 = 경로
 let packTab = "study";   // 팩 화면 아랫부분 — "study" | "book"
+let weakPack = "";   // 발목 잡는 단어 — "" = 전체, 그 외 = 최상위 팩 이름
+let mTagsOpen = false;   // 단어 탭 — 태그 칩을 펼쳤는지
 /* 보류한 카드는 복습에서 빠져 있으므로 정답률에 넣지 않습니다.
    예전에는 D.cards 로 계산해서, 다 외워 보류해 둔 카드가 팩 정답률을 끌어올렸습니다
    (실제 52%인데 71%로 표시). due·leech 는 이미 보류를 빼고 있어 한 함수 안에서도 기준이 달랐습니다.
@@ -2581,17 +2631,33 @@ function viewManage(){
     '<button class="fchip c-'+kind+(on?" on":"")+'" data-a="mfil" data-k="'+kind+'" data-v="'+esc(key)+'">'
     + esc(label) + (n!==null?' '+n:'') + '</button>';
   const anyFilter = mflags.length || mtags.length;
-  h+='<div class="panel"><div class="row" style="margin-bottom:11px;flex-wrap:nowrap">'
-    +'<input class="field" id="m-q" placeholder="단어 · 뜻 · 예문 · 유의어 검색" value="'+esc(mq)+'"></div>'
+  /* **태그를 전부 늘어놓지 않습니다.** 해커스 보카가 들어온 뒤로 태그가
+     `Day01`~`Day30` + 품사까지 40개가 되어, 칩 더미가 열 줄 가까이 깔리고
+     그 위에 있던 검색칸이 묻혔습니다. 기본은 **상태 칩과 고른 태그만** 보이고
+     나머지는 `태그 N개` 뒤에 접습니다. 고른 것은 접어도 계속 보입니다 */
+  const shownTags = mTagsOpen ? tags : tags.filter(t=>mtags.includes(t));
+  const hiddenN = tags.length - shownTags.length;
+  h+='<div class="panel">'
+    /* 검색칸을 맨 위에 두고 **찾은 개수를 바로 옆**에 붙입니다 —
+       예전에는 칩 더미 아래에 따로 떨어져 있어 몇 개가 걸렸는지 눈이 못 따라갔습니다 */
+    +'<div class="row" style="margin-bottom:9px;flex-wrap:nowrap;align-items:center;gap:9px">'
+    +'<input class="field" id="m-q" placeholder="단어 · 뜻 · 예문 · 유의어 검색" value="'+esc(mq)+'">'
+    + (mq ? '<button class="btn sm ghost" data-a="mq-clear" aria-label="검색어 지우기">✕</button>' : '')
+    +'</div>'
+    +'<div class="row" style="justify-content:space-between;align-items:baseline;margin-bottom:9px">'
+    +'<div class="h2" style="margin:0">'+list.length+'개'
+    +(anyFilter||mq?'<span class="note" style="margin:0 0 0 7px">전체 '+D.cards.length+'개 중</span>':'')+'</div>'
+    + (anyFilter||mq ? '<button class="linkish" data-a="mfil-clear">전체 보기</button>' : '')
+    +'</div>'
     +'<div class="fchips">'
     + (rev    ? fchip("rev","rev","확인 필요",rev, mflags.includes("rev")) : "")
     + (leechN ? fchip("leech","leech","누수",leechN, mflags.includes("leech")) : "")
     + (noneN  ? fchip("none","none","뜻 없음",noneN, mflags.includes("none")) : "")
     + (suspN  ? fchip("susp","susp","보류",suspN, mflags.includes("susp")) : "")
-    + tags.map(t=>fchip("tag",t,t,null, mtags.includes(t))).join("")
-    + (anyFilter ? '<button class="fchip" data-a="mfil-clear">전체 보기</button>' : "")
-    +'</div>'
-    +'<div class="h2">'+list.length+'개'+(anyFilter?' · 전체 '+D.cards.length+'개 중':'')+'</div>';
+    + shownTags.map(t=>fchip("tag",t,t,null, mtags.includes(t))).join("")
+    + (tags.length ? '<button class="fchip c-tag" data-a="mtag-more">'
+        + (mTagsOpen ? "태그 접기" : "태그 "+hiddenN+"개 ⌄") + '</button>' : '')
+    +'</div>';
   if(!list.length) h+='<p class="note">조건에 맞는 단어가 없습니다.</p>';
   list.slice(0,300).forEach(c=>{
     h+='<div class="item">'
@@ -2812,6 +2878,27 @@ const VEIN = (x,y,s,r) => '<path class="st-vein" transform="translate('+x+' '+y+
   +'Q-1.3 2.4 -6.6 3.7Q-2.3 0 -6.6 -3.7Q-1.3 -2.4 0 -7.4Z"/>';
 const BLUSH = '<ellipse class="st-blush" cx="46.6" cy="56.6" rx="4.6" ry="2.5"/>'
             + '<ellipse class="st-blush" cx="73.4" cy="56.6" rx="4.6" ry="2.5"/>';
+/** 입에서 쏟아지는 작은 별. **밀린 양을 감당 못 할 때** 쓰는 표정의 덧붙임입니다 —
+    "단어가 넘쳐 흘러나온다" 를 그림 하나로 보여 줍니다. 별 윤곽 **아래**로 떨어지므로
+    몸 밖으로 나가는 것이 맞습니다 (`.lexi` 는 `overflow:visible` 입니다).
+    크기·지연을 조금씩 다르게 줘서 줄줄 흐르는 것처럼 보이게 했습니다 */
+const MINISTAR = 'M0 -6 1.88 -2.59 5.71 -1.85 3.04 .99 3.53 4.85 0 3.2 '
+               + '-3.53 4.85 -3.04 .99 -5.71 -1.85 -1.88 -2.59Z';
+/* 무지개 **양옆**에 둡니다. 가운데에 겹치면 띠에 묻혀 안 보입니다 */
+const SPILL = [[47,82,1.05,0],[73,86,.95,.32],[43,99,.85,.64],[77,101,.9,.96],[60,114,.8,1.28]]
+  .map(([x,y,s,d])=>'<g class="st-spill" style="animation-delay:'+d+'s">'
+    +'<path d="'+MINISTAR+'" transform="translate('+x+','+y+') scale('+s+')"/></g>').join("");
+
+/** 입에서 쏟아지는 무지개. 귀여운 캐릭터가 감당 못 할 때 쓰는 바로 그 그림입니다.
+    띠를 **부채처럼 벌려** 아래로 갈수록 넓어지게 했고, 점선을 흘려 쏟아지는 것처럼
+    보이게 했습니다. 별(`SPILL`)이 그 위에 함께 튑니다 */
+const RAINBOW = '<g class="st-rbow">'
+  + ["#E8604A","#F2A03C","#F6DB63","#6FBF8B","#5BA4D6","#9A7BD1"].map((c,k)=>{
+      const o=k-2.5;
+      return '<path stroke="'+c+'" d="M'+(60+o*1.3).toFixed(1)+' 67 Q'+(60+o*3.4).toFixed(1)
+           + ' 88 '+(60+o*6.4).toFixed(1)+' 113"/>'; }).join("")
+  + '</g>';
+
 const STEAM = '<g class="st-steam"><path d="M33 20q-5.4-4-1.6-9"/><path d="M45 12q-4.6-4.6-.6-9"/>'
             + '<path d="M75 12q4.6-4.6.6-9"/><path d="M87 20q5.4-4 1.6-9"/></g>';
 const ZZZ   = '<g class="st-zzz"><path d="M79 26h8.4l-8.4 9.4h8.4"/>'
@@ -2918,6 +3005,31 @@ function face(mood){
   case "happy": return {
     e: round,
     m: '<path class="st-limb" style="stroke-width:2.5" d="M51 59q9 9 18 0"/>', x: BLUSH };
+
+  /* **감당이 안 될 때 — 입을 크게 벌리고 단어를 쏟아냅니다.**
+     밀린 양이 120장을 넘으면 이 얼굴입니다. 눈은 질끈 감고(ㅅ 모양),
+     입은 크게 벌린 타원입니다. 입이 `y=68` 아래로 내려가면 별 밖으로
+     나가므로 `cy=60, ry=6.8` 로 잡아 바닥을 66.8 에 맞췄습니다 */
+  case "spill": return {
+    /* 눈은 **덤덤한 일자**입니다. ㅅ 모양으로 하면 웃는 것처럼 보여서,
+       무지개를 쏟으면서도 아무렇지 않은 쪽이 더 재미있습니다 */
+    e: '<path class="st-limb" style="stroke-width:2.8" d="M45.6 47.8h8.6"/>'
+     + '<path class="st-limb" style="stroke-width:2.8" d="M65.8 47.8h8.6"/>',
+    m: '<ellipse class="st-mouth" cx="60" cy="60" rx="8.4" ry="6.8"/>'
+     + '<path class="st-tongue" d="M55.8 63.4q4.2-2.6 8.4 0q-1.7 2.8-4.2 2.8t-4.2-2.8Z"/>',
+    x: BLUSH + RAINBOW + SPILL };
+
+  /* 선글라스 — 통계의 "얼마나 내 것이 되었나" 에서 금빛이 절반을 넘겼을 때 씁니다.
+     **렌즈는 눈보다 2px 만 넓게** 잡습니다. 더 넓히면 별 윤곽 밖으로 나가
+     얼굴에 얹힌 얼룩처럼 보입니다 (예전에 "각오" 표정이 그래서 빠졌습니다) */
+  case "cool": return {
+    e: '<g class="st-shades">'
+     + '<rect class="st-shade" x="44" y="42.6" width="14" height="10.8" rx="4.6"/>'
+     + '<rect class="st-shade" x="62" y="42.6" width="14" height="10.8" rx="4.6"/>'
+     + '<path class="st-shadebar" d="M58 46.4h4"/>'
+     + '<path class="st-glint" d="M46.8 45.4l3 3"/><path class="st-glint" d="M64.8 45.4l3 3"/>'
+     + '</g>',
+    m: '<path class="st-limb" style="stroke-width:2.5" d="M51.5 60q8.5 8 17 0"/>', x: BLUSH };
 
   /* 생각 중 */
   case "think": return {
@@ -3397,7 +3509,10 @@ function moodNow(){
      다만 `전체 훑기`·`오답 집중` 은 일정을 바꾸지 않아 밀린 양이 줄지 않습니다 */
   const didToday = done ? "오늘 "+done+"장 했습니다. " : "";
   const sweepNote = done ? " (훑기와 오답 집중은 일정을 바꾸지 않아 밀린 양이 줄지 않습니다)" : "";
-  if(back >= 120) return {k:"boom", f:"boom", c:"hot boom", p:"flail", t:"별이 터지기 직전입니다",
+  /* 120장을 넘기면 **입에서 단어가 쏟아집니다** — 감당이 안 된다는 것을
+     글보다 그림으로 먼저 보여 줍니다. `k` 가 "boom" 이 아니므로 터지는 효과(`boomfx`)는
+     붙지 않습니다. 쏟아지는 별과 겹치면 너무 어수선합니다 */
+  if(back >= 120) return {k:"spill", f:"spill", c:"peach shake", p:"flail", t:"별이 감당을 못 하고 있습니다",
     s:didToday+"밀린 카드가 "+back+"장입니다. 오늘 조금만 해도 숨통이 트입니다. 그리고 하루 신규 단어를 줄이세요."+sweepNote};
   if(back >= 50) return {k:"angry", f:"angry", c:"warm shake", p:"fist", t:"별이 화났습니다",
     s:didToday+"밀린 카드가 "+back+"장입니다. 상한은 일을 미룰 뿐 줄이지 않습니다. 신규를 잠깐 멈춰보세요."+sweepNote};
@@ -3508,17 +3623,32 @@ function viewStats(){
 
   /* ── 얼마나 내 것이 되었나 ── */
   const tot=act.length||1;
+  const matPct=Math.round(mat/tot*100);
+  /* 금빛이 **왼쪽(별 쪽)에서 자라납니다.** 별에 가까울수록 진한 금색이라,
+     막대가 길어지는 것이 곧 "내 것이 됐다" 로 읽힙니다 */
+  const GOLD="linear-gradient(90deg,#D98200,#FFD75E)", C_LRN="#8FCFC6", C_NEW="#D8DFE4";
   h+='<div class="panel"><div class="h2">얼마나 내 것이 되었나</div>'
+    +'<div class="goldrow"><span class="goldstar" aria-hidden="true">★</span>'
     +'<div class="mixbar">'
-    +'<i style="width:'+(mat/tot*100)+'%;background:var(--green)"></i>'
-    +'<i style="width:'+(lrn/tot*100)+'%;background:var(--blue)"></i>'
-    +'<i style="width:'+(fresh/tot*100)+'%;background:#8FA6B5"></i></div>'
+    +'<i style="width:'+(mat/tot*100)+'%;background:'+GOLD+'"></i>'
+    +'<i style="width:'+(lrn/tot*100)+'%;background:'+C_LRN+'"></i>'
+    +'<i style="width:'+(fresh/tot*100)+'%;background:'+C_NEW+'"></i></div></div>'
     +'<div class="legend">'
-    +'<span><b style="background:var(--green)"></b>다 외운 것 <em>'+mat+'</em></span>'
-    +'<span><b style="background:var(--blue)"></b>외우는 중 <em>'+lrn+'</em></span>'
-    +'<span><b style="background:#8FA6B5"></b>아직 안 본 것 <em>'+fresh+'</em></span></div>'
+    +'<span><b style="background:#E8A317"></b>다 외운 것 <em>'+mat+'</em></span>'
+    +'<span><b style="background:'+C_LRN+'"></b>외우는 중 <em>'+lrn+'</em></span>'
+    +'<span><b style="background:'+C_NEW+'"></b>아직 안 본 것 <em>'+fresh+'</em></span></div>'
+    /* 숫자만 두면 잘 가고 있는지 알 수 없어서 렉시가 한 줄로 판정합니다.
+       금빛이 절반을 넘기면 선글라스를 낍니다 */
+    +'<div class="goldsay">'
+    + lexi(matPct>=50?"cool":matPct>=20?"happy":"idle","sm")
+    +'<span><b class="mono">'+matPct+'%</b> 가 내 것이 됐습니다 · '
+    +( matPct>=50 ? "절반을 넘겼습니다. 이 속도면 충분합니다."
+     : matPct>=20 ? "금빛이 자라고 있습니다. 이대로 가면 됩니다."
+     : (mat||lrn) ? "이제 쌓이기 시작했습니다."
+                  : "아직 금빛이 없습니다. 오늘 다섯 장부터." )
+    +'</span></div>'
     +'<p class="note">복습 간격이 <b>21일</b>을 넘으면 "다 외운 것"으로 봅니다. '
-    +'이 초록이 늘어나는 게 실제 성과입니다 — 푼 카드 수는 늘어나도 초록이 안 늘면 헛돌고 있는 겁니다.'
+    +'이 금빛이 늘어나는 게 실제 성과입니다 — 푼 카드 수는 늘어나도 금빛이 안 늘면 헛돌고 있는 겁니다.'
     +(suspN?('<br>복습에서 뺀 '+suspN+'개는 세지 않았습니다.'):'')+'</p></div>';
 
   /* ── 앞으로 30일 복습량 예보 ── (fcAll·peak·avg 는 위 진단에서 이미 계산했습니다) */
@@ -3534,8 +3664,10 @@ function viewStats(){
       :'지금 속도는 감당 가능한 범위입니다.')
     +(backlog?('<br>맨 왼쪽 칸은 오늘이고 <b>밀린 '+backlog+'장</b>이 모두 거기 쌓여 있습니다. '
       +'밀린 양은 앞으로의 부담과 따로 봐야 합니다.'):'')+'</p></div>';
-  const shade=n=>n===0?"#DCE3E8":n<5?"#B8D3C7":n<15?"#77B49B":n<40?"#3D9174":"#16785A";
-  h+='<div class="panel"><div class="h2">최근 12주</div><div class="heat">';
+  /* **노랑 한 가지로 농도만 바꿉니다.** 색이 여러 개면 "무슨 색이 좋은 거지" 를
+     먼저 읽어야 합니다. 진할수록 많이 본 날입니다 */
+  const shade=n=>n===0?"#E4E8EB":n<5?"#FFE9AE":n<15?"#FFD75E":n<40?"#F5A623":"#D97E00";
+  h+='<div class="panel"><div class="h2">최근 12주</div><div class="heat stars">';
   const off=new Date().getDay();
   for(let w=11;w>=0;w--){ h+='<div class="col">';
     for(let d=0;d<7;d++){ const back=w*7+(off-d);
@@ -3543,12 +3675,27 @@ function viewStats(){
       const k=dayKey(new Date(Date.now()-back*DAY)), n=dayStat(k).reviews;
       h+='<div class="cell" title="'+k+' · '+n+'장" style="background:'+shade(n)+'"></div>'; }
     h+='</div>'; }
-  h+='</div><p class="note">칸 하나가 하루입니다. 진할수록 그날 많이 봤다는 뜻입니다.</p></div>';
-  const weak=act.filter(c=>c.seen>=2).sort((a,b)=>a.correct/a.seen-b.correct/b.seen||b.lapses-a.lapses).slice(0,10);
+  h+='</div></div>';   /* 별 하나가 하루라는 건 보면 아는 것이라 부연을 뺐습니다 */
+  /* **팩별로 볼 수 있습니다.** 전체에서 열 개만 뽑으면 단어가 많아질수록
+     특정 팩의 약한 단어는 영영 안 보입니다 — 토플 1,683개가 들어온 뒤로 특히 그랬습니다.
+     팩 복습·스펠링도 `seen`·`correct`·`lapses` 를 그대로 올리므로 여기에 들어옵니다.
+     학습 탭에서 한 것만 세는 것이 아닙니다 (`active()` 전체를 봅니다) */
+  const wroots=[...new Set(act.map(c=>String(c.pack||"").split("/")[0]).filter(Boolean))].sort();
+  const wp = wroots.includes(weakPack) ? weakPack : "";
+  const wpool = wp ? act.filter(c=>inPack(c,wp)) : act;
+  const weak=wpool.filter(c=>c.seen>=2).sort((a,b)=>a.correct/a.seen-b.correct/b.seen||b.lapses-a.lapses).slice(0,10);
   h+='<div class="panel"><div class="h2">발목 잡는 단어</div>';
-  if(!weak.length) h+='<p class="note">두 번 이상 본 단어부터 집계됩니다.</p>';
+  /* `.fchip` 에는 `c-*` 색 클래스를 꼭 붙입니다 — 빠뜨리면 고른 칩이 흰 바탕에 흰 글자가 됩니다 */
+  if(wroots.length>1) h+='<div class="fchips" style="margin:9px 0 10px">'
+    + [["","전체"]].concat(wroots.map(r=>[r,r])).map(o=>
+        '<button class="fchip c-tag'+(wp===o[0]?" on":"")+'" data-a="weak-pack" data-k="'+esc(o[0])+'">'
+        +esc(o[1])+'</button>').join("")
+    +'</div>';
+  if(!weak.length) h+='<p class="note">두 번 이상 본 단어부터 집계됩니다.'
+    +(wp?' 이 팩에는 아직 없습니다.':'')+'</p>';
   else h+='<p class="note" style="margin:0 0 10px">여기 있는 단어가 복습량을 늘리는 주범입니다. '
-    +'세 번 넘게 틀렸다면 뜻을 짧게 고치거나 예문을 바꿔보세요 — 카드가 나쁜 경우가 많습니다.</p>';
+    +'세 번 넘게 틀렸다면 뜻을 짧게 고치거나 예문을 바꿔보세요 — 카드가 나쁜 경우가 많습니다.<br>'
+    +'<b>팩에서 공부한 것도 그대로 들어갑니다.</b></p>';
   weak.forEach(c=>{ h+='<div class="item"><div class="row" style="justify-content:space-between">'
     +'<div><span class="itemw">'+esc(c.word)+'</span> <span class="itemm" style="display:inline">'+esc(c.meaning)+'</span></div>'
     +'<span class="mono" style="font-size:12px;color:var(--rose)">'+Math.round(c.correct/c.seen*100)+'% · 실패 '+c.lapses+'</span>'
@@ -4819,6 +4966,9 @@ document.addEventListener("click", e=>{
     }catch(err){ copy(csv); }
     return; }
   if(a==="pack-tab"){ packTab=t.dataset.k; render(); return; }
+  if(a==="weak-pack"){ weakPack=t.dataset.k; render(); return; }
+  if(a==="mtag-more"){ mTagsOpen=!mTagsOpen; render(); return; }
+  if(a==="mq-clear"){ mq=""; render(); const el=$("#m-q"); if(el) el.focus(); return; }
   /* 형식은 `modePicker()` 로 고릅니다 — 학습 홈·전용 화면과 같은 `D.s.ask` 를 씁니다 */
   if(a==="pack-review"){ startSession({kind:"review", pack:packPath, force:D.s.ask||""}); return; }
   if(a==="pack-sweep"){ startSession({kind:"sweep", pack:packPath}); return; }
