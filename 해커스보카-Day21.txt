@@ -1,0 +1,58 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| flourish | 번창하다 | Watercolor painting began to flourish in Britain around 1750. |  | Day21;동사;별3 | 해커스 보카/Day 21 | thrive, prosper, blossom, do well |  | [flə́ːriʃ] |
+| dissipate | (구름·안개 등을) 흩뜨리다, 흩어지다 | The wind dissipated the pollen over a distance of hundreds of meters. | dissipate the funds (낭비하다) | Day21;동사;별3 | 해커스 보카/Day 21 | disperse, scatter, squander, waste |  | [dísəpèit] |
+| profound | 엄청난 / 깊은, 심오한 / 폭넓은 | Carson has a profound sense of responsibility for the zoo animals' welfare. | adv. profoundly | Day21;형용사;별3 | 해커스 보카/Day 21 | great, significant, deep, fundamental, far-reaching |  | [prəfáund] |
+| intriguing | 매우 흥미로운 | It is intriguing that the universe's largest black hole does not swallow nearby stars and planets. |  | Day21;형용사;별3 | 해커스 보카/Day 21 | interesting but not completely understood, fascinating |  | [intríːgiŋ] |
+| considerably | 상당히 | A considerably large number of deaths due to influenza were recorded in the 1920s. | adj. considerable | Day21;부사;별3 | 해커스 보카/Day 21 | significantly, appreciably, fairly |  | [kənsídərəbli] |
+| ingenuity | 창의력; 교묘함 | Thomas Edison was a man of extraordinary ingenuity. | adj. ingenious | Day21;명사;별3 | 해커스 보카/Day 21 | creativeness, inventiveness, cleverness |  | [ìndʒənjúːəti] |
+| conquer | 이기다 | The Spartans were so well-trained that they easily conquered most of their opponents. | n. conquest (획득) = acquisition | Day21;동사;별3 | 해커스 보카/Day 21 | defeat, prevail, triumph |  | [káŋkər] |
+| fragment | 조각, 부분 / 산산이 부수다, 부서지다 | Detectives found a fragment of glass which would later help them solve the crime. | adj. fragmentary | Day21;명사;동사;별3 | 해커스 보카/Day 21 | piece, flake, particle, part, break apart, shatter, divide |  | [frǽgmənt] |
+| spell | 한동안 | Students should be allowed to rest for a spell after completing a difficult exam. |  | Day21;명사;별3 | 해커스 보카/Day 21 | a certain period of time |  | [spel] |
+| facet | 측면 | All individuals show different facets of their personalities, depending on who their audience is. |  | Day21;명사;별3 | 해커스 보카/Day 21 | aspect, phase |  | [fǽsit] |
+| mundane | 일상적인, 평범한 | Kelly believes that mundane activities such as cooking and cleaning are a waste of time. |  | Day21;형용사;별3 | 해커스 보카/Day 21 | ordinary, banal, commonplace |  | [mʌndéin] |
+| dense | 밀집한, 빽빽한 | The dense vegetation of the Amazon rainforest makes it difficult to travel on foot. |  | Day21;형용사;별3 | 해커스 보카/Day 21 | crowded, thick, compact |  | [dens] |
+| random | 무작위의, 우연한 | The most common personality disorders frequently include mood swings and random behavior. | n. randomness | Day21;형용사;별3 | 해커스 보카/Day 21 | unplanned, unpredictable, chance |  | [rǽndəm] |
+| mere | 단지 ~에 불과한, 하찮은 | The stock market gained a mere one percent for the entire year, causing investors to look elsewhere for profits. | adv. merely | Day21;형용사;별3 | 해커스 보카/Day 21 | nothing more than, insignificant |  | [miər] |
+| persistence | 지속 | The persistence of economic growth in the country has improved its standard of living. | v. persist; adj. persistent | Day21;명사;별3 | 해커스 보카/Day 21 | continuation, ceaselessness |  | [pərsístəns] |
+| intrusive | 개입하는, 참견하는 | Some learning experts believe that child education should be less intrusive. | v. intrude = push in, encroach | Day21;형용사;별3 | 해커스 보카/Day 21 | interfering, meddlesome |  | [intrúːsiv] |
+| culminate in | ~에서 절정에 달하다 | T.S. Eliot's ideas about poetry culminated in his masterpiece, The Waste Land. |  | Day21;숙어;별3 | 해커스 보카/Day 21 | reach completion in, reach the highest point in |  |  |
+| stabilize | 안정시키다, 고정시키다 | The damaged ceiling was stabilized by the addition of temporary support beams. |  | Day21;동사;별2 | 해커스 보카/Day 21 | hold in place, support |  | [stéibəlàiz] |
+| prompt | 유발하다; 자극하다 | The increase in college fees prompted an angry response from students. | adv. promptly | Day21;동사;별2 | 해커스 보카/Day 21 | cause, bring about, induce, stimulate |  | [prampt] |
+| distinction | 차이 | Dickinson identifies an important distinction between rights and duties. | adj. distinct | Day21;명사;별2 | 해커스 보카/Day 21 | difference, divergence, contrast |  | [distíŋkʃən] |
+| constant | 변함없는, 일정한 | The first treadmills operated at constant speeds, but newer models have multiple speeds. | adv. constantly | Day21;형용사;별2 | 해커스 보카/Day 21 | unchangeable, steady, stationary |  | [kánstənt] |
+| appreciation | 이해 | Everyone's appreciation of modern art increased after the lecture. | v. appreciate | Day21;명사;별2 | 해커스 보카/Day 21 | understanding, comprehension |  | [əprìːʃiéiʃən] |
+| sophistication | (고도의) 지식 | Daniel's level of sophistication in technology surpasses those of other experts in the field. | the sophistication of modern fashion (세련됨) | Day21;명사;별2 | 해커스 보카/Day 21 | expertise, urbanity, refinement |  | [səfìstəkéiʃən] |
+| pronouncement | 선언, 발표 | The press conference concluded with the mayor's pronouncement about his decision to step down from office. |  | Day21;명사;별2 | 해커스 보카/Day 21 | statement, declaration, proclamation |  | [prənáunsmənt] |
+| flag | 시들다, 줄다 | When interest in its product flagged, the company decided to change its marketing strategy. | flag the client's file (표시하다) | Day21;동사;별2 | 해커스 보카/Day 21 | lessen, weaken, fade, wither, mark, label |  | [flæg] |
+| ambivalent | 상반되는 감정을 가진 | Joe has ambivalent feelings about getting back into a relationship with his ex-girlfriend. |  | Day21;형용사;별2 | 해커스 보카/Day 21 | mixed, unsure, undecided |  | [æmbívələnt] |
+| term | 칭하다 | Claude Monet founded a new style of painting that was termed impressionism. | n. terminology | Day21;동사;별2 | 해커스 보카/Day 21 | call, name, designate, denominate |  | [təːrm] |
+| flawed | 결함이 있는 | Early scientists made inaccurate estimates of the Earth's age based on flawed data. |  | Day21;형용사;별2 | 해커스 보카/Day 21 | incorrect, defective, imperfect |  | [flɔːd] |
+| reminisce | 회상하다 | Karen and Esther walked through the park as they reminisced about their college days. |  | Day21;동사;별2 | 해커스 보카/Day 21 | recollect, remember, recall, look back |  | [rèmənís] |
+| destitute of | ~이 없는 | Early British colonists were destitute of the skills needed to survive in America. |  | Day21;숙어;별2 | 해커스 보카/Day 21 | lacking, empty of, deficient in |  |  |
+| regrettably | 유감스럽게도 | Regrettably, city council has voted to cancel the popular anti-poverty program. |  | Day21;부사;별2 | 해커스 보카/Day 21 | unfortunately, lamentably, sadly |  | [rigrétəbli] |
+| principle | 원리 | In some Amazon tribes, the principles of homebuilding have not changed since ancient times. | principal (주요한) = main, chief | Day21;명사;별2 | 해커스 보카/Day 21 | basic method, original method |  | [prínsəpl] |
+| contain | 포함하다 | Independent filmmaking contains a different set of challenges than film production at major studios. |  | Day21;동사;별2 | 해커스 보카/Day 21 | include, comprise |  | [kəntéin] |
+| juncture | 연결, 접합 | A weakened juncture was responsible for the collapse of the building. |  | Day21;명사;별2 | 해커스 보카/Day 21 | connection, junction, link |  | [dʒʌ́ŋktʃər] |
+| discount | 무시하다 | It's getting more and more difficult to discount the possibility of another global economic crisis. |  | Day21;동사;별2 | 해커스 보카/Day 21 | ignore, disregard |  | [diskáunt] |
+| or so | ~정도 | The author began writing short stories when he was twenty or so. |  | Day21;숙어;별2 | 해커스 보카/Day 21 | roughly |  |  |
+| dejected | 낙담한 | The singer's fans felt dejected because the concert was canceled. |  | Day21;형용사;별2 | 해커스 보카/Day 21 | depressed, downhearted |  | [didʒéktid] |
+| proposal | 제안 | The proposal to increase the number of immigrants admitted into the country is controversial. |  | Day21;명사;별2 | 해커스 보카/Day 21 | idea, offer, proposition, suggestion |  | [prəpóuzəl] |
+| for all | ~에도 불구하고 | For all their efforts, the engineers could not repair the damaged ship. |  | Day21;숙어;별2 | 해커스 보카/Day 21 | in spite of, with all, despite |  |  |
+| uniquely | 독특하게 | Sloths are uniquely adapted to spending long periods of time hanging upside down. |  | Day21;부사;별2 | 해커스 보카/Day 21 | exceptionally, distinctively |  | [juːníːkli] |
+| criticize | 비난하다 | Civil rights leaders criticized the government for failing to protect minorities. |  | Day21;동사;별2 | 해커스 보카/Day 21 | find fault with, blame, condemn, censure |  | [krítəsàiz] |
+| erode | 침식시키다, 침식되다 | Over time, water and wind can erode even the hardest rock formation into dust. | n. erosion (침식) = corrosion | Day21;동사;별2 | 해커스 보카/Day 21 | wear down, wear away, wear out |  | [iróud] |
+| tension | 긴장, 압박 | Laughing out loud helps ease tension. |  | Day21;명사;별2 | 해커스 보카/Day 21 | strain, pressure |  | [ténʃən] |
+| ancient | 고대의 | Most ancient Greek philosophies denied the existence of God. |  | Day21;형용사;별2 | 해커스 보카/Day 21 | early, old, prehistoric, antique |  | [éinʃənt] |
+| inherently | 본질적으로 | Stocks are inherently risky investments that have the potential to significantly decrease in value. | adj. inherent | Day21;부사;별1 | 해커스 보카/Day 21 | essentially, intrinsically |  | [inhíərəntli] |
+| sporadic | 때때로 일어나는 | During World War II, many cities were subject to sporadic bombing raids. | adv. sporadically | Day21;형용사;별1 | 해커스 보카/Day 21 | occasional, intermittent, irregular, infrequent |  | [spərǽdik] |
+| apex | 정점 | Retail store profits reach an apex in December, during the Christmas season. |  | Day21;명사;별1 | 해커스 보카/Day 21 | crest, peak, acme, pinnacle |  | [éipeks] |
+| though | 그렇지만 / ~이지만 | The actress was nominated for an Oscar. She probably won't win, though. | thorough (철저한) = exhaustive, scrupulous | Day21;부사;접속사;별1 | 해커스 보카/Day 21 | however, nevertheless, yet, still, although, while, albeit |  | [ðou] |
+| infer | 추론하다 | The hunters inferred that there were no large animals in the area. |  | Day21;동사;별1 | 해커스 보카/Day 21 | conclude, derive, reason, deduce |  | [infə́ːr] |
+| core | 핵심 | The core of Clinton's plan was to set up regional health alliances. |  | Day21;명사;별1 | 해커스 보카/Day 21 | central idea, center, heart |  | [kɔːr] |
+| mutation | 돌연변이 과정, 변화, 변형 | The Center for Disease Control and Prevention monitors infectious viruses that are likely to undergo mutation. |  | Day21;명사;별1 | 해커스 보카/Day 21 | change, variation, alteration |  | [mjuːtéiʃən] |
+| thrill | 흥분, 전율 | The thrill of bungee jumping is exciting for some people and terrifying for others. |  | Day21;명사;별1 | 해커스 보카/Day 21 | excitement, exhilaration, frisson |  | [θril] |
+| mutilate | 못쓰게 만들다 | The injury mutilated the soccer player's knee and forced him to retire from the sport. |  | Day21;동사;별1 | 해커스 보카/Day 21 | damage, injure, disable |  | [mjúːtəlèit] |
+| rigidly | 엄격하게 | Medieval philosophers rigidly adhered to Aristotle's teachings. | adj. rigid | Day21;부사;별1 | 해커스 보카/Day 21 | strictly, rigorously, severely |  | [rídʒidli] |
+| matter | 물질 / 사안 | Plants are only able to grow in soil that contains a sufficient amount of organic matter. | being on time matters (중요하다) | Day21;명사;별1 | 해커스 보카/Day 21 | substance, material, stuff, issue, be important |  | [mǽtər] |
+| contradicting | 서로 대립하는 | There are several contradicting theories about the formation of the moon. |  | Day21;형용사;별1 | 해커스 보카/Day 21 | opposing |  | [kàntrədíktiŋ] |

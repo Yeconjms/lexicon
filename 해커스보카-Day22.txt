@@ -1,0 +1,59 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| skeptical | 의심 많은 | Skeptical observers were amazed when the man walked on a wire across the Grand Canyon. |  | Day22;형용사;별3 | 해커스 보카/Day 22 | doubting, incredulous, dubious, suspicious |  | [sképtikəl] |
+| optimal | 최적의, 최선의 | Early childhood is the optimal period for second language acquisition. |  | Day22;형용사;별3 | 해커스 보카/Day 22 | best, ideal, most satisfactory |  | [áptəməl] |
+| hint | 암시, 단서 | To sailors, a red sky in the morning is a hint that bad weather is approaching. | hint him what she wants (넌지시 알려주다) | Day22;명사;별3 | 해커스 보카/Day 22 | indication, implication, clue, suggest, insinuate |  | [hint] |
+| challenge | 문제, 난제 / 이의를 제기하다 | The main challenge that early goldminers faced in Alaska was the cold. |  | Day22;명사;동사;별3 | 해커스 보카/Day 22 | difficulty, problem, question, dispute |  | [tʃǽlindʒ] |
+| potentially | 어쩌면 | The student's plagiarism on her final paper could potentially lead to the university pressing criminal charges. | adj. potential | Day22;부사;별3 | 해커스 보카/Day 22 | possibly, perhaps, maybe |  | [pəténʃəli] |
+| compel | 강요하다 | Slave women were compelled to do arduous tasks all day long. |  | Day22;동사;별3 | 해커스 보카/Day 22 | force, oblige, require, coerce |  | [kəmpél] |
+| simultaneously | 동시에 | The website slows down when too many people access it simultaneously. | adj. simultaneous | Day22;부사;별3 | 해커스 보카/Day 22 | at the same time, concurrently, in parallel |  | [sàiməltéiniəsli] |
+| static | 변화가 없는, 고정된 | The price of oil has remained fairly static for some weeks. |  | Day22;형용사;별3 | 해커스 보카/Day 22 | unchanging, immobile, unmoving |  | [stǽtik] |
+| retain | 보유하다, 유지하다 | Americans must retain a copy of their tax forms from the previous three years. | restrain (억제하다) = suppress, repress | Day22;동사;별3 | 해커스 보카/Day 22 | preserve, keep, maintain |  | [ritéin] |
+| strictly | 엄격히, 엄밀히 / 오로지 | Traffic rules are strictly enforced by the police department in the city. |  | Day22;부사;별3 | 해커스 보카/Day 22 | rigorously, severely, tightly, precisely, only, exclusively, solely |  | [stríktli] |
+| exceptionally | 유난히 | Exceptionally bright children sometimes do not get along with their peers. | adj. exceptional | Day22;부사;별3 | 해커스 보카/Day 22 | uncommonly, unusually, distinctively |  | [iksépʃənəli] |
+| consequently | 그 결과, 따라서 | China has made efforts to increase global trade, which has consequently led to a more established economy. | adj. consequent; n. consequence | Day22;부사;별3 | 해커스 보카/Day 22 | as a result, therefore, hence, thus |  | [kánsəkwèntli] |
+| obtain | 얻다, 획득하다 | Jake was thrilled when he finally obtained his driver's license after failing the test twice before. | adj. obtainable | Day22;동사;별3 | 해커스 보카/Day 22 | acquire, gain, earn, derive, achieve |  | [əbtéin] |
+| epitomize | ~의 전형이 되다 / 요약하다 | Theodore Roosevelt epitomized the qualities of a successful leader. |  | Day22;동사;별3 | 해커스 보카/Day 22 | exemplify, typify, represent, summarize, abridge |  | [ipítəmàiz] |
+| aggregate | 총계의; 집합적인 / 모이다, 모으다 | The aggregate demand for affordable housing increases every year. | aggravate (악화시키다) = make worse, exacerbate | Day22;형용사;동사;별3 | 해커스 보카/Day 22 | overall, total, combined, collective, gather, collect, combine, accumulate, amass |  | [ǽgrigət] |
+| in principle | 이론상으로 | In principle, solar energy could provide enough electricity for the whole planet. |  | Day22;숙어;별3 | 해커스 보카/Day 22 | theoretically, in theory, on paper |  |  |
+| sequentially | 연속적으로, 순차적으로 | Ralph numbered all the pages of his paper sequentially. | n. sequence | Day22;부사;별3 | 해커스 보카/Day 22 | consecutively, successively |  | [sikwénʃəli] |
+| surveillance | 감시 | Electronic surveillance is an effective method used to detect and prevent criminal behavior. |  | Day22;명사;별2 | 해커스 보카/Day 22 | observation, watch, supervision |  | [sərvéiləns] |
+| accompany | 동반하다 | In some thunderstorms, large hail accompanies the heavy wind, thunder, and lightning. |  | Day22;동사;별2 | 해커스 보카/Day 22 | occur with, come with |  | [əkʌ́mpəni] |
+| hazardous | 위험한 | Hazardous materials used in agriculture can seep into the ground and taint water resources. | n. hazard | Day22;형용사;별2 | 해커스 보카/Day 22 | dangerous, perilous, risky, unsafe |  | [hǽzərdəs] |
+| thwart | 좌절시키다 | The economic crisis thwarted the government's plan to increase social welfare spending. |  | Day22;동사;별2 | 해커스 보카/Day 22 | frustrate |  | [θwɔːrt] |
+| vanish | 사라지다 | Like a ghost, the magician vanished into thin air at the conclusion of his performance. | banish (추방하다) = exile, expatriate | Day22;동사;별2 | 해커스 보카/Day 22 | disappear, fade, evaporate |  | [vǽniʃ] |
+| synthesis | 통합 | Paul's art is a synthesis of technology and organic material. | v. synthesize | Day22;명사;별2 | 해커스 보카/Day 22 | combination, union, integration |  | [sínθəsis] |
+| forum | 공공 광장 | In ancient Rome, open markets were often forums for meetings and discussions. |  | Day22;명사;별2 | 해커스 보카/Day 22 | public area, public square |  | [fɔ́ːrəm] |
+| invade | 침입하다 | Illness occurs when harmful bacteria invade the cells of a healthy person. |  | Day22;동사;별2 | 해커스 보카/Day 22 | trespass, enter, intrude, raid |  | [invéid] |
+| quarters | 주거, 숙소 | The institute has its own staff quarters to accommodate full-time employees. | quarter (숙박시키다) = accommodate, house | Day22;명사;별2 | 해커스 보카/Day 22 | residence, dwelling, habitation, abode |  | [kwɔ́ːrtərz] |
+| abolish | (법률·제도 등을) 폐지하다 | New laws introduced in the mid-nineteenth century abolished slavery in Russia. |  | Day22;동사;별2 | 해커스 보카/Day 22 | eliminate, end, annul, revoke, nullify |  | [əbáliʃ] |
+| staggering | 충격적인 | A science magazine released the staggering news that nearly 7 million bats have died over the past few years. |  | Day22;형용사;별2 | 해커스 보카/Day 22 | shocking, astonishing, stunning, astounding |  | [stǽgəriŋ] |
+| disclose | (비밀 등을) 밝히다, 폭로하다 | Government officials disclosed that they had been negotiating with the rebels. |  | Day22;동사;별2 | 해커스 보카/Day 22 | reveal, divulge, unveil |  | [disklóuz] |
+| scores | 다수 | Scores of songs were considered for the movie soundtrack, but only ten were chosen. |  | Day22;명사;별2 | 해커스 보카/Day 22 | a large number, host, crowd, multitude |  | [skɔːrz] |
+| eager to | ~을 하고 싶어하는 | During the holidays, the roads are crowded with travelers who are eager to see their families. |  | Day22;숙어;별2 | 해커스 보카/Day 22 | anxious to, keen to, impatient to |  |  |
+| systematically | 체계적으로 | Companies must systematically test the security of their online networks to prevent data theft. |  | Day22;부사;별2 | 해커스 보카/Day 22 | methodically |  | [sìstəmǽtikəli] |
+| stimulate | 자극하다, 활성화시키다 | The New Deal included federal action to stimulate industrial recovery. | simulate (흉내 내다) = imitate, pretend | Day22;동사;별2 | 해커스 보카/Day 22 | prompt, spur, promote, activate |  | [stímjulèit] |
+| limited | 제한된, 한정된 | Northern cavefish are found only in caves in a limited area around the Ohio River. |  | Day22;형용사;별2 | 해커스 보카/Day 22 | restricted, narrow, confined |  | [límitid] |
+| excessive | 지나친 | Many members of Congress considered Joseph McCarthy's claims of communist infiltration excessive. |  | Day22;형용사;별2 | 해커스 보카/Day 22 | extreme, undue, exorbitant |  | [iksésiv] |
+| similar | 비슷한 | Spanish and French are related languages so they share similar grammar and vocabulary. |  | Day22;형용사;별2 | 해커스 보카/Day 22 | comparable, alike, analogous |  | [símələr] |
+| entitled to | ~할 권리가 있는 | In the US, all citizens are entitled to vote upon reaching the age of 18. | entitle (권리를 주다) = empower, warrant | Day22;숙어;별2 | 해커스 보카/Day 22 | given the right to, authorized to, qualified to |  |  |
+| constantly | 끊임없이 | As Priscilla walked through the village for the first time in 20 years, she was constantly reminded of her childhood. | adj. constant | Day22;부사;별2 | 해커스 보카/Day 22 | continually, continuously, perpetually, always |  | [kánstəntli] |
+| turbulence | 소란, 동요 | Peacekeepers tried to dampen the turbulence in the region. | adj. turbulent | Day22;명사;별2 | 해커스 보카/Day 22 | agitation, tumult, commotion, turmoil |  | [tə́ːrbjuləns] |
+| essence | 본질 | The essence of happiness is strong relationships and meaningful work. |  | Day22;명사;별2 | 해커스 보카/Day 22 | fundamental, essentiality, substance, nature |  | [esns] |
+| back up | 지지하다, 지원하다 | Cheryl's parents did not back up her decision to switch her major from biology to drama. |  | Day22;숙어;별2 | 해커스 보카/Day 22 | support, stand by, aid, assist |  |  |
+| flexibility | 융통성, 적응성 | In addition to education and skills, workers need flexibility to thrive in today's business world. | adj. flexible | Day22;명사;별2 | 해커스 보카/Day 22 | adaptability, adjustability, versatility |  | [flèksəbíləti] |
+| archaic | 구식의 | Historians still debate how the prehistoric builders were able to construct Stonehenge using such archaic technology. |  | Day22;형용사;별2 | 해커스 보카/Day 22 | antiquated, outdated, old, primitive |  | [aːrkéiik] |
+| eject | 쫓아내다 | The referee ejected two players who engaged in a tussle on the field. | inject 주입하다 / deject 낙담시키다 | Day22;동사;별1 | 해커스 보카/Day 22 | force out, throw out, expel |  | [idʒékt] |
+| interpret | 해석하다; 이해하다 | There are several different ways to interpret a poem. |  | Day22;동사;별1 | 해커스 보카/Day 22 | construe, explain, understand |  | [intə́ːrprit] |
+| intensity | 강도, 세기 | The intensity of the earthquake frightened the people who had never experienced one. | adj. intense | Day22;명사;별1 | 해커스 보카/Day 22 | strength |  | [inténsəti] |
+| sloping | 경사진 | Rain that falls in the mountains runs down the sloping ground into the valleys. |  | Day22;형용사;별1 | 해커스 보카/Day 22 | inclining, inclined, slanted |  | [slóupiŋ] |
+| endeavor | 노력하다, 시도하다 | Although she was exhausted, Corinne endeavored to finish painting the house before nightfall. |  | Day22;동사;별1 | 해커스 보카/Day 22 | make an effort, strive, struggle, attempt |  | [indévər] |
+| circumvent | 우회하다 | Jack and Fred went north in order to circumvent the mountains. |  | Day22;동사;별1 | 해커스 보카/Day 22 | get around, bypass, detour |  | [sə̀ːrkəmvént] |
+| counterproductive | 역효과를 낳는 | Crash diets are counterproductive because they never result in permanent weight loss. |  | Day22;형용사;별1 | 해커스 보카/Day 22 | contrary to what is necessary |  | [kàuntərprədʌ́ktiv] |
+| lucid | 명료한 | The teacher's explanation was lucid enough for a child to understand. |  | Day22;형용사;별1 | 해커스 보카/Day 22 | clear, obvious, distinct |  | [lúːsid] |
+| delineate | (윤곽 등을) 그리다 | The Rio Grande River delineates the border between Texas and Mexico. |  | Day22;동사;별1 | 해커스 보카/Day 22 | outline, trace |  | [dilínièit] |
+| practical | 실용적인; 효과적인 | Setting a monthly budget is a practical way to reduce expenses and save money. |  | Day22;형용사;별1 | 해커스 보카/Day 22 | pragmatic, functional, effective |  | [prǽktikəl] |
+| revere | 존경하다, 숭배하다 | Ancient Egyptians revered cats and included them as an important part of religious worship. |  | Day22;동사;별1 | 해커스 보카/Day 22 | honor, admire, venerate, respect |  | [rivíər] |
+| unpromising | 가망이 없는 | The child had a successful life despite growing up in unpromising circumstances. |  | Day22;형용사;별1 | 해커스 보카/Day 22 | unfavorable |  | [ʌnpráməsiŋ] |
+| heed | 주의 | If Nancy had paid heed to the warning, she wouldn't have fallen off the platform. | heed the teacher (~에 주의를 기울이다) | Day22;명사;별1 | 해커스 보카/Day 22 | attention, notice, caution, pay attention to, listen to |  | [hiːd] |
+| location | 장소, 지역 | Coffee plants grow only in locations with cool temperatures. | v. locate | Day22;명사;별1 | 해커스 보카/Day 22 | region, site, position, place |  | [loukéiʃən] |
