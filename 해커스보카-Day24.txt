@@ -1,0 +1,60 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| sustain | 떠받치다, 지탱하다 / 지속하다, 유지하다 | The old shelf could not sustain the weight of the books. |  | Day24;동사;별3 | 해커스 보카/Day 24 | support, bear, uphold, maintain, continue |  | [səstéin] |
+| subsequence | 연속, 이어서 일어나는 것 | Brandy had the misfortune of performing in subsequence to an unusually gifted singer. | adj. subsequent; adv. subsequently | Day24;명사;별3 | 해커스 보카/Day 24 | succession, next in a series |  | [sʌ́bsikwəns] |
+| accumulate | (서서히) 모으다 | Donald accumulated much of his wealth in real estate. | n. accumulation | Day24;동사;별3 | 해커스 보카/Day 24 | gather, collect, compile, gradually increase in number |  | [əkjúːmjulèit] |
+| assert | 주장하다 | Many medieval scholars in Europe mistakenly asserted that the world was flat. | maintain one's innocence (주장하다) | Day24;동사;별3 | 해커스 보카/Day 24 | claim, maintain, declare, forcefully establish, contend |  | [əsə́ːrt] |
+| progressive | 진보적인 / 점진적인 | During the seventeenth century, the notion of women voting was a very progressive idea. | adv. progressively | Day24;형용사;별3 | 해커스 보카/Day 24 | advanced, liberal, increasing, continuous |  | [prəgrésiv] |
+| strikingly | 눈에 띄게 | The recycling initiative was strikingly effective, cutting down the amount of disposed waste by half. | adj. striking | Day24;부사;별3 | 해커스 보카/Day 24 | remarkably, noticeably |  | [stráikiŋli] |
+| comparable | 비슷한, 동등한 | The newly discovered clay figures in Mexico were comparable to those found in China in terms of their scale. |  | Day24;형용사;별3 | 해커스 보카/Day 24 | analogous, similar, equivalent, alike |  | [kámpərəbl] |
+| hinder | 방해하다 | Terry's frequent absences hindered the team's research. |  | Day24;동사;별3 | 해커스 보카/Day 24 | interfere with, hamper, stunt, impede |  | [híndər] |
+| concern | 걱정시키다 / 관심(사) | The proposed plan to build a nuclear power plant there concerned the area's citizens. | concerning (~에 관하여) = with reference to, regarding | Day24;동사;명사;별3 | 해커스 보카/Day 24 | worry, interest, regard, care |  | [kənsə́ːrn] |
+| presumably | 아마 | The first people to populate the Americas presumably came from East and Central Asia. | v. presume; adj. presumable | Day24;부사;별3 | 해커스 보카/Day 24 | supposedly, probably, thought to be, it can be assumed |  | [prizúːməbli] |
+| ritual | 의식적인 | Among the ritual practices of ancient Egypt was mummifying the dead. |  | Day24;형용사;별3 | 해커스 보카/Day 24 | ceremonial |  | [rítʃuəl] |
+| unresolved | 미정의 | The issue of who in the family will inherit the large estate is still unresolved. |  | Day24;형용사;별3 | 해커스 보카/Day 24 | undecided, undetermined, unsettled |  | [ʌ̀nrizálvd] |
+| convey | 전달하다 | Some periodicals presently convey information by digital means only. | communicate the message (전달하다) | Day24;동사;별3 | 해커스 보카/Day 24 | transmit, communicate, deliver, impart |  | [kənvéi] |
+| devise | 고안하다 | The government is carefully devising new trade rules. | n. device | Day24;동사;별3 | 해커스 보카/Day 24 | invent, create, design, contrive |  | [diváiz] |
+| astonish | 깜짝 놀라게 하다 | The beauty of the Mona Lisa never fails to astonish visitors. |  | Day24;동사;별3 | 해커스 보카/Day 24 | amaze, surprise, astound, shock |  | [əstániʃ] |
+| stringent | 엄한 | The Spartans' way of rearing their children was very stringent. |  | Day24;형용사;별3 | 해커스 보카/Day 24 | strict, rigorous, tight |  | [stríndʒənt] |
+| vastly | 대단히 | Insect flight is considered vastly superior to that of the flying machines invented by humans. | adj. vast | Day24;부사;별3 | 해커스 보카/Day 24 | greatly, enormously, immensely, exceedingly |  | [vǽstli] |
+| to a large extent | 대체로 | The theory of evolution is to a large extent based on Charles Darwin's work. |  | Day24;숙어;별2 | 해커스 보카/Day 24 | for the most part, mainly, largely |  |  |
+| updated | 최신의 | Updated versions of classic films are often popular with movie fans. |  | Day24;형용사;별2 | 해커스 보카/Day 24 | newer |  | [ʌ̀pdéitid] |
+| impulse | 자극(제) | Rivalry between the US and the Soviet Union was the impulse for the space race. | impulsive (충동적인) = spontaneous, impetuous | Day24;명사;별2 | 해커스 보카/Day 24 | stimulus, basic motivation, impetus |  | [ímpʌls] |
+| evidence | 증거 | No evidence proved that the accused committed homicide. | adj. evident | Day24;명사;별2 | 해커스 보카/Day 24 | proof, verification |  | [évədəns] |
+| conjuncture | 결합, 접합 | The business was losing money due to a conjuncture of low sales and high rent costs. |  | Day24;명사;별2 | 해커스 보카/Day 24 | combination, connection, juncture |  | [kəndʒʌ́ŋktʃər] |
+| aberrant | 정도를 벗어난 | Children with autism start to show aberrant behavior as early as 2 years old. |  | Day24;형용사;별2 | 해커스 보카/Day 24 | abnormal, deviant, eccentric, erratic |  | [əbérənt] |
+| firmly | 단단히 | The Koh-i-Noor diamond is firmly set in the crown once worn by Queen Elizabeth. |  | Day24;부사;별2 | 해커스 보카/Day 24 | securely, fixedly |  | [fə́ːrmli] |
+| invariably | 언제나, 예외 없이 | When forced to make decisions, people invariably act in their own interest. | adj. invariable | Day24;부사;별2 | 해커스 보카/Day 24 | always, without exception, constantly |  | [invɛ́əriəbli] |
+| sacred | 신성한 | Native Americans have pushed for laws that would preserve their sacred sites. |  | Day24;형용사;별2 | 해커스 보카/Day 24 | holy, divine |  | [séikrid] |
+| cramped | 비좁은, 제한된 | Naval personnel who serve aboard submarines become accustomed to the cramped quarters. |  | Day24;형용사;별2 | 해커스 보카/Day 24 | confined, restricted |  | [kræmpt] |
+| outdated | 구식의 | In many developing countries, outdated financial policies continue to prevent economic growth. |  | Day24;형용사;별2 | 해커스 보카/Day 24 | old-fashioned, antiquated, archaic, outmoded |  | [àutdéitid] |
+| self-confident | 자신감 있는 | According to several studies, self-confident people tend to get promoted more than those who lack self-esteem. |  | Day24;형용사;별2 | 해커스 보카/Day 24 | assured, self-assured |  | [sèlfkánfədənt] |
+| allay | 완화시키다 | Paramedics tried to allay the pain of the burn victim before the ambulance arrived. | alloy 합금하다 / ally 동맹을 맺다 | Day24;동사;별2 | 해커스 보카/Day 24 | reduce, relieve, soothe |  | [əléi] |
+| authenticity | 진짜 | An art expert was asked to determine the authenticity of a painting that appeared to be a Jackson Pollock work. | adj. authentic | Day24;명사;별2 | 해커스 보카/Day 24 | genuineness, realness |  | [ɔ̀ːθentísəti] |
+| masked | 가면을 쓴, 감춘 | The witnesses could not identify the criminal since his face was masked during the robbery. |  | Day24;형용사;별2 | 해커스 보카/Day 24 | concealed, covered |  | [mæskt] |
+| fracture | 균열, 갈라진 틈 | Volcanoes can originate from fractures in the Earth's crust. |  | Day24;명사;별2 | 해커스 보카/Day 24 | rupture, crack, gap, cleft |  | [frǽktʃər] |
+| scanty | 부족한 | The scanty resources in deserts make them very difficult places for organisms to live. |  | Day24;형용사;별2 | 해커스 보카/Day 24 | scarce, sparse, thin, short, meager |  | [skǽnti] |
+| debris | 파편, 잔해 | The shipwreck left debris floating near the shore. |  | Day24;명사;별2 | 해커스 보카/Day 24 | fragment, wreckage, remains, dreg |  | [dəbríː] |
+| unexpectedly | 뜻밖에 | The amateur chef's dishes were unexpectedly creative and delicious. |  | Day24;부사;별2 | 해커스 보카/Day 24 | surprisingly, unpredictably |  | [ʌ̀nikspéktidli] |
+| marginally | 조금 | Mars rotates marginally slower than the Earth, so one day lasts 24.6 hours. | marginal (미미한) = minor, insignificant | Day24;부사;별2 | 해커스 보카/Day 24 | slightly, somewhat, a little |  | [máːrdʒinli] |
+| infrequent | 드문 | Lately, Sylvia's trips home to see her parents have been infrequent due to financial difficulties. |  | Day24;형용사;별2 | 해커스 보카/Day 24 | uncommon, rare, unusual |  | [infríːkwənt] |
+| capacity | 능력, 재능 | Thomas Jefferson, the third US president, had a great capacity for leadership. | the capacity of a dam (용적) | Day24;명사;별2 | 해커스 보카/Day 24 | ability, talent, flair, volume, dimension |  | [kəpǽsəti] |
+| conceive | 상상하다 | According to a popular story, Newton conceived the idea of gravity while sitting under an apple tree. |  | Day24;동사;별2 | 해커스 보카/Day 24 | imagine, envision, visualize |  | [kənsíːv] |
+| immobile | 움직이지 못하는, 정지한 | The immobile truck caused a traffic jam during rush hour this morning. |  | Day24;형용사;별2 | 해커스 보카/Day 24 | unable to move, motionless |  | [imóubəl] |
+| milestone | 획기적인 사건 | The movie Toy Story was a milestone for the computer graphics industry. |  | Day24;명사;별2 | 해커스 보카/Day 24 | significant event, important event |  | [máilstòun] |
+| tempting | 매력적인 | Jennifer found the job offer to be too tempting to resist. |  | Day24;형용사;별2 | 해커스 보카/Day 24 | attractive, appealing, inviting, appetizing |  | [témptiŋ] |
+| antagonistic | 적대하는, 대립하는 | Many nations in the Middle East have antagonistic relationships with each other. | v. antagonize | Day24;형용사;별2 | 해커스 보카/Day 24 | hostile, adversarial |  | [æntæ̀gənístik] |
+| prized | 뛰어난, 소중한 | Mother's prized orchids won first place in the flower show. |  | Day24;형용사;별1 | 해커스 보카/Day 24 | outstanding, prominent, valued |  | [praizd] |
+| cognitive | 인지(력)의, 정신적 작용의 | Prolonged alcohol abuse has been shown to lead to permanent cognitive damage. | n. cognition (인지) = awareness, discernment | Day24;형용사;별1 | 해커스 보카/Day 24 | mental |  | [kágnətiv] |
+| refuge | 피난처 | Sandra tried to find refuge from oppression in a foreign country. |  | Day24;명사;별1 | 해커스 보카/Day 24 | shelter, place of safety, sanctuary |  | [réfjuːdʒ] |
+| full sweep | 모든 범위 | The new documentary covers the full sweep of the emperor penguin's life cycle. |  | Day24;숙어;별1 | 해커스 보카/Day 24 | whole range |  |  |
+| notwithstanding | ~에도 불구하고 | Notwithstanding our objection, the proposal for a pay cut was approved. |  | Day24;전치사;별1 | 해커스 보카/Day 24 | despite, in spite of |  | [nàtwiðstǽndiŋ] |
+| trap | 잡다 | Indigenous tribes of North America used hand-dug pits to trap larger animals. |  | Day24;동사;별1 | 해커스 보카/Day 24 | catch, capture |  | [træp] |
+| methodical | 체계적인 | Rescuers conducted a methodical search for the missing hiker. | adv. methodically | Day24;형용사;별1 | 해커스 보카/Day 24 | systematic, organized |  | [məθádikəl] |
+| emergency | 위기, 비상 사태 | A food shortage due to poor crops has created a national emergency. |  | Day24;명사;별1 | 해커스 보카/Day 24 | crisis, exigency |  | [imə́ːrdʒənsi] |
+| gain | 증가 | Stockholders were pleased that their stocks showed a gain in value. |  | Day24;명사;별1 | 해커스 보카/Day 24 | increase, rise, growth, augmentation |  | [gein] |
+| signal | 신호를 보내다 | The police officer signaled for traffic to move on. |  | Day24;동사;별1 | 해커스 보카/Day 24 | cue, indicate, communicate, gesture, motion |  | [sígnəl] |
+| issue | 문제, 논점 | Many health professionals warn that childhood obesity is becoming a serious issue in the US. | issue the court's decision (발표하다) | Day24;명사;별1 | 해커스 보카/Day 24 | matter, point, question, announce, proclaim |  | [íʃuː] |
+| obliterate | 지우다 | The thief obliterated evidence of his crime by destroying the surveillance video footage. |  | Day24;동사;별1 | 해커스 보카/Day 24 | delete, erase, efface |  | [əblítərèit] |
+| in addition | 게다가 | Online gambling is highly addictive and risky. In addition, it is illegal. |  | Day24;숙어;별1 | 해커스 보카/Day 24 | moreover |  |  |
+| at the same time | 동시에, 함께 | In ice dancing, skaters usually jump at the same time. |  | Day24;숙어;별1 | 해커스 보카/Day 24 | simultaneously |  |  |
