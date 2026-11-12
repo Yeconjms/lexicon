@@ -164,12 +164,15 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 .st-tongue{fill:#E2695F;}
 /* 쏟아지는 별 — 입에서 흘러나와 아래로 떨어집니다. 몸통(`.lexi`)에 붙은
    애니메이션과 **다른 요소**라 서로 덮어쓰지 않습니다 */
-/* 쏟아지는 무지개 — 점선을 흘려 보내 쏟아지는 것처럼 보이게 합니다 */
-.st-rbow path{fill:none;stroke-width:5.2;stroke-linecap:round;opacity:.92;
-  stroke-dasharray:9 7;animation:lxflow .9s linear infinite;}
-@keyframes lxflow{to{stroke-dashoffset:-16;}}
-@media (prefers-reduced-motion:reduce){ .st-rbow path{animation:none;stroke-dasharray:none;} }
-.st-spill{fill:#F6DB63;stroke:#8A6A12;stroke-width:1.2;stroke-linejoin:round;
+/* 쏟아지는 무지개 — 줄기 전체가 **맥박처럼 늘었다 줄었다** 합니다.
+   예전에는 점선을 흘렸는데 줄무늬 커튼처럼 보였습니다 */
+.st-rbow{transform-origin:60px 64px;animation:lxpour 1.1s ease-in-out infinite;}
+@keyframes lxpour{0%,100%{transform:scaleY(.95) scaleX(.98)}50%{transform:scaleY(1.04) scaleX(1.02)}}
+.st-rgloss{fill:none;stroke:#fff;stroke-width:3.4;stroke-linecap:round;opacity:.33;}
+@media (prefers-reduced-motion:reduce){ .st-rbow{animation:none;} }
+/* 토에 박힌 별 — 색 위에서는 **흰 반짝임**이 가장 잘 보입니다.
+   어두운 테두리를 두면 때처럼 지저분해집니다 */
+.st-spill{fill:#fff;stroke:#E9C43C;stroke-width:1;stroke-linejoin:round;
   opacity:0;animation:lxspill 1.9s ease-in infinite;}
 @keyframes lxspill{
   0%{opacity:0;transform:translateY(-12px) scale(.45);}
@@ -183,7 +186,11 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 .st-coil{fill:none;stroke:var(--star-ink);stroke-width:1.9;stroke-linecap:round;}
 .st-ask{fill:none;stroke:var(--star-ink);stroke-width:2.2;stroke-linecap:round;}
 .st-blush{fill:#E2695F;opacity:.34;}
-.st-swish{fill:none;stroke:var(--star-ink);stroke-width:1.7;stroke-linecap:round;opacity:.42;}
+.st-swish{fill:none;stroke:var(--star-ink);stroke-width:1.9;stroke-linecap:round;opacity:.45;}
+/* 흔들릴 때는 선도 같이 깜빡여야 움직임으로 읽힙니다 */
+.lexi.shake .st-swish{animation:lxswish .55s ease-in-out infinite;}
+@keyframes lxswish{0%,100%{opacity:.18}50%{opacity:.62}}
+@media (prefers-reduced-motion:reduce){ .lexi.shake .st-swish{animation:none;opacity:.45;} }
 /* 핏대 — 만화에서 화를 나타내는 그 표시 */
 .st-vein{fill:#CF3A2E;animation:lxvein 1s ease-in-out infinite;transform-box:fill-box;}
 @keyframes lxvein{0%,100%{opacity:.95}50%{opacity:.45}}
@@ -207,13 +214,15 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 .lexi.hot .st-fist{fill:#E8604A;stroke:#6E1C12;}
 .lexi.hot .st-vein{fill:#5E1109;}
 /* 화남 — 아직 시뻘겋진 않고 달아오르는 중 */
-/* 감당 못 할 때 — **빨강은 무서워서** 발그레한 살구색으로 바꿨습니다.
-   볼터치를 진하게 올려 "허덕이지만 귀엽게" 보이도록 했습니다 */
-.lexi.peach .st-fill{fill:#F79B86;}
-.lexi.peach .st-ink,.lexi.peach .st-ink2,.lexi.peach .st-limb{stroke:#8C4631;}
-.lexi.peach .st-eye,.lexi.peach .st-mouth{fill:#8C4631;}
-.lexi.peach .st-blush{fill:#E2574A;opacity:.52;}
-.lexi.peach .st-fist{fill:#F79B86;stroke:#8C4631;}
+/* 감당 못 할 때 — **빨강도 살구색도 아닌 노란 계열**입니다. 렉시는 노란 별이라
+   몸 색까지 바꾸면 다른 캐릭터처럼 보입니다. 기본 노랑(`--star`)보다 조금만
+   진하게 해서 "달아오른" 느낌만 주고, 볼터치를 올려 귀엽게 둡니다.
+   클래스 이름은 색이 아니라 **상태**로 둡니다 — 색을 또 바꿔도 이름이 안 틀립니다 */
+.lexi.woozy .st-fill{fill:#F2C230;}
+.lexi.woozy .st-ink,.lexi.woozy .st-ink2,.lexi.woozy .st-limb{stroke:#7A5A10;}
+.lexi.woozy .st-eye,.lexi.woozy .st-mouth{fill:#7A5A10;}
+.lexi.woozy .st-blush{fill:#E2574A;opacity:.46;}
+.lexi.woozy .st-fist{fill:#F2C230;stroke:#7A5A10;}
 .lexi.warm .st-fill{fill:#F0A23C;}
 .lexi.warm .st-ink,.lexi.warm .st-ink2,.lexi.warm .st-limb{stroke:#6B3410;}
 .lexi.warm .st-eye,.lexi.warm .st-mouth{fill:#6B3410;}
@@ -2861,7 +2870,10 @@ const POSE = {
   /* 허둥지둥 — 두 팔을 들고 흔듭니다 */
   flail: ln("M38 51 Q25 45 27 30") + hand(27,30,-110)
        + ln("M82 51 Q95 45 93 30") + hand(93,30,-70)
-       + '<path class="st-swish" d="M19 27q4-2.6 4.6-7M101 27q-4-2.6-4.6-7"/>'
+       /* 움직임 선 — **한 줄짜리는 흠집처럼 보입니다.** 손 바깥을 감싸는
+          호를 양쪽에 두 줄씩 둬서 흔들리는 것으로 읽히게 합니다 */
+       + '<path class="st-swish" d="M18.4 25.6q2.6-5 7-7.6M14.6 31q1.2-7.4 6.6-11.6'
+       + 'M101.6 25.6q-2.6-5-7-7.6M105.4 31q-1.2-7.4-6.6-11.6"/>'
        + LEG.hop,
   /* 눈 비비기 — 한 손을 얼굴로 가져갑니다 */
   rub  : ln("M36 55 L21 69") + hand(21,69,135)
@@ -2884,8 +2896,9 @@ const BLUSH = '<ellipse class="st-blush" cx="46.6" cy="56.6" rx="4.6" ry="2.5"/>
     크기·지연을 조금씩 다르게 줘서 줄줄 흐르는 것처럼 보이게 했습니다 */
 const MINISTAR = 'M0 -6 1.88 -2.59 5.71 -1.85 3.04 .99 3.53 4.85 0 3.2 '
                + '-3.53 4.85 -3.04 .99 -5.71 -1.85 -1.88 -2.59Z';
-/* 무지개 **양옆**에 둡니다. 가운데에 겹치면 띠에 묻혀 안 보입니다 */
-const SPILL = [[47,82,1.05,0],[73,86,.95,.32],[43,99,.85,.64],[77,101,.9,.96],[60,114,.8,1.28]]
+/* **토 안에 박혀 함께 쏟아집니다.** 양옆에 두었더니 손에서 떨어지는 것처럼 보였습니다.
+   줄기가 아래로 갈수록 넓어지므로 y 가 클수록 x 를 넓게 벌립니다 */
+const SPILL = [[58,86,1,0],[65,95,.9,.34],[54,101,.85,.68],[63,108,1,1.02],[58,114,.8,1.36]]
   .map(([x,y,s,d])=>'<g class="st-spill" style="animation-delay:'+d+'s">'
     +'<path d="'+MINISTAR+'" transform="translate('+x+','+y+') scale('+s+')"/></g>').join("");
 
@@ -2893,10 +2906,19 @@ const SPILL = [[47,82,1.05,0],[73,86,.95,.32],[43,99,.85,.64],[77,101,.9,.96],[6
     띠를 **부채처럼 벌려** 아래로 갈수록 넓어지게 했고, 점선을 흘려 쏟아지는 것처럼
     보이게 했습니다. 별(`SPILL`)이 그 위에 함께 튑니다 */
 const RAINBOW = '<g class="st-rbow">'
+  /* **겹친 고깔**로 그립니다. 입 한 점에서 시작해 아래로 벌어지는 면을 색마다
+     조금씩 좁게 겹쳐 쌓으면, 가장자리에 무지개 띠가 생기고 가운데는 꽉 찬
+     줄기가 됩니다. 선(`stroke`) 여섯 줄로 그렸더니 줄무늬 커튼처럼 보여
+     "토한다" 로 안 읽혔습니다. 바닥은 둥글려 쏟아진 끝처럼 보이게 합니다 */
   + ["#E8604A","#F2A03C","#F6DB63","#6FBF8B","#5BA4D6","#9A7BD1"].map((c,k)=>{
-      const o=k-2.5;
-      return '<path stroke="'+c+'" d="M'+(60+o*1.3).toFixed(1)+' 67 Q'+(60+o*3.4).toFixed(1)
-           + ' 88 '+(60+o*6.4).toFixed(1)+' 113"/>'; }).join("")
+      const w=25-k*4.0, y=111-k*1.2, n=(v)=>v.toFixed(1);
+      /* 옆면을 곧은 선이 아니라 **S 곡선**으로 뽑아 흘러내리는 모양을 만듭니다 */
+      return '<path fill="'+c+'" d="M60 64'
+           + ' C'+n(60-w*.42)+' 80 '+n(60-w)+' 93 '+n(60-w)+' '+n(y)
+           + ' Q60 '+n(y+8)+' '+n(60+w)+' '+n(y)
+           + ' C'+n(60+w)+' 93 '+n(60+w*.42)+' 80 60 64Z"/>'; }).join("")
+  /* 한쪽에 흰 빛을 얇게 올려 매끈해 보이게 합니다 */
+  + '<path class="st-rgloss" d="M57.5 69 C53 82 50.5 94 50.5 106"/>'
   + '</g>';
 
 const STEAM = '<g class="st-steam"><path d="M33 20q-5.4-4-1.6-9"/><path d="M45 12q-4.6-4.6-.6-9"/>'
@@ -3512,7 +3534,7 @@ function moodNow(){
   /* 120장을 넘기면 **입에서 단어가 쏟아집니다** — 감당이 안 된다는 것을
      글보다 그림으로 먼저 보여 줍니다. `k` 가 "boom" 이 아니므로 터지는 효과(`boomfx`)는
      붙지 않습니다. 쏟아지는 별과 겹치면 너무 어수선합니다 */
-  if(back >= 120) return {k:"spill", f:"spill", c:"peach shake", p:"flail", t:"별이 감당을 못 하고 있습니다",
+  if(back >= 120) return {k:"spill", f:"spill", c:"woozy shake", p:"flail", t:"별이 감당을 못 하고 있습니다",
     s:didToday+"밀린 카드가 "+back+"장입니다. 오늘 조금만 해도 숨통이 트입니다. 그리고 하루 신규 단어를 줄이세요."+sweepNote};
   if(back >= 50) return {k:"angry", f:"angry", c:"warm shake", p:"fist", t:"별이 화났습니다",
     s:didToday+"밀린 카드가 "+back+"장입니다. 상한은 일을 미룰 뿐 줄이지 않습니다. 신규를 잠깐 멈춰보세요."+sweepNote};
