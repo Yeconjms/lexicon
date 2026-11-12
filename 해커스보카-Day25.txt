@@ -1,0 +1,57 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| inevitable | 불가피한 | Death is an inevitable fact of human life that is sometimes hard to cope with rationally. | face certain punishment (불가피한) | Day25;형용사;별3 | 해커스 보카/Day 25 | unavoidable, certain, inescapable |  | [inévətəbl] |
+| consequent | 결과로서 일어나는 | The consequent spread of ash after an explosive volcanic eruption can affect world temperatures. | adv. consequently; n. consequence | Day25;형용사;별3 | 해커스 보카/Day 25 | resultant, resulting, eventual, ensuing |  | [kánsəkwènt] |
+| decimation | 대량 파괴, 대량 살해 | A termite from western China is responsible for the decimation of forestland in the US. | v. decimate | Day25;명사;별3 | 해커스 보카/Day 25 | destruction, devastation |  | [dèsəméiʃən] |
+| evoke | 불러일으키다 | The play's tragic main character evoked the audience's pity. |  | Day25;동사;별3 | 해커스 보카/Day 25 | arouse, cause, draw, produce, induce |  | [ivóuk] |
+| vulnerable | 취약한 | Computers that lack antivirus software are vulnerable to attack by malware. |  | Day25;형용사;별3 | 해커스 보카/Day 25 | easily damaged, susceptible, weak, open to attack |  | [vʌ́lnərəbl] |
+| elaborate | 정교한; 복잡한 / 자세히 설명하다 | Police uncovered an elaborate plot to rob the largest bank in the city. |  | Day25;형용사;동사;별3 | 해커스 보카/Day 25 | detailed, more complex, complicated, make detailed |  | [ilǽbərət] |
+| enigmatic | 불가사의한, 이해할 수 없는 | Known as the father of modern mystery, Edgar Allan Poe has inspired countless writers with his enigmatic tales. | n. enigma / pragmatic 실용적인 | Day25;형용사;별3 | 해커스 보카/Day 25 | mysterious, puzzling |  | [ènigmǽtik] |
+| coincide with | 일치하다 | The labor union's opinion did not coincide with that of the factory owners. |  | Day25;숙어;별3 | 해커스 보카/Day 25 | correspond to, accord with |  |  |
+| seemingly | 외견상으로, 겉보기에는 | According to experts, the newly discovered artwork is seemingly the work of Picasso. |  | Day25;부사;별3 | 해커스 보카/Day 25 | apparently, ostensibly |  | [síːmiŋli] |
+| wrought | 만들어진 | The Lion Bridges in Milwaukee include beautifully wrought railings made out of steel. |  | Day25;형용사;별3 | 해커스 보카/Day 25 | created, formed, manufactured |  | [rɔːt] |
+| obstacle | 장애물 | Busy highways are significant obstacles that must be overcome by migrating turtles. |  | Day25;명사;별3 | 해커스 보카/Day 25 | barrier, hindrance, impediment, obstruction |  | [ábstəkl] |
+| lucrative | 수익성이 좋은, 유리한 | Barbara was offered a lucrative three-year contract with the Walt Disney animation crew. |  | Day25;형용사;별3 | 해커스 보카/Day 25 | profitable, gainful, advantageous |  | [lúːkrətiv] |
+| extensive | 광범위한, 넓은 | The influence of the Roman Empire in the ancient Mediterranean was extensive. |  | Day25;형용사;별3 | 해커스 보카/Day 25 | widespread, large, wide, broad, far-reaching |  | [iksténsiv] |
+| dampen | 적시다 | It is advisable to dampen your face with a wet washcloth before using exfoliating cream. | dampen the search efforts (꺾다) | Day25;동사;별3 | 해커스 보카/Day 25 | moisten, wet, soak, saturate, restrain, deter |  | [dǽmpən] |
+| opaque | 불분명한 / (유리·액체 등이) 불투명한 | The man's opaque answers aroused the suspicion of the detective. |  | Day25;형용사;별3 | 해커스 보카/Day 25 | unclear, obscure, impenetrable |  | [oupéik] |
+| endorse | 지지하다 / 서명(배서)하다 | The majority of British politicians endorsed the prime minister's decision to go to war. |  | Day25;동사;별3 | 해커스 보카/Day 25 | support, subscribe, back, advocate, sign |  | [indɔ́ːrs] |
+| advent | 출현, 도래 | The advent of the computer revolutionized modern people's lives. |  | Day25;명사;별3 | 해커스 보카/Day 25 | arrival, coming, introduction, appearance |  | [ǽdvent] |
+| severely | 격렬하게, 심하게 | Many newspapers have severely criticized the president for the country's high unemployment rate. | adj. severe; n. severity | Day25;부사;별3 | 해커스 보카/Day 25 | intensely, seriously, sharply |  | [səvíərli] |
+| immutable | 불변의 | The topic of today's lecture will be the five immutable rules for marketing. | imputable (전가할 수 있는) = attributable, ascribable | Day25;형용사;별2 | 해커스 보카/Day 25 | unchangeable, invariable, unalterable |  | [imjúːtəbl] |
+| yardstick | 기준, 척도 | Financial success is the yardstick by which many people judge others. |  | Day25;명사;별2 | 해커스 보카/Day 25 | measure, criterion, benchmark, standard |  | [jáːrdstìk] |
+| preserve | 보호하다, 보존하다 | The senator took important steps to preserve the wildlife of his state. |  | Day25;동사;별2 | 해커스 보카/Day 25 | protect, save, retain, maintain, conserve |  | [prizə́ːrv] |
+| conviction | (강한) 신념 | Gandhi remained committed to his convictions, such as non-violence, his entire life. | v. convince | Day25;명사;별2 | 해커스 보카/Day 25 | strong belief, strong opinion, faith |  | [kənvíkʃən] |
+| hallmark | 특징 | Clarity is a hallmark of good writing. |  | Day25;명사;별2 | 해커스 보카/Day 25 | feature, distinguishing trait, sure signal |  | [hɔ́ːlmàːrk] |
+| timid | 소심한, 겁 많은 | Sarah tried hard to overcome her timid nature. |  | Day25;형용사;별2 | 해커스 보카/Day 25 | shy, fearful, cowardly |  | [tímid] |
+| robust | 튼튼한, 강한 | Researchers are genetically engineering crops to make them robust. |  | Day25;형용사;별2 | 해커스 보카/Day 25 | strong, vigorous, healthy, stalwart |  | [roubʌ́st] |
+| discard | 버리다 | Everyone should discard their paper, glass, and plastic into a separate recycling box. |  | Day25;동사;별2 | 해커스 보카/Day 25 | throw away, abandon, reject, dispose of, cast aside |  | [diskáːrd] |
+| complicated | 복잡한 | The issue of abortion is complicated, and debates about it are often left unresolved. | complicate (복잡하게 하다) = make difficult, entangle | Day25;형용사;별2 | 해커스 보카/Day 25 | complex, intricate, elaborate |  | [kámpləkèitid] |
+| apart from | ~을 제외하고 | Rachel's essay is very good, apart from a few grammatical errors. |  | Day25;전치사;별2 | 해커스 보카/Day 25 | besides, except for, excluding |  |  |
+| graduate to | (더 높은 단계로) 나아가다, 승진하다 | After serving as a colonel in the US army, Ulysses S. Grant graduated to general in 1861. |  | Day25;숙어;별2 | 해커스 보카/Day 25 | progress to, advance to, proceed to |  |  |
+| demonstrate | 나타내다, 보여주다 | At the parade, people demonstrated their national pride by waving flags. |  | Day25;동사;별2 | 해커스 보카/Day 25 | indicate, show, manifest |  | [démənstrèit] |
+| deluxe | 호화로운 | The deluxe suite in the hotel offered a fabulous view of the city. |  | Day25;형용사;별2 | 해커스 보카/Day 25 | lavish, luxurious, opulent, rich |  | [dəlúks] |
+| dispute | 논쟁하다 / 논쟁 | The townspeople disputed with the local council over the decision to build a new road. | adj. disputatious | Day25;동사;명사;별2 | 해커스 보카/Day 25 | argue, contend, argument, disagreement, debate |  | [dispjúːt] |
+| convention | 관례, 관습 | In some Asian countries, it is the convention not to look directly at those older than oneself. | a convention for investors (협의회) | Day25;명사;별2 | 해커스 보카/Day 25 | usually practiced custom, tradition, rule, assembly, conference |  | [kənvénʃən] |
+| rival | 경쟁하는 / 경쟁자 / ~와 경쟁하다 | The two rival companies have been at the forefront of the IT industry. |  | Day25;형용사;명사;동사;별2 | 해커스 보카/Day 25 | competing, competitive, conflicting, competitor, antagonist, opponent, compete with, match |  | [ráivəl] |
+| modulate | 조절하다, 조정하다 | The liver modulates the levels of various chemicals in the blood. |  | Day25;동사;별2 | 해커스 보카/Day 25 | adjust, regulate, tune |  | [mádʒulèit] |
+| universal | 전 세계적인, 보편적인 | Used to mean "stop," a red light at a street intersection is a symbol that is virtually universal. |  | Day25;형용사;별2 | 해커스 보카/Day 25 | used everywhere, general |  | [jùːnəvə́ːrsəl] |
+| equivalent | 동등한, 상응하는 | Although much international aid goes to help the masses, an equivalent amount is lost due to corruption and inefficiency. |  | Day25;형용사;별2 | 해커스 보카/Day 25 | equal, comparable, even, commensurate |  | [ikwívələnt] |
+| sparsely | 드문드문, 밀도가 낮게 | Turkey's sparsely populated eastern regions are home to six million Kurds. | adj. sparse | Day25;부사;별2 | 해커스 보카/Day 25 | thinly, widely scattered |  | [spáːrsli] |
+| exceed | 넘다, 초과하다 | Christine's yearly income exceeded Jack's total earnings from the previous 14 years. |  | Day25;동사;별2 | 해커스 보카/Day 25 | go beyond, surpass, have a greater number than |  | [iksíːd] |
+| linger | 남다 | Although almost all the guests had left the party, Steven lingered to talk to the host. |  | Day25;동사;별2 | 해커스 보카/Day 25 | remain, stay |  | [líŋgər] |
+| innovative | 독창적인 | Herbal remedies are an innovative way to treat many common health problems. | n. innovation | Day25;형용사;별2 | 해커스 보카/Day 25 | original, inventive, creative, ingenious |  | [ínəvèitiv] |
+| antiquity | 고대 | Gold has been highly valued throughout antiquity and into modern times. | adj. antique | Day25;명사;별2 | 해커스 보카/Day 25 | ancient times, distant past |  | [æntíkwəti] |
+| impending | 임박한 | A person should get a lot of rest to prepare for an impending surgery. |  | Day25;형용사;별2 | 해커스 보카/Day 25 | approaching, imminent |  | [impéndiŋ] |
+| doctrine | 교리, 원칙 | The Buddha's doctrine allowed people to go about their daily lives with confidence. |  | Day25;명사;별2 | 해커스 보카/Day 25 | tenet, principle, dogma |  | [dáktrin] |
+| contribute | 기부하다; 공헌하다 | Employees could contribute a portion of their paycheck to support a local charity. |  | Day25;동사;별2 | 해커스 보카/Day 25 | donate, endow, pitch in with, conduce |  | [kəntríbjuːt] |
+| cease | 멈추다, 끝나다 | The rain had ceased, but a strong wind still blew from the southwest. |  | Day25;동사;별1 | 해커스 보카/Day 25 | stop, halt, end, terminate |  | [siːs] |
+| prior to | ~보다 전에 | Scientists are studying the events that may have occurred on Earth prior to the extinction of the dinosaurs. |  | Day25;전치사;별1 | 해커스 보카/Day 25 | before, previous to, ahead of |  |  |
+| groom | (깔끔하게) 다듬다 | Chimpanzees often groom other members of their group as a form of bonding. | gloom (우울) = depression, melancholy | Day25;동사;별1 | 해커스 보카/Day 25 | clean, tidy |  | [gruːm] |
+| diversity | 다양성; 차이 | The cultural diversity of the US is particularly obvious in larger cities. | adj. diverse | Day25;명사;별1 | 해커스 보카/Day 25 | variety, difference |  | [daivə́ːrsəti] |
+| correlate | (서로) 연관시키다 | In the article, experts tried to correlate diet soda with an increased risk of heart disease. |  | Day25;동사;별1 | 해커스 보카/Day 25 | match, connect, link |  | [kɔ́ːrəlèit] |
+| elite | 최상류층 | For hundreds of years, a small social elite dominated much of Western Europe. |  | Day25;명사;별1 | 해커스 보카/Day 25 | upper class, upper crust, aristocracy, gentry |  | [eilíːt] |
+| stratify | 층을 이루다 | In summer, lakes stratify, with warm water collecting above cooler water. |  | Day25;동사;별1 | 해커스 보카/Day 25 | layer |  | [strǽtəfài] |
+| lessen | 줄이다 | Seatbelts lessen the risk of injury in the event of an accident. |  | Day25;동사;별1 | 해커스 보카/Day 25 | reduce, abate, diminish |  | [lesn] |
+| upset | 불안하게 하다 | News of the deadly terrorist attacks in the city upset people across the world. | upset the ship (뒤엎다) | Day25;동사;별1 | 해커스 보카/Day 25 | disturb, agitate, unsettle, worry, tip over, overturn |  | [ʌpsét] |
+| accrete | 하나로 합쳐지다 | If matter in space accretes enough, it can form planets. |  | Day25;동사;별1 | 해커스 보카/Day 25 | come together, accumulate |  | [əkríːt] |
