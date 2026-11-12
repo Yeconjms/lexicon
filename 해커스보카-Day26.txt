@@ -1,0 +1,57 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| offset | 상쇄하다 | Residents on the island claim that lower housing prices are offset by the high bridge toll. |  | Day26;동사;별3 | 해커스 보카/Day 26 | counterbalance, counteract, cancel out |  | [ɔ́ːfsèt] |
+| assume | (책임·임무를) 떠맡다 / 생각하다 | After John F. Kennedy's assassination, Lyndon Johnson assumed the role of president. | assuming (~이라면) = on condition that, provided | Day26;동사;별3 | 해커스 보카/Day 26 | undertake, take on, adopt, believe, think, suppose, presume |  | [əsúːm] |
+| periodically | 정기적으로 / 간헐적으로, 때때로 | The fire alarms are tested periodically to ensure they are working properly. |  | Day26;부사;별3 | 해커스 보카/Day 26 | regularly, at intervals, occasionally |  | [pìəriádikəli] |
+| cite | 언급하다 | Lawyers cite previous court decisions in their legal documents. |  | Day26;동사;별3 | 해커스 보카/Day 26 | refer to, mention, allude to |  | [sait] |
+| commonly | 보통, 일반적으로 | The earliest dramas of ancient Greece were commonly performed during religious festivals. |  | Day26;부사;별3 | 해커스 보카/Day 26 | generally, often, normally, usually |  | [kámənli] |
+| locate | (위치 등을) 찾아내다, 발견하다 / (장소·위치에) 두다 | Scientists have located a new planet in a distant solar system. | n. location | Day26;동사;별3 | 해커스 보카/Day 26 | find, detect, discover, position, situate, place |  | [lóukeit] |
+| impose | 강요하다 | Karen, as usual, imposed her will upon the rest of the group, and they all ended up at the museum. | impose fees for a service (부과하다) | Day26;동사;별3 | 해커스 보카/Day 26 | force, pressure, enforce, charge, fine |  | [impóuz] |
+| prerequisite | 필요 조건 | Basic Mathematics is a prerequisite for the calculus class. |  | Day26;명사;별3 | 해커스 보카/Day 26 | requirement, necessary condition, precondition |  | [priːrékwəzit] |
+| immunity | 면제 | Although diplomats enjoy immunity from legal prosecution in foreign countries, they can be expelled. |  | Day26;명사;별3 | 해커스 보카/Day 26 | exemption, impunity |  | [imjúːnəti] |
+| proper | 적절한 | Teenagers are often malnourished because they fail to eat a proper diet. |  | Day26;형용사;별3 | 해커스 보카/Day 26 | suitable, appropriate, apposite |  | [prápər] |
+| embark on | 시작하다 | After two months of preparation, Bernie embarked on his backpacking trip across Europe. |  | Day26;숙어;별3 | 해커스 보카/Day 26 | start, begin, commence |  |  |
+| probe | 조사하다, 찾다 / 탐구, 탐사 | Detectives probed the bridge's collapse, but they did not reach a clear conclusion. |  | Day26;동사;명사;별3 | 해커스 보카/Day 26 | investigate, search, examine, explore, exploration, inquiry |  | [proub] |
+| exhaust | 다 써 버리다, 고갈시키다 / 지치게 하다 | The world has exhausted much of its natural resources. | exhaustive (철저한) = thorough, complete | Day26;동사;별3 | 해커스 보카/Day 26 | use up, deplete, run out of, tire, weary, fatigue |  | [igzɔ́ːst] |
+| exclusive | 유일한 | In many small rural towns, a personal automobile is the exclusive means of transportation. | v. exclude; adv. exclusively | Day26;형용사;별3 | 해커스 보카/Day 26 | only, sole, single |  | [iksklúːsiv] |
+| manipulate | 다루다, 조종하다 / 조작하다, 속이다 | Astronauts manipulate devices like the Canada Arm, a tool used to grab floating objects in space. | n. manipulation | Day26;동사;별3 | 해커스 보카/Day 26 | handle, control, operate, maneuver, change, deliberately alter |  | [mənípjulèit] |
+| ongoing | 계속 진행 중인 | The recovery after the hurricane is still ongoing. |  | Day26;형용사;별3 | 해커스 보카/Day 26 | continued, constant, persistent |  | [ɔ́ːngòuiŋ] |
+| primary | 기본적인 | All matter is composed of primary particles, such as quarks. |  | Day26;형용사;별3 | 해커스 보카/Day 26 | fundamental, elementary, basic |  | [práimèri] |
+| interval | (시간·공간의) 간격; 기간 | Drivers of automobiles must maintain a minimum interval of one meter between their vehicles and bikers. |  | Day26;명사;별2 | 해커스 보카/Day 26 | space, distance, period |  | [íntərvəl] |
+| spark | 유발하다 | The government council proposed tax reforms in order to spark activity in the stagnant economy. | a spark of hope (약간) | Day26;동사;별2 | 해커스 보카/Day 26 | bring about, trigger, provoke, hint |  | [spaːrk] |
+| tenacity | 완고함, 고집 | Some residents refused to abandon their homes before the storm, and their tenacity put them in danger. |  | Day26;명사;별2 | 해커스 보카/Day 26 | stubbornness, determination, firmness |  | [tənǽsəti] |
+| distinctive | 특유의, 특색 있는 | Maya's large blue eyes are her most distinctive facial feature. | n. distinction | Day26;형용사;별2 | 해커스 보카/Day 26 | characteristic, peculiar |  | [distíŋktiv] |
+| collaborative | 공동의, 협력적인 | A collaborative effort involving many scientists was required to produce the first atomic bomb. | v. collaborate | Day26;형용사;별2 | 해커스 보카/Day 26 | cooperative, concerted, joint |  | [kəlǽbərèitiv] |
+| deeply ingrained | (습관 등이) 깊이 배어든, 뿌리박힌 | Personal freedom is a deeply ingrained principle of liberal democracies. |  | Day26;숙어;별2 | 해커스 보카/Day 26 | firmly established |  |  |
+| instantaneous | 즉각적인 | Todd's instantaneous reaction to being fired was to scream at his boss, an action which he later regretted. |  | Day26;형용사;별2 | 해커스 보카/Day 26 | immediate, prompt, on-the-spot |  | [ìnstəntéiniəs] |
+| agitate | 뒤흔들다, 휘젓다 | Filters in fish tanks agitate the water, and this helps prevent the growth of algae. | n. agitation (동요) = turmoil, disturbance | Day26;동사;별2 | 해커스 보카/Day 26 | create movement in, stir, beat |  | [ǽdʒitèit] |
+| in profile | 옆모습으로 | The artist preferred drawing portraits of people in profile. |  | Day26;숙어;별2 | 해커스 보카/Day 26 | from side view |  |  |
+| especially | 특히 | Different kinds of gemstones, especially diamonds and rubies, are valued for their rarity. |  | Day26;부사;별2 | 해커스 보카/Day 26 | particularly, notably, specially |  | [ispéʃəli] |
+| creative | 창의적인 | The creative stories of C.S. Lewis have entertained children for generations. |  | Day26;형용사;별2 | 해커스 보카/Day 26 | inventive, imaginative |  | [kriéitiv] |
+| rim | 가장자리 | The falling snow collected on the rim of the fountain. |  | Day26;명사;별2 | 해커스 보카/Day 26 | edge, border, verge, margin |  | [rim] |
+| anxious | 걱정하는 / 열망하는 | It is common for people to feel anxious about starting a new job. | n. anxiety | Day26;형용사;별2 | 해커스 보카/Day 26 | worried, concerned, apprehensive, uneasy, eager, keen, longing |  | [ǽŋkʃəs] |
+| require | 요구하다, 필요로 하다 | Modern consumers are well informed, so successful marketing in today's economy requires sophisticated strategies. | n. requisite / acquire 취득하다 | Day26;동사;별2 | 해커스 보카/Day 26 | demand, call for, entail, need |  | [rikwáiər] |
+| handy | 편리한 | Many people choose to live near a subway station because it is handy for transportation. |  | Day26;형용사;별2 | 해커스 보카/Day 26 | convenient |  | [hǽndi] |
+| rare | 드문 | Huck and Jim shared a friendship, which was rare between a servant and his master. |  | Day26;형용사;별2 | 해커스 보카/Day 26 | very unusual, infrequent, scarce, uncommon |  | [rɛər] |
+| diligently | 열심히, 애써서 | Students must conduct research diligently in doing a term paper or thesis. |  | Day26;부사;별2 | 해커스 보카/Day 26 | earnestly, assiduously, carefully, industriously |  | [dílədʒəntli] |
+| mutually exclusive | 상호 배타적인 | The business partners parted because their opinions were mutually exclusive. |  | Day26;숙어;별2 | 해커스 보카/Day 26 | different from one another |  |  |
+| vacant | (집·땅 등이) 비어 있는 | The hotel rooms are vacant during the winter months because the cold weather deters tourism. |  | Day26;형용사;별2 | 해커스 보카/Day 26 | empty, unoccupied, void |  | [véikənt] |
+| represent | 묘사하다, 나타내다 | The report represents the current situation in our education system. | adj. representative | Day26;동사;별2 | 해커스 보카/Day 26 | depict, portray, express |  | [rèprizént] |
+| conclude | 결론을 내리다 | It was concluded that liquid water cannot exist on a planet that has extreme temperatures. | adj. conclusive; adv. conclusively | Day26;동사;별2 | 해커스 보카/Day 26 | decide, make a final judgement, determine |  | [kənklúːd] |
+| enactment | (법률) 제정 | The enactment of legislation on food packaging labels lets customers know what a product contains. | v. enact | Day26;명사;별2 | 해커스 보카/Day 26 | establishment |  | [inǽktmənt] |
+| impede | 방해하다 | Drought impeded the growth of many agricultural crops last summer. | impend (임박하다) = imminent, upcoming | Day26;동사;별2 | 해커스 보카/Day 26 | inhibit, hinder, obstruct |  | [impíːd] |
+| humble | 초라한, 겸손한 | Despite the actor's tremendous success, he had a very humble house. |  | Day26;형용사;별2 | 해커스 보카/Day 26 | modest, unpretentious, unassuming |  | [hʌ́mbl] |
+| premise | 전제, 가정 | The Chinese legal system works on the premise that an accused person is guilty until he is proven innocent. |  | Day26;명사;별2 | 해커스 보카/Day 26 | assumption, presupposition |  | [prémis] |
+| jettison | 버리다 | Pilots sometimes jettison excess fuel to make an airplane lighter for landing. |  | Day26;동사;별1 | 해커스 보카/Day 26 | release, discard, throw away, cast off |  | [dʒétəsn] |
+| segregate | 분리하다, 격리하다 | All restaurants are now required to segregate smokers from nonsmokers. |  | Day26;동사;별1 | 해커스 보카/Day 26 | separate, seclude, dissociate, disunite |  | [ségrigèit] |
+| innumerable | 무수한 | Jim Henson produced innumerable films and TV shows. |  | Day26;형용사;별1 | 해커스 보카/Day 26 | countless, numberless, numerous |  | [injúːmərəbl] |
+| havoc | 대파괴 | If we don't halt the progress of climate change, it will create havoc on a global scale. |  | Day26;명사;별1 | 해커스 보카/Day 26 | destruction, ruin, devastation, demolition |  | [hǽvək] |
+| dwindle | 줄어들다 | The crowd celebrating the World Cup victory didn't start to dwindle until the early hours of the morning. | dawdle (꾸물거리다) = linger, procrastinate | Day26;동사;별1 | 해커스 보카/Day 26 | decrease, diminish, lessen |  | [dwíndl] |
+| concept | 개념 | Thomas More's Utopia was based on the concept of a perfect world. |  | Day26;명사;별1 | 해커스 보카/Day 26 | idea, notion |  | [kánsept] |
+| sensational | 굉장한, 놀라운 | Las Vegas is known around the world for its sensational night life. |  | Day26;형용사;별1 | 해커스 보카/Day 26 | extraordinary, exciting |  | [senséiʃənl] |
+| convincing | 설득력 있는 | There's no convincing explanation as to how dogs were domesticated. |  | Day26;형용사;별1 | 해커스 보카/Day 26 | persuasive, compelling, credible, cogent |  | [kənvínsiŋ] |
+| insight | 통찰력, 이해 | Nextel has insight into the mobile business market that Motorola would like to have. | insightful (통찰력 있는) = discerning, perceptive | Day26;명사;별1 | 해커스 보카/Day 26 | understanding, perception, sense |  | [ínsàit] |
+| naively | 솔직하게, 순진하게 | The witness naively answered all of the judge's questions. |  | Day26;부사;별1 | 해커스 보카/Day 26 | plainly, candidly, ingenuously |  | [naːíːvli] |
+| vague | 모호한, 불분명한 | In legal documents, it is essential to avoid vague terms and definitions. |  | Day26;형용사;별1 | 해커스 보카/Day 26 | unclear, uncertain, imprecise, obscure |  | [veig] |
+| associated | 관련된 | El Niño is a perfect example of how weather patterns and oceanic currents are closely associated. |  | Day26;형용사;별1 | 해커스 보카/Day 26 | connected, correlated, linked |  | [əsóuʃièitid] |
+| amplification | 부연 설명 | The Talmud is a Jewish text that provides amplification of the concepts from the Hebrew Bible. | v. amplify | Day26;명사;별1 | 해커스 보카/Day 26 | further explanation |  | [æ̀mpləfikéiʃən] |
