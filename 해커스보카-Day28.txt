@@ -1,0 +1,58 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| abundance | 다수, 풍부 | There was an abundance of wild animals in the dense forests. | adj. abundant | Day28;명사;별3 | 해커스 보카/Day 28 | plenty, large number, profusion |  | [əbʌ́ndəns] |
+| onset | 시작 | At the onset of the 19th century, New York City was already a bustling commercial center. |  | Day28;명사;별3 | 해커스 보카/Day 28 | beginning, start, commencement |  | [áːnsèt] |
+| witness | 목격하다 | In 2001, many people gathered to witness the launch of the last space shuttle. |  | Day28;동사;별3 | 해커스 보카/Day 28 | observe, see, look on |  | [wítnis] |
+| mount | 증가하다 | The pressure on the student mounted as the exam date approached. |  | Day28;동사;별3 | 해커스 보카/Day 28 | grow, increase, multiply |  | [maunt] |
+| reinforce | 강화하다 | Steel bars are used to reinforce concrete in the construction of large buildings and bridges. | reinforcement (보강) = supplement | Day28;동사;별3 | 해커스 보카/Day 28 | strengthen, support, consolidate, fortify |  | [rìːinfɔ́ːrs] |
+| intense | 강렬한, 극심한 | Many in the open stadium covered their heads because the sun's rays were too intense. | v. intensify; n. intensity | Day28;형용사;별3 | 해커스 보카/Day 28 | strong, extreme, fierce, acute |  | [inténs] |
+| involved | 복잡한 | The author's literary style was so involved that students found her books difficult to read. |  | Day28;형용사;별3 | 해커스 보카/Day 28 | complicated, intricate, tangled |  | [inválvd] |
+| solely | 오로지 | In 1790, voting rights in the US were solely for male landowners. | adj. sole | Day28;부사;별3 | 해커스 보카/Day 28 | only, purely, exclusively, entirely |  | [sóulli] |
+| undergo | (변화 등을) 겪다, 경험하다 | Japan has undergone several recessions since the 1980s. |  | Day28;동사;별3 | 해커스 보카/Day 28 | experience, go through, suffer |  | [ʌ̀ndərgóu] |
+| mechanism | 기계, 장치 / 방법 | Scientists attached a GPS tracking system on the captured bear, but the mechanism failed. |  | Day28;명사;별3 | 해커스 보카/Day 28 | instrument, device, apparatus, means, method, way |  | [mékənìzm] |
+| speculate | 추측하다 | Galileo correctly speculated that the planets move around the Sun. | speculate in the stock market (투기하다) | Day28;동사;별3 | 해커스 보카/Day 28 | guess, suppose, hypothesize, assume, gamble, risk |  | [spékjulèit] |
+| conclusively | 결정적으로 | The Big Bang theory has not yet been conclusively proven. | v. conclude; adj. conclusive | Day28;부사;별3 | 해커스 보카/Day 28 | decisively, definitively |  | [kənklúːsivli] |
+| significantly | 상당히 | Communication between individuals can be significantly improved if people listen more often. | adj. significant | Day28;부사;별3 | 해커스 보카/Day 28 | considerably, remarkably, markedly |  | [signífikəntli] |
+| adopt | 채택하다, 받아들이다 | The U.N. Security Council adopted a resolution calling on Israel to withdraw its troops from Palestinian cities. | take up a new idea (받아들이다) | Day28;동사;별3 | 해커스 보카/Day 28 | take up, begin to use, select |  | [ədápt] |
+| staple | 주요 상품, 주요소 / 기본적인, 주요한 | Basic black pants are a staple of every professional's wardrobe. |  | Day28;명사;형용사;별3 | 해커스 보카/Day 28 | basic item, regular feature, basic feature, basic, primary |  | [steipl] |
+| secrete | 분비하다 / 숨기다 | Tears are secreted by an organ under the upper eyelid. |  | Day28;동사;별3 | 해커스 보카/Day 28 | release, produce, excrete, conceal, hide, veil |  | [sikríːt] |
+| pursue | 실행하다, 수행하다 | The government continued to pursue its aggressive procedures against illegal immigration. | n. pursuit | Day28;동사;별3 | 해커스 보카/Day 28 | practice, conduct, perform |  | [pərsúː] |
+| conserve | 보존하다, 보호하다 | Efforts to conserve giant pandas in China have been hindered by ongoing habitat loss. |  | Day28;동사;별2 | 해커스 보카/Day 28 | keep, protect, save, preserve |  | [kənsə́ːrv] |
+| toil | 힘써 일하다 | With modern agricultural technology, farmers no longer have to toil in the fields. | toilsome (힘드는) = strenuous, arduous | Day28;동사;별2 | 해커스 보카/Day 28 | work hard, labor |  | [tɔil] |
+| approximate | 대략적인; 가까운 / 비슷하다 | Based on approximate estimates, the world's oil reserves could be used up within fifty years. | adv. approximately; n. approximation | Day28;형용사;동사;별2 | 해커스 보카/Day 28 | rough, close, near, resemble |  | [əpráksəmət] |
+| monumental | 엄청나게 큰, 기념비적인 | The invention of the steam engine was a monumental event in the history of transportation. |  | Day28;형용사;별2 | 해커스 보카/Day 28 | huge, massive, great and significant |  | [mànjuméntl] |
+| contract | 줄이다, 수축하다 | The professor decided to contract his lesson plan because he only had an hour for his lecture. | n. contraction | Day28;동사;별2 | 해커스 보카/Day 28 | shorten, constrict |  | [kəntrǽkt] |
+| puzzling | 영문 모를 | The origin of life is one of the most puzzling scientific mysteries. |  | Day28;형용사;별2 | 해커스 보카/Day 28 | difficult to explain, enigmatic |  | [pʌ́zliŋ] |
+| divest | 빼앗다, 박탈하다 | The new regulation divests tenants of the right to renovate their apartments. |  | Day28;동사;별2 | 해커스 보카/Day 28 | deprive, strip, despoil |  | [daivést] |
+| pacifier | 중재자 | The Dalai Lama is known as one of the greatest pacifiers in modern history. |  | Day28;명사;별2 | 해커스 보카/Day 28 | peacemaker, arbitrator, mediator, intermediary |  | [pǽsəfàiər] |
+| permanently | 영구히 | Bleach removes the color from fabric permanently. |  | Day28;부사;별2 | 해커스 보카/Day 28 | forever, eternally, perpetually, everlastingly |  | [pə́ːrmənəntli] |
+| estimate | 평가하다, 추산하다 | John tried to estimate the cost of the repairs. |  | Day28;동사;별2 | 해커스 보카/Day 28 | assess, evaluate, judge, calculate |  | [éstəmèit] |
+| hurdle | 장애물 | Engineers faced many hurdles when they built the Panama Canal. | hurdle an obstacle (극복하다) | Day28;명사;별2 | 해커스 보카/Day 28 | obstacle, barrier, hindrance, impediment, overcome, surmount |  | [hə́ːrdl] |
+| relish | 즐기다 | Ronald, who used to be a sailor, relishes telling stories about his past journeys. |  | Day28;동사;별2 | 해커스 보카/Day 28 | enjoy, like, delight in, revel in |  | [réliʃ] |
+| simulate | 흉내 내다, 가장하다 | Engineers have created robots that closely simulate the body movements of humans. |  | Day28;동사;별2 | 해커스 보카/Day 28 | imitate, pretend, feign |  | [símjulèit] |
+| hover | 맴돌다, 떠다니다 | Dolphins sometimes hover in the water without swimming. |  | Day28;동사;별2 | 해커스 보카/Day 28 | drift, float, stay on the top |  | [hʌ́vər] |
+| display | 보여 주다 | The audience members displayed their approval of the musical performance by cheering enthusiastically. |  | Day28;동사;별2 | 해커스 보카/Day 28 | show, exhibit, present |  | [displéi] |
+| ominous | 불길한; 험악한 | Some survivors of the Titanic reported that they had an ominous feeling before the voyage. |  | Day28;형용사;별2 | 해커스 보카/Day 28 | foreboding, portentous, threatening |  | [ámənəs] |
+| stretch | 늘이다 | A chameleon can stretch its tongue to about twice its body length. |  | Day28;동사;별2 | 해커스 보카/Day 28 | extend, lengthen |  | [stretʃ] |
+| concur | 동의하다 | An adjustment to the US Constitution requires that 75 percent of states concur on the proposed change. | the two appointments concur (겹치다) | Day28;동사;별2 | 해커스 보카/Day 28 | agree, assent, consent, coincide |  | [kənkə́ːr] |
+| crisis | 위기 | If a crisis occurs, citizens should use the escape routes and shelters that are located throughout the city. |  | Day28;명사;별2 | 해커스 보카/Day 28 | critical situation, emergency |  | [kráisis] |
+| amplitude | 크기, 규모 | The amplitude of a wave is determined by the amount of energy used to create it. | altitude 고도 / aptitude 경향 | Day28;명사;별2 | 해커스 보카/Day 28 | size, extent, magnitude |  | [ǽmplətjùːd] |
+| disintegrate | 붕괴되다 | The palace has disintegrated over the centuries and is now in ruins. | n. disintegration | Day28;동사;별2 | 해커스 보카/Day 28 | break down, fall apart, crumble |  | [disíntəgrèit] |
+| liken to | ~에 비유하다 | A tsunami striking the shore has been likened to a wall of moving water. |  | Day28;숙어;별2 | 해커스 보카/Day 28 | compare to |  |  |
+| immoral | 부도덕한 | Most cultures would agree that stealing is immoral. |  | Day28;형용사;별2 | 해커스 보카/Day 28 | improper, corrupt, vicious |  | [imɔ́ːrəl] |
+| instigate | 유발하다 | A broken traffic light instigated a minor accident on the main street. |  | Day28;동사;별2 | 해커스 보카/Day 28 | cause, provoke, trigger, incite |  | [ínstəgèit] |
+| extraordinary | 비범한 | Grant had an extraordinary ability to understand others. |  | Day28;형용사;별2 | 해커스 보카/Day 28 | exceptional, unusual, remarkable |  | [ikstrɔ́ːrdənèri] |
+| resurgence | 재기, 부활 | After a very slow year, the economy is now making a resurgence. |  | Day28;명사;별2 | 해커스 보카/Day 28 | comeback, revival, rebirth |  | [risə́ːrdʒəns] |
+| patent | 명백한 | Public protests demonstrated the people's patent opposition to the new immigration policy. | receive a patent (특허) = license | Day28;형용사;별1 | 해커스 보카/Day 28 | evident, obvious, apparent, manifest |  | [pǽtnt] |
+| regular | 정기적인; 일정한 | According to dentists, flossing on a regular basis is important for preventing cavities. |  | Day28;형용사;별1 | 해커스 보카/Day 28 | routine, ordinary, consistent |  | [régjulər] |
+| by virtue of | ~ 덕분에(때문에) | By virtue of the US Constitution, it is illegal to imprison anyone without a trial. |  | Day28;숙어;별1 | 해커스 보카/Day 28 | because of, thanks to, on account of |  |  |
+| sever | 자르다, 분리하다 | If a lizard severs its tail, the tail will grow back in a short time. |  | Day28;동사;별1 | 해커스 보카/Day 28 | cut, cut off, part, separate, divide |  | [sévər] |
+| in conjunction with | ~과(와) 함께 | A healthy diet in conjunction with regular exercise can lead to a longer life. |  | Day28;숙어;별1 | 해커스 보카/Day 28 | concomitant with, together with, along with |  |  |
+| confidence | 확신 | The most inspiring teachers have confidence in their students' ability to learn. |  | Day28;명사;별1 | 해커스 보카/Day 28 | certainty, assurance, faith |  | [kánfədəns] |
+| distinguish | 구별하다 | Bees are unable to distinguish between the colors red and black. |  | Day28;동사;별1 | 해커스 보카/Day 28 | differentiate, tell apart, discern |  | [distíŋgwiʃ] |
+| on the contrary | 그와는 반대로 | Ted was not bored; on the contrary, he couldn't be more fascinated with his assignment. |  | Day28;숙어;별1 | 해커스 보카/Day 28 | conversely, on the other hand |  |  |
+| preponderance | 대부분 | The preponderance of people did not own cars in the 1930s, so they traveled by train or boat. |  | Day28;명사;별1 | 해커스 보카/Day 28 | majority |  | [pripándərəns] |
+| intermingle | 섞이다 | In the city's main square, aromas from cafés and bakeries intermingle. |  | Day28;동사;별1 | 해커스 보카/Day 28 | mix, blend |  | [ìntərmíŋgl] |
+| merchandise | 상품 | The thieves stole merchandise worth thousands of dollars from the store. | merchandise a new product (매매하다) | Day28;명사;별1 | 해커스 보카/Day 28 | goods, product, commodity, market, trade |  | [mə́ːrtʃəndàiz] |
+| delicate | 깨지기 쉬운 / 섬세한 | The tea cups were so delicate that Sheila used them only for decoration. |  | Day28;형용사;별1 | 해커스 보카/Day 28 | fragile, brittle, dainty, exquisite, fine |  | [délikət] |
+| promising | 유망한 | Solar and wind power as energy sources don't look promising for the future. |  | Day28;형용사;별1 | 해커스 보카/Day 28 | likely, hopeful |  | [prámisiŋ] |
