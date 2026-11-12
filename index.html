@@ -614,8 +614,8 @@ details.set .inner{padding:0 17px 18px;border-top:1px solid var(--line);margin-t
   min-width:0;text-align:center;}
 .stat b{display:block;font-family:var(--mono);font-size:22px;font-weight:700;line-height:1;}
 /* 라벨이 좁은 화면에서 두 줄로 접히면 칸 높이가 들쭉날쭉해집니다. 한 줄로 고정하고 폭에 맞춰 줄입니다 */
-.stat span{display:block;font-size:clamp(9px,2.7vw,11px);color:var(--muted);margin-top:5px;
-  font-weight:600;white-space:nowrap;}
+.stat span{display:block;font-size:clamp(8.5px,2.8vw,11px);color:var(--muted);margin-top:5px;
+  font-weight:600;white-space:nowrap;letter-spacing:-.02em;}
 .heat{display:flex;gap:3px;overflow-x:auto;padding-bottom:4px;}
 .heat .col{display:flex;flex-direction:column;gap:3px;}
 .cell{width:11px;height:11px;border-radius:2px;background:#DCE3E8;flex-shrink:0;}
@@ -1867,7 +1867,10 @@ function viewStudyHome(done){
     +'<p>사전 탭에서 모르는 단어를 찾아 담거나,<br>예시 20단어로 먼저 둘러보세요.</p>'
     +'<div class="row" style="justify-content:center">'
     +'<button class="btn" data-a="seed">예시 20단어 넣기</button>'
-    +'<button class="btn ghost" data-a="go-dict">사전에서 찾기</button></div></div></div>';
+    +'<button class="btn ghost" data-a="go-dict">사전에서 찾기</button></div>'
+    /* **빈 단어장에서도 교재 상자를 띄웁니다.** 새 기기에는 교재로 들어오는 길이
+       단어 탭 깊은 곳밖에 없었습니다 */
+    +'</div></div>' + soloBanner();
   let h="";
   /* dueToday() 는 덱 전체를 훑으므로 한 번만 부르고 아래에서 나눠 씁니다 */
   const dt=dueToday();
@@ -2018,8 +2021,19 @@ const soloQueue = scope => buildQueue({kind:"review", pack:scope, over:true});
     **학습 홈의 일반 시작과 섞이지 않습니다** — `inScope()` 가 이 팩을 빼기 때문에
     네 칸 숫자에도 안 잡히고 여기서만 나옵니다. 색을 달리해 한눈에 구별되게 했습니다 */
 function soloBanner(){
-  const p=D.s.soloPack; if(!p) return "";
-  if(!active().some(c=>inPack(c,p))) return "";
+  const p=D.s.soloPack;
+  /* **교재를 아직 안 받았으면 받는 상자를 같은 자리에 같은 색으로 보여 줍니다.**
+     예전에는 그 팩 카드가 하나라도 있어야 상자가 떠서, 처음 여는 브라우저에서는
+     "초록색 토플 보카가 아예 안 보인다" 가 됐습니다. 받는 길이 단어 탭 깊은 곳에만
+     있었기 때문입니다. 다른 팩을 따로 공부 중이면 끼어들지 않습니다 */
+  if(!p || !active().some(c=>inPack(c,p))){
+    if(p && p!==BOOK.pack) return "";
+    if(active().some(c=>inPack(c,BOOK.pack))) return "";
+    return '<button class="solobox" data-a="book-pull"'+(bookBusy?' disabled':'')+'>'
+      +'<div class="solohd">'+esc(BOOK.pack)+'</div>'
+      +'<div class="solosub">'+(bookBusy?'받는 중입니다…':'토플 필수 단어 30일치를 받아 옵니다')+'</div>'
+      +'<div class="sologo">'+(bookBusy?'<span class="spin"></span>':'받기 →')+'</div></button>';
+  }
   const pr=soloProgress();
   /* 끝낸 날과 다음 날을 **같은 표기로** 적습니다 —
      한쪽은 "Day 1", 다른쪽은 "Day 02" 로 나오면 어색합니다 */
@@ -2134,10 +2148,11 @@ function viewSolo(){
     +'<button class="btn solo wide" data-a="solo-study" '+(due?"":"disabled")+'>'
     +(due?(esc(scopeLabel)+"암기 시작 · "+due+"장"):"오늘 몫을 다 했습니다")+'</button>'
     +(capped?'<p class="note" style="margin:0">하루 상한만큼만 나옵니다. 끝내면 더 할지 물어봅니다.</p>':'')
-    +'<div class="row" style="gap:7px">'
-    +'<button class="btn ghost solo" style="flex:1" data-a="solo-spell" '+(due?"":"disabled")+'>스펠링</button>'
-    +'<button class="btn ghost solo" style="flex:1" data-a="solo-sweep" '+(cards.length?"":"disabled")+'>전체 훑기 '+cards.length+'</button>'
-    +'</div></div>';
+    /* 팩 탭·학습 홈과 **같은 고르개**입니다. 예전에는 `스펠링` 단추 하나뿐이라
+       여기서도 한→영을 낼 수 없었습니다 */
+    + modePicker()
+    +'<button class="btn ghost solo wide" data-a="solo-sweep" '+(cards.length?"":"disabled")+'>전체 훑기 '+cards.length+'</button>'
+    +'</div>';
 
   /* 단어장 — 가리고 외우기.
      **기본은 접어 둡니다.** 30일치를 다 받으면 이 화면이 9,000px 을 넘겨서,
@@ -2389,13 +2404,14 @@ function viewPacks(){
       + stat(st.leech,"누수", st.leech?"var(--rose)":"")+'</div>'
       +(st.susp?'<p class="note" style="margin:8px 0 0">단어 '+st.n+'개 중 '+st.susp
         +'개는 복습에서 뺐습니다. 정답률과 누수는 뺀 것을 빼고 셌습니다.</p>':'')
+      /* **문제 형식을 여기서도 고릅니다.** 예전에는 `스펠링` 단추 하나뿐이라
+         팩 복습에서는 한→영을 아예 낼 수 없었습니다. 학습 홈·전용 화면과
+         **같은 `modePicker()`** 를 써서 어디서나 같은 자리에 같은 모양으로 둡니다 */
       +'<div style="margin-top:12px;display:grid;gap:7px">'
       +'<button class="btn wide" data-a="pack-review" '+(nRev?"":"disabled")+'>이 팩 복습 · '+nRev+'장</button>'
-      +'<div class="row" style="gap:7px">'
-      +'<button class="btn ghost" style="flex:1" data-a="pack-spell" '+(nRev?"":"disabled")+'><svg class="ico-svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.3 1.9l2.8 2.8L5.3 13.5l-3.6.8.8-3.6z"/><path d="M9.5 3.7l2.8 2.8"/></svg> 스펠링</button>'
-      +'<button class="btn ghost" style="flex:1" data-a="pack-sweep" '+(nSweep?"":"disabled")+'>전체 훑기 '+nSweep+'</button>'
-      +'</div>'
-      +'<p class="note" style="margin:2px 0 0">복습과 스펠링은 오늘 차례가 된 것과 새 단어가 나오고 일정이 바뀝니다. '
+      + modePicker()
+      +'<button class="btn ghost wide" data-a="pack-sweep" '+(nSweep?"":"disabled")+'>전체 훑기 '+nSweep+'</button>'
+      +'<p class="note" style="margin:2px 0 0">복습은 오늘 차례가 된 것과 새 단어가 나오고 일정이 바뀝니다. '
       +'<b>여기서 한 것도 오늘 학습과 정답률에 그대로 들어갑니다.</b><br>'
       +'훑기는 차례와 상관없이 전부 보여주지만 일정을 바꾸지 않습니다.</p>'
       +'</div>';
@@ -3356,21 +3372,34 @@ function moodNow(){
   const gone = lastStudyDays();
   if(gone >= 10) return {k:"dim", f:"dim", c:"dim", p:"sag", t:"별이 사그라졌습니다",
     s:"마지막으로 공부한 지 "+gone+"일 됐습니다. 오늘 다섯 장만 해도 다시 빛나기 시작합니다."};
-  /* 터지기 직전에는 몸이 시뻘게지고 김이 납니다 */
+  /* 터지기 직전에는 몸이 시뻘게지고 김이 납니다.
+     **오늘 한 것을 먼저 인정합니다.** 팩에서 공부하고 왔는데도 "밀렸다" 만 하면
+     한 일이 안 세어진 것처럼 보입니다. 실제로는 팩 복습도 그대로 들어갑니다 —
+     다만 `전체 훑기`·`오답 집중` 은 일정을 바꾸지 않아 밀린 양이 줄지 않습니다 */
+  const didToday = done ? "오늘 "+done+"장 했습니다. " : "";
+  const sweepNote = done ? " (훑기와 오답 집중은 일정을 바꾸지 않아 밀린 양이 줄지 않습니다)" : "";
   if(back >= 120) return {k:"boom", f:"boom", c:"hot boom", p:"flail", t:"별이 터지기 직전입니다",
-    s:"밀린 카드가 "+back+"장입니다. 오늘 조금만 해도 숨통이 트입니다. 그리고 하루 신규 단어를 줄이세요."};
+    s:didToday+"밀린 카드가 "+back+"장입니다. 오늘 조금만 해도 숨통이 트입니다. 그리고 하루 신규 단어를 줄이세요."+sweepNote};
   if(back >= 50) return {k:"angry", f:"angry", c:"warm shake", p:"fist", t:"별이 화났습니다",
-    s:"밀린 카드가 "+back+"장입니다. 상한은 일을 미룰 뿐 줄이지 않습니다. 신규를 잠깐 멈춰보세요."};
+    s:didToday+"밀린 카드가 "+back+"장입니다. 상한은 일을 미룰 뿐 줄이지 않습니다. 신규를 잠깐 멈춰보세요."+sweepNote};
+  /* **교재는 일반 학습에서 빠져 있습니다**(`inScope`). 그래서 별이 세는 `left` 에
+     안 잡히는데, 1,683장이 기다리는 사람에게 "오늘 할 카드가 없습니다" 만 하면
+     거짓말로 들립니다. 섞지는 않되 **남아 있다는 사실은 알려 줍니다** */
+  const bk = (()=>{ if(!D.s.soloPack) return "";
+    const pr=soloProgress();
+    if(!pr.total || pr.done>=pr.total || !pr.next) return "";
+    /* 숫자 뒤에 조사를 붙이면 `Day 01가` 처럼 틀립니다 — 조사가 없는 문구로 씁니다 */
+    return " "+soloShort(D.s.soloPack)+"는 "+soloShort(pr.next)+" 차례입니다."; })();
   if(st >= 7 && left === 0) return {k:"blaze", f:"blaze", c:"aura shine cheerloop", p:"cheer",
-    t:st+"일 연속 · 불타는 중", s:"오늘 몫까지 끝냈습니다. 이게 제일 좋은 상태입니다."};
+    t:st+"일 연속 · 불타는 중", s:"오늘 몫까지 끝냈습니다. 이게 제일 좋은 상태입니다."+bk};
   if(left === 0 && done > 0) return {k:"done", f:"joy", c:"shine bob", p:"cheer", t:"오늘 몫 끝",
-    s:"오늘 "+done+"장 했습니다. 내일 또 만나요."};
+    s:"오늘 "+done+"장 했습니다. 내일 또 만나요."+bk};
   if(st >= 3) return {k:"happy", f:"happy", c:"shine bob", p:"wave", t:st+"일 연속",
-    s:"오늘 "+left+"장 남았습니다. 이대로만 가면 됩니다."};
+    s:"오늘 "+left+"장 남았습니다. 이대로만 가면 됩니다."+bk};
   if(done === 0 && st === 0) return {k:"sleep", f:"sleep", c:"", p:"stand", t:"별이 자고 있습니다",
-    s: left ? ("오늘 "+left+"장이 기다리고 있습니다. 깨워주세요.") : "오늘 할 카드가 없습니다."};
+    s:(left ? ("오늘 "+left+"장이 기다리고 있습니다. 깨워주세요.") : "오늘 할 카드가 없습니다.")+bk};
   return {k:"idle", f:"idle", c:"bob", p:"stand", t:"하는 중",
-    s:"오늘 "+left+"장 남았습니다"+(done?(" · 지금까지 "+done+"장"):"")+"."};
+    s:"오늘 "+left+"장 남았습니다"+(done?(" · 지금까지 "+done+"장"):"")+"."+bk};
 }
 
 /** 통계 탭 맨 위 — 별 하나로 지금 상태를 보여줍니다 */
@@ -4520,6 +4549,30 @@ async function pullBook(){
         .filter(Boolean).join(" · ") + (added||filled?"":" · 새로운 것 없음"));
 }
 
+/** 새 Day 가 올라왔는지 **조용히** 살펴보고, 있으면 받아 옵니다.
+    사용자가 두 번이나 "앱에 업데이트가 안 된다" 고 한 것은, 올려 두어도
+    `새 단어 받기` 를 직접 눌러야만 들어왔기 때문입니다. 단추를 더 잘 보이게 하는
+    것만으로는 부족했습니다 — **안 눌러도 들어와야** 사용자가 생각하는 "업데이트" 입니다.
+
+    비용은 거의 없습니다. 하루에 한 번, **다음 Day 파일 하나만** 찔러 보므로
+    새 것이 없으면 404 응답 하나(1KB 미만)로 끝납니다. 실제로 받는 것은
+    새 Day 가 올라온 날뿐입니다. 학습 중에는 하지 않습니다 — 통신이
+    카드 넘김과 겹치면 안 됩니다. */
+async function bookAutoCheck(){
+  if(S) return;                                   // 학습 중에는 건드리지 않습니다
+  if(!D.cards.some(c=>String(c.pack||"").split("/")[0]===BOOK.pack)) return;  // 교재를 안 쓰는 사람
+  const now=Date.now();
+  if(now - (D.s.bookAt||0) < 12*3600e3) return;
+  D.s.bookAt=now; save();
+  const have=new Set(D.cards.filter(c=>inPack(c,BOOK.pack)).map(c=>c.pack)).size;
+  if(have>=BOOK.max) return;                      // 더 받을 Day 가 없습니다
+  try{
+    const res=await fetchT(BOOK.file(have+1)+"?t="+now, 10000);
+    if(!res.ok) return;                           // 아직 안 올라왔습니다
+  }catch(e){ return; }                            // 오프라인이면 조용히 넘어갑니다
+  await pullBook();
+}
+
 /** 이미 있는 카드에 가져온 내용을 **덮어쓰지 않고** 합칩니다.
     빈 칸만 채우고 태그를 더하며, 진도(seen·interval·due)는 건드리지 않습니다.
     팩은 한 곳만 가질 수 있으므로, 다른 팩으로 들어온 것은 **태그로 남깁니다** —
@@ -4704,11 +4757,10 @@ document.addEventListener("click", e=>{
     soloAll=false; render(); return; }
   /* 가린 칸을 누르면 그것만 잠깐 보입니다 (종이 단어장을 손으로 들추는 것과 같습니다) */
   if(a==="solo-peek"){ t.classList.toggle("hid"); return; }
-  if(a==="solo-study"||a==="solo-spell"||a==="solo-sweep"){
+  if(a==="solo-study"||a==="solo-sweep"){
     const scope=soloScope();
     if(a==="solo-sweep") startSession({kind:"sweep", pack:scope});
-    else startSession({kind:"review", pack:scope, over:true,
-      force:a==="solo-spell"?"type_ko2en":(D.s.ask||"")});
+    else startSession({kind:"review", pack:scope, over:true, force:D.s.ask||""});
     return; }
 
   /* 사전 */
@@ -4747,8 +4799,8 @@ document.addEventListener("click", e=>{
       toast(cs.length+"개를 "+name+" 로 내보냈습니다");
     }catch(err){ copy(csv); }
     return; }
-  if(a==="pack-review"){ startSession({kind:"review", pack:packPath}); return; }
-  if(a==="pack-spell"){ startSession({kind:"review", pack:packPath, force:"type_ko2en"}); return; }
+  /* 형식은 `modePicker()` 로 고릅니다 — 학습 홈·전용 화면과 같은 `D.s.ask` 를 씁니다 */
+  if(a==="pack-review"){ startSession({kind:"review", pack:packPath, force:D.s.ask||""}); return; }
   if(a==="pack-sweep"){ startSession({kind:"sweep", pack:packPath}); return; }
   if(a==="susp"){ const c=byId(t.dataset.id); c.susp=!c.susp; if(!c.susp) c.leech=false; touch(c);
     if(S && S.queue.includes(c.id) && c.susp){ S.queue=S.queue.filter((id,i)=>!(id===c.id&&i>S.idx)); }
@@ -5184,6 +5236,9 @@ const SEED=[
 
 /* ══════════════════ 시작 ══════════════════ */
 load(); authLoad(); render(); paintSync(); initPullRefresh();
+/* 새 Day 가 올라왔으면 조용히 받아 옵니다 (bookAutoCheck 의 설명 참고).
+   화면을 먼저 그린 뒤에 돌려 첫 그림이 늦어지지 않게 합니다 */
+setTimeout(bookAutoCheck, 1200);
 /* 첫 손짓에 음성 엔진을 깨웁니다 */
 addEventListener("touchend", unlockTTS, {once:true, passive:true});
 addEventListener("mousedown", unlockTTS, {once:true});
