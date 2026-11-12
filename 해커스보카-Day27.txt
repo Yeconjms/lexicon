@@ -1,0 +1,58 @@
+| 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
+|---|---|---|---|---|---|---|---|---|
+| remnant | 나머지, 잔존물 | It is possible that comets are remnants from the formation of the solar system. |  | Day27;명사;별3 | 해커스 보카/Day 27 | leftover, remains, trace, relic |  | [rémnənt] |
+| indispensable | 필수적인 | Adam considered compromise an indispensable tool in a federal system. |  | Day27;형용사;별3 | 해커스 보카/Day 27 | essential, necessary, requisite |  | [ìndispénsəbl] |
+| undermine | 약화시키다 | Income reductions have undermined the foundation of the middle class. | undertake 떠맡다 / underlie ~의 기초가 되다 | Day27;동사;별3 | 해커스 보카/Day 27 | weaken, attenuate |  | [ʌ̀ndərmáin] |
+| fashion | 방식 / 만들다, 형성하다 | Shoppers are asked to line up in an orderly fashion at the checkout counter. |  | Day27;명사;동사;별3 | 해커스 보카/Day 27 | way, manner, mode, shape, create, make |  | [fǽʃən] |
+| prolong | 연장하다 | Richard Nixon was convinced that the antiwar movement prolonged the war. |  | Day27;동사;별3 | 해커스 보카/Day 27 | extend, lengthen, protract |  | [prəlɔ́ːŋ] |
+| adequate | 충분한 | Joseph's research cannot be completed without adequate funding. |  | Day27;형용사;별3 | 해커스 보카/Day 27 | sufficient, satisfactory |  | [ǽdikwət] |
+| halt | 정지시키다 | The traffic guard halted Susan and her friends at the crosswalk until the light turned green. |  | Day27;동사;별3 | 해커스 보카/Day 27 | stop, cease |  | [hɔːlt] |
+| controversial | 논쟁의 여지가 있는 | The political boundaries between some countries remain controversial, so not all maps are the same. | n. controversy | Day27;형용사;별3 | 해커스 보카/Day 27 | debatable, disputed, producing disagreement |  | [kàntrəvə́ːrʃəl] |
+| match | 맞먹다, 필적하다 | The philanthropist's donation matched the largest figure previously donated. | match the interior decor (조화시키다) | Day27;동사;별3 | 해커스 보카/Day 27 | equal, rival, parallel, accord, harmonize |  | [mætʃ] |
+| enduring | 지속되는, 영속적인 | Michelangelo's paintings and sculptures had an enduring impact on the art world. |  | Day27;형용사;별3 | 해커스 보카/Day 27 | lasting, surviving, everlasting, perpetual |  | [indjúəriŋ] |
+| restrict | 제한하다 | The legislation restricted the sale of soft drinks in cafeterias during school hours. |  | Day27;동사;별3 | 해커스 보카/Day 27 | limit, confine, restrain |  | [ristríkt] |
+| encompass | 포함하다 | Hawaii encompasses eight major islands and numerous smaller ones. |  | Day27;동사;별3 | 해커스 보카/Day 27 | include, contain, embrace |  | [inkʌ́mpəs] |
+| consider | 곰곰이 생각하다, 고려하다 | A person must carefully consider all possible options before choosing a course of action. | consider the water safe (여기다) | Day27;동사;별3 | 해커스 보카/Day 27 | contemplate, take into account, deem, regard |  | [kənsídər] |
+| integrate | 통합하다 | Kirin and Takeda will integrate their food operations by establishing a joint venture next spring. | n. integration | Day27;동사;별3 | 해커스 보카/Day 27 | unite, unify, synthesize, interconnect, consolidate |  | [íntəgrèit] |
+| startling | 놀라운 | It is startling that almost 15 percent of the world's people are illiterate even today. |  | Day27;형용사;별3 | 해커스 보카/Day 27 | surprising, astonishing, alarming |  | [stáːrtliŋ] |
+| unaccounted for | 설명되지 않은 | The cause of the explosion at the textile factory is still unaccounted for despite weeks of investigation. |  | Day27;숙어;별3 | 해커스 보카/Day 27 | not explained |  |  |
+| manifest | 나타내다 / 명백한 | Heart disease manifests itself with a variety of symptoms, the most common being chest pain and shortness of breath. | n. manifestation | Day27;동사;형용사;별3 | 해커스 보카/Day 27 | indicate, reveal, demonstrate, obvious, clear, definite, evident |  | [mǽnəfèst] |
+| fragile | 깨지기 쉬운, 약한 | Ceramic tiles are beautiful, but very fragile. |  | Day27;형용사;별2 | 해커스 보카/Day 27 | easily broken, delicate, weak |  | [frǽdʒəl] |
+| faithful | (사실 등에) 충실한, 정확한 | Many studies have shown that witnesses rarely give faithful accounts of accidents or crimes. | faith (확신) = conviction, assurance | Day27;형용사;별2 | 해커스 보카/Day 27 | accurate, exact, precise, veracious |  | [féiθfəl] |
+| concede | 인정하다 / 허락하다 | Since all the evidence contradicted his idea, the scientist conceded that his theory was wrong. |  | Day27;동사;별2 | 해커스 보카/Day 27 | admit, accept as true, acknowledge, grant |  | [kənsíːd] |
+| threaten | 위태롭게 하다 | Excessive logging threatens many animal and plant species in the rainforest. | n. threat | Day27;동사;별2 | 해커스 보카/Day 27 | endanger, menace, imperil, jeopardize |  | [θrétn] |
+| revolutionize | 혁신을 일으키다 | The invention of the light bulb revolutionized world civilization. | n. revolution | Day27;동사;별2 | 해커스 보카/Day 27 | fundamentally change, completely change |  | [rèvəlúːʃənàiz] |
+| haphazard | 무계획적인, 우연한 | Haphazard urban growth causes many severe problems. |  | Day27;형용사;별2 | 해커스 보카/Day 27 | random, chance, casual |  | [hæphǽzərd] |
+| mainstay | 주요 의지물, 대들보 | Rice is a mainstay in the diets of many people around the world. |  | Day27;명사;별2 | 해커스 보카/Day 27 | important part, anchor, buttress |  | [méinstèi] |
+| wholly | 완전히 | The team has prepared a wholly convincing argument for their debate. |  | Day27;부사;별2 | 해커스 보카/Day 27 | completely, entirely, fully, thoroughly |  | [hóulli] |
+| edible | 먹을 수 있는 | One should check the expiry date on food to ensure that it is still edible. |  | Day27;형용사;별2 | 해커스 보카/Day 27 | eatable, fit to eat, safe to eat |  | [édəbl] |
+| legible | 알아볼 수 있는 | Before the discovery of the Rosetta Stone, ancient Egyptian writing was not legible to scholars. |  | Day27;형용사;별2 | 해커스 보카/Day 27 | recognizable, readable |  | [lédʒəbl] |
+| scrutinize | (세밀히) 조사하다 | Investigators scrutinized the crime scene for evidence. | n. scrutiny | Day27;동사;별2 | 해커스 보카/Day 27 | examine, inspect, investigate, probe |  | [skrúːtənàiz] |
+| in essence | 본질적으로 | Nicomachean Ethics asserted that human beings are, in essence, rational creatures. |  | Day27;숙어;별2 | 해커스 보카/Day 27 | essentially, fundamentally, basically, in substance |  |  |
+| beneficial | 유익한 | Having ladybugs in your garden is beneficial because they eat many pests. | beneficiary (수혜자) = recipient, receiver | Day27;형용사;별2 | 해커스 보카/Day 27 | useful, helpful, advantageous, profitable |  | [bènəfíʃəl] |
+| distribute | 분배하다 | The company decided to distribute bonuses based on employee performance. |  | Day27;동사;별2 | 해커스 보카/Day 27 | parcel out, spread, allot, apportion |  | [distríbjuːt] |
+| heir | 상속인 | The heirs to John D. Rockefeller's fortune have donated millions of dollars to charity. |  | Day27;명사;별2 | 해커스 보카/Day 27 | inheritor, successor |  | [ɛər] |
+| specifically | 특별히 | The song was written specifically for the movie. |  | Day27;부사;별2 | 해커스 보카/Day 27 | specially, especially, particularly |  | [spisífikəli] |
+| costly | 돈이 많이 드는 | The sisters' trip to Ireland was rather costly, but they both agreed it was well worth the money. |  | Day27;형용사;별2 | 해커스 보카/Day 27 | expensive, high-priced |  | [kɔ́ːstli] |
+| yield | 산출하다 / 넘겨주다, 양도하다 | Farms in Iowa yield more than 500 million tons of corn annually. |  | Day27;동사;별2 | 해커스 보카/Day 27 | produce, generate, give, cede, surrender, hand over |  | [jiːld] |
+| channel | (관심·노력 등을) 돌리다, 쏟다 | The composer channeled all of his energy into finishing his opera. | a channel of communication (수단) | Day27;동사;별2 | 해커스 보카/Day 27 | direct, means, way |  | [tʃǽnl] |
+| necessary | 필요한, 필수의 | These days, students can complete all of the necessary courses to get a degree online. |  | Day27;형용사;별2 | 해커스 보카/Day 27 | required, requisite, essential, indispensable |  | [nésəsèri] |
+| retrospect | 회고하다, 추억하다 | In order to understand present cultures, anthropologists retrospect on those of the past. |  | Day27;동사;별2 | 해커스 보카/Day 27 | look back |  | [rétrəspèkt] |
+| overview | 개요 | The author's latest book gives readers an overview of the history of automobiles. | oversee 감독하다 / overlook 간과하다 | Day27;명사;별2 | 해커스 보카/Day 27 | summary, outline, synopsis |  | [óuvərvjùː] |
+| occasional | 가끔의 | Although most developed countries have nearly eradicated measles, occasional outbreaks do occur. | adv. occasionally | Day27;형용사;별2 | 해커스 보카/Day 27 | infrequent, sporadic, intermittent |  | [əkéiʒənəl] |
+| respectively | 각각 | Third quarter earnings in machine exports and imports are 51.4 million and 29.6 million, respectively. | adj. respective | Day27;부사;별2 | 해커스 보카/Day 27 | separately, individually, each |  | [rispéktivli] |
+| entice | 유혹하다 | The tech company is able to entice young workers with competitive salary and flexible work hours. |  | Day27;동사;별2 | 해커스 보카/Day 27 | tempt, allure, seduce |  | [intáis] |
+| choose | 선택하다 | Diners can choose to eat indoors or out on the terrace. |  | Day27;동사;별2 | 해커스 보카/Day 27 | opt, select |  | [tʃuːz] |
+| work out at | 계산되다 | From 1900 to 1910, the fruit trade in the US worked out at 458 million dollars. |  | Day27;숙어;별2 | 해커스 보카/Day 27 | be calculated at |  |  |
+| enlist | 입대하다; (신병을) 모집하다 | Daniel enlisted in the German military at the age of 14. |  | Day27;동사;별1 | 해커스 보카/Day 27 | enroll, join, sign up, recruit |  | [inlíst] |
+| diminish | 줄이다 | Many studies have shown that having a pet can diminish symptoms for people suffering from anxiety disorders. | diminish his achievement (손상시키다) | Day27;동사;별1 | 해커스 보카/Day 27 | reduce, decrease, lessen, cut, abate, belittle, depreciate |  | [dimíniʃ] |
+| norm | 규범 | The norm in journalism is for writers to keep their sources confidential. |  | Day27;명사;별1 | 해커스 보카/Day 27 | rule, standard |  | [nɔːrm] |
+| ostentatious | 과시하는 | Many who attend Fashion Week wear ostentatious outfits. |  | Day27;형용사;별1 | 해커스 보카/Day 27 | showy |  | [àstentéiʃəs] |
+| desert | (사람·장소 등을) 버리다 | Animals will desert drought-stricken regions and relocate to more hospitable ones. |  | Day27;동사;별1 | 해커스 보카/Day 27 | abandon, forsake, leave |  | [dizə́ːrt] |
+| dwelling | 거주지 | Nomadic peoples live in portable dwellings that can easily be packed up and transported. |  | Day27;명사;별1 | 해커스 보카/Day 27 | living quarters, habitation, residence, home |  | [dwéliŋ] |
+| homogenize | 동질화하다 | Although the Romans conquered many cultures, they did not fully homogenize them. | adj. homogeneous | Day27;동사;별1 | 해커스 보카/Day 27 | remove variation within, make uniform |  | [həmádʒənàiz] |
+| up | (가격 등을) 올리다, 증가시키다 | The café recently upped the price of tea and coffee. |  | Day27;동사;별1 | 해커스 보카/Day 27 | increase, raise, augment, multiply |  | [ʌp] |
+| displace | 대체하다 / 옮기다 | The television had displaced the radio in American living rooms by 1960. |  | Day27;동사;별1 | 해커스 보카/Day 27 | supplant, replace, move out of position |  | [displéis] |
+| numerous | 매우 많은 | Frank Lloyd Wright is famous for designing numerous innovative buildings. |  | Day27;형용사;별1 | 해커스 보카/Day 27 | very many, countless, innumerable |  | [njúːmərəs] |
+| discharge | 방출하다 | Certain species of fish discharge poison as a way to defend themselves when threatened. | discharge one's duties (수행하다) | Day27;동사;별1 | 해커스 보카/Day 27 | release, emit, excrete, fulfill, perform |  | [distʃáːrdʒ] |
+| defend | 방어하다, 지키다 | The immune system defends the body against viruses and bacteria. |  | Day27;동사;별1 | 해커스 보카/Day 27 | guard |  | [difénd] |
