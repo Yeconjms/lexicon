@@ -277,6 +277,16 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
 .daycell.on em{color:#D6FBF7;}
 .daycell.on i{color:rgba(255,255,255,.45);}
 .daycell i{font-style:normal;font-size:11px;color:var(--muted);opacity:.65;}
+/* 오늘 할 날 — 아무것도 안 고르면 이 날이 기본 범위입니다.
+   테두리를 굵게 해 "굵은 쪽이 오늘" 이 한눈에 들어오게 합니다 */
+.daycell.today{border:2px solid #17A89E;}
+.daycell.today b{color:#0E7C74;}
+.daycell.today.on b{color:#fff;}
+/* 진도 줄 — 달력보다 먼저 나옵니다 */
+.soloprog{margin-top:12px;padding:11px 13px;border:1px solid var(--line);
+  border-radius:12px;background:rgba(23,168,158,.06);}
+.soloprog b{font-size:14.5px;}
+.soloprog .mono{font-size:12.5px;color:var(--muted);white-space:nowrap;}
 .daycell.fin{border-color:#7FD4CD;background:rgba(23,168,158,.08);}
 .daycell.fin em{color:#0E7C74;}
 .daycell.fin.on{background:#17A89E;}
@@ -1976,6 +1986,10 @@ const modePicker=()=>'<div class="modepick">'
       +'" data-a="ask-mode" data-k="'+m[0]+'">'+m[1]+'</button>').join("")
   + '</div>';
 
+/** 묶음 경로에서 화면에 쓸 짧은 이름 — `해커스 보카/Day 04` → `Day 04`.
+    **끝낸 날과 오늘을 같은 표기로** 적기 위해 한 곳에 뒀습니다 */
+const soloShort = g => String(g||"").replace(/^.*\//,"");
+
 /** 몇 번째 날까지 끝냈는가 — 그 날 단어를 **모두 한 번 이상 본** 날까지 셉니다.
     해커스 보카는 "하루에 한 Day" 로 나가는 교재라, 남은 장수보다 진도가 중요합니다 */
 function soloProgress(){
@@ -2009,7 +2023,7 @@ function soloBanner(){
   const pr=soloProgress();
   /* 끝낸 날과 다음 날을 **같은 표기로** 적습니다 —
      한쪽은 "Day 1", 다른쪽은 "Day 02" 로 나오면 어색합니다 */
-  const short = g => String(g||"").replace(/^.*\//,"");
+  const short = soloShort;
   const gs = soloGroups();
   const sub = (pr.total && pr.done>=pr.total)
     ? (short(gs[gs.length-1])+"까지 다 끝냈습니다")
@@ -2024,7 +2038,7 @@ function soloBanner(){
 /* ── 따로 공부하는 팩의 전용 화면 (단어장처럼) ──────────────────────
    종이 단어장은 **손으로 가리고 외웁니다.** 플래시카드 한 장씩만으로는
    "쭉 훑어보기" 가 안 돼서, 목록 + 가리기 + 암기 시작을 한 화면에 뒀습니다. */
-let soloDays=[], soloHide="", soloAll=false;   // soloHide: "" | "mean" | "word"
+let soloDays=[], soloHide="", soloAll=false, soloBook=false;   // soloHide: "" | "mean" | "word"
 
 /** 그 팩 바로 아래 묶음들 (Day 01, Day 02 …) */
 function soloGroups(){
@@ -2064,22 +2078,43 @@ function viewSolo(){
         +(bookBusy?'<span class="spin"></span>받는 중':'새 단어 받기')+'</button></div>'
       : '');
 
+  /* **진도를 맨 위에 둡니다.** 전용 화면을 열면 달력부터 나와서 "내가 어디까지
+     했는지" 가 안 보였습니다. 학습 홈 배너에만 있던 것을 화면 안으로 올렸습니다.
+     30일짜리 교재라 "며칠째" 가 "몇 장 남았나" 보다 먼저 와야 합니다 */
+  const pr=soloProgress();
+  const donePct = pr.total ? Math.round(pr.done/pr.total*100) : 0;
+  h+='<div class="soloprog">'
+    +'<div class="row" style="justify-content:space-between;align-items:baseline;gap:8px">'
+    +'<b>'+( pr.total && pr.done>=pr.total ? "다 끝냈습니다"
+           : pr.done ? esc(soloShort(groups[pr.done-1]))+"까지 끝냈습니다"
+                     : "아직 시작 전")+'</b>'
+    +'<span class="mono">'+pr.done+' / '+pr.total+'일</span></div>'
+    +'<div class="prog" style="margin-top:7px"><i style="width:'+donePct+'%"></i></div></div>';
+
   /* Day 고르기 — **달력처럼 네모 격자**로 늘어놓습니다. 30일치가 칩으로 흘러가면
      어디가 어딘지 알기 어렵습니다. 네모 안에 날짜를 크게 쓰고, 오늘 볼 장수는
      아래 작은 글씨로 떼어 놓습니다. 붙여 쓰면 "01 15" 가 "0115" 로 읽힙니다 */
   h+='<div class="row" style="justify-content:space-between;align-items:baseline;margin-top:14px">'
     +'<div class="h2" style="margin:0">어느 날을 볼까요'+helpBtn("soloday")+'</div>'
-    + '<button class="linkish" data-a="solo-all">'+(soloAll||sel.length?"오늘 것만":"전체 보기")+'</button>'
-    +'</div>'
+    +'<div class="row" style="gap:10px;margin:0">'
+    +'<button class="linkish" data-a="solo-recent">최근 3일</button>'
+    +'<button class="linkish" data-a="solo-all">'+(soloAll||sel.length?"오늘 것만":"전체 보기")+'</button>'
+    +'</div></div>'
     + helpBox("soloday",'여러 날을 함께 누르면 <b>누적해서</b> 봅니다 — Day 1 → 1·2 → 1·2·3 처럼요.<br>'
-      +'네모 아래 <em>초록 숫자</em>는 그날 오늘 볼 장수입니다. 아무것도 안 고르면 전체입니다.')
+      +'<b>최근 3일</b>은 오늘 할 날과 그 앞 이틀을 한 번에 고릅니다 — 잊을 때쯤 다시 보는 것이 목적입니다.<br>'
+      +'굵은 테두리가 <em>오늘 할 날</em>, 체크는 끝낸 날입니다. 네모 아래 숫자는 그날 단어 수입니다.')
     +'<div class="daygrid">'
     + groups.map(g=>{
         const label=(g.slice(root.length).replace(/^\//,"")||"전체").replace(/^Day\s*/i,"");
         const cs=active().filter(c=>inPack(c,g));
         const fin=cs.length && cs.every(c=>c.seen>0);
-        return '<button class="daycell'+(sel.includes(g)?" on":"")+(fin?" fin":"")+'" data-a="solo-day" data-k="'+esc(g)+'"'
-          +' aria-label="Day '+esc(label)+' 단어 '+cs.length+'개'+(fin?" 끝내" :"")+'">'
+        /* **오늘 할 날을 격자에서도 표시합니다.** 아무것도 안 고르면 그 날이
+           기본 범위인데 격자에서는 티가 안 나서, "암기 시작 53장" 이 어느 날인지
+           알 수 없었습니다 */
+        const today = g===pr.next;
+        return '<button class="daycell'+(sel.includes(g)?" on":"")+(fin?" fin":"")+(today?" today":"")
+          +'" data-a="solo-day" data-k="'+esc(g)+'"'
+          +' aria-label="Day '+esc(label)+' 단어 '+cs.length+'개'+(fin?" 끝냄":"")+(today?" 오늘 할 날":"")+'">'
           +'<b>'+esc(label)+'</b>'+(fin?'<em>✓</em>':'<i>'+cs.length+'</i>')+'</button>';
       }).join("")
     +'</div>';
@@ -2088,18 +2123,32 @@ function viewSolo(){
      고른 범위가 하루 상한보다 많으면 **왜 적게 나오는지** 적어 줍니다 —
      "24개인데 왜 15장?" 이 되지 않도록 */
   const capped = false;   // 해커스는 Day 단위라 상한을 안 걸어 가리지 않습니다
+  /* **어느 날을 시작하는지 단추에 적습니다.** 예전에는 "암기 시작 · 53장" 뿐이라
+     30일을 다 받은 뒤에는 그 53장이 어느 Day 것인지 알 수 없었습니다 */
+  const scopeLabel = !scope.length ? ""
+    : scope.length===groups.length ? "전체 "
+    : scope.length===1 ? soloShort(scope[0])+" "
+    /* 뒤쪽은 숫자만 — "Day 02~Day 04" 는 단추 한 줄을 넘깁니다 */
+    : soloShort(scope[0])+"~"+soloShort(scope[scope.length-1]).replace(/^Day\s*/i,"")+" ";
   h+='<div style="margin-top:13px;display:grid;gap:8px">'
     +'<button class="btn solo wide" data-a="solo-study" '+(due?"":"disabled")+'>'
-    +(due?("암기 시작 · "+due+"장"):"오늘 몫을 다 했습니다")+'</button>'
+    +(due?(esc(scopeLabel)+"암기 시작 · "+due+"장"):"오늘 몫을 다 했습니다")+'</button>'
     +(capped?'<p class="note" style="margin:0">하루 상한만큼만 나옵니다. 끝내면 더 할지 물어봅니다.</p>':'')
     +'<div class="row" style="gap:7px">'
     +'<button class="btn ghost solo" style="flex:1" data-a="solo-spell" '+(due?"":"disabled")+'>스펠링</button>'
     +'<button class="btn ghost solo" style="flex:1" data-a="solo-sweep" '+(cards.length?"":"disabled")+'>전체 훑기 '+cards.length+'</button>'
     +'</div></div>';
 
-  /* 단어장 — 가리고 외우기 */
-  h+='<div class="h2" style="margin:16px 0 7px">단어장 '+cards.length+'개</div>'
-    +'<div class="seg sm" style="width:100%">'
+  /* 단어장 — 가리고 외우기.
+     **기본은 접어 둡니다.** 30일치를 다 받으면 이 화면이 9,000px 을 넘겨서,
+     달력을 보려고 열 때마다 단어 목록을 지나쳐 스크롤해야 했습니다.
+     단어장은 "쭉 훑어볼 때" 쓰는 것이라 늘 펼쳐 둘 이유가 없습니다 */
+  h+='<div class="row" style="justify-content:space-between;align-items:baseline;margin:16px 0 0">'
+    +'<div class="h2" style="margin:0">단어장 '+cards.length+'개</div>'
+    +'<button class="linkish" data-a="solo-book">'+(soloBook?"접기":"펼치기")+'</button></div>';
+  if(!soloBook) return h+'</div>';
+
+  h+='<div class="seg sm" style="width:100%;margin-top:7px">'
     + [["","다 보기"],["mean","뜻 가림"],["word","단어 가림"]].map(o=>
         '<button style="flex:1" data-a="solo-hide" data-k="'+o[0]+'"'+(soloHide===o[0]?' class="on"':'')+'>'+o[1]+'</button>').join("")
     +'</div>'
@@ -4643,6 +4692,16 @@ document.addEventListener("click", e=>{
     render(); return; }
   if(a==="solo-hide"){ soloHide=t.dataset.k; render(); return; }
   if(a==="solo-all"){ soloAll=!(soloAll||soloDays.length); soloDays=[]; render(); return; }
+  if(a==="solo-book"){ soloBook=!soloBook; render(); return; }
+  /** **오늘 할 날과 그 앞 이틀**을 한 번에 고릅니다. 누적 학습(Day 1 → 1·2 → 1·2·3)이
+      이 교재의 핵심인데 날짜를 하나씩 눌러야 해서 실제로는 잘 안 쓰게 됐습니다.
+      사흘로 잡은 것은 잊을 때쯤 다시 보기 위해서입니다 — 더 늘리면 하루 분량이 150장을 넘습니다 */
+  if(a==="solo-recent"){
+    const gs=soloGroups(); if(!gs.length) return;
+    const pr=soloProgress();
+    const i = pr.next ? gs.indexOf(pr.next) : gs.length-1;
+    soloDays = gs.slice(Math.max(0, i-2), i+1);
+    soloAll=false; render(); return; }
   /* 가린 칸을 누르면 그것만 잠깐 보입니다 (종이 단어장을 손으로 들추는 것과 같습니다) */
   if(a==="solo-peek"){ t.classList.toggle("hid"); return; }
   if(a==="solo-study"||a==="solo-spell"||a==="solo-sweep"){
