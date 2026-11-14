@@ -344,8 +344,11 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
   line-height:1.25;}
 .wipa{display:block;font-family:var(--mono);font-size:11.5px;font-weight:400;
   color:var(--muted);margin-top:3px;letter-spacing:0;}
-.wstar{font-size:11px;color:#C9A227;letter-spacing:1.5px;margin-left:auto;flex:none;
-  align-self:flex-start;padding-top:3px;}
+.wstar{font-size:11px;color:#C9A227;letter-spacing:1.5px;flex:none;
+  align-self:flex-start;padding-top:5px;white-space:nowrap;}
+/* 단어 오른쪽 단추 묶음 — 좁고 촘촘하게 둬야 단어 칸이 살아납니다 */
+.wacts{display:flex;align-items:center;gap:2px;flex:none;margin-left:auto;}
+.wacts .btn.sm.ico{padding:5px 6px;min-width:0;}
 .wmean{font-size:15.5px;color:var(--ink);margin-top:9px;line-height:1.6;font-weight:500;}
 .wsyn{font-family:var(--serif);font-size:14px;color:var(--green);margin-top:8px;
   line-height:1.65;padding-top:8px;border-top:1px dashed var(--line);}
@@ -1322,6 +1325,31 @@ function doRename(name){
    고른 것을 **한 번에** 옮기고, 옮길 수 없는 경우는 **미리** 막습니다. */
 let packOrg=false, orgSel=new Set();
 
+/** 옮기고 나서 **껍데기만 남은 출처 팩**을 치웁니다.
+
+    `repath()` 는 옮기는 경로만 바꾸므로, `묶음/가` 를 꺼내면 `묶음` 이 카드도
+    하위 팩도 없이 레지스트리에만 남습니다. 사용자가 "빈 깡통" 이라고 한 것이 이것입니다.
+    **잘라내기·붙여넣기면 자른 자리는 비어야 합니다.**
+
+    **아무 빈 팩이나 지우면 안 됩니다.** `D.packs` 는 단어가 없는 팩도 일부러 유지하는
+    레지스트리입니다(미리 만들어 두고 나중에 채우는 용도). 그래서 **이번에 옮긴 것의
+    조상만** 후보로 넘겨받고, 그중 카드도 하위도 없는 것만 지웁니다. */
+function pruneEmptyPacks(cands){
+  const gone=[];
+  /* 깊은 것부터 봐야 `가/나/다` 를 치운 뒤 `가/나` 도 비었다는 것을 압니다 */
+  [...cands].sort((a,b)=>b.length-a.length).forEach(p=>{
+    if(!p) return;
+    if(D.cards.some(c=>inPack(c,p))) return;                 // 아직 단어가 있다
+    if(D.packs.some(q=>q!==p && q.startsWith(p+"/"))) return; // 하위 팩이 남아 있다
+    D.packs=D.packs.filter(q=>q!==p);
+    if(D.packMeta) delete D.packMeta[p];
+    if(D.s.lastPack===p) D.s.lastPack="";
+    if(D.s.soloPack===p){ D.s.soloPack=""; soloDays=[]; soloAll=false; }
+    gone.push(p);
+  });
+  return gone;
+}
+
 /** 고른 팩들을 `dest` 아래로 옮깁니다. `dest` 가 비면 최상위로 올립니다 */
 function doPackMove(dest){
   dest=String(dest||"").trim().replace(/^\/+|\/+$/g,"").replace(/\s*\/\s*/g,"/");
@@ -1344,14 +1372,49 @@ function doPackMove(dest){
     plan.push([s,nn]); existing.add(nn);
   }
   if(!plan.length){ toast("이미 그 자리에 있습니다"); return; }
+  /* 옮기기 **전에** 출처의 조상 경로를 적어 둡니다. 옮기고 나면 경로가 없어져
+     무엇이 비었는지 알 수 없습니다 */
+  const parents=new Set();
+  for(const [s0] of plan){
+    let q=s0.split("/").slice(0,-1).join("/");
+    while(q){ parents.add(q); q=q.split("/").slice(0,-1).join("/"); }
+  }
   plan.forEach(([a,b])=>repath(a,b));
   if(dest) addPack(dest);
+  const gone=pruneEmptyPacks(parents);
   /* 보고 있던 경로가 옮겨졌을 수 있으므로 사라진 경로에 남지 않게 합니다 */
   if(packPath && packPath!=="__none" && !allPacks().some(p=>p===packPath||p.startsWith(packPath+"/")))
     packPath="";
   orgSel=new Set(); packOrg=false;
   syncPacks(); save(); render();
-  toast(plan.length+"개 팩을 "+(dest?'"'+dest+'" 아래로':"최상위로")+" 옮겼습니다");
+  toast(plan.length+"개 팩을 "+(dest?'"'+dest+'" 아래로':"최상위로")+" 옮겼습니다"
+    + (gone.length?" · 빈 팩 "+gone.length+"개를 치웠습니다":""));
+}
+
+/** 고른 팩들을 지웁니다. **단어는 '분류 없음' 으로 옮겨지고 지워지지 않습니다** —
+    팩 하나 지우기(`doPackDelete`)와 같은 규칙입니다. 단어까지 지우려면
+    단어 탭에서 하나씩 지웁니다(묘비가 남아 다른 기기에서도 지워지므로
+    되돌릴 수 없습니다). */
+function doPackDeleteMany(){
+  const srcs=[...orgSel].filter(Boolean)
+    .filter(s=>![...orgSel].some(o=>o!==s && s.startsWith(o+"/")));
+  if(!srcs.length) return;
+  const parents=new Set();
+  srcs.forEach(s=>{ let q=s.split("/").slice(0,-1).join("/");
+    while(q){ parents.add(q); q=q.split("/").slice(0,-1).join("/"); } });
+  srcs.forEach(s=>{
+    D.cards.forEach(c=>{ if(inPack(c,s)){ c.pack=""; touch(c); } });
+    D.packs=D.packs.filter(q=>q!==s && !q.startsWith(s+"/"));
+    Object.keys(D.packMeta||{}).forEach(k=>{
+      if(k===s || k.startsWith(s+"/")) delete D.packMeta[k]; });
+    if(D.s.lastPack===s || String(D.s.lastPack).startsWith(s+"/")) D.s.lastPack="";
+    if(D.s.soloPack===s || String(D.s.soloPack).startsWith(s+"/")){
+      D.s.soloPack=""; soloDays=[]; soloAll=false; }
+  });
+  pruneEmptyPacks(parents);
+  orgSel=new Set(); packOrg=false;
+  syncPacks(); save(); render();
+  toast(srcs.length+"개 팩을 없앴습니다");
 }
 function doPackDelete(){
   /* 여기서도 touch 가 필요합니다. 없으면 다음 동기화에 옛 팩 이름이 되살아납니다 */
@@ -2457,12 +2520,24 @@ function wordBook(cards, narrowWord){
       +'<div class="wtop">'
       +'<div class="wcell wword'+(soloHide==="word"||soloHide==="only"?" hid":"")+'" data-a="solo-peek">'+esc(c.word)
       +(c.ipa?'<span class="wipa">'+esc(c.ipa)+'</span>':'')+'</div>'
+      /* **단추를 한 묶음으로 모읍니다.** 낱개로 두면 단추마다 간격이 붙어
+         단어 칸이 115px 까지 눌리고 `grow accustomed to` 가 세 줄이 됐습니다.
+         별은 묶음 **안**이되 가린 칸 **밖**입니다 — 안에 두면 `.wcell.hid` 의
+         `color:transparent` 에 같이 묻혀 중요도가 안 보입니다 */
+      +'<div class="wacts">'
       + stars(c)
       +'<button class="wflag'+(mk?" m"+mk:"")+'" data-a="wb-mark" data-id="'+c.id+'"'
       +' aria-label="'+(mk===0?"모르는 단어로 표시":mk===1?"많이 모르는 단어로 표시":"표시 해제")+'">'
       + wbFlag(mk)+'</button>'
       +(TTS.ok?'<button class="btn sm ghost ico wsay" data-a="say-w" data-id="'+c.id+'" aria-label="발음 듣기">♪</button>':'')
-      +'</div>'
+      /* **고치고 지우는 길을 여기에도 둡니다.** 단어장에서 이상한 뜻을 보고도
+         단어 탭으로 가서 찾아야 했습니다. 연필은 단어 탭 목록과 같은 그림이고,
+         **삭제는 글자로 남겨야 하는데 1,683줄에 붙이면 어수선하므로**
+         고치는 칸에 두었습니다 — 연필을 누르면 거기로 갑니다 */
+      +'<button class="btn sm ghost ico wsay" data-a="edit-go" data-id="'+c.id+'" aria-label="고치기">'
+      +'<svg class="ico-svg" viewBox="0 0 16 16" aria-hidden="true">'
+      +'<path d="M11.3 1.9l2.8 2.8L5.3 13.5l-3.6.8.8-3.6z"/><path d="M9.5 3.7l2.8 2.8"/></svg></button>'
+      +'</div></div>'
       +'<div class="wcell wmean'+(soloHide==="mean"?" hid":"")+'" data-a="solo-peek">'+esc(c.meaning||"—")+'</div>'
       + synLines(c).map(g=>'<div class="wcell wsyn'+(soloHide==="mean"||soloHide==="only"?" hid":"")
           +'" data-a="solo-peek">'+esc(g)+'</div>').join("")
@@ -2705,7 +2780,12 @@ function orgBar(){
             return '<option value="'+esc(p)+'">'
               + "　".repeat(seg.length-1) + esc(seg[seg.length-1]) + ' 아래로</option>'; }).join("")
         +'</select>'
-        +'<button class="btn wide" data-a="org-move">옮기기</button>'
+        +'<div class="row" style="flex-wrap:nowrap">'
+        +'<button class="btn" style="flex:1" data-a="org-move">옮기기</button>'
+        /* **지우는 길도 같은 자리에 둡니다.** 예전에는 팩을 하나 열고 맨 아래까지
+           내려가야 `팩 삭제` 가 있어서 사용자가 "삭제 단추가 없다" 고 했습니다 */
+        +'<button class="btn ghost" style="color:var(--rose)" data-a="org-del">지우기</button>'
+        +'</div>'
       : '')
     +'</div>';
 }
@@ -2912,6 +2992,8 @@ function viewManage(){
     + (aiReady()?'<button class="btn ghost" data-a="fill-form">뜻 자동 채우기</button>':'')
     + (e?'<button class="btn ghost" style="color:'+(e.susp?"var(--green)":"var(--rose)")+'" data-a="susp" data-id="'+e.id+'">'
         +(e.susp?"복습 재개":"복습에서 빼기")+'</button>':'')
+    /* **고치려고 열어 놓고 지울 길이 없었습니다.** 목록까지 되돌아가야 했습니다 */
+    + (e?'<button class="btn ghost" style="color:var(--rose)" data-a="del" data-id="'+e.id+'">삭제</button>':'')
     +'</div>'
     + (e&&e.susp?'<p class="note" style="margin:0">이 단어는 복습에 나오지 않습니다.</p>':'')
     + (e&&e.leech?'<div class="warn" style="margin-top:0">'+e.lapses+'번 틀린 단어입니다. 뜻이 애매하거나 예문이 없으면 고쳐보시고, '
@@ -5333,6 +5415,17 @@ document.addEventListener("click", e=>{
     const p=t.dataset.p; if(orgSel.has(p)) orgSel.delete(p); else orgSel.add(p);
     /* 목록 중간에서 누르므로 보던 자리를 지킵니다 */
     const y=window.scrollY; render(); window.scrollTo(0,y); return; }
+  if(a==="org-del"){
+    const srcs=[...orgSel].filter(Boolean);
+    if(!srcs.length){ toast("지울 팩을 고르세요"); return; }
+    const cnt=D.cards.filter(c=>srcs.some(s=>inPack(c,s))).length;
+    const NL = "\n";
+    askYes("고른 팩 "+srcs.length+"개를 없앨까요?",
+      srcs.slice(0,6).map(x=>"· "+x).join(NL)
+      + (srcs.length>6 ? NL+"· 외 "+(srcs.length-6)+"개" : "")
+      + NL+NL+"안에 있는 단어 "+cnt+"개는 지워지지 않고 '분류 없음'으로 옮겨집니다.",
+      "팩 없애기", true).then(ok=>{ if(ok) doPackDeleteMany(); });
+    return; }
   if(a==="org-move"){
     const el=$("#org-dest"); if(!el) return;
     const v=el.value;
