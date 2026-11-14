@@ -904,7 +904,7 @@ const DEFAULTS = {
   dailyNew:15, maxReview:100,
   lowData:false,
   badge:false, remindAt:"21:00", admSeenAt:0,
-  autoSpeak:true, rate:0.9, voiceURI:"", lastPack:"",
+  autoSpeak:true, rate:0.9, voiceURI:"", fastVoice:false, lastPack:"",
   ownerUid:"", pushSig:"", syncedAt:0,
   provider:"none",                              // none | gemini | anthropic
   geminiKey:"", geminiModel:"gemini-2.5-flash",
@@ -1766,14 +1766,21 @@ function voicesByQuality(){
   const b = bestVoice(true);
   return b || [];
 }
+/** 고른 음성을 기억해 둡니다. **누를 때마다 `getVoices()` 를 부르고 전부 정렬하고
+    있었습니다.** 목록은 좀처럼 바뀌지 않으므로 바뀔 때만 다시 고르면 됩니다
+    (`onvoiceschanged`, 설정에서 직접 고를 때, 빠른 발음을 켜고 끌 때 비웁니다) */
+let voicePick = null;
+const dropVoicePick = () => { voicePick = null; };
+
 /** 쓸 만한 영어 음성을 고릅니다. 사용자가 고른 것이 있으면 그것을 씁니다 */
 function bestVoice(all){
+  if(!all && voicePick !== null) return voicePick;
   if(!TTS.ok) return null;
   let list = [];
   try{ list = (speechSynthesis.getVoices() || []).filter(isEnVoice); }catch(e){}
   if(!list.length) return all ? [] : null;
   const saved = all ? null : list.find(v => v.voiceURI === D.s.voiceURI);
-  if(saved) return saved;
+  if(saved){ voicePick = saved; return saved; }
   /* 고르지 않았으면 품질이 나은 쪽을 자동으로 집습니다 */
   /* 같은 "영어 음성" 이라도 품질 차이가 큽니다. 이름에 단서가 있습니다 —
      Natural·Neural·Online 은 요즘 신경망 음성이고, Compact·Desktop·eSpeak 는 옛 합성음입니다.
@@ -1791,17 +1798,23 @@ function bestVoice(all){
     else if(/premium|enhanced|siri/i.test(name)) n += 4;
     else if(/samantha|aria|ava|jenny|guy/i.test(name)) n += 2;
     if(/compact|espeak|desktop|novelty|eloquence/i.test(name)) n -= 6;   // 옛 합성음
-    if(v.localService === false) n += 2;              // 서버 음성이 대체로 낫습니다
+    /* **네트워크 음성에 주던 무조건 +2 를 없앴습니다.** "서버 음성이 대체로 낫다" 는
+       확인하지 않은 짐작이었고, 그 대가로 누른 뒤 소리가 날 때까지 기다려야 했습니다.
+       품질은 위의 이름 신호로 이미 가려집니다. 사용자가 "음성이 바로 안 나온다" 고 한
+       것이 이것입니다 */
+    if(D.s.fastVoice && v.localService === false) n -= 10;   // 빠른 발음 = 기기 안의 음성만
     if(v.default) n += 1;
     return n;
   };
   const sorted = list.slice().sort((a,b) => score(b) - score(a));
-  return all ? sorted : sorted[0];
+  if(all) return sorted;
+  voicePick = sorted[0] || null;
+  return voicePick;
 }
 if(TTS.ok){
   loadVoices();
   speechSynthesis.onvoiceschanged = () => {
-    loadVoices();
+    loadVoices(); dropVoicePick();
     /* 음성 목록은 늦게 도착합니다. 설정 화면이 열려 있으면 선택지를 다시 그립니다 */
     if(view === "settings" && !S) render();
   };
@@ -2032,6 +2045,8 @@ function render(done){
   else if(n>0){ b.textContent=n; b.classList.remove("hide"); }
   else b.classList.add("hide");
   /* 토플 화면은 탭바에 없으므로 들어온 자리인 "학습" 을 켜 둡니다 */
+  /* `학습` 탭 안에서 마지막으로 본 화면. 탭을 다시 누를 때 이리로 돌아옵니다 */
+  if(view==="study" || view==="solo") studySub = view;
   const navV = view==="solo" ? "study" : view;
   document.querySelectorAll("#nav button").forEach(x=>x.classList.toggle("on", x.dataset.v===navV));
   /* 다른 탭에 갔다 오면 펼쳐 둔 설명과 "자세히" 는 닫습니다. 열어 둔 채로 돌아오면
@@ -2314,6 +2329,18 @@ function soloPickBox(){
 /* ── 따로 공부하는 팩의 전용 화면 (단어장처럼) ──────────────────────
    종이 단어장은 **손으로 가리고 외웁니다.** 플래시카드 한 장씩만으로는
    "쭉 훑어보기" 가 안 돼서, 목록 + 가리기 + 암기 시작을 한 화면에 뒀습니다. */
+/** 탭을 옮겨도 **보던 자리를 지키기 위한** 것 두 개.
+    `studySub` 은 `학습` 탭 안에서 마지막으로 본 화면(`study` 또는 교재 화면 `solo`),
+    `scrollMem` 은 화면별 스크롤 위치다. 교재 단어장을 읽다가 설정에 갔다 오면
+    시작 화면 맨 위로 돌아가 처음부터 다시 찾아야 했다. */
+let studySub = "study";
+const scrollMem = {};
+/** 스크롤을 기억할 열쇠. 같은 `view` 라도 **탭과 경로가 다르면 다른 화면**이므로
+    따로 센다 — 교재의 `암기`/`단어장`, 팩마다 다른 경로가 섞이면 엉뚱한 데로 뛴다 */
+const viewKey = () => view
+  + (view==="solo"  ? ":"+soloTab : "")
+  + (view==="packs" ? ":"+packPath+":"+packTab : "");
+
 let soloDays=[], soloHide="", soloAll=false, soloTab="study";   // soloHide: "" | "mean" | "word"
 
 /** 그 팩 바로 아래 묶음들 (Day 01, Day 02 …) */
@@ -4793,12 +4820,19 @@ function viewSettings(){
     inner+='<div class="row" style="margin-top:10px"><select class="field" id="s-voice" style="flex:1;min-width:160px">'
       +'<option value="">자동 (영어 음성 중 좋은 것)</option>'
       +voicesByQuality().map(v=>'<option value="'+esc(v.voiceURI)+'"'+(s.voiceURI===v.voiceURI?" selected":"")+'>'
-        +esc(v.name)+' ('+esc(v.lang)+')</option>').join("")
+        +esc(v.name)+' ('+esc(v.lang)+') · '
+        +(v.localService===false?"네트워크":"기기")+'</option>').join("")
       +'</select><button class="btn ghost" data-a="test-voice">미리 듣기</button></div>'
       +'<div class="row" style="margin-top:12px"><label style="font-size:14px;font-weight:600;white-space:nowrap">속도 '+s.rate.toFixed(1)+'x</label>'
       +'<input type="range" min="0.6" max="1.3" step="0.1" id="s-rate" value="'+s.rate+'" style="flex:1"></div>'
       +sw("autospeak","자동 발음","뒤집거나 정답을 확인할 때 소리를 냅니다",s.autoSpeak)
-      +'<p class="note">기기에 설치된 음성만 쓸 수 있고 인터넷 데이터는 쓰지 않습니다. '
+      +sw("fastvoice","빠른 발음",
+          "기기 안에 있는 음성만 씁니다. 누르면 바로 소리가 납니다",s.fastVoice)
+      /* **예전 안내는 틀렸습니다** — "인터넷 데이터를 쓰지 않는다" 고 적어 뒀는데
+         `Google`·`Online`·`Natural` 음성은 소리를 받아 오느라 인터넷을 씁니다.
+         그것이 바로 누른 뒤 기다리게 되는 이유입니다 */
+      +'<p class="note"><b>네트워크</b>로 표시된 음성은 소리를 받아 오느라 '
+      +'누른 뒤 잠깐 걸리고 인터넷 데이터를 씁니다. <b>기기</b> 음성은 바로 나옵니다.<br>'
       +'목록은 음성이 준비된 뒤에 채워지므로 비어 보이면 잠시 뒤 다시 열어보세요.</p>';
   }
   let boxes="";
@@ -5292,7 +5326,17 @@ async function bulkFill(){
 /* ══════════════════ 이벤트 ══════════════════ */
 document.addEventListener("click", e=>{
   const nav=e.target.closest("#nav button");
-  if(nav){ view=nav.dataset.v; render(); window.scrollTo(0,0); return; }
+  if(nav){
+    /* **보던 자리를 지킵니다.** 교재 단어장을 읽다가 설정에 갔다 오면 시작 화면으로
+       돌아가 처음부터 다시 찾아야 했습니다. 사용자가 직접 지적한 부분입니다.
+       `학습` 탭은 `study` 와 `solo` 둘을 가지므로 어느 쪽이었는지 기억해 둡니다 */
+    scrollMem[viewKey()] = window.scrollY;
+    const want = nav.dataset.v;
+    view = (want==="study" && studySub==="solo") ? "solo" : want;
+    render();
+    /* `render()` 가 `#main` 을 통째로 갈아 끼우므로 그 **뒤에** 되돌려야 합니다 */
+    window.scrollTo(0, scrollMem[viewKey()] || 0);
+    return; }
   const t=e.target.closest("[data-a]"); if(!t) return;
   const a=t.dataset.a;
 
@@ -5698,6 +5742,8 @@ document.addEventListener("change", e=>{
   if(k){
     if(k==="typing") D.s.typing=e.target.checked;
     else if(k==="autospeak") D.s.autoSpeak=e.target.checked;
+    /* 빠른 발음을 켜고 끄면 고른 음성이 달라지므로 기억해 둔 것을 비웁니다 */
+    else if(k==="fastvoice"){ D.s.fastVoice=e.target.checked; dropVoicePick(); }
     else if(k==="lowdata") D.s.lowData=e.target.checked;
     else if(k==="badge"){ askBadge(e.target.checked); return; }
     else if(k==="keepmail"){ AUTH.keepMail=e.target.checked;
@@ -5733,7 +5779,7 @@ document.addEventListener("change", e=>{
   if(e.target.id==="s-gmodel"){ D.s.geminiModel=e.target.value.trim()||"gemini-2.5-flash"; save(); return; }
   if(e.target.id==="s-key"){ D.s.apiKey=e.target.value.trim(); save(); return; }
   if(e.target.id==="s-model"){ D.s.model=e.target.value.trim()||"claude-sonnet-5"; save(); return; }
-  if(e.target.id==="s-voice"){ D.s.voiceURI=e.target.value; save(); return; }
+  if(e.target.id==="s-voice"){ D.s.voiceURI=e.target.value; dropVoicePick(); save(); return; }
   if(e.target.id==="csvin"){
     const f=e.target.files[0]; if(!f) return;
     const rd=new FileReader();
