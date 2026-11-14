@@ -4961,6 +4961,11 @@ function doPreview(){
      진도(seen·interval·due)는 건드리지 않습니다.
    - 서비스워커는 `.txt` 를 캐시하지 않습니다(sw.js). 안 그러면 고쳐 올려도 옛것을 읽습니다. */
 const BOOK = { pack:"해커스 보카", max:30,
+  /* 교재 파일의 판 번호. **파일 내용을 고쳤으면 올립니다** — 이미 다 받은 사람은
+     `bookAutoCheck()` 가 "더 받을 Day 가 없다" 며 일찍 빠져나가기 때문에,
+     이 번호가 없으면 고친 내용이 영영 안 들어갑니다.
+     1 = 2026-11, 뜻이 여럿인 163개 단어의 유의어를 `/` 로 나눔 */
+  rev:1,
   file:n=>"해커스보카-Day"+String(n).padStart(2,"0")+".txt" };
 let bookBusy=false;
 
@@ -5012,6 +5017,14 @@ async function pullBook(){
 async function bookAutoCheck(){
   if(S) return;                                   // 학습 중에는 건드리지 않습니다
   if(!D.cards.some(c=>String(c.pack||"").split("/")[0]===BOOK.pack)) return;  // 교재를 안 쓰는 사람
+  /* **교재 파일 자체가 고쳐졌으면 판 번호로 한 번 다시 읽습니다.**
+     아래 "더 받을 Day 가 없습니다" 에서 빠져나가기 **전에** 봐야 합니다 —
+     30일치를 다 받은 사람이 바로 그 사람입니다 */
+  if((D.s.bookRev||0) < BOOK.rev){
+    D.s.bookRev = BOOK.rev; save();
+    try{ await pullBook(); }catch(e){}
+    return;
+  }
   const now=Date.now();
   if(now - (D.s.bookAt||0) < 12*3600e3) return;
   D.s.bookAt=now; save();
@@ -5031,7 +5044,15 @@ async function bookAutoCheck(){
 function fillCard(cur, inc){
   let hit=false;
   ["meaning","example","collocation","syn","ant","ipa"].forEach(k=>{
-    if(!String(cur[k]||"").trim() && String(inc[k]||"").trim()){ cur[k]=inc[k]; hit=true; }
+    const a=String(cur[k]||"").trim(), b=String(inc[k]||"").trim();
+    if(!a && b){ cur[k]=inc[k]; hit=true; return; }
+    /* **구분자만 달라진 경우에는 갱신합니다.** 교재 파일에서 유의어를 뜻별로
+       `/` 로 나눴는데, 이미 다 받은 사람은 빈 칸이 아니라서 옛 글자가 그대로
+       남았습니다. `/` 를 도로 `,` 로 되돌려 같으면 **글자가 하나도 안 바뀐
+       것**이므로 덮어써도 사용자가 고친 내용을 잃지 않습니다.
+       반대 방향(`/` 가 사라지는 쪽)은 하지 않습니다 */
+    if(a && b && b!==a && b.indexOf(" / ")>=0 && b.replace(/ \/ /g, ", ")===a){
+      cur[k]=inc[k]; hit=true; }
   });
   const tags=new Set((cur.tags||[]).map(t=>String(t).trim()).filter(Boolean));
   const before=tags.size;
