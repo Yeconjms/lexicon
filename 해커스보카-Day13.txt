@@ -22,7 +22,7 @@
 | laborious | 인내를 요하는, 힘든 | It took Michelangelo four years of laborious painting to finish the Sistine Chapel Ceiling. | a laborious workforce (열심히 일하는) | Day13;형용사;별2 | 해커스 보카/Day 13 | difficult, strenuous, industrious, diligent |  | [ləbɔ́ːriəs] |
 | emit | 내뿜다, 방출하다 | In the fireplace was a red-hot fire which emitted a small amount of smoke. |  | Day13;동사;별2 | 해커스 보카/Day 13 | give off, exhale, release, discharge, send out |  | [imít] |
 | stunning | 놀랄 만큼 멋진 | The Hubble Space Telescope can capture stunning images of distant galaxies. |  | Day13;형용사;별2 | 해커스 보카/Day 13 | amazing, impressive, breathtaking, spectacular |  | [stʌ́niŋ] |
-| tantalizing | 흥미를 돋우는 / 감질나는 | Credit card information is a tantalizing target for hackers and other cybercriminals. |  | Day13;형용사;별2 | 해커스 보카/Day 13 | tempting, enticing, teasing |  | [tǽntəlàiziŋ] |
+| tantalizing | 흥미를 돋우는 / 감질나는 | Credit card information is a tantalizing target for hackers and other cybercriminals. |  | Day13;형용사;별2 | 해커스 보카/Day 13 | tempting, enticing / teasing |  | [tǽntəlàiziŋ] |
 | abandoned | 버려진 | The abandoned site of Machu Picchu in Peru was rediscovered in 1911. |  | Day13;형용사;별2 | 해커스 보카/Day 13 | no longer occupied, deserted, vacant |  | [əbǽndənd] |
 | transmit | 전하다 | Samuel Morse first transmitted a message by telegraph in 1844. |  | Day13;동사;별2 | 해커스 보카/Day 13 | convey, communicate, send |  | [trænsmít] |
 | candidly | 솔직히 | The author candidly answered the questions during the interview. |  | Day13;부사;별2 | 해커스 보카/Day 13 | honestly, frankly, plainly |  | [kǽndidli] |
@@ -30,7 +30,7 @@
 | aid | 돕다 | For her volunteer work, Catherine aided elderly patients in a nursing home. |  | Day13;동사;별2 | 해커스 보카/Day 13 | assist, support, help, back |  | [eid] |
 | deliberation | 토의 | After a long deliberation, the jury announced its decision in the murder trial. | a thoughtful deliberation (숙고) | Day13;명사;별2 | 해커스 보카/Day 13 | discussion, debate, conference, consideration, reflection |  | [dilìbəréiʃən] |
 | preposterous | 터무니없는 | The once popular theory regarding the existence of intelligent life on Mars now seems preposterous. |  | Day13;형용사;별2 | 해커스 보카/Day 13 | unbelievable, absurd, nonsensical |  | [pripástərəs] |
-| sparse | 드문드문한 / 부족한 | Houses are sparse throughout the desolate region. | adv. sparsely | Day13;형용사;별2 | 해커스 보카/Day 13 | scattered, thinly distributed, scanty, meager, scarce, limited |  | [spaːrs] |
+| sparse | 드문드문한 / 부족한 | Houses are sparse throughout the desolate region. | adv. sparsely | Day13;형용사;별2 | 해커스 보카/Day 13 | scattered, thinly distributed / scanty, meager, scarce, limited |  | [spaːrs] |
 | occasionally | 가끔 | The Kilauea volcano in Hawaii occasionally erupts and releases lava into the surrounding area. | adj. occasional | Day13;부사;별2 | 해커스 보카/Day 13 | once in a while, now and then, sometimes |  | [əkéiʒənəli] |
 | inconceivable | 상상도 할 수 없는 | Exploring outer space was once considered inconceivable. |  | Day13;형용사;별2 | 해커스 보카/Day 13 | unthinkable, unimaginable |  | [ìnkənsíːvəbl] |
 | breeding | 번식 | The breeding of pandas in captivity is rare. |  | Day13;명사;별2 | 해커스 보카/Day 13 | reproduction, propagation |  | [bríːdiŋ] |
@@ -40,8 +40,8 @@
 | clever | 영리한 | Solar power is a clever solution to the problem of dwindling fossil fuel reserves. |  | Day13;형용사;별2 | 해커스 보카/Day 13 | ingenious, smart, brilliant, bright |  | [klévər] |
 | consistently | 일관되게 | Hawks consistently return to the same place to breed year after year. |  | Day13;부사;별2 | 해커스 보카/Day 13 | regularly, typically, unchangingly |  | [kənsístəntli] |
 | rate | 평가하다 | In the art contest, six different art teachers will rate the entries of the participants before choosing a winner. | rate of traffic accident (비율) | Day13;동사;별2 | 해커스 보카/Day 13 | judge, assess, evaluate, ratio, proportion |  | [reit] |
-| predominate | 우세하다 / 지배적인, 우세한 | Service-related companies now predominate in a town that was once known for its manufacturing companies. |  | Day13;동사;형용사;별2 | 해커스 보카/Day 13 | outweigh, prevail, most popular |  | [pridámənèit] |
-| realize | 깨닫다, 이해하다 / 달성하다, 실현하다 | Einstein realized that there were problems with Newton's law of gravity. |  | Day13;동사;별2 | 해커스 보카/Day 13 | be aware of, understand, catch on, achieve, accomplish, fulfill |  | [ríːəlàiz] |
+| predominate | 우세하다 / 지배적인, 우세한 | Service-related companies now predominate in a town that was once known for its manufacturing companies. |  | Day13;동사;형용사;별2 | 해커스 보카/Day 13 | outweigh, prevail / most popular |  | [pridámənèit] |
+| realize | 깨닫다, 이해하다 / 달성하다, 실현하다 | Einstein realized that there were problems with Newton's law of gravity. |  | Day13;동사;별2 | 해커스 보카/Day 13 | be aware of, understand, catch on / achieve, accomplish, fulfill |  | [ríːəlàiz] |
 | circuitous | 우회하는 | The path up the mountain was circuitous and took five hours to hike. |  | Day13;형용사;별2 | 해커스 보카/Day 13 | indirect, roundabout |  | [sərkjúːətəs] |
 | owing to | ~ 때문에 | The government had to introduce new economic reforms owing to the recession. |  | Day13;숙어;별1 | 해커스 보카/Day 13 | due to, because of, as a result of |  |  |
 | model | 견본 | Some treatments that have worked in the rat model have also been successful in humans. | model behavior (모범적인) | Day13;명사;별1 | 해커스 보카/Day 13 | specimen, prototype, example, exemplary |  | [mádl] |
@@ -55,6 +55,6 @@
 | heighten | 고조시키다 | Mandy's vague excuse heightened her father's anxiety. |  | Day13;동사;별1 | 해커스 보카/Day 13 | increase, intensify |  | [haitn] |
 | share | 몫 | Bob's roommate was constantly late with his share of the rent. |  | Day13;명사;별1 | 해커스 보카/Day 13 | portion, part, allotment |  | [ʃɛər] |
 | shortly | 곧 | Mr. Jones is currently out of the office because of a business lunch, but he will be back shortly. | end a conversation shortly (퉁명스럽게) | Day13;부사;별1 | 해커스 보카/Day 13 | soon, presently, curtly, abruptly |  | [ʃɔ́ːrtli] |
-| besides | 게다가 / ~ 외에 | Tom has the most experience for the job. Besides, he is very charismatic. |  | Day13;부사;별1 | 해커스 보카/Day 13 | in addition, moreover, apart from |  | [bisáidz] |
+| besides | 게다가 / ~ 외에 | Tom has the most experience for the job. Besides, he is very charismatic. |  | Day13;부사;별1 | 해커스 보카/Day 13 | in addition, moreover / apart from |  | [bisáidz] |
 | seep | 스며 나오다 | The gas seeped throughout the entire building before anyone noticed the leaking valve. |  | Day13;동사;별1 | 해커스 보카/Day 13 | ooze, flow slowly, pass through slowly |  | [siːp] |
 | habit | 습관 | Harry's little sister has a habit of biting her fingernails. |  | Day13;명사;별1 | 해커스 보카/Day 13 | usual behavior, custom, practice |  | [hǽbit] |

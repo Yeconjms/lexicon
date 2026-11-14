@@ -1,29 +1,29 @@
 | 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
 |---|---|---|---|---|---|---|---|---|
 | configuration | 배치; (배치) 형태 | The internal combustion engine is made up of a complex configuration of parts. |  | Day23;명사;별3 | 해커스 보카/Day 23 | arrangement, shape, form, conformation |  | [kənfìgjuréiʃən] |
-| induce | 야기하다, 유발하다 / 설득하다 | Because it was so deadly, the Ebola epidemic induced a lot of fears and concerns in many people. | n. inducement | Day23;동사;별3 | 해커스 보카/Day 23 | bring about, cause, stimulate, persuade, convince |  | [indjúːs] |
-| attain | (목적지·고령 등에) 도달하다 / 성취하다, 얻다 | Mango trees grow rapidly and can attain heights of up to 90 feet. | retain 유지하다 / detain 감금하다 | Day23;동사;별3 | 해커스 보카/Day 23 | reach, arrive at, achieve, accomplish, realize |  | [ətéin] |
+| induce | 야기하다, 유발하다 / 설득하다 | Because it was so deadly, the Ebola epidemic induced a lot of fears and concerns in many people. | n. inducement | Day23;동사;별3 | 해커스 보카/Day 23 | bring about, cause, stimulate / persuade, convince |  | [indjúːs] |
+| attain | (목적지·고령 등에) 도달하다 / 성취하다, 얻다 | Mango trees grow rapidly and can attain heights of up to 90 feet. | retain 유지하다 / detain 감금하다 | Day23;동사;별3 | 해커스 보카/Day 23 | reach, arrive at / achieve, accomplish, realize |  | [ətéin] |
 | erratic | 불규칙한 | Mrs. Ascot was worried about her husband because his heartbeat was erratic. |  | Day23;형용사;별3 | 해커스 보카/Day 23 | irregular, unpredictable, uneven |  | [irǽtik] |
 | eventual | 최종적인 | The Hoover Dam was a major engineering achievement with an eventual cost of $49 million. | adv. eventually | Day23;형용사;별3 | 해커스 보카/Day 23 | ultimate, final |  | [ivéntʃuəl] |
 | mandate | 명령, 지시 | The president's mandate to free political prisoners was controversial. |  | Day23;명사;별3 | 해커스 보카/Day 23 | order, command, instruction |  | [mǽndeit] |
-| prosperous | 번영하는 / 부유한 | The formerly prosperous business began to fail after the economic crisis. | v. prosper; n. prosperity | Day23;형용사;별3 | 해커스 보카/Day 23 | flourishing, thriving, blooming, financially successful, wealthy, affluent |  | [práspərəs] |
-| requisite | 필수품, 필요조건 / 필수의 | Food, air, water, shelter, and clothing are requisites for human survival. | requite (갚다) = return, repay | Day23;명사;형용사;별3 | 해커스 보카/Day 23 | necessity, requirement, essential, required, necessary |  | [rékwəzit] |
+| prosperous | 번영하는 / 부유한 | The formerly prosperous business began to fail after the economic crisis. | v. prosper; n. prosperity | Day23;형용사;별3 | 해커스 보카/Day 23 | flourishing, thriving, blooming / financially successful, wealthy, affluent |  | [práspərəs] |
+| requisite | 필수품, 필요조건 / 필수의 | Food, air, water, shelter, and clothing are requisites for human survival. | requite (갚다) = return, repay | Day23;명사;형용사;별3 | 해커스 보카/Day 23 | necessity, requirement, essential / required, necessary |  | [rékwəzit] |
 | partake of | 함께 먹다, 함께 하다 | Jerry could not partake of the snacks since he had severe food allergies. |  | Day23;숙어;별3 | 해커스 보카/Day 23 | consume, share |  |  |
 | pledge | 약속, 맹세 | In her campaign speech, the mayoral candidate made a pledge to reduce the city's crime rate. |  | Day23;명사;별3 | 해커스 보카/Day 23 | promise, oath, vow, undertaking |  | [pledʒ] |
 | contend | 주장하다 | The defense attorneys contended that their client was innocent. | n. contention; adj. contentious | Day23;동사;별3 | 해커스 보카/Day 23 | argue, assert, maintain |  | [kənténd] |
-| confine | 경계, 범위 / 가두다; 제한하다 | The children were reminded to stay within the confines of the school. |  | Day23;명사;동사;별3 | 해커스 보카/Day 23 | boundary, limit, cramp, enclose, cage |  | [kánfain] |
-| dictate | (권위를 갖고) 지시하다 / 좌우하다, 결정하다 | The thirteenth amendment of the US Constitution dictated that slavery be abolished. | prescribe that the students attend (지시하다) | Day23;동사;별3 | 해커스 보카/Day 23 | require, suggest, prescribe, determine |  | [díkteit] |
+| confine | 경계, 범위 / 가두다; 제한하다 | The children were reminded to stay within the confines of the school. |  | Day23;명사;동사;별3 | 해커스 보카/Day 23 | boundary, limit / cramp, enclose, cage |  | [kánfain] |
+| dictate | (권위를 갖고) 지시하다 / 좌우하다, 결정하다 | The thirteenth amendment of the US Constitution dictated that slavery be abolished. | prescribe that the students attend (지시하다) | Day23;동사;별3 | 해커스 보카/Day 23 | require, suggest, prescribe / determine |  | [díkteit] |
 | durable | 오래가는 | The most durable relationships are based on common interests and mutual trust. |  | Day23;형용사;별3 | 해커스 보카/Day 23 | long-lasting, lasting, enduring |  | [djúərəbl] |
 | collectively | 공동으로 | The two families collectively decided to pitch in money for a new lake cabin to share. |  | Day23;부사;별3 | 해커스 보카/Day 23 | together, all together, unitedly |  | [kəléktivli] |
 | furnish | 제공하다 | The counselor furnished Tim with the papers for his application. |  | Day23;동사;별3 | 해커스 보카/Day 23 | provide, supply, offer |  | [fə́ːrniʃ] |
 | alter | 변경하다, 바꾸다 | Educators must occasionally alter the curriculum to keep up with current trends. | n. alteration | Day23;동사;별3 | 해커스 보카/Day 23 | change, modify, metamorphose |  | [ɔ́ːltər] |
-| determine | 결정하다 / 측정하다 | The organization determined that half of its yearly profits would go to charity. | determined (굳게 결심한) = resolute, firm | Day23;동사;별2 | 해커스 보카/Day 23 | decide, resolve, conclude, figure out, calculate |  | [ditə́ːrmin] |
+| determine | 결정하다 / 측정하다 | The organization determined that half of its yearly profits would go to charity. | determined (굳게 결심한) = resolute, firm | Day23;동사;별2 | 해커스 보카/Day 23 | decide, resolve, conclude / figure out, calculate |  | [ditə́ːrmin] |
 | haul | 끌고 가다, 끌다 | The movers had to haul the heavy couch two blocks down the street to get it into their truck. |  | Day23;동사;별2 | 해커스 보카/Day 23 | draw, pull, drag, heave |  | [hɔːl] |
 | approximation | 근접성, 가까움 | Flagstaff, Arizona attracts many tourists due to its approximation to the Grand Canyon. | adj. approximate; adv. approximately | Day23;명사;별2 | 해커스 보카/Day 23 | nearness, closeness, proximity |  | [əpràksəméiʃən] |
 | found wanting | 부족하다고 여겨지는 | Most of Sigmund Freud's theories have been found wanting by modern psychologists. |  | Day23;숙어;별2 | 해커스 보카/Day 23 | judged inadequate |  |  |
 | classic | 전형적인, 대표적인 | Queen is a classic example of a British rock band from the 1970s. | Yeat's classic work (최고의) | Day23;형용사;별2 | 해커스 보카/Day 23 | typical, exemplary, model, best, finest |  | [klǽsik] |
 | grossly | 지나치게 | The investors were shocked to discover that the company's expected profits were grossly overestimated. |  | Day23;부사;별2 | 해커스 보카/Day 23 | excessively |  | [gróusli] |
-| vivid | 선명한 / 생생한 | The Pop Art movement featured the use of vivid colors and meaningful cultural themes. |  | Day23;형용사;별2 | 해커스 보카/Day 23 | bright, brilliant, graphic, lifelike |  | [vívid] |
+| vivid | 선명한 / 생생한 | The Pop Art movement featured the use of vivid colors and meaningful cultural themes. |  | Day23;형용사;별2 | 해커스 보카/Day 23 | bright, brilliant / graphic, lifelike |  | [vívid] |
 | artificial | 인조의, 인공의 | Christine's room was decorated with artificial flowers. |  | Day23;형용사;별2 | 해커스 보카/Day 23 | synthetic, man-made |  | [àːrtəfíʃəl] |
 | transplant | 이동시키다 | Migrant workers who have been transplanted to unfamiliar countries often face great hardships. |  | Day23;동사;별2 | 해커스 보카/Day 23 | place in another context, remove, relocate |  | [trænsplǽnt] |
 | camouflage | 위장하다, 감추다 | Octopuses can change their skin color to camouflage themselves. |  | Day23;동사;별2 | 해커스 보카/Day 23 | hide, disguise, conceal |  | [kǽməflàːʒ] |
@@ -49,7 +49,7 @@
 | more subtle | 더 포착하기 어려운 | The political messages in Orozco's art were obvious, but they were more subtle in Rivera's. |  | Day23;숙어;별1 | 해커스 보카/Day 23 | less noticeable |  |  |
 | disrupt | 방해하다 | The constant chatter from the back of the classroom disrupted Professor Gumpert's lecture. |  | Day23;동사;별1 | 해커스 보카/Day 23 | interfere with, interrupt, upset |  | [disrʌ́pt] |
 | forerunner | 선조, 선구자 | Invented in Germany in the nineteenth century, the "dandy horse" was a forerunner of the modern bicycle. |  | Day23;명사;별1 | 해커스 보카/Day 23 | predecessor, antecedent |  | [fɔ́ːrrʌ̀nər] |
-| immediate | 즉각적인 / 인접한 | Rubbing menthol balm onto muscles can provide immediate pain relief. |  | Day23;형용사;별1 | 해커스 보카/Day 23 | instant, prompt, on-the-spot, nearest, neighboring, adjacent |  | [imíːdiət] |
+| immediate | 즉각적인 / 인접한 | Rubbing menthol balm onto muscles can provide immediate pain relief. |  | Day23;형용사;별1 | 해커스 보카/Day 23 | instant, prompt, on-the-spot / nearest, neighboring, adjacent |  | [imíːdiət] |
 | wield | (권력·무기 등을) 휘두르다, 행사하다 | A good leader wields his or her power only when necessary. |  | Day23;동사;별1 | 해커스 보카/Day 23 | exercise, use, handle |  | [wiːld] |
 | crush | (희망·사기를) 꺾다 | The news that the proposal to build a new subway station had been rejected crushed residents of the neighborhood. | a machine that crushes rocks (눌러 부수다) | Day23;동사;별1 | 해커스 보카/Day 23 | discourage, deflate, squash, crumble |  | [krʌʃ] |
 | manner | 방법, 방식 | Sociologists study human social behavior in a systematic manner. |  | Day23;명사;별1 | 해커스 보카/Day 23 | way, fashion, mode |  | [mǽnər] |

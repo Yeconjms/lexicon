@@ -9,10 +9,10 @@
 | deflect | 방향을 바꾸다 | Barriers were erected to deflect traffic away from the construction site. |  | Day14;동사;별3 | 해커스 보카/Day 14 | change the direction of, divert |  | [diflékt] |
 | highlight | 강조하다 | The burglary highlighted the company's need to upgrade its security system. |  | Day14;동사;별3 | 해커스 보카/Day 14 | emphasize, stress, underline, accent |  | [hàiláit] |
 | exert | (힘·능력 등을) 가하다, 행사하다 | Oil drills exert a tremendous amount of force and can easily break through hard rock. | n. exertion (노력) = effort, strain | Day14;동사;별3 | 해커스 보카/Day 14 | apply, exercise, employ, put forth, wield |  | [igzə́ːrt] |
-| potential | 잠재적인 / 가능성 | Chameleons change color to blend into the background when they detect a potential predator nearby. | adv. potentially | Day14;형용사;명사;별3 | 해커스 보카/Day 14 | possible, prospective, latent, possibility |  | [pəténʃəl] |
+| potential | 잠재적인 / 가능성 | Chameleons change color to blend into the background when they detect a potential predator nearby. | adv. potentially | Day14;형용사;명사;별3 | 해커스 보카/Day 14 | possible, prospective, latent / possibility |  | [pəténʃəl] |
 | recurring | 되풀이되는 | Darcy had to see a therapist because he kept having recurring nightmares about drowning. |  | Day14;형용사;별3 | 해커스 보카/Day 14 | repeated, recurrent |  | [rikə́ːriŋ] |
 | meager | 불충분한 | Lincoln's meager education aroused his desire to learn. |  | Day14;형용사;별3 | 해커스 보카/Day 14 | scanty, scarce, very low, deficient |  | [míːgər] |
-| prevail | 널리 퍼지다, 만연하다 / 이기다 | In Alaska's cold and harsh climate, evergreen trees such as spruce prevail. | adj. prevalent | Day14;동사;별3 | 해커스 보카/Day 14 | be dominant, dominate, be widespread, be prevalent, triumph |  | [privéil] |
+| prevail | 널리 퍼지다, 만연하다 / 이기다 | In Alaska's cold and harsh climate, evergreen trees such as spruce prevail. | adj. prevalent | Day14;동사;별3 | 해커스 보카/Day 14 | be dominant, dominate, be widespread, be prevalent / triumph |  | [privéil] |
 | exclusively | 오로지, 전적으로 | The St. Patrick's Day party was an exclusively Irish affair. | v. exclude; adj. exclusive | Day14;부사;별3 | 해커스 보카/Day 14 | solely, only, entirely, totally |  | [iksklúːsivli] |
 | consensus | 합의 | After a long meeting, the two sides were finally able to reach a consensus. | v. consent | Day14;명사;별3 | 해커스 보카/Day 14 | agreement, consent |  | [kənsénsəs] |
 | now and then | 가끔 | Nicholas rarely eats meat, but he eats seafood now and then. |  | Day14;숙어;별3 | 해커스 보카/Day 14 | occasionally, from time to time, at times |  |  |
@@ -52,7 +52,7 @@
 | pitfall | 위험, 어려움 | A sudden downturn in the stock market is one of the pitfalls of investing. | befall (생기다) / downfall 몰락 | Day14;명사;별1 | 해커스 보카/Day 14 | difficulty, trouble |  | [pítfɔ̀ːl] |
 | coupled with | ~과 결합된 | A lack of exercise coupled with a high-calorie diet can lead to obesity. |  | Day14;숙어;별1 | 해커스 보카/Day 14 | together with, combined with |  |  |
 | huge | 거대한 | The French owned a huge amount of land in the western part of the US during the 18th century. |  | Day14;형용사;별1 | 해커스 보카/Day 14 | enormous, large, massive, mammoth, gigantic |  | [hjuːdʒ] |
-| span | 기간 / 걸치다 | The paper briefly summarizes the vast problems during the war's eleven-year span. |  | Day14;명사;동사;별1 | 해커스 보카/Day 14 | duration, period, length, extend across, cover, cross |  | [spæn] |
+| span | 기간 / 걸치다 | The paper briefly summarizes the vast problems during the war's eleven-year span. |  | Day14;명사;동사;별1 | 해커스 보카/Day 14 | duration, period, length / extend across, cover, cross |  | [spæn] |
 | hollow | 속이 빈 | Oil tankers are large ships that have hollow containers which can be filled with petroleum for transport. |  | Day14;형용사;별1 | 해커스 보카/Day 14 | empty, vacant, void, unfilled |  | [hálou] |
 | appreciable | 주목할 만한 | In some Amazonian villages, there is no appreciable difference between modern and ancient lifestyles. | adv. appreciably | Day14;형용사;별1 | 해커스 보카/Day 14 | significant, noticeable, considerable |  | [əpríːʃiəbl] |
 | shield | 보호하다 | Lisa brings an umbrella to shield herself from the hot sun during the summer months. |  | Day14;동사;별1 | 해커스 보카/Day 14 | protect, defend, safeguard |  | [ʃiːld] |

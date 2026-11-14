@@ -2,17 +2,17 @@
 |---|---|---|---|---|---|---|---|---|
 | modify | 바꾸다, 조정하다 | Many software settings can be modified to improve the performance of a computer. |  | Day10;동사;별3 | 해커스 보카/Day 10 | change, alter, adjust, adapt |  | [mádəfài] |
 | initially | 처음에 | Ben initially supported Roger's plan, but later opposed it. | v. initiate; adj. initial | Day10;부사;별3 | 해커스 보카/Day 10 | at first, originally, primarily |  | [iníʃəli] |
-| critical | 중요한 / 위독한, 위험한 | Air traffic controllers must make critical decisions every day that affect the lives of many people. | adv. critically | Day10;형용사;별3 | 해커스 보카/Day 10 | most important, crucial, essential, dangerous, risky |  | [krítikəl] |
+| critical | 중요한 / 위독한, 위험한 | Air traffic controllers must make critical decisions every day that affect the lives of many people. | adv. critically | Day10;형용사;별3 | 해커스 보카/Day 10 | most important, crucial, essential / dangerous, risky |  | [krítikəl] |
 | luminous | 빛나는 | The luminous object that appeared over Europe in AD 1066 was Halley's Comet. | a concise and luminous explanation (명쾌한) | Day10;형용사;별3 | 해커스 보카/Day 10 | brilliant, bright, shining, glowing, clear, explicit |  | [lúːmənəs] |
 | facilitate | 용이하게 하다 | Freedom of information laws facilitate access to government documents for researchers. |  | Day10;동사;별3 | 해커스 보카/Day 10 | ease, make easy, help, assist, aid |  | [fəsílətèit] |
 | refinement | 개선 | For 14 years, Alfred Wegener made numerous refinements to his theory of continental drift. | v. refine | Day10;명사;별3 | 해커스 보카/Day 10 | small improvement, advancement, enhancement |  | [riːfáinmənt] |
-| attribute | 특성 / ~의 탓(덕)으로 돌리다 | The prime minister's ability to speak eloquently is considered one of his greatest attributes. |  | Day10;명사;동사;별3 | 해커스 보카/Day 10 | characteristic, trait, quality, property, ascribe, credit, impute, refer |  | [ǽtrəbjùːt] |
+| attribute | 특성 / ~의 탓(덕)으로 돌리다 | The prime minister's ability to speak eloquently is considered one of his greatest attributes. |  | Day10;명사;동사;별3 | 해커스 보카/Day 10 | characteristic, trait, quality, property / ascribe, credit, impute, refer |  | [ǽtrəbjùːt] |
 | belch | 분출하다 | Volcanoes can belch toxic fumes without warning. |  | Day10;동사;별3 | 해커스 보카/Day 10 | suddenly emit, discharge, erupt, vent |  | [beltʃ] |
 | underrate | 과소평가하다 | Many parents underrate the importance of playing with their children. |  | Day10;동사;별3 | 해커스 보카/Day 10 | undervalue, underestimate, belittle |  | [ʌ̀ndərréit] |
 | immense | 거대한 | The immense statue of the Greek goddess Athena attracted many tourists to the Acropolis. | adv. immensely | Day10;형용사;별3 | 해커스 보카/Day 10 | large, enormous, huge, tremendous |  | [iméns] |
-| virtue | 미덕 / 장점 | According to legend, King Arthur was both a great warrior and a man of virtue. |  | Day10;명사;별3 | 해커스 보카/Day 10 | goodness, merit, desirable quality, strength |  | [və́ːrtʃuː] |
+| virtue | 미덕 / 장점 | According to legend, King Arthur was both a great warrior and a man of virtue. |  | Day10;명사;별3 | 해커스 보카/Day 10 | goodness / merit, desirable quality, strength |  | [və́ːrtʃuː] |
 | bustling | 붐비는, 떠들썩한 | During the summer, the sidewalks and shops near the beach are bustling with people. | v. bustle (서두르다) = rush, hasten | Day10;형용사;별3 | 해커스 보카/Day 10 | busy, lively |  | [bʌ́sliŋ] |
-| distinct | 다른, 별개의 / 뚜렷한 | Each region of Italy maintains its own distinct traditions. | n. distinction | Day10;형용사;별3 | 해커스 보카/Day 10 | different, separate, discrete, definite, clear and recognizable |  | [distíŋkt] |
+| distinct | 다른, 별개의 / 뚜렷한 | Each region of Italy maintains its own distinct traditions. | n. distinction | Day10;형용사;별3 | 해커스 보카/Day 10 | different, separate, discrete / definite, clear and recognizable |  | [distíŋkt] |
 | thriving | 번영하는 | Our town used to be very small, but it has grown into a thriving community. |  | Day10;형용사;별3 | 해커스 보카/Day 10 | prosperous, successful, flourishing |  | [θráiviŋ] |
 | obvious | 분명한 | It was obvious that Fred didn't understand what Wilma meant. |  | Day10;형용사;별3 | 해커스 보카/Day 10 | evident, clear, apparent, conspicuous |  | [ábviəs] |
 | exceptional | 이례적인 | The Ancient Greek Olympians displayed an exceptional amount of strength and endurance. | adv. exceptionally | Day10;형용사;별3 | 해커스 보카/Day 10 | extraordinary, abnormal, unusual |  | [iksépʃənl] |
@@ -45,7 +45,7 @@
 | blur | 흐리게 하다 | The new political party blurred the lines between conservatives and liberals. |  | Day10;동사;별2 | 해커스 보카/Day 10 | make less distinct, obscure, cloud |  | [bləːr] |
 | relay | 전달하다 | In the 19th century, news reports were relayed by telegram. |  | Day10;동사;별1 | 해커스 보카/Day 10 | transfer, communicate, transmit, impart |  | [ríːlei] |
 | expandable | 펼칠 수 있는, 확장할 수 있는 | The dining room table is expandable to accommodate dinner guests. | v. expand | Day10;형용사;별1 | 해커스 보카/Day 10 | able to be enlarged, extendable |  | [ikspǽndəbl] |
-| scrupulous | 세심한, 꼼꼼한 / 양심적인 | The police officer was praised for his scrupulous performance of duties. |  | Day10;형용사;별1 | 해커스 보카/Day 10 | careful, fastidious, meticulous, honest, moral |  | [skrúːpjuləs] |
+| scrupulous | 세심한, 꼼꼼한 / 양심적인 | The police officer was praised for his scrupulous performance of duties. |  | Day10;형용사;별1 | 해커스 보카/Day 10 | careful, fastidious, meticulous / honest, moral |  | [skrúːpjuləs] |
 | approximately | 대략 | Approximately 25 percent of the world's electricity is used by the US alone. | adj. approximate; n. approximation | Day10;부사;별1 | 해커스 보카/Day 10 | about, roughly, nearly |  | [əpráksəmətli] |
 | paradoxical | 역설적인 | Einstein thought that using violence to restore peace was paradoxical. | adv. paradoxically; n. paradox | Day10;형용사;별1 | 해커스 보카/Day 10 | seemingly contradictory, ironic |  | [pæ̀rədáksikəl] |
 | source | 근원, 기원 | Located in central Africa, Lake Victoria is the source of the Nile River. |  | Day10;명사;별1 | 해커스 보카/Day 10 | origin, beginning, derivation |  | [sɔːrs] |

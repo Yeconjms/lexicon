@@ -14,7 +14,7 @@
 | discern | 파악하다, 알아내다 | A leader must be able to discern the best course of action for the group. | discerning (통찰력이 있는) = astute, perceptive | Day11;동사;별3 | 해커스 보카/Day 11 | identify, detect, distinguish |  | [disə́ːrn] |
 | generate | 만들어 내다 | To generate enough electricity for the countryside, the mayor had 200 wind turbines built. |  | Day11;동사;별3 | 해커스 보카/Day 11 | produce, create |  | [dʒénərèit] |
 | eccentric | 별난, 특이한 | Vaudeville actors typically wore eccentric costumes on stage. |  | Day11;형용사;별3 | 해커스 보카/Day 11 | unusual, bizarre, peculiar, odd |  | [ikséntrik] |
-| alternative | 대안이 되는; 다른 / 대안 | The city encouraged people to take alternative means of transportation to help reduce traffic congestion. | v. alternate | Day11;형용사;명사;별3 | 해커스 보카/Day 11 | substitutive, different, substitute, choice, option |  | [ɔːltə́ːrnətiv] |
+| alternative | 대안이 되는; 다른 / 대안 | The city encouraged people to take alternative means of transportation to help reduce traffic congestion. | v. alternate | Day11;형용사;명사;별3 | 해커스 보카/Day 11 | substitutive, different / substitute, choice, option |  | [ɔːltə́ːrnətiv] |
 | strategy | 전략, 방법 | The strategy of some predators is to camouflage themselves and wait perfectly still for hours. |  | Day11;명사;별3 | 해커스 보카/Day 11 | plan, method, scheme |  | [strǽtədʒi] |
 | refine | 개선하다 | The writing tutor suggested ways for the student to refine his essay and garner a better grade. | n. refinement | Day11;동사;별3 | 해커스 보카/Day 11 | improve, perfect |  | [riːfáin] |
 | precious | 귀중한 | The colonies were forced into providing precious metals to the mother country. |  | Day11;형용사;별2 | 해커스 보카/Day 11 | valuable, dear, priceless |  | [préʃəs] |
@@ -35,7 +35,7 @@
 | abnormally | 이례적으로, 이상하게 | An abnormally rapid heart rate may indicate a serious health problem. |  | Day11;부사;별2 | 해커스 보카/Day 11 | unusually, oddly, exceptionally, atypically |  | [æbnɔ́ːrməli] |
 | barrier | 장벽, 장애물 | The mountains form a natural barrier between the two countries. | a bar to effective communication | Day11;명사;별2 | 해커스 보카/Day 11 | bar, obstacle, obstruction |  | [bǽriər] |
 | gigantic | 거대한 | The gigantic thunderstorm in Japan was much more serious than anyone had anticipated. |  | Day11;형용사;별2 | 해커스 보카/Day 11 | huge, immense, colossal |  | [dʒaigǽntik] |
-| reproduce | 복제하다, 모사하다 / 번식하다 | The director sometimes reproduces others' styles as homage to their work. |  | Day11;동사;별2 | 해커스 보카/Day 11 | copy, duplicate, imitate, breed, multiply, propagate |  | [rìːprədjúːs] |
+| reproduce | 복제하다, 모사하다 / 번식하다 | The director sometimes reproduces others' styles as homage to their work. |  | Day11;동사;별2 | 해커스 보카/Day 11 | copy, duplicate, imitate / breed, multiply, propagate |  | [rìːprədjúːs] |
 | allow | 허락하다 | Farmers allowed firefighters to use water from their ponds to put out the wildfire. |  | Day11;동사;별2 | 해커스 보카/Day 11 | enable, permit, let |  | [əláu] |
 | penetrate | 꿰뚫다 | A large iceberg penetrated the Titanic's steel frame and caused the ship to sink. |  | Day11;동사;별2 | 해커스 보카/Day 11 | pierce, go through, enter |  | [pénətrèit] |
 | device | 장치, 기구 | The smartphone is one of the most useful devices for communication. | v. devise | Day11;명사;별2 | 해커스 보카/Day 11 | mechanism, apparatus, appliance |  | [diváis] |
@@ -52,7 +52,7 @@
 | brew | 일어나려고 하다 | Meteorologists use radar and satellite imaging to determine whether a typhoon is brewing. |  | Day11;동사;별1 | 해커스 보카/Day 11 | develop, loom, be on the way |  | [bruː] |
 | persevere | 인내하며 계속하다 | Despite his injury, the marathon runner persevered until the end of the race. |  | Day11;동사;별1 | 해커스 보카/Day 11 | continue, carry on, persist |  | [pə̀ːrsəvíər] |
 | bias | 편견 | Some nutritionists have a strong bias against genetically modified food. |  | Day11;명사;별1 | 해커스 보카/Day 11 | prejudice |  | [báiəs] |
-| administer | 관리하다 / (약 등을) 주다, 투여하다 | An external consultant has been hired to administer the large governmental grant. |  | Day11;동사;별1 | 해커스 보카/Day 11 | manage, supervise, conduct, give, provide |  | [ædmínistər] |
+| administer | 관리하다 / (약 등을) 주다, 투여하다 | An external consultant has been hired to administer the large governmental grant. |  | Day11;동사;별1 | 해커스 보카/Day 11 | manage, supervise, conduct / give, provide |  | [ædmínistər] |
 | groundless | 근거 없는 | Although Sarah knew her fear of the dark was groundless, she still used a nightlight. |  | Day11;형용사;별1 | 해커스 보카/Day 11 | unfounded, baseless |  | [gráundlis] |
 | arouse | 자극하다 | The strange sight in the distance aroused Watson's curiosity, so he moved closer to get a better look. | arouse Jane from sleep (깨우다) | Day11;동사;별1 | 해커스 보카/Day 11 | stimulate, provoke, incite, awake |  | [əráuz] |
 | occupy | (주의·마음을) 끌다 | Basic needs, such as food and shelter, occupied the minds of early humans. |  | Day11;동사;별1 | 해커스 보카/Day 11 | engross, engage, absorb |  | [ákjupài] |

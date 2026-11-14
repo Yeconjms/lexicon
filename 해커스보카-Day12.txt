@@ -3,12 +3,12 @@
 | duration | (지속되는) 기간 | Napoleon lived on the island of Elba for the duration of one year. |  | Day12;명사;별3 | 해커스 보카/Day 12 | span, length, term |  | [djuréiʃən] |
 | massive | 대규모의, 거대한 | The company's refusal to raise wages resulted in a massive strike. |  | Day12;형용사;별3 | 해커스 보카/Day 12 | huge, enormous, very large, tremendous, colossal |  | [mǽsiv] |
 | feasible | 실행 가능한 | After years of investment and research, commercial flights to outer space are now becoming feasible. |  | Day12;형용사;별3 | 해커스 보카/Day 12 | practicable, viable, possible, achievable, most likely |  | [fíːzəbl] |
-| vibrant | 활기 넘치는 / (색 등이) 선명한 | Honey bees communicate with one another through vibrant dances. | n. vibration (떨림) = tremor, quiver | Day12;형용사;별3 | 해커스 보카/Day 12 | active, vivacious, energetic, vivid, bright, brilliant |  | [váibrənt] |
+| vibrant | 활기 넘치는 / (색 등이) 선명한 | Honey bees communicate with one another through vibrant dances. | n. vibration (떨림) = tremor, quiver | Day12;형용사;별3 | 해커스 보카/Day 12 | active, vivacious, energetic / vivid, bright, brilliant |  | [váibrənt] |
 | accumulation | 축적 | Over the years, the accumulation of garbage in the river has contaminated the water. | v. accumulate | Day12;명사;별3 | 해커스 보카/Day 12 | buildup, collection, stock |  | [əkjùːmjuléiʃən] |
-| link | 관계, 유대 / 관련짓다 | The politician severed all links with his party. |  | Day12;명사;동사;별3 | 해커스 보카/Day 12 | connection, bond, tie, connect, relate, associate |  | [liŋk] |
+| link | 관계, 유대 / 관련짓다 | The politician severed all links with his party. |  | Day12;명사;동사;별3 | 해커스 보카/Day 12 | connection, bond, tie / connect, relate, associate |  | [liŋk] |
 | informally | 비공식적으로 | The city of Paris is informally known as "The City of Light." |  | Day12;부사;별3 | 해커스 보카/Day 12 | commonly, casually |  | [infɔ́ːrməli] |
 | sovereign | 군주 | Traditionally, the sovereign of Great Britain lives in Buckingham Palace. |  | Day12;명사;별3 | 해커스 보카/Day 12 | master, monarch, ruler |  | [sávərən] |
-| key | 중요한 / (악곡의) 조 | Ambassadors can perform a key role in negotiating a peace treaty between hostile countries. | the key to success (비결) | Day12;형용사;명사;별3 | 해커스 보카/Day 12 | important, central, essential, tone, secret, clue |  | [kiː] |
+| key | 중요한 / (악곡의) 조 | Ambassadors can perform a key role in negotiating a peace treaty between hostile countries. | the key to success (비결) | Day12;형용사;명사;별3 | 해커스 보카/Day 12 | important, central, essential / tone / secret, clue |  | [kiː] |
 | eventually | 결국 | The US eventually recognized the Filipinos' desire for independence. | adj. eventual | Day12;부사;별3 | 해커스 보카/Day 12 | in the end, finally, ultimately, later, in due time |  | [ivéntʃuəli] |
 | persistent | 지속되는 | The persistent sound of crickets chirping kept Steve from getting a good night's sleep. | v. persist; n. persistence | Day12;형용사;별3 | 해커스 보카/Day 12 | continuous, enduring, long-lasting, constant |  | [pərsístənt] |
 | corroborate | 확증하다 | With DNA evidence, it is easier to corroborate a person's identity. |  | Day12;동사;별3 | 해커스 보카/Day 12 | confirm, verify, substantiate |  | [kərábərèit] |
@@ -16,9 +16,9 @@
 | further | 추가적인 | It was determined that the little girl would need further therapy to fully recover from the car accident. |  | Day12;형용사;별3 | 해커스 보카/Day 12 | additional, extra, supplementary |  | [fə́ːrðər] |
 | concentrate on | ~에 집중하다 | Meditation can help you concentrate on being in the present. |  | Day12;숙어;별3 | 해커스 보카/Day 12 | focus on, pay attention to |  |  |
 | moreover | 게다가 | Melanie had gotten thinner with age; moreover, her whole image had changed. |  | Day12;부사;별3 | 해커스 보카/Day 12 | additionally, in addition, as well, besides |  | [mɔːróuvər] |
-| execute | 수행하다 / (미술품 등을) 제작하다 | The cheerleading squad practiced for weeks until they could execute their routine without any mistakes. | execute the criminal (처형하다) | Day12;동사;별3 | 해커스 보카/Day 12 | perform, carry out, fulfill, implement, produce, put to death |  | [éksikjùːt] |
+| execute | 수행하다 / (미술품 등을) 제작하다 | The cheerleading squad practiced for weeks until they could execute their routine without any mistakes. | execute the criminal (처형하다) | Day12;동사;별3 | 해커스 보카/Day 12 | perform, carry out, fulfill, implement / produce / put to death |  | [éksikjùːt] |
 | urbane | 세련된 | My brother looked quite urbane in his new tuxedo. |  | Day12;형용사;별2 | 해커스 보카/Day 12 | cultivated, sophisticated, polished, refined |  | [əːrbéin] |
-| boast | 자랑하다 / (자랑거리로서) 가지고 있다 | Muhammad Ali boasted that he was the greatest boxer to ever live. |  | Day12;동사;별2 | 해커스 보카/Day 12 | show off, brag, swagger, pride oneself on, proudly possess |  | [boust] |
+| boast | 자랑하다 / (자랑거리로서) 가지고 있다 | Muhammad Ali boasted that he was the greatest boxer to ever live. |  | Day12;동사;별2 | 해커스 보카/Day 12 | show off, brag, swagger, pride oneself on / proudly possess |  | [boust] |
 | envision | 마음속에 그리다, 상상하다 | Martin Luther King Jr. envisioned a world with no racial barriers. |  | Day12;동사;별2 | 해커스 보카/Day 12 | imagine, conceive, visualize |  | [invíʒən] |
 | intermediate | 중간의 | A number of interesting developments occur during the intermediate stage of the insect's life cycle. |  | Day12;형용사;별2 | 해커스 보카/Day 12 | in-between, between extremes, median |  | [ìntərmíːdiət] |
 | frightful | 무서운 | Tom's unusual behavior was quite frightful, enough to worry the entire family. |  | Day12;형용사;별2 | 해커스 보카/Day 12 | alarming, fearsome |  | [fráitfəl] |
@@ -56,4 +56,4 @@
 | propulsion | 추진, 추진력 | Before motors were invented, wind was used as the means of propulsion for ships. |  | Day12;명사;별1 | 해커스 보카/Day 12 | moving forward, thrust, impetus |  | [prəpʌ́lʃən] |
 | resolute | 확고한 | Without a resolute commitment to stop illegal hunting, the tiger's future is in danger. | n. resolution (결심) = determination | Day12;형용사;별1 | 해커스 보카/Day 12 | firm, determined, steadfast, unwavering |  | [rézəlùːt] |
 | phase | 시기, 단계 | The first phase of construction on the fort was completed before the War of 1812. |  | Day12;명사;별1 | 해커스 보카/Day 12 | period, stage, step |  | [feiz] |
-| fairly | 꽤 / 공정하게 | Mr. Caldwell arrives fairly early at work to read the newspaper before the staff arrives. |  | Day12;부사;별1 | 해커스 보카/Day 12 | reasonably, moderately, pretty, impartially |  | [fɛ́ərli] |
+| fairly | 꽤 / 공정하게 | Mr. Caldwell arrives fairly early at work to read the newspaper before the staff arrives. |  | Day12;부사;별1 | 해커스 보카/Day 12 | reasonably, moderately, pretty / impartially |  | [fɛ́ərli] |

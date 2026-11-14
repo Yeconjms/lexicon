@@ -2,20 +2,20 @@
 |---|---|---|---|---|---|---|---|---|
 | disperse | 흩어지게 하다; 퍼뜨리다 | The smoke from the fire was rapidly dispersed by the strong winds. | n. dispersal | Day06;동사;별3 | 해커스 보카/Day 06 | scatter, dissipate, spread, disseminate |  | [dispə́ːrs] |
 | adjacent | 인접한 | In addition to the World Trade Center, adjacent buildings were damaged on 9/11. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | nearby, neighboring, adjoining |  | [ədʒéisnt] |
-| sequence | 연속 / 순서 | A sequence of political events in the West caused war to break out. | adv. sequentially | Day06;명사;별3 | 해커스 보카/Day 06 | progression, series, string, succession, order |  | [síːkwəns] |
+| sequence | 연속 / 순서 | A sequence of political events in the West caused war to break out. | adv. sequentially | Day06;명사;별3 | 해커스 보카/Day 06 | progression, series, string, succession / order |  | [síːkwəns] |
 | detect | 발견하다, 인지하다 | The scientists detected a trace of toxic chemicals in the city's water supply. |  | Day06;동사;별3 | 해커스 보카/Day 06 | discover, find, identify, recognize, sense |  | [ditékt] |
 | flexible | 유연한; 적응성 있는 | The tongue is a flexible organ that helps produce a wide variety of sounds. | n. flexibility | Day06;형용사;별3 | 해커스 보카/Day 06 | pliable, bendable, adaptable, adjustable |  | [fléksəbl] |
 | surpass | 능가하다 | The student's art project surpassed the teacher's expectation. |  | Day06;동사;별3 | 해커스 보카/Day 06 | exceed, outrun, be higher than, excel |  | [sərpǽs] |
 | invariable | 변함없는 | There has been an invariable struggle for justice in Cuba since the 1950s. | adv. invariably | Day06;형용사;별3 | 해커스 보카/Day 06 | constant, consistent, unchanging |  | [invɛ́əriəbl] |
 | dramatic | 극적인, 인상적인 | Alaska has dramatic changes in temperature throughout the year. | adv. dramatically | Day06;형용사;별3 | 해커스 보카/Day 06 | striking, significant, impressive |  | [drəmǽtik] |
-| master | 습득하다 / 제어하다 | Amanda has mastered several languages, including French and German. | n. mastery | Day06;동사;별3 | 해커스 보카/Day 06 | learn thoroughly, learn, acquire, control, manage |  | [mǽstər] |
+| master | 습득하다 / 제어하다 | Amanda has mastered several languages, including French and German. | n. mastery | Day06;동사;별3 | 해커스 보카/Day 06 | learn thoroughly, learn, acquire / control, manage |  | [mǽstər] |
 | assimilate | (지식 등을) 흡수하다, 이해하다 | The research indicates that the human mind can assimilate languages most rapidly before the age of seven. |  | Day06;동사;별3 | 해커스 보카/Day 06 | absorb, take in, digest, accommodate, adjust |  | [əsíməlèit] |
 | overwhelming | 압도적인, 굉장한 | Due to the overwhelming evidence, the jury convicted the man of the crime. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | powerful, enormous, compelling, tremendous |  | [òuvərhwélmiŋ] |
-| curious | 호기심이 강한 / 이상한, 별난 | A child who is curious about the world will often do well in school. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | inquisitive, questioning, inquiring, strange, mysterious, extraordinary |  | [kjúəriəs] |
+| curious | 호기심이 강한 / 이상한, 별난 | A child who is curious about the world will often do well in school. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | inquisitive, questioning, inquiring / strange, mysterious, extraordinary |  | [kjúəriəs] |
 | alteration | 변화, 수정 | The tailor made an alteration to Kelly's wedding dress allowing it to drape more loosely about her shoulders. | v. alter | Day06;명사;별3 | 해커스 보카/Day 06 | change, modification |  | [ɔ̀ːltəréiʃən] |
-| consequence | 결과 / 중요성 | The economic depression in the US was unique in its consequences. | adj. consequent; adv. consequently | Day06;명사;별3 | 해커스 보카/Day 06 | result, effect, ramification, outcome, importance, significance |  | [kánsəkwèns] |
+| consequence | 결과 / 중요성 | The economic depression in the US was unique in its consequences. | adj. consequent; adv. consequently | Day06;명사;별3 | 해커스 보카/Day 06 | result, effect, ramification, outcome / importance, significance |  | [kánsəkwèns] |
 | deceive | 속이다 | The company was accused of engaging in a deliberate effort to deceive its shareholders. |  | Day06;동사;별3 | 해커스 보카/Day 06 | mislead, delude, cheat |  | [disíːv] |
-| ample | 넓은, 광대한 / 풍부한 | The backyard of the house has ample room for a swimming pool and a large garden. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | sizable, large, spacious, vast, plentiful, abundant, more than enough |  | [ǽmpl] |
+| ample | 넓은, 광대한 / 풍부한 | The backyard of the house has ample room for a swimming pool and a large garden. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | sizable, large, spacious, vast / plentiful, abundant, more than enough |  | [ǽmpl] |
 | resilient | 금방 회복하는 | After injury, young people are usually more resilient than old people. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | quick to recover, easy to recover |  | [rizíljənt] |
 | detach | 분리하다 | The inner lining of the coat can be detached to make the coat less bulky. | n. detachment | Day06;동사;별2 | 해커스 보카/Day 06 | separate, disconnect, disengage, unconcern, indifference |  | [ditǽtʃ] |
 | account | (사건 등에 대한) 기술, 보고 | John Reed wrote a famous account of the Russian Revolution. |  | Day06;명사;별2 | 해커스 보카/Day 06 | description, report, narrative |  | [əkáunt] |
@@ -40,7 +40,7 @@
 | incite | 자극하다 | The love poem incited Todd's emotions and he asked his girlfriend to marry him. |  | Day06;동사;별2 | 해커스 보카/Day 06 | stimulate, provoke, inflame, spur |  | [insáit] |
 | guarantee | 보장하다 | The linking of medical institutions will guarantee better health care systems. |  | Day06;동사;별2 | 해커스 보카/Day 06 | ensure, secure, warrant |  | [gæ̀rəntíː] |
 | prosperity | 번영 | In the 1800s, economic freedom brought the US great prosperity. | v. prosper | Day06;명사;별2 | 해커스 보카/Day 06 | economic well-being, wealth, fortune |  | [praspérəti] |
-| primarily | 주로 / 원래, 처음에 | Members of the country club were primarily wealthy old men. |  | Day06;부사;별2 | 해커스 보카/Day 06 | mostly, mainly, chiefly, originally, at first, initially |  | [praimérəli] |
+| primarily | 주로 / 원래, 처음에 | Members of the country club were primarily wealthy old men. |  | Day06;부사;별2 | 해커스 보카/Day 06 | mostly, mainly, chiefly / originally, at first, initially |  | [praimérəli] |
 | erupt | 폭발하다 | In 1980, Mount St. Helens erupted and destroyed the surrounding forest. |  | Day06;동사;별2 | 해커스 보카/Day 06 | explode, burst, blow up |  | [irʌ́pt] |
 | trace | 자취, 흔적 | The results of the blood test showed traces of an illegal drug in the patient's blood. |  | Day06;명사;별1 | 해커스 보카/Day 06 | evidence, vestige, imprint, mark, track down, trail |  | [treis] |
 | prestigious | 명성이 있는 | Harvard University is one of the most prestigious colleges in North America. |  | Day06;형용사;별1 | 해커스 보카/Day 06 | highly regarded, esteemed, respected |  | [prestídʒəs] |

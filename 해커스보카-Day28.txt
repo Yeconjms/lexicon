@@ -9,17 +9,17 @@
 | involved | 복잡한 | The author's literary style was so involved that students found her books difficult to read. |  | Day28;형용사;별3 | 해커스 보카/Day 28 | complicated, intricate, tangled |  | [inválvd] |
 | solely | 오로지 | In 1790, voting rights in the US were solely for male landowners. | adj. sole | Day28;부사;별3 | 해커스 보카/Day 28 | only, purely, exclusively, entirely |  | [sóulli] |
 | undergo | (변화 등을) 겪다, 경험하다 | Japan has undergone several recessions since the 1980s. |  | Day28;동사;별3 | 해커스 보카/Day 28 | experience, go through, suffer |  | [ʌ̀ndərgóu] |
-| mechanism | 기계, 장치 / 방법 | Scientists attached a GPS tracking system on the captured bear, but the mechanism failed. |  | Day28;명사;별3 | 해커스 보카/Day 28 | instrument, device, apparatus, means, method, way |  | [mékənìzm] |
+| mechanism | 기계, 장치 / 방법 | Scientists attached a GPS tracking system on the captured bear, but the mechanism failed. |  | Day28;명사;별3 | 해커스 보카/Day 28 | instrument, device, apparatus / means, method, way |  | [mékənìzm] |
 | speculate | 추측하다 | Galileo correctly speculated that the planets move around the Sun. | speculate in the stock market (투기하다) | Day28;동사;별3 | 해커스 보카/Day 28 | guess, suppose, hypothesize, assume, gamble, risk |  | [spékjulèit] |
 | conclusively | 결정적으로 | The Big Bang theory has not yet been conclusively proven. | v. conclude; adj. conclusive | Day28;부사;별3 | 해커스 보카/Day 28 | decisively, definitively |  | [kənklúːsivli] |
 | significantly | 상당히 | Communication between individuals can be significantly improved if people listen more often. | adj. significant | Day28;부사;별3 | 해커스 보카/Day 28 | considerably, remarkably, markedly |  | [signífikəntli] |
 | adopt | 채택하다, 받아들이다 | The U.N. Security Council adopted a resolution calling on Israel to withdraw its troops from Palestinian cities. | take up a new idea (받아들이다) | Day28;동사;별3 | 해커스 보카/Day 28 | take up, begin to use, select |  | [ədápt] |
-| staple | 주요 상품, 주요소 / 기본적인, 주요한 | Basic black pants are a staple of every professional's wardrobe. |  | Day28;명사;형용사;별3 | 해커스 보카/Day 28 | basic item, regular feature, basic feature, basic, primary |  | [steipl] |
-| secrete | 분비하다 / 숨기다 | Tears are secreted by an organ under the upper eyelid. |  | Day28;동사;별3 | 해커스 보카/Day 28 | release, produce, excrete, conceal, hide, veil |  | [sikríːt] |
+| staple | 주요 상품, 주요소 / 기본적인, 주요한 | Basic black pants are a staple of every professional's wardrobe. |  | Day28;명사;형용사;별3 | 해커스 보카/Day 28 | basic item, regular feature, basic feature / basic, primary |  | [steipl] |
+| secrete | 분비하다 / 숨기다 | Tears are secreted by an organ under the upper eyelid. |  | Day28;동사;별3 | 해커스 보카/Day 28 | release, produce, excrete / conceal, hide, veil |  | [sikríːt] |
 | pursue | 실행하다, 수행하다 | The government continued to pursue its aggressive procedures against illegal immigration. | n. pursuit | Day28;동사;별3 | 해커스 보카/Day 28 | practice, conduct, perform |  | [pərsúː] |
 | conserve | 보존하다, 보호하다 | Efforts to conserve giant pandas in China have been hindered by ongoing habitat loss. |  | Day28;동사;별2 | 해커스 보카/Day 28 | keep, protect, save, preserve |  | [kənsə́ːrv] |
 | toil | 힘써 일하다 | With modern agricultural technology, farmers no longer have to toil in the fields. | toilsome (힘드는) = strenuous, arduous | Day28;동사;별2 | 해커스 보카/Day 28 | work hard, labor |  | [tɔil] |
-| approximate | 대략적인; 가까운 / 비슷하다 | Based on approximate estimates, the world's oil reserves could be used up within fifty years. | adv. approximately; n. approximation | Day28;형용사;동사;별2 | 해커스 보카/Day 28 | rough, close, near, resemble |  | [əpráksəmət] |
+| approximate | 대략적인; 가까운 / 비슷하다 | Based on approximate estimates, the world's oil reserves could be used up within fifty years. | adv. approximately; n. approximation | Day28;형용사;동사;별2 | 해커스 보카/Day 28 | rough, close, near / resemble |  | [əpráksəmət] |
 | monumental | 엄청나게 큰, 기념비적인 | The invention of the steam engine was a monumental event in the history of transportation. |  | Day28;형용사;별2 | 해커스 보카/Day 28 | huge, massive, great and significant |  | [mànjuméntl] |
 | contract | 줄이다, 수축하다 | The professor decided to contract his lesson plan because he only had an hour for his lecture. | n. contraction | Day28;동사;별2 | 해커스 보카/Day 28 | shorten, constrict |  | [kəntrǽkt] |
 | puzzling | 영문 모를 | The origin of life is one of the most puzzling scientific mysteries. |  | Day28;형용사;별2 | 해커스 보카/Day 28 | difficult to explain, enigmatic |  | [pʌ́zliŋ] |
@@ -54,5 +54,5 @@
 | preponderance | 대부분 | The preponderance of people did not own cars in the 1930s, so they traveled by train or boat. |  | Day28;명사;별1 | 해커스 보카/Day 28 | majority |  | [pripándərəns] |
 | intermingle | 섞이다 | In the city's main square, aromas from cafés and bakeries intermingle. |  | Day28;동사;별1 | 해커스 보카/Day 28 | mix, blend |  | [ìntərmíŋgl] |
 | merchandise | 상품 | The thieves stole merchandise worth thousands of dollars from the store. | merchandise a new product (매매하다) | Day28;명사;별1 | 해커스 보카/Day 28 | goods, product, commodity, market, trade |  | [mə́ːrtʃəndàiz] |
-| delicate | 깨지기 쉬운 / 섬세한 | The tea cups were so delicate that Sheila used them only for decoration. |  | Day28;형용사;별1 | 해커스 보카/Day 28 | fragile, brittle, dainty, exquisite, fine |  | [délikət] |
+| delicate | 깨지기 쉬운 / 섬세한 | The tea cups were so delicate that Sheila used them only for decoration. |  | Day28;형용사;별1 | 해커스 보카/Day 28 | fragile, brittle / dainty, exquisite, fine |  | [délikət] |
 | promising | 유망한 | Solar and wind power as energy sources don't look promising for the future. |  | Day28;형용사;별1 | 해커스 보카/Day 28 | likely, hopeful |  | [prámisiŋ] |

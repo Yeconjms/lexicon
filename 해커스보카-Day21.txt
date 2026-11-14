@@ -2,12 +2,12 @@
 |---|---|---|---|---|---|---|---|---|
 | flourish | 번창하다 | Watercolor painting began to flourish in Britain around 1750. |  | Day21;동사;별3 | 해커스 보카/Day 21 | thrive, prosper, blossom, do well |  | [flə́ːriʃ] |
 | dissipate | (구름·안개 등을) 흩뜨리다, 흩어지다 | The wind dissipated the pollen over a distance of hundreds of meters. | dissipate the funds (낭비하다) | Day21;동사;별3 | 해커스 보카/Day 21 | disperse, scatter, squander, waste |  | [dísəpèit] |
-| profound | 엄청난 / 깊은, 심오한 / 폭넓은 | Carson has a profound sense of responsibility for the zoo animals' welfare. | adv. profoundly | Day21;형용사;별3 | 해커스 보카/Day 21 | great, significant, deep, fundamental, far-reaching |  | [prəfáund] |
+| profound | 엄청난 / 깊은, 심오한 / 폭넓은 | Carson has a profound sense of responsibility for the zoo animals' welfare. | adv. profoundly | Day21;형용사;별3 | 해커스 보카/Day 21 | great, significant / deep, fundamental / far-reaching |  | [prəfáund] |
 | intriguing | 매우 흥미로운 | It is intriguing that the universe's largest black hole does not swallow nearby stars and planets. |  | Day21;형용사;별3 | 해커스 보카/Day 21 | interesting but not completely understood, fascinating |  | [intríːgiŋ] |
 | considerably | 상당히 | A considerably large number of deaths due to influenza were recorded in the 1920s. | adj. considerable | Day21;부사;별3 | 해커스 보카/Day 21 | significantly, appreciably, fairly |  | [kənsídərəbli] |
 | ingenuity | 창의력; 교묘함 | Thomas Edison was a man of extraordinary ingenuity. | adj. ingenious | Day21;명사;별3 | 해커스 보카/Day 21 | creativeness, inventiveness, cleverness |  | [ìndʒənjúːəti] |
 | conquer | 이기다 | The Spartans were so well-trained that they easily conquered most of their opponents. | n. conquest (획득) = acquisition | Day21;동사;별3 | 해커스 보카/Day 21 | defeat, prevail, triumph |  | [káŋkər] |
-| fragment | 조각, 부분 / 산산이 부수다, 부서지다 | Detectives found a fragment of glass which would later help them solve the crime. | adj. fragmentary | Day21;명사;동사;별3 | 해커스 보카/Day 21 | piece, flake, particle, part, break apart, shatter, divide |  | [frǽgmənt] |
+| fragment | 조각, 부분 / 산산이 부수다, 부서지다 | Detectives found a fragment of glass which would later help them solve the crime. | adj. fragmentary | Day21;명사;동사;별3 | 해커스 보카/Day 21 | piece, flake, particle, part / break apart, shatter, divide |  | [frǽgmənt] |
 | spell | 한동안 | Students should be allowed to rest for a spell after completing a difficult exam. |  | Day21;명사;별3 | 해커스 보카/Day 21 | a certain period of time |  | [spel] |
 | facet | 측면 | All individuals show different facets of their personalities, depending on who their audience is. |  | Day21;명사;별3 | 해커스 보카/Day 21 | aspect, phase |  | [fǽsit] |
 | mundane | 일상적인, 평범한 | Kelly believes that mundane activities such as cooking and cleaning are a waste of time. |  | Day21;형용사;별3 | 해커스 보카/Day 21 | ordinary, banal, commonplace |  | [mʌndéin] |
@@ -47,12 +47,12 @@
 | inherently | 본질적으로 | Stocks are inherently risky investments that have the potential to significantly decrease in value. | adj. inherent | Day21;부사;별1 | 해커스 보카/Day 21 | essentially, intrinsically |  | [inhíərəntli] |
 | sporadic | 때때로 일어나는 | During World War II, many cities were subject to sporadic bombing raids. | adv. sporadically | Day21;형용사;별1 | 해커스 보카/Day 21 | occasional, intermittent, irregular, infrequent |  | [spərǽdik] |
 | apex | 정점 | Retail store profits reach an apex in December, during the Christmas season. |  | Day21;명사;별1 | 해커스 보카/Day 21 | crest, peak, acme, pinnacle |  | [éipeks] |
-| though | 그렇지만 / ~이지만 | The actress was nominated for an Oscar. She probably won't win, though. | thorough (철저한) = exhaustive, scrupulous | Day21;부사;접속사;별1 | 해커스 보카/Day 21 | however, nevertheless, yet, still, although, while, albeit |  | [ðou] |
+| though | 그렇지만 / ~이지만 | The actress was nominated for an Oscar. She probably won't win, though. | thorough (철저한) = exhaustive, scrupulous | Day21;부사;접속사;별1 | 해커스 보카/Day 21 | however, nevertheless, yet, still / although, while, albeit |  | [ðou] |
 | infer | 추론하다 | The hunters inferred that there were no large animals in the area. |  | Day21;동사;별1 | 해커스 보카/Day 21 | conclude, derive, reason, deduce |  | [infə́ːr] |
 | core | 핵심 | The core of Clinton's plan was to set up regional health alliances. |  | Day21;명사;별1 | 해커스 보카/Day 21 | central idea, center, heart |  | [kɔːr] |
 | mutation | 돌연변이 과정, 변화, 변형 | The Center for Disease Control and Prevention monitors infectious viruses that are likely to undergo mutation. |  | Day21;명사;별1 | 해커스 보카/Day 21 | change, variation, alteration |  | [mjuːtéiʃən] |
 | thrill | 흥분, 전율 | The thrill of bungee jumping is exciting for some people and terrifying for others. |  | Day21;명사;별1 | 해커스 보카/Day 21 | excitement, exhilaration, frisson |  | [θril] |
 | mutilate | 못쓰게 만들다 | The injury mutilated the soccer player's knee and forced him to retire from the sport. |  | Day21;동사;별1 | 해커스 보카/Day 21 | damage, injure, disable |  | [mjúːtəlèit] |
 | rigidly | 엄격하게 | Medieval philosophers rigidly adhered to Aristotle's teachings. | adj. rigid | Day21;부사;별1 | 해커스 보카/Day 21 | strictly, rigorously, severely |  | [rídʒidli] |
-| matter | 물질 / 사안 | Plants are only able to grow in soil that contains a sufficient amount of organic matter. | being on time matters (중요하다) | Day21;명사;별1 | 해커스 보카/Day 21 | substance, material, stuff, issue, be important |  | [mǽtər] |
+| matter | 물질 / 사안 | Plants are only able to grow in soil that contains a sufficient amount of organic matter. | being on time matters (중요하다) | Day21;명사;별1 | 해커스 보카/Day 21 | substance, material, stuff / issue / be important |  | [mǽtər] |
 | contradicting | 서로 대립하는 | There are several contradicting theories about the formation of the moon. |  | Day21;형용사;별1 | 해커스 보카/Day 21 | opposing |  | [kàntrədíktiŋ] |

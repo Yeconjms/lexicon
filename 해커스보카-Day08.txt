@@ -3,7 +3,7 @@
 | furthermore | 게다가 | Using organic compost reduces the need for chemical fertilizers. Furthermore, it strengthens the soil. |  | Day08;부사;별3 | 해커스 보카/Day 08 | in addition, moreover |  | [fə́ːrðərmɔ̀ːr] |
 | proliferate | 증식하다 | Mosquitoes proliferate faster and bite more as the air becomes warmer. | n. proliferation | Day08;동사;별3 | 해커스 보카/Day 08 | multiply, become numerous, increase in number |  | [prəlífərèit] |
 | assess | 평가하다 | With the help of her counselors, Helen began to assess her life in a more positive way. | n. assessment | Day08;동사;별3 | 해커스 보카/Day 08 | evaluate, estimate, judge, appraise |  | [əsés] |
-| spur | 자극 / 자극하다 | The coach's speech was a much needed spur for the team. |  | Day08;명사;동사;별3 | 해커스 보카/Day 08 | stimulus, incitement, incentive, stimulate, prompt |  | [spəːr] |
+| spur | 자극 / 자극하다 | The coach's speech was a much needed spur for the team. |  | Day08;명사;동사;별3 | 해커스 보카/Day 08 | stimulus, incitement, incentive / stimulate, prompt |  | [spəːr] |
 | eclectic | (취미·의견 등이) 폭넓은, 다방면의 | Social media sites reflect the eclectic opinions that exist in society today. |  | Day08;형용사;별3 | 해커스 보카/Day 08 | diverse, various, manifold |  | [ikléktik] |
 | crucial | 결정적인, 중대한 | Public opinion was the crucial factor in entering the war. | adv. crucially | Day08;형용사;별3 | 해커스 보카/Day 08 | decisive, important, essential, vital, acute |  | [krúːʃəl] |
 | intricate | 복잡한 | The exterior walls of the Aztec temple are covered with intricate designs. |  | Day08;형용사;별3 | 해커스 보카/Day 08 | complex, complicated, elaborate, tangled |  | [íntrikət] |
@@ -25,7 +25,7 @@
 | immensely | 굉장히 | The world's population grew immensely during the 20th century. | adj. immense | Day08;부사;별2 | 해커스 보카/Day 08 | extremely, excessively, enormously, incredibly |  | [iménsli] |
 | deem | 생각하다, 여기다 | The doctor deemed it necessary for the patient to undergo surgery immediately. |  | Day08;동사;별2 | 해커스 보카/Day 08 | consider, regard, believe |  | [diːm] |
 | consumption | 소비, 소모 | The consumption of drugs has increased in the country despite the government's best efforts to prevent it. | v. consume | Day08;명사;별2 | 해커스 보카/Day 08 | use, utilization |  | [kənsʌ́mpʃən] |
-| suspend | 매달다 / 연기하다 | The workers suspended the lights from the ceiling of the building's lobby. | suspend the road construction | Day08;동사;별2 | 해커스 보카/Day 08 | hang, dangle, swing, defer, postpone |  | [səspénd] |
+| suspend | 매달다 / 연기하다 | The workers suspended the lights from the ceiling of the building's lobby. | suspend the road construction | Day08;동사;별2 | 해커스 보카/Day 08 | hang, dangle, swing / defer, postpone |  | [səspénd] |
 | prevent | 막다, 방해하다 | The environmental bill prevents citizens from dumping garbage into the lake. |  | Day08;동사;별2 | 해커스 보카/Day 08 | preclude, avoid, impede, avert |  | [privént] |
 | authentic | 진짜의 | The museum has a large collection of authentic artifacts from the late 1400s. | n. authenticity | Day08;형용사;별2 | 해커스 보카/Day 08 | genuine, true, real |  | [ɔːθéntik] |
 | redundant | 불필요한; 장황한 | Students often make the mistake of including redundant information in their essays. |  | Day08;형용사;별2 | 해커스 보카/Day 08 | superfluous, unnecessary, wordy, repetitious |  | [ridʌ́ndənt] |
@@ -35,7 +35,7 @@
 | voracious | 만족할 줄 모르는, 탐욕적인 | Because growing children can have voracious appetites, they may need to eat more often than most adults. |  | Day08;형용사;별2 | 해커스 보카/Day 08 | insatiable, greedy, gluttonous |  | [vɔːréiʃəs] |
 | as well as | ~뿐만 아니라 | Florida is a popular tourist destination because it has a warm climate as well as beautiful beaches. |  | Day08;숙어;별2 | 해커스 보카/Day 08 | in addition to, not to mention |  |  |
 | extreme | 극심한; 지나친 | A polar bear's thick fur protects it from the extreme cold. |  | Day08;형용사;별2 | 해커스 보카/Day 08 | intense, severe, excessive |  | [ikstríːm] |
-| reform | 개혁, 개선 / 개선하다 | The protestors hoped that their actions would lead to reform. |  | Day08;명사;동사;별2 | 해커스 보카/Day 08 | betterment, amend, improve, ameliorate |  | [rifɔ́ːrm] |
+| reform | 개혁, 개선 / 개선하다 | The protestors hoped that their actions would lead to reform. |  | Day08;명사;동사;별2 | 해커스 보카/Day 08 | betterment / amend, improve, ameliorate |  | [rifɔ́ːrm] |
 | determinant | 결정 요인 | Unsanitary water is one major determinant for the spread of infectious diseases. |  | Day08;명사;별2 | 해커스 보카/Day 08 | cause, factor |  | [ditə́ːrmənənt] |
 | inclination | 경향; 기호 | The Mongols had little inclination to ally with other nomadic peoples of Northern Asia. |  | Day08;명사;별2 | 해커스 보카/Day 08 | tendency, trend, preference, taste |  | [ìnklənéiʃən] |
 | inflation | 팽창 | According to the theory, the universe began a rapid inflation following the Big Bang. | v. inflate | Day08;명사;별2 | 해커스 보카/Day 08 | expansion, swelling, enlargement |  | [infléiʃən] |
@@ -45,7 +45,7 @@
 | insolent | 무례한 | The waiter's insolent attitude offended the customers in the restaurant. |  | Day08;형용사;별1 | 해커스 보카/Day 08 | impertinent, impudent, rude |  | [ínsələnt] |
 | to be sure | 틀림없이 | To be sure, Shakespeare's contributions to the English language cannot be discounted. |  | Day08;숙어;별1 | 해커스 보카/Day 08 | certainly, definitely, surely |  |  |
 | broadly | 대체로 | Broadly speaking, Alfred Hitchcock's films are suspenseful. |  | Day08;부사;별1 | 해커스 보카/Day 08 | generally, mostly |  | [brɔ́ːdli] |
-| echo | 울리다, 반향하다 / 흉내 내다 | The sound of Mozart's music echoed off the walls of the concert hall. |  | Day08;동사;별1 | 해커스 보카/Day 08 | reflect, resound, resonate, imitate, repeat, reiterate |  | [ékou] |
+| echo | 울리다, 반향하다 / 흉내 내다 | The sound of Mozart's music echoed off the walls of the concert hall. |  | Day08;동사;별1 | 해커스 보카/Day 08 | reflect, resound, resonate / imitate, repeat, reiterate |  | [ékou] |
 | shoddy | 질이 떨어지는 | The car repair shop had a reputation for doing shoddy work. |  | Day08;형용사;별1 | 해커스 보카/Day 08 | inferior, poor |  | [ʃádi] |
 | gear | 맞게 조정하다 | The teacher geared her lessons to the individual abilities of each class. | climbing gear (장비) | Day08;동사;별1 | 해커스 보카/Day 08 | adjust, adapt, change, equipment, tool |  | [giər] |
 | absorb | 흡수하다 | Alcohol that is stored in barrels absorbs the wood's scent, giving it a unique flavor. |  | Day08;동사;별1 | 해커스 보카/Day 08 | take in, imbibe, soak up |  | [æbsɔ́ːrb] |

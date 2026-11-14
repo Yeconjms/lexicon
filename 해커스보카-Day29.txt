@@ -8,14 +8,14 @@
 | in tandem with | ~와 협력하여 | The corporation worked in tandem with the local government on a community project. |  | Day29;숙어;별3 | 해커스 보카/Day 29 | in association with, in conjunction with |  |  |
 | transition | 변화, 변천 | The biologist studied the caterpillar's metamorphosis, or physical transition into a butterfly. |  | Day29;명사;별3 | 해커스 보카/Day 29 | change, alteration, shift |  | [trænzíʃən] |
 | scarce | 부족한; 희귀한 | Food was scarce for months after the typhoon destroyed the region's farms. | n. scarcity | Day29;형용사;별3 | 해커스 보카/Day 29 | limited, short in supply, not readily available, rare |  | [skɛərs] |
-| clear | 분명한 / 치우다 | It was very clear that the coach was angered by his team's loss. |  | Day29;형용사;동사;별3 | 해커스 보카/Day 29 | apparent, obvious, lucid, remove, clean |  | [kliər] |
+| clear | 분명한 / 치우다 | It was very clear that the coach was angered by his team's loss. |  | Day29;형용사;동사;별3 | 해커스 보카/Day 29 | apparent, obvious, lucid / remove, clean |  | [kliər] |
 | relentless | 끊임없는 | The relentless rains during the monsoon season cause flooding in many tropical countries. | relentless criticism (냉혹한) = merciless, ruthless | Day29;형용사;별3 | 해커스 보카/Day 29 | continuous, unceasing, persistent |  | [riléntlis] |
 | intrinsic | 고유의, 타고난 | Environmentalists argue that all species should be protected because of their intrinsic value. | adv. intrinsically | Day29;형용사;별3 | 해커스 보카/Day 29 | inherent, innate |  | [intrínzik] |
-| compact | 빽빽한 / 작은 / 압축하다 | The gardener dug a hole in the compact soil. |  | Day29;형용사;동사;별3 | 해커스 보카/Day 29 | dense, thick, smaller, pocket-sized, little, compress, condense |  | [kəmpǽkt] |
+| compact | 빽빽한 / 작은 / 압축하다 | The gardener dug a hole in the compact soil. |  | Day29;형용사;동사;별3 | 해커스 보카/Day 29 | dense, thick / smaller, pocket-sized, little / compress, condense |  | [kəmpǽkt] |
 | predominantly | 주로, 대부분 | Indonesia is a predominantly Muslim country. | adj. predominant | Day29;부사;별3 | 해커스 보카/Day 29 | mainly, primarily, mostly, largely |  | [pridámənəntli] |
 | widespread | 광범위한, 널리 퍼진 | The campaign to create a local park has received widespread support. |  | Day29;형용사;별3 | 해커스 보카/Day 29 | prevalent, broadly accepted, common |  | [wáidsprèd] |
-| perishable | 잘 상하는, 썩기 쉬운 / 영속하지 않는 | Butter, milk, and fish are perishable goods that must be refrigerated. | perish (멸망하다) = decline, collapse | Day29;형용사;별3 | 해커스 보카/Day 29 | likely to decay, likely to spoil, spoilable, not permanent |  | [périʃəbl] |
-| myriad | 무수히 많음 / 무수한 | A wine's flavor is influenced by a myriad of factors, including the soil the grapes are grown in. |  | Day29;명사;형용사;별3 | 해커스 보카/Day 29 | multitude, millions, countless, innumerable, numerous |  | [míriəd] |
+| perishable | 잘 상하는, 썩기 쉬운 / 영속하지 않는 | Butter, milk, and fish are perishable goods that must be refrigerated. | perish (멸망하다) = decline, collapse | Day29;형용사;별3 | 해커스 보카/Day 29 | likely to decay, likely to spoil, spoilable / not permanent |  | [périʃəbl] |
+| myriad | 무수히 많음 / 무수한 | A wine's flavor is influenced by a myriad of factors, including the soil the grapes are grown in. |  | Day29;명사;형용사;별3 | 해커스 보카/Day 29 | multitude, millions / countless, innumerable, numerous |  | [míriəd] |
 | found | 창설하다, 설립하다 | Cal founded the after-school program to keep kids off the streets and away from drugs. |  | Day29;동사;별3 | 해커스 보카/Day 29 | establish, create, set up |  | [faund] |
 | swiftly | 빠르게 | At high altitudes, the weather can change swiftly. | adj. swift | Day29;부사;별2 | 해커스 보카/Day 29 | quickly, speedily, rapidly |  | [swíftli] |
 | crucially | 결정적으로 | A variety of social and economic factors have crucially influenced increases in juvenile delinquency. | adj. crucial | Day29;부사;별2 | 해커스 보카/Day 29 | decisively, critically, definitively |  | [krúːʃəli] |
@@ -23,7 +23,7 @@
 | projection | 추정, 예상 | The company's projections were not accurate, and the shareholders lost money as a result. | project (계획하다) = plan, propose | Day29;명사;별2 | 해커스 보카/Day 29 | estimate, calculation, forecast, prediction |  | [prədʒékʃən] |
 | feature | 특징 | The building's unusual architectural features make it popular with tourists visiting the city. | feature her talents (특종으로 삼다) = spotlight | Day29;명사;별2 | 해커스 보카/Day 29 | characteristic, attribute, quality |  | [fíːtʃər] |
 | employ | 사용하다 | Astronomers employ specialized software to track the movement of millions of objects in space. |  | Day29;동사;별2 | 해커스 보카/Day 29 | use, utilize, make use of |  | [implɔ́i] |
-| proportion | 비율 / 크기, 규모 | A large proportion of the Canadian population lives near the US border. |  | Day29;명사;별2 | 해커스 보카/Day 29 | percentage, rate, size, magnitude |  | [prəpɔ́ːrʃən] |
+| proportion | 비율 / 크기, 규모 | A large proportion of the Canadian population lives near the US border. |  | Day29;명사;별2 | 해커스 보카/Day 29 | percentage, rate / size, magnitude |  | [prəpɔ́ːrʃən] |
 | misleading | 현혹시키는 | Yetts gave customers false and misleading account statements. |  | Day29;형용사;별2 | 해커스 보카/Day 29 | deceptive, unreliable, delusive |  | [mislíːdiŋ] |
 | seamless | 아주 매끄러운 | The skater won the gold medal for her seamless performance. |  | Day29;형용사;별2 | 해커스 보카/Day 29 | perfectly smooth |  | [síːmlis] |
 | embellishment | 장식(물) | In comparison to standard quilts, crazy quilts use many more embellishments. | v. embellish | Day29;명사;별2 | 해커스 보카/Day 29 | decoration, ornamentation, adornment |  | [imbéliʃmənt] |
@@ -46,7 +46,7 @@
 | emergence | 출현 | The emergence of Japan as a world power began in the early 20th century. | v. emerge | Day29;명사;별1 | 해커스 보카/Day 29 | appearance, advent, rise |  | [imə́ːrdʒəns] |
 | surplus | 과잉, 잉여물 | The price of food fell nearly 72% due to a huge surplus. |  | Day29;명사;별1 | 해커스 보카/Day 29 | excess, redundance, extra goods |  | [sə́ːrplʌs] |
 | distant | 먼 | Neptune is the most distant planet from the Earth in our solar system. | his distant attitude (냉담한) = cold, aloof | Day29;형용사;별1 | 해커스 보카/Day 29 | faraway, remote |  | [dístənt] |
-| aim | 목적, 목표 / 목표하다, 겨냥하다 | The prime minister began a three-day visit to India with the aim of enlisting support for peace efforts. |  | Day29;명사;동사;별1 | 해커스 보카/Day 29 | goal, objective, purpose, attempt |  | [eim] |
+| aim | 목적, 목표 / 목표하다, 겨냥하다 | The prime minister began a three-day visit to India with the aim of enlisting support for peace efforts. |  | Day29;명사;동사;별1 | 해커스 보카/Day 29 | goal, objective, purpose / attempt |  | [eim] |
 | in the ascendant | (인기·세력 등이) 상승 중인 | Christianity was in the ascendant in AD 380, when it was adopted as the official Roman state religion. |  | Day29;숙어;별1 | 해커스 보카/Day 29 | rising in importance |  |  |
 | draw | (마음·이목 등을) 끌다 | On average, London consistently draws more tourists than any city in the world. |  | Day29;동사;별1 | 해커스 보카/Day 29 | attract, engage |  | [drɔː] |
 | overlie | ~위에 가로놓이다 | The fall leaves overlay each other on the ground, making a beautiful palette. |  | Day29;동사;별1 | 해커스 보카/Day 29 | cover, overspread |  | [òuvərlái] |

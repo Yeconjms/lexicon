@@ -2,19 +2,19 @@
 |---|---|---|---|---|---|---|---|---|
 | intact | 손상되지 않은 | The machine remained intact despite the explosion. |  | Day15;형용사;별3 | 해커스 보카/Day 15 | undamaged, unbroken, whole, complete, unaffected |  | [intǽkt] |
 | albeit | 비록 ~이지만 | Many developing economies are growing steadily, albeit slowly. |  | Day15;접속사;별3 | 해커스 보카/Day 15 | although, though, even though |  | [ɔːlbíːit] |
-| complex | 복잡한 / 복합 건물; 복합체 | Biologists seek to understand how complex species evolved from simpler ones. | an involved story (복잡한) | Day15;형용사;명사;별3 | 해커스 보카/Day 15 | intricate, complicated, elaborate, involved, group of buildings, system |  | [kəmpléks] |
+| complex | 복잡한 / 복합 건물; 복합체 | Biologists seek to understand how complex species evolved from simpler ones. | an involved story (복잡한) | Day15;형용사;명사;별3 | 해커스 보카/Day 15 | intricate, complicated, elaborate, involved / group of buildings, system |  | [kəmpléks] |
 | conventional | 전통적인; 통례의 | In ancient times, conventional farming practices included the use of organic fertilizer. | adv. conventionally; n. convention | Day15;형용사;별3 | 해커스 보카/Day 15 | traditional, customary, standard, usual |  | [kənvénʃənl] |
-| reasonable | 합리적인 / (가격이) 적당한 | It seems reasonable to be tough on habitual criminals. |  | Day15;형용사;별3 | 해커스 보카/Day 15 | sensible, rational, logical, sufficient |  | [ríːzənəbl] |
+| reasonable | 합리적인 / (가격이) 적당한 | It seems reasonable to be tough on habitual criminals. |  | Day15;형용사;별3 | 해커스 보카/Day 15 | sensible, rational, logical / sufficient |  | [ríːzənəbl] |
 | attainment | 성취 | It takes many years of practice to reach that level of attainment in chess. | v. attain | Day15;명사;별3 | 해커스 보카/Day 15 | achievement, accomplishment, fulfillment |  | [ətéinmənt] |
 | progressively | 점진적으로 | The government must clean up the air by setting progressively tighter pollution limits on power plants. | adj. progressive | Day15;부사;별3 | 해커스 보카/Day 15 | increasingly |  | [prəgrésivli] |
 | drawback | 결점 | One drawback of the book is that it does not contain any English translations. | setback 방해 / cutback 삭감 | Day15;명사;별3 | 해커스 보카/Day 15 | disadvantage, problem, defect, shortcoming |  | [drɔ́ːbæ̀k] |
-| suppress | 억제하다, 참다 / 진압하다 | Jonas was unable to suppress his anger. |  | Day15;동사;별3 | 해커스 보카/Day 15 | hold back, restrain, stop by force |  | [səprés] |
+| suppress | 억제하다, 참다 / 진압하다 | Jonas was unable to suppress his anger. |  | Day15;동사;별3 | 해커스 보카/Day 15 | hold back, restrain / stop by force |  | [səprés] |
 | incidentally | 덧붙여 말하자면, 그런데 | Nathan is on vacation today; incidentally, he'll be gone all week. |  | Day15;부사;별3 | 해커스 보카/Day 15 | by the way |  | [ìnsədéntəli] |
 | tactic | 전략 | Prohibitionists achieved their goals because of their group tactics. | tacit (무언의) = implicit, implied | Day15;명사;별3 | 해커스 보카/Day 15 | strategy, maneuver |  | [tǽktik] |
 | substantial | 상당한 | As a salesperson, Howard takes a substantial number of business trips every year. | adv. substantially | Day15;형용사;별3 | 해커스 보카/Day 15 | fairly large, considerable, significant, noticeable |  | [səbstǽnʃəl] |
 | verify | 입증하다 | The Hubble Space Telescope helped scientists verify the existence of black holes. |  | Day15;동사;별3 | 해커스 보카/Day 15 | confirm, establish the truth of, validate |  | [vérəfài] |
 | sustained | 지속적인 | Running a marathon requires sustained physical activity and great endurance. |  | Day15;형용사;별3 | 해커스 보카/Day 15 | constant, continued, uninterrupted, prolonged |  | [səstéind] |
-| radical | 근본적인 / 극단적인, 과격한 | The president promised to make radical changes to the country's health care system. | adv. radically | Day15;형용사;별3 | 해커스 보카/Day 15 | fundamental, basic, extreme, drastic |  | [rǽdikəl] |
+| radical | 근본적인 / 극단적인, 과격한 | The president promised to make radical changes to the country's health care system. | adv. radically | Day15;형용사;별3 | 해커스 보카/Day 15 | fundamental, basic / extreme, drastic |  | [rǽdikəl] |
 | prime | 최고의, 주요한 | The prime time for bird watching is early morning, when there are few people to disturb the wildlife. |  | Day15;형용사;별3 | 해커스 보카/Day 15 | peak, high-quality, superior, main |  | [praim] |
 | grasp | 이해하다 | Only a few students could grasp Professor Benton's physics lecture. | grasp the handle tightly (꽉 잡다) | Day15;동사;별3 | 해커스 보카/Day 15 | understand, catch, comprehend, apprehend, grip, seize |  | [græsp] |
 | prominently | 눈에 띄게 | Economic issues are expected to figure prominently in the upcoming election. | adj. prominent; n. prominence | Day15;부사;별2 | 해커스 보카/Day 15 | very noticeably, conspicuously, notably |  | [prámənəntli] |
@@ -33,7 +33,7 @@
 | amplify | 확대하다, 증대하다 | Scientific farming can amplify the production of wheat. | n. amplification | Day15;동사;별2 | 해커스 보카/Day 15 | increase, magnify, enlarge, expand |  | [ǽmpləfài] |
 | dimension | 크기, 규모 | Lucy should accurately measure the dimensions of her office before ordering a desk. |  | Day15;명사;별2 | 해커스 보카/Day 15 | size, magnitude |  | [diménʃən] |
 | deplete | 다 써버리다; 대폭 감소시키다 | The family depleted their savings to renovate the house they bought recently. | exhaust fossil fuels (다 써버리다) | Day15;동사;별2 | 해커스 보카/Day 15 | exhaust, empty, use up, reduce |  | [diplíːt] |
-| characteristic | 특유의 / 특징, 특성 | The ostrich's characteristic size and speed set it apart from other birds. |  | Day15;형용사;명사;별2 | 해커스 보카/Day 15 | distinctive, peculiar, special, quality, feature, trait |  | [kæ̀riktərístik] |
+| characteristic | 특유의 / 특징, 특성 | The ostrich's characteristic size and speed set it apart from other birds. |  | Day15;형용사;명사;별2 | 해커스 보카/Day 15 | distinctive, peculiar, special / quality, feature, trait |  | [kæ̀riktərístik] |
 | ice sheet | 대륙 빙하 | Fjords are coastal landforms formed millions of years ago by massive ice sheets. |  | Day15;명사;별2 | 해커스 보카/Day 15 | glacier |  |  |
 | spectator | 관객, 구경꾼 | The tennis match attracted over 30,000 spectators. |  | Day15;명사;별2 | 해커스 보카/Day 15 | viewer, onlooker |  | [spékteitər] |
 | bountifully | 풍부하게 | In mountain meadows, wildflowers bloom bountifully in the spring. | adj. bountiful | Day15;부사;별2 | 해커스 보카/Day 15 | abundantly, copiously, plentifully, exuberantly |  | [báuntifəli] |
@@ -42,7 +42,7 @@
 | periphery | 주변 | The outer periphery of a hurricane is generally made up of rainbands. |  | Day15;명사;별2 | 해커스 보카/Day 15 | edge, boundary, border, fringe |  | [pərífəri] |
 | apparently | 외관상으로는 | The book Jeff purchased at the used bookstore had yellow pages, so it was apparently old. | apparently damaged (명백히) | Day15;부사;별2 | 해커스 보카/Day 15 | seemingly, ostensibly, outwardly, evidently, clearly |  | [əpǽrəntli] |
 | far-reaching | 광범위한 | If a large meteor hit the Earth, it would have far-reaching consequences for all organisms. |  | Day15;형용사;별2 | 해커스 보카/Day 15 | extensive, widespread, broad |  | [fáːrìːtʃiŋ] |
-| embody | 구체적으로 나타내다 / 포함하다 | Literature often embodies the social ideals of either the author or the author's culture. | n. embodiment | Day15;동사;별2 | 해커스 보카/Day 15 | incarnate, represent, manifest, contain, incorporate |  | [imbádi] |
+| embody | 구체적으로 나타내다 / 포함하다 | Literature often embodies the social ideals of either the author or the author's culture. | n. embodiment | Day15;동사;별2 | 해커스 보카/Day 15 | incarnate, represent, manifest / contain, incorporate |  | [imbádi] |
 | evade | 피하다 | Camouflage is one technique animals use to evade predators. |  | Day15;동사;별1 | 해커스 보카/Day 15 | escape, avoid, elude, dodge, shun |  | [ivéid] |
 | against | ~에 붙여, ~에 가까이 | In some European cities, modern buildings were built directly against Medieval walls. |  | Day15;전치사;별1 | 해커스 보카/Day 15 | next to, beside |  | [əgénst] |
 | due to | ~로 인한, ~에 기인하는 | Falling real estate prices due to decreased demand is a cause for concern. |  | Day15;숙어;별1 | 해커스 보카/Day 15 | caused by, owing to, attributable to |  |  |

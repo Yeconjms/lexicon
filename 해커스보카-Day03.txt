@@ -7,15 +7,15 @@
 | embed | 박아 넣다 | The story of the American Dream has been embedded deeply in American culture. |  | Day03;동사;별3 | 해커스 보카/Day 03 | fix, insert, implant, root |  | [imbéd] |
 | vow | 서약, 맹세 | After the couple recited their vows, they were declared married. |  | Day03;명사;별3 | 해커스 보카/Day 03 | pledge, promise, oath |  | [vau] |
 | counter | 반박하다 | The two lawyers used different interpretations of the same data to counter each other's conclusions. |  | Day03;동사;별3 | 해커스 보카/Day 03 | oppose, act against, refute |  | [káuntər] |
-| apparent | 분명한 / 외관상의 | It was apparent to all that Henry had not rehearsed his speech. | adv. apparently | Day03;형용사;별3 | 해커스 보카/Day 03 | clear, evident, obvious, seeming, exterior, superficial |  | [əpǽrənt] |
+| apparent | 분명한 / 외관상의 | It was apparent to all that Henry had not rehearsed his speech. | adv. apparently | Day03;형용사;별3 | 해커스 보카/Day 03 | clear, evident, obvious / seeming, exterior, superficial |  | [əpǽrənt] |
 | bombard | 폭격하다, 공격하다 | Warplanes bombarded the city until it was demolished. |  | Day03;동사;별3 | 해커스 보카/Day 03 | strike, assail, attack |  | [bambáːrd] |
 | reveal | 밝히다, 드러내다 | Merill revealed that the company will concentrate on sales of its digital video cameras. | n. revelation | Day03;동사;별3 | 해커스 보카/Day 03 | make known, show, unveil, uncover, expose, disclosure |  | [rivíːl] |
 | sturdy | 튼튼한 | The school purchased sturdy desks and chairs that are expected to last several years. |  | Day03;형용사;별3 | 해커스 보카/Day 03 | well-built, strong, robust, stalwart |  | [stə́ːrdi] |
 | traditionally | 통상적으로, 관습적으로 | In the early 20th century, girls and boys were traditionally taught separately. |  | Day03;부사;별3 | 해커스 보카/Day 03 | typically |  | [trədíʃənəli] |
 | correspondingly | 그에 상응하여 | Oil prices went down, so the cost of airline tickets has correspondingly decreased. | v. correspond | Day03;부사;별3 | 해커스 보카/Day 03 | similarly, likewise, match, accord |  | [kɔ̀ːrəspándiŋli] |
 | trigger | 일으키다 | News of the court's decision triggered riots and fires in L.A. |  | Day03;동사;별3 | 해커스 보카/Day 03 | cause, generate, initiate, start, stimulate, activate |  | [trígər] |
-| vigorous | 강건한; 활기찬 / (작용·효력 등이) 강력한 | Despite the man's advanced age, he remained physically vigorous. | n. vigor | Day03;형용사;별3 | 해커스 보카/Day 03 | strong and healthy, strong, energetic, forceful |  | [vígərəs] |
-| spontaneous | 자발적인 / 무의식적인, 저절로 움직이는 | Sarah's successful jump at the cheerleading contest brought a spontaneous cheer from the crowd. |  | Day03;형용사;별3 | 해커스 보카/Day 03 | voluntary, unprompted, automatic, unplanned, involuntary |  | [spantéiniəs] |
+| vigorous | 강건한; 활기찬 / (작용·효력 등이) 강력한 | Despite the man's advanced age, he remained physically vigorous. | n. vigor | Day03;형용사;별3 | 해커스 보카/Day 03 | strong and healthy, strong, energetic / forceful |  | [vígərəs] |
+| spontaneous | 자발적인 / 무의식적인, 저절로 움직이는 | Sarah's successful jump at the cheerleading contest brought a spontaneous cheer from the crowd. |  | Day03;형용사;별3 | 해커스 보카/Day 03 | voluntary, unprompted / automatic, unplanned, involuntary |  | [spantéiniəs] |
 | miniature | 소형의 | One museum in San Diego contains the world's largest collection of miniature trains. |  | Day03;형용사;별3 | 해커스 보카/Day 03 | small, tiny, diminutive |  | [míniətʃər] |
 | commission | 의뢰하다 | In the past, it was common for countries to commission artists to create portraits of the king and queen. |  | Day03;동사;별2 | 해커스 보카/Day 03 | order, hire, fee, cut |  | [kəmíʃən] |
 | remarkable | 놀라운, 주목할 만한 | Charles Dickens had remarkable mental and physical energy. | adv. remarkably | Day03;형용사;별2 | 해커스 보카/Day 03 | extraordinary, incredible, notable, significant |  | [rimáːrkəbl] |
@@ -23,7 +23,7 @@
 | manifestation | 징후 | Frequent high blood pressure may be a manifestation of extreme stress. | v. manifest | Day03;명사;별2 | 해커스 보카/Day 03 | indication, sign, symptom, evidence |  | [mæ̀nəfistéiʃən] |
 | prior | 이전의 | Unlike the prior administration, the current one supports universal health care. |  | Day03;형용사;별2 | 해커스 보카/Day 03 | previous, former, earlier |  | [práiər] |
 | cast about | 찾아다니다 | Unsure how to increase the company's profits, George cast about for solutions from his colleagues. |  | Day03;숙어;별2 | 해커스 보카/Day 03 | seek, search, hunt |  |  |
-| rigorous | 엄격한 / (기후 등이) 혹독한 | Athletes should follow a rigorous training schedule to be competitive. | n. rigor | Day03;형용사;별2 | 해커스 보카/Day 03 | strict, severe, demanding, precise, harsh |  | [rígərəs] |
+| rigorous | 엄격한 / (기후 등이) 혹독한 | Athletes should follow a rigorous training schedule to be competitive. | n. rigor | Day03;형용사;별2 | 해커스 보카/Day 03 | strict, severe, demanding, precise / harsh |  | [rígərəs] |
 | compulsory | 의무적인, 강제적인 | In Britain, education is compulsory between the ages of 5 and 16. | adv. compulsorily | Day03;형용사;별2 | 해커스 보카/Day 03 | obligatory, forced, required, necessary |  | [kəmpʌ́lsəri] |
 | subsidiary | 부수적인 | The CEO said that the rest of the details for the merger were subsidiary and could be discussed at a later time. |  | Day03;형용사;별2 | 해커스 보카/Day 03 | less important, auxiliary, subordinate |  | [səbsídièri] |
 | status | 지위, 위신 | Donald's father was the town doctor, so he was a man of high status in the community. |  | Day03;명사;별2 | 해커스 보카/Day 03 | standing, prestige, importance |  | [stéitəs] |
@@ -36,7 +36,7 @@
 | contradictory | 모순되는 | The soldiers were puzzled by the general's contradictory behavior. |  | Day03;형용사;별2 | 해커스 보카/Day 03 | inconsistent, paradoxical, conflicting |  | [kàntrədíktəri] |
 | propagate | 번식하다, 증식시키다 | Many single-cell organisms propagate by dividing into two identical copies. | n. propagation | Day03;동사;별2 | 해커스 보카/Day 03 | multiply, reproduce, spread, disseminate |  | [prápəgèit] |
 | ensure | 보장하다 | Stricter security regulations have been put in place at airports to ensure the safety of travelers. |  | Day03;동사;별2 | 해커스 보카/Day 03 | guarantee, assure, warrant |  | [inʃúər] |
-| pore | 작은 구멍 / 자세히 보다, 응시하다 | Plants have pores on their leaves so that they can breathe. |  | Day03;명사;동사;별2 | 해커스 보카/Day 03 | hole, stare, gaze, ponder, contemplate |  | [pɔːr] |
+| pore | 작은 구멍 / 자세히 보다, 응시하다 | Plants have pores on their leaves so that they can breathe. |  | Day03;명사;동사;별2 | 해커스 보카/Day 03 | hole / stare, gaze, ponder, contemplate |  | [pɔːr] |
 | alternate | 번갈아 일어나다 | Good luck and misfortune alternate with each other throughout our lives. | adj. alternative | Day03;동사;별2 | 해커스 보카/Day 03 | take turns, rotate, interchange |  | [ɔ́ltərnèit] |
 | devastating | 파괴적인 | During World War II, Stalingrad suffered a devastating defeat, with some 1.5 million people losing their lives. |  | Day03;형용사;별2 | 해커스 보카/Day 03 | destructive, ruinous |  | [dévəstèitiŋ] |
 | mingle with | ~와 어울리다 | Company morale improves when managers mingle with staff at social events. |  | Day03;숙어;별2 | 해커스 보카/Day 03 | associate with, mix with, consort with |  |  |
@@ -49,7 +49,7 @@
 | succession | 연속 | Melody is the succession of sounds. | adj. successive; adv. successively | Day03;명사;별1 | 해커스 보카/Day 03 | sequence, series |  | [səkséʃən] |
 | tentativeness | 망설임 | Tentativeness is often shown by young children in unfamiliar situations. | adj. tentative; adv. tentatively | Day03;명사;별1 | 해커스 보카/Day 03 | hesitation, indecision |  | [téntətivnis] |
 | fragmentary | 단편적인 | The trauma victim had only fragmentary memories of the accident. | n. fragment | Day03;형용사;별1 | 해커스 보카/Day 03 | incomplete, fractional, partial |  | [frǽgməntèri] |
-| legendary | 유명한, 전설적인 / 전설상의 | Led Zeppelin's guitarist Jimmy Page became legendary for his unique playing style. |  | Day03;형용사;별1 | 해커스 보카/Day 03 | famous, mythical |  | [lédʒəndèri] |
+| legendary | 유명한, 전설적인 / 전설상의 | Led Zeppelin's guitarist Jimmy Page became legendary for his unique playing style. |  | Day03;형용사;별1 | 해커스 보카/Day 03 | famous / mythical |  | [lédʒəndèri] |
 | setback | 패배 | Despite early setbacks, George Washington led the Continental Army to victory against the British. |  | Day03;명사;별1 | 해커스 보카/Day 03 | defeat, reverse |  | [sétbæ̀k] |
 | fine-tune | 미세하게 조정하다 | Software companies use feedback from customers to fine-tune programs for better performance. |  | Day03;동사;별1 | 해커스 보카/Day 03 | adjust slightly |  | [fáintjùːn] |
 | enthusiastic | 열광적인 | The citizenry was enthusiastic about the decision to cut taxes by 10 percent. |  | Day03;형용사;별1 | 해커스 보카/Day 03 | eager, ardent, zealous |  | [inθùːziǽstik] |

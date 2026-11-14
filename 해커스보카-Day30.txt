@@ -5,7 +5,7 @@
 | assorted | 다채로운 | The assorted cultures of New York City are signs of its mixed population. | assort (분류하다) = classify, categorize | Day30;형용사;별3 | 해커스 보카/Day 30 | various, varied, diverse |  | [əsɔ́ːrtid] |
 | ruthlessly | 무자비하게 | European explorers ruthlessly took Native American land. |  | Day30;부사;별3 | 해커스 보카/Day 30 | without mercy, relentlessly, cruelly |  | [rúːθlisli] |
 | fluctuate | 변동하다 | Because the temperature fluctuates so much in Wisconsin, many people carry warm clothes and umbrellas in their cars. | n. fluctuation | Day30;동사;별3 | 해커스 보카/Day 30 | change, vary |  | [flʌ́ktʃuèit] |
-| viability | 생존 능력 / 실행 가능성 | Certain bacteria are known for their viability in the most extreme environments. | adj. viable | Day30;명사;별3 | 해커스 보카/Day 30 | ability to exist, ability to live, feasibility |  | [vàiəbíləti] |
+| viability | 생존 능력 / 실행 가능성 | Certain bacteria are known for their viability in the most extreme environments. | adj. viable | Day30;명사;별3 | 해커스 보카/Day 30 | ability to exist, ability to live / feasibility |  | [vàiəbíləti] |
 | precarious | 불안정한 | The stock's recent fall put investors in a precarious position. |  | Day30;형용사;별3 | 해커스 보카/Day 30 | unstable, insecure, uncertain |  | [prikɛ́əriəs] |
 | imply | 시사하다 | A commentator implied that education became compulsory in the 1500s to encourage children to read the Bible. |  | Day30;동사;별3 | 해커스 보카/Day 30 | suggest, indicate, connote |  | [implái] |
 | diverge | 갈라지다 | About four miles outside town, the road diverges and becomes two separate highways. | divulge (누설하다) = leak, reveal | Day30;동사;별3 | 해커스 보카/Day 30 | separate, move apart, part, branch |  | [daivə́ːrdʒ] |
@@ -18,7 +18,7 @@
 | instructive | 교육적인, 유익한 | Most documentaries aim to present their audiences with instructive content. |  | Day30;형용사;별3 | 해커스 보카/Day 30 | informative, educational, helpful, useful |  | [instrʌ́ktiv] |
 | converse | 반대의 | John and his brother are very different, and they often hold converse opinions. | converse with Jane (대화를 나누다) | Day30;형용사;별3 | 해커스 보카/Day 30 | opposite, reverse, communicate, discourse |  | [kənvə́ːrs] |
 | shortcoming | 결점, 단점 | The inspection revealed some serious shortcomings in the company's security procedures. |  | Day30;명사;별2 | 해커스 보카/Day 30 | weakness, disadvantage, defect, failing |  | [ʃɔ́ːrtkʌ̀miŋ] |
-| vicinity | 주변, 인근 / 근접 | There are a lot of historical buildings in the vicinity of Buckingham Palace. |  | Day30;명사;별2 | 해커스 보카/Day 30 | neighborhood, area, closeness, proximity |  | [visínəti] |
+| vicinity | 주변, 인근 / 근접 | There are a lot of historical buildings in the vicinity of Buckingham Palace. |  | Day30;명사;별2 | 해커스 보카/Day 30 | neighborhood, area / closeness, proximity |  | [visínəti] |
 | abort | 중단하다 | The research team aborted the experiment due to a lack of funds. |  | Day30;동사;별2 | 해커스 보카/Day 30 | quit, halt, call off |  | [əbɔ́ːrt] |
 | broaden | 넓히다 | Deciding it was time for personal growth, Timmy left home to travel the world for a year and broaden his horizons. |  | Day30;동사;별2 | 해커스 보카/Day 30 | widen, expand, enlarge, develop |  | [brɔːdn] |
 | whereas | ~에 반하여 | Dorian prefers playing basketball at the park, whereas his roommate enjoys watching television. |  | Day30;접속사;별2 | 해커스 보카/Day 30 | while |  | [hwɛərǽz] |
@@ -43,7 +43,7 @@
 | roundabout | 우회적인, 간접적인 | Many commuters use roundabout routes to avoid traffic congestion. |  | Day30;형용사;별2 | 해커스 보카/Day 30 | indirect, circuitous |  | [ràundəbáut] |
 | dim | 희미한 | Under the dim light of the moon, rescue workers searched all night for the missing hikers. |  | Day30;형용사;별2 | 해커스 보카/Day 30 | faint, weak, obscure |  | [dim] |
 | dubious | 의심스러운 | Joseph's alibi seemed highly dubious, so the police took him in for questioning. | devious (기만적인) = deceitful, insincere | Day30;형용사;별2 | 해커스 보카/Day 30 | suspected, suspicious, distrustful, questionable |  | [djúːbiəs] |
-| alarm | 공포 / 놀라게 하다 | Jane felt alarm at the sight of the snake. |  | Day30;명사;동사;별1 | 해커스 보카/Day 30 | fear, fright, terror, surprise, startle, dismay |  | [əláːrm] |
+| alarm | 공포 / 놀라게 하다 | Jane felt alarm at the sight of the snake. |  | Day30;명사;동사;별1 | 해커스 보카/Day 30 | fear, fright, terror / surprise, startle, dismay |  | [əláːrm] |
 | eminent | 뛰어난 | Stephen Hawking is one of the most eminent physicists to have ever lived. | adv. eminently | Day30;형용사;별1 | 해커스 보카/Day 30 | distinguished, outstanding, prominent |  | [émənənt] |
 | perceptibly | 눈에 띄게, 상당히 | The position of a plant will change perceptibly as it follows the sun across the sky. |  | Day30;부사;별1 | 해커스 보카/Day 30 | noticeably, appreciably, sensibly |  | [pərséptəbli] |
 | ubiquitous | 어디에나 존재하는 | The fact that fast food is so ubiquitous plays a large part in the global obesity epidemic. |  | Day30;형용사;별1 | 해커스 보카/Day 30 | omnipresent, universal |  | [juːbíkwətəs] |

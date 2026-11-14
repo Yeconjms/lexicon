@@ -12,24 +12,24 @@
 | size up | 평가하다 | A company must size up its competition before entering a new market. |  | Day20;숙어;별3 | 해커스 보카/Day 20 | evaluate, measure, assess, appraise |  |  |
 | mimic | 흉내 내다, 모방하다 | Many insects mimic twigs or leaves for protection. |  | Day20;동사;별3 | 해커스 보카/Day 20 | imitate, copy, reproduce |  | [mímik] |
 | contiguous | 인접한 | The US and Canada are contiguous nations that share the world's longest border. | contagious (전염성의) = infectious, transmissible | Day20;형용사;별3 | 해커스 보카/Day 20 | neighboring, adjacent, adjoining |  | [kəntígjuəs] |
-| engage | 참여시키다, (대화 등에) 끌어들이다 / 예약하다 / 고용하다 | The lawyer engaged his colleagues in a conversation about legal ethics. | n. engagement (교전) = combat, battle | Day20;동사;별3 | 해커스 보카/Day 20 | involve, reserve, book, hire |  | [ingéidʒ] |
+| engage | 참여시키다, (대화 등에) 끌어들이다 / 예약하다 / 고용하다 | The lawyer engaged his colleagues in a conversation about legal ethics. | n. engagement (교전) = combat, battle | Day20;동사;별3 | 해커스 보카/Day 20 | involve / reserve, book / hire |  | [ingéidʒ] |
 | initial | 최초의 | The theory based on the team's initial research was disproven by later studies. | v. initiate; adv. initially | Day20;형용사;별3 | 해커스 보카/Day 20 | first, original, earliest |  | [iníʃəl] |
-| essential | 근본적인 / 필수적인 | The Earth itself is the most essential natural resource. | adv. essentially | Day20;형용사;별3 | 해커스 보카/Day 20 | fundamental, indispensable, required |  | [isénʃəl] |
+| essential | 근본적인 / 필수적인 | The Earth itself is the most essential natural resource. | adv. essentially | Day20;형용사;별3 | 해커스 보카/Day 20 | fundamental / indispensable, required |  | [isénʃəl] |
 | pertinent | 관련된 | The detective wanted to know all the pertinent details. |  | Day20;형용사;별3 | 해커스 보카/Day 20 | relevant, related, germane |  | [pə́ːrtənənt] |
 | traumatic | 정신적 충격이 큰 | Psychologists help patients to recover from traumatic experiences. | n. trauma | Day20;형용사;별3 | 해커스 보카/Day 20 | highly stressful, upsetting, disturbing |  | [trəmǽtik] |
 | on the whole | 대체로 | On the whole, Africa is a warm continent, but some areas have cold weather. |  | Day20;숙어;별2 | 해커스 보카/Day 20 | in general, generally, overall, by and large |  |  |
 | dispersal | 확산, 분산 | Wind is one of the primary factors in the dispersal of dandelion seeds. | disposal (처분, 폐기) = removal, clearance | Day20;명사;별2 | 해커스 보카/Day 20 | distribution, scattering |  | [dispə́ːrsəl] |
 | sought-after | 수요가 많은, 인기 있는 | Water is a sought-after resource in areas of Pakistan suffering from severe drought. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | desired, desirable, in demand |  | [sɔ́ːtæ̀ftər] |
 | expand | 확장시키다, 확장하다 | In 1803, the Louisiana Purchase expanded the territory of the US by 828,000 square miles. | n. expansion; adj. expansive | Day20;동사;별2 | 해커스 보카/Day 20 | enlarge, increase, swell, bloat |  | [ikspǽnd] |
-| mastery | 통제력, 지배 / 전문적 지식 | The best way to gain mastery over one's fears is to confront them. | v. master | Day20;명사;별2 | 해커스 보카/Day 20 | control, expertise |  | [mǽstəri] |
+| mastery | 통제력, 지배 / 전문적 지식 | The best way to gain mastery over one's fears is to confront them. | v. master | Day20;명사;별2 | 해커스 보카/Day 20 | control / expertise |  | [mǽstəri] |
 | perpetually | 끊임없이 | Wind power plants may be established in places where the wind blows perpetually. |  | Day20;부사;별2 | 해커스 보카/Day 20 | continually, incessantly, ceaselessly |  | [pərpétʃuəli] |
 | evacuate | 대피하다, 비우고 떠나다 | Flooding forced the building's residents to evacuate. |  | Day20;동사;별2 | 해커스 보카/Day 20 | move out |  | [ivǽkjuèit] |
 | excrete | 배설하다, 방출하다 | Certain types of frogs native to South America excrete toxins through their skin. | execrate (혐오하다) = loathe, despise | Day20;동사;별2 | 해커스 보카/Day 20 | expel, discharge, eject |  | [ikskríːt] |
 | gradually | 서서히 | The scars from the accident are gradually disappearing, but there will always be a small mark on Kevin's forehead. |  | Day20;부사;별2 | 해커스 보카/Day 20 | slowly, little by little |  | [grǽdʒuəli] |
-| affluent | 풍부한 / 부유한 | Ancient Rome received an affluent supply of grain from Egypt. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | plentiful, abundant, wealthy, rich, well-off |  | [ǽfluənt] |
+| affluent | 풍부한 / 부유한 | Ancient Rome received an affluent supply of grain from Egypt. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | plentiful, abundant / wealthy, rich, well-off |  | [ǽfluənt] |
 | stationary | 움직이지 않는 | A stationary target is easy to aim at. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | unmoving, motionless, immobile |  | [stéiʃənèri] |
 | cling to | ~에 달라붙다 | Static electricity can make light objects cling to one another. |  | Day20;숙어;별2 | 해커스 보카/Day 20 | stick to, hold tightly, adhere to |  |  |
-| endow | 기부하다 / (능력·재능 등을) 부여하다 | The successful businessman endowed his college with a generous monetary gift. | n. endowment (재능) = talent, gift | Day20;동사;별2 | 해커스 보카/Day 20 | donate, grant, provide, endue |  | [indáu] |
+| endow | 기부하다 / (능력·재능 등을) 부여하다 | The successful businessman endowed his college with a generous monetary gift. | n. endowment (재능) = talent, gift | Day20;동사;별2 | 해커스 보카/Day 20 | donate, grant / provide, endue |  | [indáu] |
 | verging on | ~에 가까운, 거의 ~인 | The critic's comments were so harsh that they were verging on insults. |  | Day20;숙어;별2 | 해커스 보카/Day 20 | bordering on |  |  |
 | contemptuous | 업신여기는 | The presidential candidate made contemptuous statements about his opponents. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | scornful, disdainful |  | [kəntémptʃuəs] |
 | accelerate | 속도를 높이다 | The airplane accelerated as it headed down the runway. |  | Day20;동사;별2 | 해커스 보카/Day 20 | increase in speed, speed up |  | [æksélərèit] |
@@ -49,7 +49,7 @@
 | devastation | 파괴 | The devastation of cities and villages is inevitable in wartime. | v. devastate | Day20;명사;별1 | 해커스 보카/Day 20 | destruction, demolition, ruin |  | [dèvəstéiʃən] |
 | tentative | 망설이는, 불확실한 | Though the results were tentative, the experiment seemed to promise a cure for the disease. | adv. tentatively; n. tentativeness | Day20;형용사;별1 | 해커스 보카/Day 20 | uncertain, unsure |  | [téntətiv] |
 | suppose | 추측하다 | As Steve's wife didn't answer the phone, he supposed that she was out. |  | Day20;동사;별1 | 해커스 보카/Day 20 | assume, presume, surmise |  | [səpóuz] |
-| primitive | 초기의 / 발달되지 않은 | Most primitive cave paintings are representations of animals. |  | Day20;형용사;별1 | 해커스 보카/Day 20 | early, primeval, simple, rudimentary |  | [prímətiv] |
+| primitive | 초기의 / 발달되지 않은 | Most primitive cave paintings are representations of animals. |  | Day20;형용사;별1 | 해커스 보카/Day 20 | early, primeval / simple, rudimentary |  | [prímətiv] |
 | interrupt | 중단시키다 | Frequent technical problems with the computer equipment interrupted the flow of Charlie's presentation. |  | Day20;동사;별1 | 해커스 보카/Day 20 | break off |  | [ìntərʌ́pt] |
 | conform | 따르다 | Many companies expect their employees to conform to a strict dress code. |  | Day20;동사;별1 | 해커스 보카/Day 20 | comply, obey, follow |  | [kənfɔ́ːrm] |
 | combine | 결합시키다 | The artist combined rich colors and interesting patterns in his work. |  | Day20;동사;별1 | 해커스 보카/Day 20 | incorporate, mix, unite |  | [kəmbáin] |

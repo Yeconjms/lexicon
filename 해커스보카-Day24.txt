@@ -1,14 +1,14 @@
 | 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
 |---|---|---|---|---|---|---|---|---|
-| sustain | 떠받치다, 지탱하다 / 지속하다, 유지하다 | The old shelf could not sustain the weight of the books. |  | Day24;동사;별3 | 해커스 보카/Day 24 | support, bear, uphold, maintain, continue |  | [səstéin] |
+| sustain | 떠받치다, 지탱하다 / 지속하다, 유지하다 | The old shelf could not sustain the weight of the books. |  | Day24;동사;별3 | 해커스 보카/Day 24 | support, bear, uphold / maintain, continue |  | [səstéin] |
 | subsequence | 연속, 이어서 일어나는 것 | Brandy had the misfortune of performing in subsequence to an unusually gifted singer. | adj. subsequent; adv. subsequently | Day24;명사;별3 | 해커스 보카/Day 24 | succession, next in a series |  | [sʌ́bsikwəns] |
 | accumulate | (서서히) 모으다 | Donald accumulated much of his wealth in real estate. | n. accumulation | Day24;동사;별3 | 해커스 보카/Day 24 | gather, collect, compile, gradually increase in number |  | [əkjúːmjulèit] |
 | assert | 주장하다 | Many medieval scholars in Europe mistakenly asserted that the world was flat. | maintain one's innocence (주장하다) | Day24;동사;별3 | 해커스 보카/Day 24 | claim, maintain, declare, forcefully establish, contend |  | [əsə́ːrt] |
-| progressive | 진보적인 / 점진적인 | During the seventeenth century, the notion of women voting was a very progressive idea. | adv. progressively | Day24;형용사;별3 | 해커스 보카/Day 24 | advanced, liberal, increasing, continuous |  | [prəgrésiv] |
+| progressive | 진보적인 / 점진적인 | During the seventeenth century, the notion of women voting was a very progressive idea. | adv. progressively | Day24;형용사;별3 | 해커스 보카/Day 24 | advanced, liberal / increasing, continuous |  | [prəgrésiv] |
 | strikingly | 눈에 띄게 | The recycling initiative was strikingly effective, cutting down the amount of disposed waste by half. | adj. striking | Day24;부사;별3 | 해커스 보카/Day 24 | remarkably, noticeably |  | [stráikiŋli] |
 | comparable | 비슷한, 동등한 | The newly discovered clay figures in Mexico were comparable to those found in China in terms of their scale. |  | Day24;형용사;별3 | 해커스 보카/Day 24 | analogous, similar, equivalent, alike |  | [kámpərəbl] |
 | hinder | 방해하다 | Terry's frequent absences hindered the team's research. |  | Day24;동사;별3 | 해커스 보카/Day 24 | interfere with, hamper, stunt, impede |  | [híndər] |
-| concern | 걱정시키다 / 관심(사) | The proposed plan to build a nuclear power plant there concerned the area's citizens. | concerning (~에 관하여) = with reference to, regarding | Day24;동사;명사;별3 | 해커스 보카/Day 24 | worry, interest, regard, care |  | [kənsə́ːrn] |
+| concern | 걱정시키다 / 관심(사) | The proposed plan to build a nuclear power plant there concerned the area's citizens. | concerning (~에 관하여) = with reference to, regarding | Day24;동사;명사;별3 | 해커스 보카/Day 24 | worry / interest, regard, care |  | [kənsə́ːrn] |
 | presumably | 아마 | The first people to populate the Americas presumably came from East and Central Asia. | v. presume; adj. presumable | Day24;부사;별3 | 해커스 보카/Day 24 | supposedly, probably, thought to be, it can be assumed |  | [prizúːməbli] |
 | ritual | 의식적인 | Among the ritual practices of ancient Egypt was mummifying the dead. |  | Day24;형용사;별3 | 해커스 보카/Day 24 | ceremonial |  | [rítʃuəl] |
 | unresolved | 미정의 | The issue of who in the family will inherit the large estate is still unresolved. |  | Day24;형용사;별3 | 해커스 보카/Day 24 | undecided, undetermined, unsettled |  | [ʌ̀nrizálvd] |

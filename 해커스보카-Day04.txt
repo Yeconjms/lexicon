@@ -1,10 +1,10 @@
 | 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
 |---|---|---|---|---|---|---|---|---|
-| readily | 손쉽게; 즉시 / 기꺼이 | In the experiment, rats readily learned to associate certain behaviors with rewards. |  | Day04;부사;별3 | 해커스 보카/Day 04 | easily, effortlessly, quickly, willingly, without reluctance |  | [rédəli] |
-| advocate | 지지하다 / 지지자 | The lobbyist is advocating the new bill in his letter to the senator. |  | Day04;동사;명사;별3 | 해커스 보카/Day 04 | promote, speak in favor of, argue in support of, proponent, supporter, upholder |  | [ǽdvəkèit] |
+| readily | 손쉽게; 즉시 / 기꺼이 | In the experiment, rats readily learned to associate certain behaviors with rewards. |  | Day04;부사;별3 | 해커스 보카/Day 04 | easily, effortlessly, quickly / willingly, without reluctance |  | [rédəli] |
+| advocate | 지지하다 / 지지자 | The lobbyist is advocating the new bill in his letter to the senator. |  | Day04;동사;명사;별3 | 해커스 보카/Day 04 | promote, speak in favor of, argue in support of / proponent, supporter, upholder |  | [ǽdvəkèit] |
 | utterly | 완전히 | John enjoyed the movie, but he was utterly surprised by the movie's ending. | adj. utter | Day04;부사;별3 | 해커스 보카/Day 04 | completely, totally, speak, voice |  | [ʌ́tərli] |
 | abound | 아주 많다, 풍부하다 | Wild dolphins abound in Canada's Bay of Fundy. |  | Day04;동사;별3 | 해커스 보카/Day 04 | overflow, teem, be plentiful, be numerous |  | [əbáund] |
-| formidable | 어마어마한, 경외감을 일으키는 / 만만치 않은, 감당하기 어려운 | The creation of the United Nations was a formidable achievement in international cooperation. |  | Day04;형용사;별3 | 해커스 보카/Day 04 | impressive, difficult to handle |  | [fɔ́ːrmidəbl] |
+| formidable | 어마어마한, 경외감을 일으키는 / 만만치 않은, 감당하기 어려운 | The creation of the United Nations was a formidable achievement in international cooperation. |  | Day04;형용사;별3 | 해커스 보카/Day 04 | impressive / difficult to handle |  | [fɔ́ːrmidəbl] |
 | enormous | 거대한 | China's enormous population poses a major challenge for the country's food production system. |  | Day04;형용사;별3 | 해커스 보카/Day 04 | huge, very large, great, immense, vast, tremendous |  | [inɔ́ːrməs] |
 | disband | 해산시키다 | The government has promised to disband the rebel group before the end of the year. |  | Day04;동사;별3 | 해커스 보카/Day 04 | dismiss, disperse, break up |  | [disbǽnd] |
 | alleged | 추정의 | Investigators interviewed the alleged victim of the crime several times. | adv. allegedly | Day04;형용사;별3 | 해커스 보카/Day 04 | supposed, assumed |  | [əlédʒd] |
@@ -25,7 +25,7 @@
 | ensuing | 뒤이은, 다음의 | The earthquake and the ensuing aftershocks destroyed much of San Francisco in 1906. |  | Day04;형용사;별2 | 해커스 보카/Day 04 | subsequent, following, succeeding |  | [insúːiŋ] |
 | appreciably | 상당히 | The temperature dropped appreciably this morning. | adj. appreciable | Day04;부사;별2 | 해커스 보카/Day 04 | noticeably, significantly, considerably |  | [əpríːʃiəbli] |
 | obligate | 의무를 지우다, 강요하다 | Most states obligate companies and other organizations to apply the minimum wage law. | n. obligation | Day04;동사;별2 | 해커스 보카/Day 04 | force, coerce, compel, constrain |  | [ábləgèit] |
-| wholesale | 대규모의 / 모조리, 통틀어서 | The oil spill in the Gulf of Mexico caused the wholesale destruction of the marine ecosystem. |  | Day04;형용사;부사;별2 | 해커스 보카/Day 04 | extensive, mass, completely |  | [hóulsèil] |
+| wholesale | 대규모의 / 모조리, 통틀어서 | The oil spill in the Gulf of Mexico caused the wholesale destruction of the marine ecosystem. |  | Day04;형용사;부사;별2 | 해커스 보카/Day 04 | extensive, mass / completely |  | [hóulsèil] |
 | dweller | 거주자 | City dwellers tend to have a higher cost of living than those residing in the country. |  | Day04;명사;별2 | 해커스 보카/Day 04 | inhabitant, resident, occupant |  | [dwélər] |
 | tacit | 무언의, 암묵적인 | The two countries made a tacit agreement to end the war, but they did not actually sign a peace treaty. |  | Day04;형용사;별2 | 해커스 보카/Day 04 | implicit, implied, unspoken |  | [tǽsit] |
 | resolve | 해결하다 | In some cases, mediators can help parties resolve legal disputes without going to court. |  | Day04;동사;별2 | 해커스 보카/Day 04 | settle, find a solution for, solve, decide, determine |  | [rizálv] |
@@ -34,7 +34,7 @@
 | synthesize | 통합하다 | A financial analyst must be able to synthesize data from a variety of sources. | n. synthesis | Day04;동사;별2 | 해커스 보카/Day 04 | integrate, combine, coalesce |  | [sínθəsàiz] |
 | spectrum | 범위 | A Renaissance man possesses a broad spectrum of interests that includes the academic and the artistic. |  | Day04;명사;별2 | 해커스 보카/Day 04 | range, scope, extent |  | [spéktrəm] |
 | stream | 흐름 | It was difficult for the plumber to tell where the stream of liquid was coming from. |  | Day04;명사;별2 | 해커스 보카/Day 04 | flow, current |  | [striːm] |
-| rupture | 파열되다, 찢어지다 / 불화 | Patty's eardrum ruptured due to the sound of the explosion. |  | Day04;동사;명사;별2 | 해커스 보카/Day 04 | burst, break apart, split, tear, breach, discord |  | [rʌ́ptʃər] |
+| rupture | 파열되다, 찢어지다 / 불화 | Patty's eardrum ruptured due to the sound of the explosion. |  | Day04;동사;명사;별2 | 해커스 보카/Day 04 | burst, break apart, split, tear / breach, discord |  | [rʌ́ptʃər] |
 | presuppose | (미리) 가정하다 | High-level chemistry courses presuppose that students have a basic knowledge of chemical structures. |  | Day04;동사;별2 | 해커스 보카/Day 04 | assume, suppose, presume |  | [prìːsəpóuz] |
 | well-to-do | 부유한 | In the early days of air travel, flight tickets were so expensive that only well-to-do people could afford them. |  | Day04;형용사;별2 | 해커스 보카/Day 04 | wealthy, affluent, rich |  | [wèltədúː] |
 | appeal | 간청하다 | The students appealed to the professor for more time to study for the exam. |  | Day04;동사;별2 | 해커스 보카/Day 04 | plead, request, ask, beg, interest, attract |  | [əpíːl] |

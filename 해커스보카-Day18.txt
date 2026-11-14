@@ -3,12 +3,12 @@
 | initiative | 진취성 | People expect leaders to show great initiative when faced with a crisis. | initiative to raise money (계획) | Day18;명사;별3 | 해커스 보카/Day 18 | enterprise, ambition, drive, plan, scheme |  | [iníʃiətiv] |
 | provided that | 만약 ~이라면 | Lila could watch two hours of television provided that she finished her homework first. |  | Day18;숙어;별3 | 해커스 보카/Day 18 | if, once, on the condition that, supposing |  |  |
 | phenomenal | 경이적인 | The discovery of the electron was a phenomenal advance in physics. | n. phenomenon | Day18;형용사;별3 | 해커스 보카/Day 18 | extraordinary, remarkable |  | [finámənl] |
-| likewise | 마찬가지로, 똑같이 / 또한 | France has signed the environmental agreement, and Germany is expected to do likewise. |  | Day18;부사;별3 | 해커스 보카/Day 18 | similarly, in the same way, also, as well |  | [làikwáiz] |
+| likewise | 마찬가지로, 똑같이 / 또한 | France has signed the environmental agreement, and Germany is expected to do likewise. |  | Day18;부사;별3 | 해커스 보카/Day 18 | similarly, in the same way / also, as well |  | [làikwáiz] |
 | tangible | 유형의, 실재하는 | Tangible assets, such as equipment and land, have a physical form. |  | Day18;형용사;별3 | 해커스 보카/Day 18 | material, physical, concrete, substantial |  | [tǽndʒəbl] |
 | absurd | 터무니없는 | Claims about the existence of UFOs seem absurd to many people. |  | Day18;형용사;별3 | 해커스 보카/Day 18 | ridiculous, preposterous, ludicrous |  | [æbsə́ːrd] |
 | inclement | (날씨가) 혹독한 | Bears hibernate in winter to cope with limited food and to avoid inclement weather. | increment (증가) = increase, gain | Day18;형용사;별3 | 해커스 보카/Day 18 | unfavorable, harsh, severe |  | [inklémənt] |
 | overly | 지나치게 | If children have everything done for them by their parents, they may become overly dependent. |  | Day18;부사;별3 | 해커스 보카/Day 18 | excessively, inordinately, unduly |  | [óuvərli] |
-| consume | 소비하다 / 소멸시키다 / 먹다 | The people next door consume a lot of electricity in heating their home. | n. consumption | Day18;동사;별3 | 해커스 보카/Day 18 | expend, use up, completely use, exhaust, destroy, devastate, demolish, eat, devour |  | [kənsúːm] |
+| consume | 소비하다 / 소멸시키다 / 먹다 | The people next door consume a lot of electricity in heating their home. | n. consumption | Day18;동사;별3 | 해커스 보카/Day 18 | expend, use up, completely use / exhaust, destroy, devastate, demolish / eat, devour |  | [kənsúːm] |
 | overall | 전반적인 | The violinist made a couple mistakes, but the overall performance of the piece was good. |  | Day18;형용사;별3 | 해커스 보카/Day 18 | general, total, comprehensive |  | [óuvərɔ̀ːl] |
 | promote | 촉진하다 | There was a meeting to promote trade between China and the US. |  | Day18;동사;별3 | 해커스 보카/Day 18 | encourage, advance, further, forward |  | [prəmóut] |
 | proliferation | 급증 | The proliferation of invasive plant species sometimes harms native vegetation. | v. proliferate | Day18;명사;별3 | 해커스 보카/Day 18 | increase, growth, multiplication |  | [prəlìfəréiʃən] |
@@ -17,7 +17,7 @@
 | notably | 특히 | Notably, many women writers in the 1800s used pen names. | adj. notable | Day18;부사;별3 | 해커스 보카/Day 18 | particularly, especially, in particular |  | [nóutəbli] |
 | inhibit | 금지하다 | The law inhibits the use of pesticides on properties next to large bodies of water. | inhabit (거주하다) = live, dwell in | Day18;동사;별3 | 해커스 보카/Day 18 | hinder, restrict, limit, restrain, ban, prohibit, forbid |  | [inhíbit] |
 | worshiper | 예배자 | In Buddhism, worshipers often bow in front of a statue of Buddha. |  | Day18;명사;별3 | 해커스 보카/Day 18 | people participating in a religious service |  | [wə́ːrʃipər] |
-| pool | 모으다 / 기업, 연합 | Members of the community pooled their resources to purchase land for a park. |  | Day18;동사;명사;별2 | 해커스 보카/Day 18 | combine, put together, combination, group |  | [puːl] |
+| pool | 모으다 / 기업, 연합 | Members of the community pooled their resources to purchase land for a park. |  | Day18;동사;명사;별2 | 해커스 보카/Day 18 | combine, put together / combination, group |  | [puːl] |
 | at the urging of | ~의 권고로 | At the urging of world leaders, many governments are attempting to stop the development of nuclear weapons. |  | Day18;숙어;별2 | 해커스 보카/Day 18 | at the recommendation of |  |  |
 | ornamental | 장식용의 | The Alhambra Palace in Spain is surrounded by ornamental gardens that enhance the palace's beauty. | v. ornament | Day18;형용사;별2 | 해커스 보카/Day 18 | decorative, beautifying, embellishing |  | [ɔ̀ːrnaméntl] |
 | regime | 정권, 체제 | A new regime took power after the successful military coup. |  | Day18;명사;별2 | 해커스 보카/Day 18 | government, administration, authorities |  | [rəʒíːm] |
@@ -34,7 +34,7 @@
 | moral | 교훈 | Aesop's fables generally contain an important moral in each story. | morale (사기) = spirit, confidence | Day18;명사;별2 | 해커스 보카/Day 18 | lesson, message, teaching |  | [mɔ́ːrəl] |
 | compatible | 일치하는, 양립할 수 있는 | NGOs must make certain that the projects they fund are compatible with their core values. |  | Day18;형용사;별2 | 해커스 보카/Day 18 | consistent, congruous, consonant |  | [kəmpǽtəbl] |
 | buildup | 축적 | The buildup of cholesterol in the body can lead to high blood pressure. |  | Day18;명사;별2 | 해커스 보카/Day 18 | accumulation |  | [bíldʌ̀p] |
-| stress | 강조하다 / 중점, 강조 | All his life, Michael's parents had stressed the importance of education. |  | Day18;동사;명사;별2 | 해커스 보카/Day 18 | emphasize, highlight, underline, emphasis, accent |  | [stres] |
+| stress | 강조하다 / 중점, 강조 | All his life, Michael's parents had stressed the importance of education. |  | Day18;동사;명사;별2 | 해커스 보카/Day 18 | emphasize, highlight, underline / emphasis, accent |  | [stres] |
 | respective | 각각의, 개별적인 | Each respective museum in the city specializes in a different art form or period. | adv. respectively | Day18;형용사;별2 | 해커스 보카/Day 18 | particular, individual |  | [rispéktiv] |
 | peculiarity | (기이한) 특징, 특성 | A need for privacy is a cultural peculiarity in Western society. | adj. peculiar | Day18;명사;별2 | 해커스 보카/Day 18 | feature, characteristic, quality |  | [pikjùːliǽrəti] |
 | rely upon | ~에 의존하다 | Prosecutors must rely upon testimony when little physical evidence is available. |  | Day18;숙어;별2 | 해커스 보카/Day 18 | depend upon, resort to |  |  |
@@ -43,12 +43,12 @@
 | constitution | 구성, 구조 | In chemistry, compounds that have a similar constitution are called analogues. | amend a constitution (헌법) | Day18;명사;별2 | 해커스 보카/Day 18 | form, structure, laws, charter |  | [kànstətjúːʃən] |
 | efface | 지우다, 없애다 | Victims of traumatic incidents often wish they could efface their memories of the event. |  | Day18;동사;별2 | 해커스 보카/Day 18 | wipe out, erase, expunge |  | [iféis] |
 | manageable | 관리하기 쉬운 | Wild horses must go through substantial training before they become manageable. |  | Day18;형용사;별2 | 해커스 보카/Day 18 | controllable, affordable, easy to handle |  | [mǽnidʒəbl] |
-| approach | 접근하다 / 접근법 | Parents should teach their children what to do when a stranger approaches. |  | Day18;동사;명사;별1 | 해커스 보카/Day 18 | come close, move toward, come toward, near, reach, method, way |  | [əpróutʃ] |
+| approach | 접근하다 / 접근법 | Parents should teach their children what to do when a stranger approaches. |  | Day18;동사;명사;별1 | 해커스 보카/Day 18 | come close, move toward, come toward, near, reach / method, way |  | [əpróutʃ] |
 | routinely | 일상적으로 | Mr. Smith routinely forgot to turn off the lights when he went out. | adj. routine | Day18;부사;별1 | 해커스 보카/Day 18 | commonly, regularly, habitually |  | [ruːtíːnli] |
 | adapt | 적응하다 | Vicky adapted to the new school quite easily. |  | Day18;동사;별1 | 해커스 보카/Day 18 | adjust, acclimate, conform |  | [ədǽpt] |
 | implication | 결과 | The program has been designed to teach prisoners the implications of bad behavior. | an implication about the future (암시) | Day18;명사;별1 | 해커스 보카/Day 18 | consequence, result, inference, intimation |  | [ìmplikéiʃən] |
 | unambiguous | 분명한 | John's attitude about lying was unambiguous—he insisted upon the truth at all times. |  | Day18;형용사;별1 | 해커스 보카/Day 18 | clear, distinct, definite |  | [ʌ̀næmbígjuəs] |
-| rigor | 엄격함 / 고초, 어려움 | A strict ruler, Roman emperor Septimius Severus applied the law with rigor. | adj. rigorous | Day18;명사;별1 | 해커스 보카/Day 18 | harshness, strictness, rigidness, hardship, adversity |  | [rígər] |
+| rigor | 엄격함 / 고초, 어려움 | A strict ruler, Roman emperor Septimius Severus applied the law with rigor. | adj. rigorous | Day18;명사;별1 | 해커스 보카/Day 18 | harshness, strictness, rigidness / hardship, adversity |  | [rígər] |
 | contentious | 논쟁을 불러일으키는 | The death penalty is a contentious issue for many people today. | v. contend; n. contention | Day18;형용사;별1 | 해커스 보카/Day 18 | disputed, controversial, argumentative |  | [kənténʃəs] |
 | competent | 유능한 | A competent accountant can help a company minimize its tax burden. | competent skills for the job (충분한) | Day18;형용사;별1 | 해커스 보카/Day 18 | adept, skilled, capable, sufficient, adequate |  | [kámpətənt] |
 | incredible | 믿기 힘든 | Larry's claim that he could run a mile in under three minutes was incredible. |  | Day18;형용사;별1 | 해커스 보카/Day 18 | unbelievable, inconceivable, unimaginable |  | [inkrédəbl] |

@@ -1,25 +1,25 @@
 | 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
 |---|---|---|---|---|---|---|---|---|
 | exploit | (부당하게) 이용하다 | Human rights activists have led protests against companies that exploit child labor. | n. exploitation | Day01;동사;별3 | 해커스 보카/Day 01 | utilize, use, make use of, take advantage of |  | [iksplɔ́it] |
-| account for | (이유 등을) 설명하다 / (부분·비율을) 차지하다 / 원인이 되다 | The suspect couldn't account for his whereabouts last night. |  | Day01;숙어;별3 | 해커스 보카/Day 01 | explain, justify, give a reason for, make up, comprise, constitute, cause |  |  |
+| account for | (이유 등을) 설명하다 / (부분·비율을) 차지하다 / 원인이 되다 | The suspect couldn't account for his whereabouts last night. |  | Day01;숙어;별3 | 해커스 보카/Day 01 | explain, justify, give a reason for / make up, comprise, constitute / cause |  |  |
 | particular | 특정한; 특별한 | Galileo tried to disprove one particular statement of Aristotle's. |  | Day01;형용사;별3 | 해커스 보카/Day 01 | specific, special |  | [pərtíkjulər] |
-| prominent | 눈에 띄는 / 중요한 | Mt. Fuji is a prominent natural landmark in Japan. | adv. prominently; n. prominence | Day01;형용사;별3 | 해커스 보카/Day 01 | noticeable, conspicuous, outstanding, remarkable, important, leading, notable |  | [prámənənt] |
+| prominent | 눈에 띄는 / 중요한 | Mt. Fuji is a prominent natural landmark in Japan. | adv. prominently; n. prominence | Day01;형용사;별3 | 해커스 보카/Day 01 | noticeable, conspicuous, outstanding, remarkable / important, leading, notable |  | [prámənənt] |
 | replenish | 보충하다 | The travelers replenished their supplies of water before crossing the desert. |  | Day01;동사;별3 | 해커스 보카/Day 01 | refill, restore, renew |  | [ripléniʃ] |
 | indigenous | 토착의 | The government ignored environmental complaints by indigenous groups. |  | Day01;형용사;별3 | 해커스 보카/Day 01 | native, aboriginal |  | [indídʒənəs] |
-| pinpoint | (위치 등을) 정확히 찾아내다 / 정확한 | With GPS technology, it is possible to pinpoint a person's position anywhere on the planet. |  | Day01;동사;형용사;별3 | 해커스 보카/Day 01 | locate exactly, clearly identify, precise, exact, accurate |  | [pínpɔ̀int] |
+| pinpoint | (위치 등을) 정확히 찾아내다 / 정확한 | With GPS technology, it is possible to pinpoint a person's position anywhere on the planet. |  | Day01;동사;형용사;별3 | 해커스 보카/Day 01 | locate exactly, clearly identify / precise, exact, accurate |  | [pínpɔ̀int] |
 | annihilate | 전멸시키다 | An asteroid impact 65.5 million years ago nearly annihilated all living things on the planet. |  | Day01;동사;별3 | 해커스 보카/Day 01 | destroy, completely remove, exterminate |  | [ənáiəlèit] |
 | conversely | 반대로 | Texting is growing more popular as a form of communication, while, conversely, phone calls are becoming less common. | adj. converse | Day01;부사;별3 | 해커스 보카/Day 01 | on the other hand, contrarily |  | [kənvə́ːrsli] |
 | investigate | 조사하다 | The police will investigate the crime scene after they interview the witnesses. |  | Day01;동사;별3 | 해커스 보카/Day 01 | examine, inquire into, look into |  | [invéstəgèit] |
 | assure | 확신시키다; 보장하다 | The lawyer assured Tim that all his rights would be respected. |  | Day01;동사;별3 | 해커스 보카/Day 01 | convince, persuade, satisfy, guarantee |  | [əʃúər] |
 | entire | 전체의, 전부의 | Fire destroyed the entire factory, but the owner plans to rebuild it. | adv. entirely | Day01;형용사;별3 | 해커스 보카/Day 01 | whole, total, complete |  | [intáiər] |
-| compensate for | ~을 보상하다 / 상쇄하다 | The chemical company was ordered to pay millions of dollars to compensate for polluting the river. |  | Day01;숙어;별3 | 해커스 보카/Day 01 | make up for, atone for, make amends for, balance, offset |  |  |
+| compensate for | ~을 보상하다 / 상쇄하다 | The chemical company was ordered to pay millions of dollars to compensate for polluting the river. |  | Day01;숙어;별3 | 해커스 보카/Day 01 | make up for, atone for, make amends for / balance, offset |  |  |
 | postulate | (자명한 일로) 가정하다; 주장하다 | Isaac Newton postulated that gravity pulls objects toward the Earth. |  | Day01;동사;별3 | 해커스 보카/Day 01 | hypothesize, suppose, claim, propose |  | [pástʃulèit] |
 | magnify | 확대하다 | Microscopes are used to magnify objects that are not visible to the naked eye. |  | Day01;동사;별3 | 해커스 보카/Day 01 | enlarge, increase, amplify, intensify |  | [mǽgnəfài] |
 | afford | 주다, 제공하다 | George's high marks in high school afforded him many opportunities to enter a good university. |  | Day01;동사;별3 | 해커스 보카/Day 01 | give, offer, provide, grant |  | [əfɔ́ːrd] |
 | conclusive | 결정적인, 확실한 | The experiment failed to provide any conclusive evidence of the theory's validity. | v. conclude; adv. conclusively | Day01;형용사;별3 | 해커스 보카/Day 01 | definitive, final, enough to settle the issue, clear |  | [kənklúːsiv] |
 | unsophisticated | 단순한, 복잡하지 않은 | The inventor used unsophisticated technology in his flying machine, and it crashed soon after takeoff. |  | Day01;형용사;별2 | 해커스 보카/Day 01 | simple, uncomplicated, not complex |  | [ʌ̀nsəfístəkèitid] |
 | justified | 정당한 | The CEO felt justified in firing the dishonest employee. |  | Day01;형용사;별2 | 해커스 보카/Day 01 | right, legitimate, just, reasonable |  | [dʒʌ́stəfàid] |
-| deliberate | 의도적인, 계획적인 / 신중한 | The film's action scenes were deliberate attempts to grab the attention of a specific audience. | adv. deliberately | Day01;형용사;별2 | 해커스 보카/Day 01 | intentional, designed, planned, careful, cautious, thoughtful |  | [dilíbərət] |
+| deliberate | 의도적인, 계획적인 / 신중한 | The film's action scenes were deliberate attempts to grab the attention of a specific audience. | adv. deliberately | Day01;형용사;별2 | 해커스 보카/Day 01 | intentional, designed, planned / careful, cautious, thoughtful |  | [dilíbərət] |
 | depend on | ~에 의존하다, 의지하다 | Baby dolphins depend on their mothers to feed and protect them. |  | Day01;숙어;별2 | 해커스 보카/Day 01 | rely on, count on |  |  |
 | substantiate | 입증하다 | Robert Peary was unable to substantiate that he had reached the North Pole in 1909. |  | Day01;동사;별2 | 해커스 보카/Day 01 | confirm, prove, authenticate, verify |  | [səbstǽnʃièit] |
 | successively | 잇따라서 | The magazine editor spoke with each applicant successively to discuss their qualifications for the job. | adj. successive; n. succession | Day01;부사;별2 | 해커스 보카/Day 01 | one after another, sequentially |  | [səksésivli] |
@@ -41,7 +41,7 @@
 | dominant | 우세한, 주요한 | The dominant theory in healthcare is that obesity is caused by lifestyle choices. |  | Day01;형용사;별2 | 해커스 보카/Day 01 | prevailing, prominent, supreme, chief, ruling |  | [dámənənt] |
 | unrivaled | 비할 데 없는 | The skill of Renaissance painters is unrivaled even today. |  | Day01;형용사;별2 | 해커스 보카/Day 01 | unequaled, unparalleled, matchless, peerless |  | [ʌnráivəld] |
 | paradox | 모순된 말 | Despite being a paradox, the saying "one must be cruel to be kind" is true in many situations. | adj. paradoxical; adv. paradoxically | Day01;명사;별2 | 해커스 보카/Day 01 | contradiction, absurdity |  | [pǽrədàks] |
-| neglect | 무시하다 / (해야 할 일을) 하지 않다, 잊다 | Because the sailor neglected the weather warnings, he put himself in danger. |  | Day01;동사;별2 | 해커스 보카/Day 01 | ignore, disregard, fail, forget |  | [niglékt] |
+| neglect | 무시하다 / (해야 할 일을) 하지 않다, 잊다 | Because the sailor neglected the weather warnings, he put himself in danger. |  | Day01;동사;별2 | 해커스 보카/Day 01 | ignore, disregard / fail, forget |  | [niglékt] |
 | recall | 상기하다, 생각해내다 | Many famous writers have kept diaries to help them recall the past. |  | Day01;동사;별2 | 해커스 보카/Day 01 | remember, recollect |  | [rikɔ́ːl] |
 | ascend | 올라가다 | A few moments after the plane made a smooth departure, it swiftly ascended into the clouds. |  | Day01;동사;별2 | 해커스 보카/Day 01 | rise, climb, mount, go up |  | [əsénd] |
 | solid | 확고한, 견고한 | The case remained unsolved because there was a lack of solid evidence. |  | Day01;형용사;별2 | 해커스 보카/Day 01 | substantial, fixed, sturdy, robust |  | [sálid] |
@@ -51,5 +51,5 @@
 | superficially | 표면적으로 | The team-building workshop was superficially a success, but in reality, the office workers still had low morale. | adj. superficial | Day01;부사;별1 | 해커스 보카/Day 01 | apparently, not deeply, externally, on the surface |  | [sùːpərfíʃəli] |
 | stunted | 발달이 저해된, 성장을 멈춘 | The stunted trees had grown to barely three feet high. |  | Day01;형용사;별1 | 해커스 보카/Day 01 | underdeveloped, hindered, hampered |  | [stʌ́ntid] |
 | malleable | 두들겨 펼 수 있는 | When heated to high temperatures, iron and steel become malleable. |  | Day01;형용사;별1 | 해커스 보카/Day 01 | flexible |  | [mǽliəbl] |
-| mean | 의미하다, 나타내다 / 평균 | Harold's remark meant that he would retire from his position at the agency soon. |  | Day01;동사;명사;별1 | 해커스 보카/Day 01 | signify, express, indicate, average, contemptible, despicable |  | [miːn] |
+| mean | 의미하다, 나타내다 / 평균 | Harold's remark meant that he would retire from his position at the agency soon. |  | Day01;동사;명사;별1 | 해커스 보카/Day 01 | signify, express, indicate / average / contemptible, despicable |  | [miːn] |
 | exclude | 차단하다, 배제하다 | It's possible to set up the online forum to allow some people to join and to exclude others. | adj. exclusive; adv. exclusively | Day01;동사;별1 | 해커스 보카/Day 01 | keep out, leave out |  | [iksklúːd] |
