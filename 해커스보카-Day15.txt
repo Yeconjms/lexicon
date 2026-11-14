@@ -3,7 +3,7 @@
 | intact | 손상되지 않은 | The machine remained intact despite the explosion. |  | Day15;형용사;별3 | 해커스 보카/Day 15 | undamaged, unbroken, whole, complete, unaffected |  | [intǽkt] |
 | albeit | 비록 ~이지만 | Many developing economies are growing steadily, albeit slowly. |  | Day15;접속사;별3 | 해커스 보카/Day 15 | although, though, even though |  | [ɔːlbíːit] |
 | complex | 복잡한 / 복합 건물; 복합체 | Biologists seek to understand how complex species evolved from simpler ones. | an involved story (복잡한) | Day15;형용사;명사;별3 | 해커스 보카/Day 15 | intricate, complicated, elaborate, involved / group of buildings, system |  | [kəmpléks] |
-| conventional | 전통적인; 통례의 | In ancient times, conventional farming practices included the use of organic fertilizer. | adv. conventionally; n. convention | Day15;형용사;별3 | 해커스 보카/Day 15 | traditional, customary, standard, usual |  | [kənvénʃənl] |
+| conventional | 전통적인; 통례의 | In ancient times, conventional farming practices included the use of organic fertilizer. | adv. conventionally; n. convention | Day15;형용사;별3 | 해커스 보카/Day 15 | traditional, customary / standard, usual |  | [kənvénʃənl] |
 | reasonable | 합리적인 / (가격이) 적당한 | It seems reasonable to be tough on habitual criminals. |  | Day15;형용사;별3 | 해커스 보카/Day 15 | sensible, rational, logical / sufficient |  | [ríːzənəbl] |
 | attainment | 성취 | It takes many years of practice to reach that level of attainment in chess. | v. attain | Day15;명사;별3 | 해커스 보카/Day 15 | achievement, accomplishment, fulfillment |  | [ətéinmənt] |
 | progressively | 점진적으로 | The government must clean up the air by setting progressively tighter pollution limits on power plants. | adj. progressive | Day15;부사;별3 | 해커스 보카/Day 15 | increasingly |  | [prəgrésivli] |
@@ -32,7 +32,7 @@
 | flattery | 아첨 | Mike often uses flattery to get his boss's attention. |  | Day15;명사;별2 | 해커스 보카/Day 15 | praise |  | [flǽtəri] |
 | amplify | 확대하다, 증대하다 | Scientific farming can amplify the production of wheat. | n. amplification | Day15;동사;별2 | 해커스 보카/Day 15 | increase, magnify, enlarge, expand |  | [ǽmpləfài] |
 | dimension | 크기, 규모 | Lucy should accurately measure the dimensions of her office before ordering a desk. |  | Day15;명사;별2 | 해커스 보카/Day 15 | size, magnitude |  | [diménʃən] |
-| deplete | 다 써버리다; 대폭 감소시키다 | The family depleted their savings to renovate the house they bought recently. | exhaust fossil fuels (다 써버리다) | Day15;동사;별2 | 해커스 보카/Day 15 | exhaust, empty, use up, reduce |  | [diplíːt] |
+| deplete | 다 써버리다; 대폭 감소시키다 | The family depleted their savings to renovate the house they bought recently. | exhaust fossil fuels (다 써버리다) | Day15;동사;별2 | 해커스 보카/Day 15 | exhaust, empty, use up / reduce |  | [diplíːt] |
 | characteristic | 특유의 / 특징, 특성 | The ostrich's characteristic size and speed set it apart from other birds. |  | Day15;형용사;명사;별2 | 해커스 보카/Day 15 | distinctive, peculiar, special / quality, feature, trait |  | [kæ̀riktərístik] |
 | ice sheet | 대륙 빙하 | Fjords are coastal landforms formed millions of years ago by massive ice sheets. |  | Day15;명사;별2 | 해커스 보카/Day 15 | glacier |  |  |
 | spectator | 관객, 구경꾼 | The tennis match attracted over 30,000 spectators. |  | Day15;명사;별2 | 해커스 보카/Day 15 | viewer, onlooker |  | [spékteitər] |

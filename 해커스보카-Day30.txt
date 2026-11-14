@@ -27,7 +27,7 @@
 | motif | 무늬 | The quilt that Thelma made last month has a repetitive floral motif that is very pleasing to the eye. | a heraldic device (무늬) | Day30;명사;별2 | 해커스 보카/Day 30 | design, pattern, device |  | [moutíːf] |
 | antique | 고대의, 오래된 | Harry likes to collect antique Roman and Greek coins. | n. antiquity | Day30;형용사;별2 | 해커스 보카/Day 30 | ancient, archaic, old |  | [æntíːk] |
 | incessantly | 끊임없이 | Patton had to incessantly plead with Congress for equipment for his army. |  | Day30;부사;별2 | 해커스 보카/Day 30 | constantly, continuously, persistently |  | [insésntli] |
-| habitat | 서식 환경; 거주지 | Exotic species can have a negative impact on the local habitat. |  | Day30;명사;별2 | 해커스 보카/Day 30 | environment, home, dwelling, living quarters |  | [hǽbitæ̀t] |
+| habitat | 서식 환경; 거주지 | Exotic species can have a negative impact on the local habitat. |  | Day30;명사;별2 | 해커스 보카/Day 30 | environment / home, dwelling, living quarters |  | [hǽbitæ̀t] |
 | steadfastly | 확고하게 | Einstein steadfastly believed that the universe was eternal and refused to consider the Big Bang theory plausible. | adj. steadfast | Day30;부사;별2 | 해커스 보카/Day 30 | firmly, solidly, resolutely |  | [stédfæ̀stli] |
 | keenly | 강렬하게, 몹시 | The housing market is keenly affected by changes in interest rates. | adj. keen | Day30;부사;별2 | 해커스 보카/Day 30 | deeply, intensely, acutely |  | [kíːnli] |
 | intercourse | 교류, 교환 | Studying abroad provides opportunities for cultural intercourse. |  | Day30;명사;별2 | 해커스 보카/Day 30 | exchange, interchange |  | [íntərkɔ̀ːrs] |
@@ -36,7 +36,7 @@
 | penchant | 경향, 기호 | Louis XIV's penchant for spending without limits left France with huge debts. |  | Day30;명사;별2 | 해커스 보카/Day 30 | inclination, tendency, fondness, liking |  | [péntʃənt] |
 | incipient | 초기의 | If diagnosed in its incipient stages, cancer is treatable in a large number of cases. |  | Day30;형용사;별2 | 해커스 보카/Day 30 | initial, beginning |  | [insípiənt] |
 | distort | 왜곡하다 | According to the senator, the media distorted the message of his speech. |  | Day30;동사;별2 | 해커스 보카/Day 30 | misrepresent, twist, falsify |  | [distɔ́ːrt] |
-| redundancy | 불필요한 중복; 과잉 | Good communicators avoid redundancy in the information they present. | adj. redundant | Day30;명사;별2 | 해커스 보카/Day 30 | duplication, superfluity, extra capacity |  | [ridʌ́ndənsi] |
+| redundancy | 불필요한 중복; 과잉 | Good communicators avoid redundancy in the information they present. | adj. redundant | Day30;명사;별2 | 해커스 보카/Day 30 | duplication, superfluity / extra capacity |  | [ridʌ́ndənsi] |
 | subject to | ~에 영향을 받기 쉬운 | Many orchids are sensitive to cold and subject to the slightest changes in temperature. |  | Day30;숙어;별2 | 해커스 보카/Day 30 | susceptible to, likely to get |  |  |
 | bountiful | 풍부한 | Each year a bountiful harvest of wheat and corn is produced in the state of Nebraska. | adv. bountifully | Day30;형용사;별2 | 해커스 보카/Day 30 | abundant, plentiful, ample, prolific |  | [báuntifəl] |
 | deter | 방해하다, 막다 | Slavery deterred the development of a just and equal society. |  | Day30;동사;별2 | 해커스 보카/Day 30 | stop, preclude, prevent, inhibit |  | [ditə́ːr] |

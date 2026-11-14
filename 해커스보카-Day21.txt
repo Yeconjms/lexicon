@@ -5,7 +5,7 @@
 | profound | 엄청난 / 깊은, 심오한 / 폭넓은 | Carson has a profound sense of responsibility for the zoo animals' welfare. | adv. profoundly | Day21;형용사;별3 | 해커스 보카/Day 21 | great, significant / deep, fundamental / far-reaching |  | [prəfáund] |
 | intriguing | 매우 흥미로운 | It is intriguing that the universe's largest black hole does not swallow nearby stars and planets. |  | Day21;형용사;별3 | 해커스 보카/Day 21 | interesting but not completely understood, fascinating |  | [intríːgiŋ] |
 | considerably | 상당히 | A considerably large number of deaths due to influenza were recorded in the 1920s. | adj. considerable | Day21;부사;별3 | 해커스 보카/Day 21 | significantly, appreciably, fairly |  | [kənsídərəbli] |
-| ingenuity | 창의력; 교묘함 | Thomas Edison was a man of extraordinary ingenuity. | adj. ingenious | Day21;명사;별3 | 해커스 보카/Day 21 | creativeness, inventiveness, cleverness |  | [ìndʒənjúːəti] |
+| ingenuity | 창의력; 교묘함 | Thomas Edison was a man of extraordinary ingenuity. | adj. ingenious | Day21;명사;별3 | 해커스 보카/Day 21 | creativeness, inventiveness / cleverness |  | [ìndʒənjúːəti] |
 | conquer | 이기다 | The Spartans were so well-trained that they easily conquered most of their opponents. | n. conquest (획득) = acquisition | Day21;동사;별3 | 해커스 보카/Day 21 | defeat, prevail, triumph |  | [káŋkər] |
 | fragment | 조각, 부분 / 산산이 부수다, 부서지다 | Detectives found a fragment of glass which would later help them solve the crime. | adj. fragmentary | Day21;명사;동사;별3 | 해커스 보카/Day 21 | piece, flake, particle, part / break apart, shatter, divide |  | [frǽgmənt] |
 | spell | 한동안 | Students should be allowed to rest for a spell after completing a difficult exam. |  | Day21;명사;별3 | 해커스 보카/Day 21 | a certain period of time |  | [spel] |
@@ -18,7 +18,7 @@
 | intrusive | 개입하는, 참견하는 | Some learning experts believe that child education should be less intrusive. | v. intrude = push in, encroach | Day21;형용사;별3 | 해커스 보카/Day 21 | interfering, meddlesome |  | [intrúːsiv] |
 | culminate in | ~에서 절정에 달하다 | T.S. Eliot's ideas about poetry culminated in his masterpiece, The Waste Land. |  | Day21;숙어;별3 | 해커스 보카/Day 21 | reach completion in, reach the highest point in |  |  |
 | stabilize | 안정시키다, 고정시키다 | The damaged ceiling was stabilized by the addition of temporary support beams. |  | Day21;동사;별2 | 해커스 보카/Day 21 | hold in place, support |  | [stéibəlàiz] |
-| prompt | 유발하다; 자극하다 | The increase in college fees prompted an angry response from students. | adv. promptly | Day21;동사;별2 | 해커스 보카/Day 21 | cause, bring about, induce, stimulate |  | [prampt] |
+| prompt | 유발하다; 자극하다 | The increase in college fees prompted an angry response from students. | adv. promptly | Day21;동사;별2 | 해커스 보카/Day 21 | cause, bring about / induce, stimulate |  | [prampt] |
 | distinction | 차이 | Dickinson identifies an important distinction between rights and duties. | adj. distinct | Day21;명사;별2 | 해커스 보카/Day 21 | difference, divergence, contrast |  | [distíŋkʃən] |
 | constant | 변함없는, 일정한 | The first treadmills operated at constant speeds, but newer models have multiple speeds. | adv. constantly | Day21;형용사;별2 | 해커스 보카/Day 21 | unchangeable, steady, stationary |  | [kánstənt] |
 | appreciation | 이해 | Everyone's appreciation of modern art increased after the lecture. | v. appreciate | Day21;명사;별2 | 해커스 보카/Day 21 | understanding, comprehension |  | [əprìːʃiéiʃən] |

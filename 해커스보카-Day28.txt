@@ -32,7 +32,7 @@
 | simulate | 흉내 내다, 가장하다 | Engineers have created robots that closely simulate the body movements of humans. |  | Day28;동사;별2 | 해커스 보카/Day 28 | imitate, pretend, feign |  | [símjulèit] |
 | hover | 맴돌다, 떠다니다 | Dolphins sometimes hover in the water without swimming. |  | Day28;동사;별2 | 해커스 보카/Day 28 | drift, float, stay on the top |  | [hʌ́vər] |
 | display | 보여 주다 | The audience members displayed their approval of the musical performance by cheering enthusiastically. |  | Day28;동사;별2 | 해커스 보카/Day 28 | show, exhibit, present |  | [displéi] |
-| ominous | 불길한; 험악한 | Some survivors of the Titanic reported that they had an ominous feeling before the voyage. |  | Day28;형용사;별2 | 해커스 보카/Day 28 | foreboding, portentous, threatening |  | [ámənəs] |
+| ominous | 불길한; 험악한 | Some survivors of the Titanic reported that they had an ominous feeling before the voyage. |  | Day28;형용사;별2 | 해커스 보카/Day 28 | foreboding, portentous / threatening |  | [ámənəs] |
 | stretch | 늘이다 | A chameleon can stretch its tongue to about twice its body length. |  | Day28;동사;별2 | 해커스 보카/Day 28 | extend, lengthen |  | [stretʃ] |
 | concur | 동의하다 | An adjustment to the US Constitution requires that 75 percent of states concur on the proposed change. | the two appointments concur (겹치다) | Day28;동사;별2 | 해커스 보카/Day 28 | agree, assent, consent, coincide |  | [kənkə́ːr] |
 | crisis | 위기 | If a crisis occurs, citizens should use the escape routes and shelters that are located throughout the city. |  | Day28;명사;별2 | 해커스 보카/Day 28 | critical situation, emergency |  | [kráisis] |
@@ -44,7 +44,7 @@
 | extraordinary | 비범한 | Grant had an extraordinary ability to understand others. |  | Day28;형용사;별2 | 해커스 보카/Day 28 | exceptional, unusual, remarkable |  | [ikstrɔ́ːrdənèri] |
 | resurgence | 재기, 부활 | After a very slow year, the economy is now making a resurgence. |  | Day28;명사;별2 | 해커스 보카/Day 28 | comeback, revival, rebirth |  | [risə́ːrdʒəns] |
 | patent | 명백한 | Public protests demonstrated the people's patent opposition to the new immigration policy. | receive a patent (특허) = license | Day28;형용사;별1 | 해커스 보카/Day 28 | evident, obvious, apparent, manifest |  | [pǽtnt] |
-| regular | 정기적인; 일정한 | According to dentists, flossing on a regular basis is important for preventing cavities. |  | Day28;형용사;별1 | 해커스 보카/Day 28 | routine, ordinary, consistent |  | [régjulər] |
+| regular | 정기적인; 일정한 | According to dentists, flossing on a regular basis is important for preventing cavities. |  | Day28;형용사;별1 | 해커스 보카/Day 28 | routine, ordinary / consistent |  | [régjulər] |
 | by virtue of | ~ 덕분에(때문에) | By virtue of the US Constitution, it is illegal to imprison anyone without a trial. |  | Day28;숙어;별1 | 해커스 보카/Day 28 | because of, thanks to, on account of |  |  |
 | sever | 자르다, 분리하다 | If a lizard severs its tail, the tail will grow back in a short time. |  | Day28;동사;별1 | 해커스 보카/Day 28 | cut, cut off, part, separate, divide |  | [sévər] |
 | in conjunction with | ~과(와) 함께 | A healthy diet in conjunction with regular exercise can lead to a longer life. |  | Day28;숙어;별1 | 해커스 보카/Day 28 | concomitant with, together with, along with |  |  |

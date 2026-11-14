@@ -2,7 +2,7 @@
 |---|---|---|---|---|---|---|---|---|
 | compelling | 설득력 있는 | The speaker made some compelling arguments against immigration reform. |  | Day05;형용사;별3 | 해커스 보카/Day 05 | convincing, persuasive, cogent |  | [kəmpéliŋ] |
 | ultimately | 마침내, 결국 | After submitting his book to numerous publishers, the author ultimately succeeded in getting it published. | adj. ultimate | Day05;부사;별3 | 해커스 보카/Day 05 | eventually, finally, in the end, lastly |  | [ʌ́ltəmətli] |
-| bulk | 큰 규모, 대량 / 대부분 | Buying its supplies in bulk, the department store chain was able to sell for less than its competitors. | adj. bulky | Day05;명사;별3 | 해커스 보카/Day 05 | mass, large quantity, great quantity / majority, main part / huge, enormous |  | [bʌlk] |
+| bulk | 큰 규모, 대량 / 대부분 | Buying its supplies in bulk, the department store chain was able to sell for less than its competitors. | adj. bulky (부피가 큰) | Day05;명사;별3 | 해커스 보카/Day 05 | mass, large quantity, great quantity / majority, main part / huge, enormous |  | [bʌlk] |
 | incompatible | 양립할 수 없는 | Budget proposals submitted by different political parties are usually incompatible. |  | Day05;형용사;별3 | 해커스 보카/Day 05 | in conflict, discrepant, contradictory |  | [ìnkəmpǽtəbl] |
 | substantially | 상당히 / 대체로 | In the mid-1800s, the enrollment of females in American schools increased substantially. | adj. substantial | Day05;부사;별3 | 해커스 보카/Day 05 | significantly, considerably / largely, mainly |  | [səbstǽnʃəli] |
 | seek | 찾다, 조사하다 / 시도하다, 노력하다 | The investigator sought the truth regardless of the consequences. |  | Day05;동사;별3 | 해커스 보카/Day 05 | look for, search for, pursue / attempt, try, essay |  | [siːk] |
@@ -32,7 +32,7 @@
 | document | 문서, 기록 | The archaeologists found ancient documents in a cave in the desert. |  | Day05;명사;별2 | 해커스 보카/Day 05 | record, report, paper, verify, support |  | [dákjumənt] |
 | intrinsically | 본질적으로 | Unlike money, gold and diamonds are considered to be intrinsically valuable. | adj. intrinsic | Day05;부사;별2 | 해커스 보카/Day 05 | fundamentally, essentially |  | [intrínsikəli] |
 | disputatious | 논쟁을 좋아하는 | The disagreement got heated quickly because both people involved were highly disputatious. | v. dispute | Day05;형용사;별2 | 해커스 보카/Day 05 | contentious, argumentative, quarrelsome |  | [dìspjutéiʃəs] |
-| diverse | 다양한; 다른 | Russell's genius lies in getting people of diverse backgrounds to work together. | n. diversity | Day05;형용사;별2 | 해커스 보카/Day 05 | varied, various, manifold, dissimilar |  | [dáivəːrs] |
+| diverse | 다양한; 다른 | Russell's genius lies in getting people of diverse backgrounds to work together. | n. diversity | Day05;형용사;별2 | 해커스 보카/Day 05 | varied, various, manifold / dissimilar |  | [dáivəːrs] |
 | eerie | 기묘한 | The book 1984 was an eerie prediction of the future. |  | Day05;형용사;별2 | 해커스 보카/Day 05 | odd, strange |  | [íəri] |
 | tenuous | 빈약한 | Germany provided a tenuous justification for its invasion of Poland in 1939. |  | Day05;형용사;별2 | 해커스 보카/Day 05 | weak, insubstantial |  | [ténjuəs] |
 | eradicate | 근절하다 | The US spends $50 billion per year trying to eradicate drug use. |  | Day05;동사;별2 | 해커스 보카/Day 05 | completely remove, root up, extirpate, eliminate |  | [irǽdəkèit] |

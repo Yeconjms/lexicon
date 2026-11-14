@@ -9,7 +9,7 @@
 | comprise | 포함하다 / ~으로 구성되다 | The textbook comprises a large number of detailed illustrations and charts. |  | Day09;동사;별3 | 해커스 보카/Day 09 | include, encompass / consist of, be made up of, be composed of |  | [kəmpráiz] |
 | culmination | 정점, 최고조 | Being promoted to company president was the culmination of Timothy's 20-year career. | v. culminate (끝나다) = end, finish, terminate | Day09;명사;별3 | 해커스 보카/Day 09 | high point, apex, pinnacle |  | [kʌ̀lmənéiʃən] |
 | allegiance | 충성, 헌신 | Immigrants must promise their allegiance to their new country. |  | Day09;명사;별3 | 해커스 보카/Day 09 | loyalty, fidelity, commitment, dedication |  | [əlíːdʒəns] |
-| notable | 주목할 만한; 중요한 | Professor Dixon's notable achievements in academia earned him the respect and admiration of his colleagues. | adv. notably | Day09;형용사;별3 | 해커스 보카/Day 09 | remarkable, outstanding, important |  | [nóutəbl] |
+| notable | 주목할 만한; 중요한 | Professor Dixon's notable achievements in academia earned him the respect and admiration of his colleagues. | adv. notably | Day09;형용사;별3 | 해커스 보카/Day 09 | remarkable, outstanding / important |  | [nóutəbl] |
 | idiosyncrasy | 특징, 이상한 점 | An idiosyncrasy of modern life is that people are busier than ever despite technology. |  | Day09;명사;별3 | 해커스 보카/Day 09 | peculiarity, eccentricity, oddity |  | [ìdiəsíŋkrəsi] |
 | minute | 아주 작은 | Bacteria are so minute that they can only be observed using a microscope. | adv. minutely | Day09;형용사;별3 | 해커스 보카/Day 09 | tiny, very small, diminutive |  | [mainjúːt] |
 | markedly | 현저하게 | The Moon's density is markedly less than the Earth's. | adj. marked | Day09;부사;별3 | 해커스 보카/Day 09 | significantly, noticeably, considerably, substantially |  | [máːrkidli] |
@@ -21,10 +21,10 @@
 | anarchy | 무질서, 혼란 | During the protests, anarchy filled the city's streets. |  | Day09;명사;별2 | 해커스 보카/Day 09 | disorder, chaos, disorganization |  | [ǽnərki] |
 | snake | 구불구불 가다 | The highway snakes through the mountains and has many incredible views along the way. |  | Day09;동사;별2 | 해커스 보카/Day 09 | wind, meander, curve, twist |  | [sneik] |
 | sophisticated | 정교한, 고도로 발달한 | A more sophisticated approach was needed to solve the problem. | sophisticated styles and tastes (세련된) | Day09;형용사;별2 | 해커스 보카/Day 09 | complex, highly developed, cultured, refined |  | [səfístəkèitid] |
-| derive | 유래하다; 얻다 | The name of Colorado's Pueblo County is derived from the Spanish word for "village." |  | Day09;동사;별2 | 해커스 보카/Day 09 | originate, trace, obtain, gain |  | [diráiv] |
+| derive | 유래하다; 얻다 | The name of Colorado's Pueblo County is derived from the Spanish word for "village." |  | Day09;동사;별2 | 해커스 보카/Day 09 | originate, trace / obtain, gain |  | [diráiv] |
 | sole | 유일한 | In the movie, the sole survivor of a plane crash learns to live on a deserted island. | adv. solely | Day09;형용사;별2 | 해커스 보카/Day 09 | only, single, solitary |  | [soul] |
 | embellish | 장식하다 | Louis XIV embellished his palaces with luxurious furniture. | n. embellishment | Day09;동사;별2 | 해커스 보카/Day 09 | decorate, make attractive, adorn, beautify, ornament |  | [imbéliʃ] |
-| antagonize | ~의 반감을 사다; 대항하다 | The author antagonized her critics by writing angry responses to reviews on her website. |  | Day09;동사;별2 | 해커스 보카/Day 09 | anger, aggravate, counteract |  | [æntǽgənàiz] |
+| antagonize | ~의 반감을 사다; 대항하다 | The author antagonized her critics by writing angry responses to reviews on her website. |  | Day09;동사;별2 | 해커스 보카/Day 09 | anger, aggravate / counteract |  | [æntǽgənàiz] |
 | yearn | 갈망하다 | After more than a decade of war, everyone in the two countries yearned for peace. | yearn over the poor (동정하다) | Day09;동사;별2 | 해커스 보카/Day 09 | long, desire, crave, pine, sympathize, feel compassion |  | [jəːrn] |
 | permit | 허락하다 | Visitors to national parks are not permitted to have campfires during the dry season. |  | Day09;동사;별2 | 해커스 보카/Day 09 | allow, let, approve |  | [pərmít] |
 | scarcity | 부족 | A scarcity of fish damaged the seaside town's economy. | adj. scarce | Day09;명사;별2 | 해커스 보카/Day 09 | lack, shortage, insufficiency, deficiency |  | [skɛ́ərsəti] |
@@ -50,7 +50,7 @@
 | deviation | 일탈 | Jenny is a talented skater and her poor performance in the competition was a deviation from the norm. | v. deviate | Day09;명사;별1 | 해커스 보카/Day 09 | departure, divergence, aberration |  | [dìːviéiʃən] |
 | hairline | 아주 가느다란 | The contractor noted that the hairline cracks in the wall needed to be repaired before they got bigger. |  | Day09;형용사;별1 | 해커스 보카/Day 09 | slight, thin |  | [hɛ́ərlàin] |
 | formulate | 고안하다, 발전시키다 / 명확히 말하다 | The marketing department is formulating a plan to attract more clients. |  | Day09;동사;별1 | 해커스 보카/Day 09 | develop, devise, forge / state, specify, express |  | [fɔ́ːrmjulèit] |
-| astute | 통찰력 있는; 영악한 | The professor was impressed with Daniel's astute observations about the poem. |  | Day09;형용사;별1 | 해커스 보카/Day 09 | insightful, shrewd, clever, sharp |  | [əstjúːt] |
+| astute | 통찰력 있는; 영악한 | The professor was impressed with Daniel's astute observations about the poem. |  | Day09;형용사;별1 | 해커스 보카/Day 09 | insightful / shrewd, clever, sharp |  | [əstjúːt] |
 | reliable | 신뢰할 수 있는 | Jane wanted to know if there was someone reliable in her life. |  | Day09;형용사;별1 | 해커스 보카/Day 09 | dependable, trustworthy, credible |  | [riláiəbl] |
 | take precedence over | ~보다 우선하다 | In a hospital emergency room, patients with severe trauma take precedence over people with minor injuries. |  | Day09;숙어;별1 | 해커스 보카/Day 09 | be more important than, come before |  |  |
 | allusion | (간접적인) 언급, 암시 | During his presentation, the speaker made an allusion to one of the scenes in Shakespeare's Macbeth. | delusion 망상 / illusion 환상 | Day09;명사;별1 | 해커스 보카/Day 09 | reference, mention, implication, suggestion |  | [əlúːʒən] |

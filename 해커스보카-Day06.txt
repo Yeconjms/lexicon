@@ -1,10 +1,10 @@
 | 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
 |---|---|---|---|---|---|---|---|---|
-| disperse | 흩어지게 하다; 퍼뜨리다 | The smoke from the fire was rapidly dispersed by the strong winds. | n. dispersal | Day06;동사;별3 | 해커스 보카/Day 06 | scatter, dissipate, spread, disseminate |  | [dispə́ːrs] |
+| disperse | 흩어지게 하다; 퍼뜨리다 | The smoke from the fire was rapidly dispersed by the strong winds. | n. dispersal | Day06;동사;별3 | 해커스 보카/Day 06 | scatter, dissipate / spread, disseminate |  | [dispə́ːrs] |
 | adjacent | 인접한 | In addition to the World Trade Center, adjacent buildings were damaged on 9/11. |  | Day06;형용사;별3 | 해커스 보카/Day 06 | nearby, neighboring, adjoining |  | [ədʒéisnt] |
 | sequence | 연속 / 순서 | A sequence of political events in the West caused war to break out. | adv. sequentially | Day06;명사;별3 | 해커스 보카/Day 06 | progression, series, string, succession / order |  | [síːkwəns] |
 | detect | 발견하다, 인지하다 | The scientists detected a trace of toxic chemicals in the city's water supply. |  | Day06;동사;별3 | 해커스 보카/Day 06 | discover, find, identify, recognize, sense |  | [ditékt] |
-| flexible | 유연한; 적응성 있는 | The tongue is a flexible organ that helps produce a wide variety of sounds. | n. flexibility | Day06;형용사;별3 | 해커스 보카/Day 06 | pliable, bendable, adaptable, adjustable |  | [fléksəbl] |
+| flexible | 유연한; 적응성 있는 | The tongue is a flexible organ that helps produce a wide variety of sounds. | n. flexibility | Day06;형용사;별3 | 해커스 보카/Day 06 | pliable, bendable / adaptable, adjustable |  | [fléksəbl] |
 | surpass | 능가하다 | The student's art project surpassed the teacher's expectation. |  | Day06;동사;별3 | 해커스 보카/Day 06 | exceed, outrun, be higher than, excel |  | [sərpǽs] |
 | invariable | 변함없는 | There has been an invariable struggle for justice in Cuba since the 1950s. | adv. invariably | Day06;형용사;별3 | 해커스 보카/Day 06 | constant, consistent, unchanging |  | [invɛ́əriəbl] |
 | dramatic | 극적인, 인상적인 | Alaska has dramatic changes in temperature throughout the year. | adv. dramatically | Day06;형용사;별3 | 해커스 보카/Day 06 | striking, significant, impressive |  | [drəmǽtik] |
@@ -54,4 +54,4 @@
 | unethical | 비윤리적인 | The students protested against the unethical treatment of animals by researchers. |  | Day06;형용사;별1 | 해커스 보카/Day 06 | improper, immoral |  | [ʌnéθikəl] |
 | replicate | 모사하다, 복제하다 | Janine tried to replicate the clothing style she saw in a fashion magazine. |  | Day06;동사;별1 | 해커스 보카/Day 06 | reproduce, copy, duplicate |  | [réplikèit] |
 | hasty | 황급한, 서두르는 | Overwhelmed by the Russian winter, Napoleon's army performed a hasty retreat out of the country. | v. hasten | Day06;형용사;별1 | 해커스 보카/Day 06 | hurried, rushed |  | [héisti] |
-| representative | 나타내는; 전형적인 | The fact that many celebrities attended the award show was representative of its importance. | v. represent | Day06;형용사;별1 | 해커스 보카/Day 06 | indicative, typical, exemplary, delegate |  | [rèprizéntətiv] |
+| representative | 나타내는; 전형적인 | The fact that many celebrities attended the award show was representative of its importance. | v. represent | Day06;형용사;별1 | 해커스 보카/Day 06 | indicative / typical, exemplary, delegate |  | [rèprizéntətiv] |

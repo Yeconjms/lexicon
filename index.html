@@ -367,6 +367,8 @@ label.sw span{display:block;font-size:12px;color:var(--muted);margin-top:2px;lin
   font-family:var(--serif);font-size:14.5px;line-height:1.6;color:var(--ink);}
 /* 모름 표시 — 깃발을 누르면 약간 → 많이 → 해제 로 돕니다.
    **단어장 줄에서만** 색이 바뀝니다. 학습 화면의 카드는 건드리지 않습니다 */
+/* 훑기의 "몰랐음" 아래 작은 글씨 — 누르면 단어장에 색이 붙는다는 것을 알립니다 */
+.gsub{display:block;font-size:10.5px;font-weight:600;opacity:.75;margin-top:2px;}
 .wflag{flex:none;align-self:flex-start;padding:4px 4px 4px 2px;line-height:0;
   background:none;border:none;cursor:pointer;color:var(--muted);opacity:.55;}
 .wflag.m1{color:var(--amber);opacity:1;}
@@ -1866,7 +1868,12 @@ function grade(q){
   if(S.undo.length>15) S.undo.shift();
 
   if(S.noSched){
-    Object.assign(c,{seen:c.seen+1, correct:c.correct+(q>=3?1:0)}); touch(c);
+    Object.assign(c,{seen:c.seen+1, correct:c.correct+(q>=3?1:0)});
+    /* **훑기의 "모름" 은 단어장 색에 그대로 쌓입니다.** 훑기는 일정을 바꾸지 않으므로
+       여기서 모른다고 한 것이 아무 데도 남지 않았습니다 — 한 번이면 약한 색(1),
+       두 번째부터 진한 색(2)입니다. 내려가는 일은 없습니다. 깃발을 눌러서 끕니다 */
+    if(q<3) c.mark = Math.min(2, (c.mark||0)+1);
+    touch(c);
   }else{
     Object.assign(c, schedule(c,q)); touch(c);
     if(c.interval===0){   // 아직 졸업 전이면 이번 세션에서 다시 보여줍니다
@@ -2438,7 +2445,8 @@ function wordBook(cards, narrowWord){
     +'</div>'
     +'<div class="row" style="justify-content:space-between;align-items:center;margin-top:7px;gap:9px">'
     +'<p class="note" style="margin:0;flex:1">가린 칸을 누르면 그것만 잠깐 보입니다. '
-    +'깃발을 누르면 <b>약간 모름 → 많이 모름</b> 으로 표시되고 예문이 함께 보입니다.</p>'
+    +'깃발을 누르면 <b>약간 모름 → 많이 모름</b> 으로 표시되고 예문이 함께 보입니다. '
+    +'<b>전체 훑기</b>에서 몰랐음을 눌러도 같은 표시가 붙습니다.</p>'
     +(marked?'<button class="fchip c-rev'+(wbOnly?" on":"")+'" data-a="wb-only" style="flex:none">'
       +'모름 '+marked+'</button>':'')
     +'</div>'
@@ -2507,8 +2515,13 @@ function viewCard(){
   let bottom="";
   if(S.flipped){
     if(S.noSched) bottom='<div class="grades" style="grid-template-columns:1fr 1fr;margin-top:12px">'
-      +'<button class="grade g0" data-a="grade" data-q="0"><b>몰랐음</b></button>'
-      +'<button class="grade g5" data-a="grade" data-q="4"><b>알았음</b></button></div>';
+      +'<button class="grade g0" data-a="grade" data-q="0"><b>몰랐음</b>'
+      +'<span class="gsub">단어장에 표시</span></button>'
+      +'<button class="grade g5" data-a="grade" data-q="4"><b>알았음</b></button></div>'
+      /* **무슨 일이 일어나는지 적어 둡니다.** 훑기는 일정을 바꾸지 않아서
+         누른 것이 어디에도 안 남는 것처럼 보였습니다 */
+      +'<p class="note" style="margin:7px 0 0;text-align:center">'
+      +'몰랐음을 누르면 단어장에서 그 단어에 색이 붙습니다. 두 번째부터는 진한 색입니다.</p>';
     else {
       /* 뒤집기든 타이핑이든 같은 채점 척도를 씁니다 */
       const ch = gradeChoices();
@@ -4964,8 +4977,10 @@ const BOOK = { pack:"해커스 보카", max:30,
   /* 교재 파일의 판 번호. **파일 내용을 고쳤으면 올립니다** — 이미 다 받은 사람은
      `bookAutoCheck()` 가 "더 받을 Day 가 없다" 며 일찍 빠져나가기 때문에,
      이 번호가 없으면 고친 내용이 영영 안 들어갑니다.
-     1 = 2026-11, 뜻이 여럿인 163개 단어의 유의어를 `/` 로 나눔 */
-  rev:1,
+     1 = 2026-11, 뜻이 여럿인 163개 단어의 유의어를 `/` 로 나눔
+     2 = 2026-11, 책이 `;` 로 나눠 둔 56개의 뜻 경계를 유의어에 되살리고,
+         최신출제 포인트에서 온 묶음의 한글 뜻을 구문 칸에 적음 */
+  rev:2,
   file:n=>"해커스보카-Day"+String(n).padStart(2,"0")+".txt" };
 let bookBusy=false;
 
@@ -5052,6 +5067,11 @@ function fillCard(cur, inc){
        것**이므로 덮어써도 사용자가 고친 내용을 잃지 않습니다.
        반대 방향(`/` 가 사라지는 쪽)은 하지 않습니다 */
     if(a && b && b!==a && b.indexOf(" / ")>=0 && b.replace(/ \/ /g, ", ")===a){
+      cur[k]=inc[k]; hit=true; return; }
+    /* **뒤에 덧붙기만 한 경우도 갱신합니다.** `adj. bulky` → `adj. bulky (부피가 큰)` 처럼
+       교재 쪽에 설명이 붙었을 때입니다. 지금 값이 그대로 앞에 남아 있으므로
+       사용자가 적은 것이 사라지지 않습니다. **줄어드는 쪽은 하지 않습니다** */
+    if(a && b && b!==a && b.length>a.length && b.slice(0,a.length)===a && b[a.length]===" "){
       cur[k]=inc[k]; hit=true; }
   });
   const tags=new Set((cur.tags||[]).map(t=>String(t).trim()).filter(Boolean));

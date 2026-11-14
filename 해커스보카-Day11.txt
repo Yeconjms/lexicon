@@ -2,7 +2,7 @@
 |---|---|---|---|---|---|---|---|---|
 | plausible | 그럴듯한 | The story seemed plausible, but witnesses said it was untrue. |  | Day11;형용사;별3 | 해커스 보카/Day 11 | possible, believable, likely, probable |  | [plɔ́ːzəbl] |
 | transform | 변형시키다, 바꾸다 | Generators transform physical energy into electrical energy. |  | Day11;동사;별3 | 해커스 보카/Day 11 | convert, change, alter |  | [trænsfɔ́ːrm] |
-| counterpart | (쌍을 이루는) 한 쪽; 동등한 것 | Medieval religious books often included beautiful illustrations as a counterpart to the written text. |  | Day11;명사;별3 | 해커스 보카/Day 11 | complement, equivalent |  | [káuntərpàːrt] |
+| counterpart | (쌍을 이루는) 한 쪽; 동등한 것 | Medieval religious books often included beautiful illustrations as a counterpart to the written text. |  | Day11;명사;별3 | 해커스 보카/Day 11 | complement / equivalent |  | [káuntərpàːrt] |
 | nevertheless | 그럼에도 불구하고 | Beagles make excellent pets. Nevertheless, they can become unruly without proper training. |  | Day11;부사;별3 | 해커스 보카/Day 11 | in spite of that, however, still, yet, nonetheless |  | [nèvərðəlés] |
 | pronounced | 현저한 | The development of agricultural pesticides led to a pronounced increase in crop yields. | her pronounced confidence (단호한) | Day11;형용사;별3 | 해커스 보카/Day 11 | notable, striking, marked, significant, noticeable, distinct, strong, decided |  | [prənáunst] |
 | celebrated | 유명한 | General Sherman's march to the sea was probably the most celebrated military campaign in US history. |  | Day11;형용사;별3 | 해커스 보카/Day 11 | famous, renowned, well-known |  | [séləbrèitid] |

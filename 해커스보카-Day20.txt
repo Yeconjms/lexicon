@@ -2,7 +2,7 @@
 |---|---|---|---|---|---|---|---|---|
 | harness | (자연의 힘 등을) 이용하다 | The ancient Egyptians harnessed the power of water for agriculture. |  | Day20;동사;별3 | 해커스 보카/Day 20 | utilize, put to use, employ |  | [háːrnis] |
 | prestige | 명성, 위신 | Being enrolled at a top university gives a student prestige. |  | Day20;명사;별3 | 해커스 보카/Day 20 | high regard, status |  | [prestíːʒ] |
-| radically | 철저하게; 근본적으로 | Developments in computer technology led to radically different methods of communication. | adj. radical | Day20;부사;별3 | 해커스 보카/Day 20 | extremely, completely, essentially |  | [rǽdikəli] |
+| radically | 철저하게; 근본적으로 | Developments in computer technology led to radically different methods of communication. | adj. radical | Day20;부사;별3 | 해커스 보카/Day 20 | extremely, completely / essentially |  | [rǽdikəli] |
 | exhibit | 보이다, 나타내다 | The dancer exhibited grace and dignity despite her foot injury. |  | Day20;동사;별3 | 해커스 보카/Day 20 | show, display, present, demonstrate, set forth |  | [igzíbit] |
 | deposit | 놓다, 두다 | Express mail must be deposited in the pickup box by noon for next-day delivery. | a deposit of silt (침전물) | Day20;동사;별3 | 해커스 보카/Day 20 | lay, place, lay down, set down, leave behind, accumulation, sediment |  | [dipázit] |
 | shatter | 산산이 부수다 | A tornado shattered the windows of nearby houses last night. |  | Day20;동사;별3 | 해커스 보카/Day 20 | break, destroy, smash |  | [ʃǽtər] |
@@ -43,7 +43,7 @@
 | resume | 다시 시작하다 | The conference will resume after a short break for lunch. |  | Day20;동사;별2 | 해커스 보카/Day 20 | restart, begin again, recommence |  | [rizúːm] |
 | dual | 이중의 | After the addition of the camera feature, many cellular phones began to serve a dual purpose. |  | Day20;형용사;별2 | 해커스 보카/Day 20 | double, twofold |  | [djúːəl] |
 | composite | 합성물 | An alloy is a composite of metals joined together to form a new material. |  | Day20;명사;별2 | 해커스 보카/Day 20 | mixture, compound |  | [kəmpázit] |
-| illuminate | 밝게 하다; 명확하게 하다 | During the expedition deep into the forest, the explorers used lanterns to illuminate the way. |  | Day20;동사;별1 | 해커스 보카/Day 20 | light, brighten, clarify |  | [ilúːmənèit] |
+| illuminate | 밝게 하다; 명확하게 하다 | During the expedition deep into the forest, the explorers used lanterns to illuminate the way. |  | Day20;동사;별1 | 해커스 보카/Day 20 | light, brighten / clarify |  | [ilúːmənèit] |
 | allure | 매혹하다 | The beautiful Sirens in Greek mythology allured countless men and drove them to their death. | invite customers into the shop (매혹하다) | Day20;동사;별1 | 해커스 보카/Day 20 | attract, invite, appeal, lure |  | [əlúər] |
 | rekindle | 다시 불붙이다, 되살아나게 하다 | Going to see a classical music concert rekindled Ben's love of the violin. |  | Day20;동사;별1 | 해커스 보카/Day 20 | renew, arouse, reawaken |  | [riːkíndl] |
 | devastation | 파괴 | The devastation of cities and villages is inevitable in wartime. | v. devastate | Day20;명사;별1 | 해커스 보카/Day 20 | destruction, demolition, ruin |  | [dèvəstéiʃən] |

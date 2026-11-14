@@ -30,7 +30,7 @@
 | tacit | 무언의, 암묵적인 | The two countries made a tacit agreement to end the war, but they did not actually sign a peace treaty. |  | Day04;형용사;별2 | 해커스 보카/Day 04 | implicit, implied, unspoken |  | [tǽsit] |
 | resolve | 해결하다 | In some cases, mediators can help parties resolve legal disputes without going to court. |  | Day04;동사;별2 | 해커스 보카/Day 04 | settle, find a solution for, solve, decide, determine |  | [rizálv] |
 | merit | (칭찬할 만한) 가치 | The great merit of the poems is that they make us aware of previously unperceived possibilities. |  | Day04;명사;별2 | 해커스 보카/Day 04 | value, worth, virtue |  | [mérit] |
-| notion | 개념; 견해 | The notion that one is born as a blank slate has long been abandoned by most psychologists. |  | Day04;명사;별2 | 해커스 보카/Day 04 | concept, general idea, opinion, view |  | [nóuʃən] |
+| notion | 개념; 견해 | The notion that one is born as a blank slate has long been abandoned by most psychologists. |  | Day04;명사;별2 | 해커스 보카/Day 04 | concept, general idea / opinion, view |  | [nóuʃən] |
 | synthesize | 통합하다 | A financial analyst must be able to synthesize data from a variety of sources. | n. synthesis | Day04;동사;별2 | 해커스 보카/Day 04 | integrate, combine, coalesce |  | [sínθəsàiz] |
 | spectrum | 범위 | A Renaissance man possesses a broad spectrum of interests that includes the academic and the artistic. |  | Day04;명사;별2 | 해커스 보카/Day 04 | range, scope, extent |  | [spéktrəm] |
 | stream | 흐름 | It was difficult for the plumber to tell where the stream of liquid was coming from. |  | Day04;명사;별2 | 해커스 보카/Day 04 | flow, current |  | [striːm] |
@@ -42,7 +42,7 @@
 | fastidious | 까다로운 | The director would film the same scene hundreds of times because he was so fastidious. |  | Day04;형용사;별2 | 해커스 보카/Day 04 | demanding, choosy |  | [fæstídiəs] |
 | contraction | 감소, 축소 | For most companies, a contraction in sales can mean a huge loss in revenues. | v. contract | Day04;명사;별2 | 해커스 보카/Day 04 | reduction, diminution |  | [kəntrǽkʃən] |
 | stimulus | 자극(제) | Jack's dream of owning a house is a stimulus for him to work hard. | v. stimulate | Day04;명사;별2 | 해커스 보카/Day 04 | impetus, motivation, incentive, incitement |  | [stímjuləs] |
-| track | 뒤쫓다; (진행 과정 등을) 추적하다 | Investigators tracked the criminal to his hideout. |  | Day04;동사;별2 | 해커스 보카/Day 04 | follow, chase, monitor |  | [træk] |
+| track | 뒤쫓다; (진행 과정 등을) 추적하다 | Investigators tracked the criminal to his hideout. |  | Day04;동사;별2 | 해커스 보카/Day 04 | follow, chase / monitor |  | [træk] |
 | tame | 길들이다 | According to a recent study, dogs were first tamed in prehistoric Europe. |  | Day04;동사;별2 | 해커스 보카/Day 04 | domesticate, train |  | [teim] |
 | install | 설치하다 | Many cities have installed radar systems at intersections to discourage reckless driving. |  | Day04;동사;별1 | 해커스 보카/Day 04 | put in place, set up, position, induct, inaugurate |  | [instɔ́ːl] |
 | chronicle | 기록, 연대기 | Anne Frank's diary was a chronicle of her life during the Holocaust. |  | Day04;명사;별1 | 해커스 보카/Day 04 | record, history |  | [kránikl] |

@@ -7,7 +7,7 @@
 | elongate | 늘이다 | Turtles have the ability to elongate their necks to catch prey. |  | Day29;동사;별3 | 해커스 보카/Day 29 | stretch, lengthen, extend, prolong |  | [ilɔ́ːŋgeit] |
 | in tandem with | ~와 협력하여 | The corporation worked in tandem with the local government on a community project. |  | Day29;숙어;별3 | 해커스 보카/Day 29 | in association with, in conjunction with |  |  |
 | transition | 변화, 변천 | The biologist studied the caterpillar's metamorphosis, or physical transition into a butterfly. |  | Day29;명사;별3 | 해커스 보카/Day 29 | change, alteration, shift |  | [trænzíʃən] |
-| scarce | 부족한; 희귀한 | Food was scarce for months after the typhoon destroyed the region's farms. | n. scarcity | Day29;형용사;별3 | 해커스 보카/Day 29 | limited, short in supply, not readily available, rare |  | [skɛərs] |
+| scarce | 부족한; 희귀한 | Food was scarce for months after the typhoon destroyed the region's farms. | n. scarcity | Day29;형용사;별3 | 해커스 보카/Day 29 | limited, short in supply, not readily available / rare |  | [skɛərs] |
 | clear | 분명한 / 치우다 | It was very clear that the coach was angered by his team's loss. |  | Day29;형용사;동사;별3 | 해커스 보카/Day 29 | apparent, obvious, lucid / remove, clean |  | [kliər] |
 | relentless | 끊임없는 | The relentless rains during the monsoon season cause flooding in many tropical countries. | relentless criticism (냉혹한) = merciless, ruthless | Day29;형용사;별3 | 해커스 보카/Day 29 | continuous, unceasing, persistent |  | [riléntlis] |
 | intrinsic | 고유의, 타고난 | Environmentalists argue that all species should be protected because of their intrinsic value. | adv. intrinsically | Day29;형용사;별3 | 해커스 보카/Day 29 | inherent, innate |  | [intrínzik] |
@@ -40,7 +40,7 @@
 | shrivel | 시들다 | The leaves of the tree shriveled because of the harsh drought conditions. |  | Day29;동사;별2 | 해커스 보카/Day 29 | dry up, wither, wilt |  | [ʃrívəl] |
 | dissent | 이의를 제기하다 | Nearly 120 countries signed the UN's Convention on the Law of the Sea, while four countries dissented. | descent (하강) = fall, plunge | Day29;동사;별2 | 해커스 보카/Day 29 | oppose, object, express disagreement |  | [disént] |
 | elegant | 품위 있는, 세련된 | Chester A. Arthur will be remembered for being the most elegant president. |  | Day29;형용사;별2 | 해커스 보카/Day 29 | sophisticated, graceful, refined |  | [éligənt] |
-| qualify | 자격을 갖추다; 자격을 주다 | Students must maintain a C average or better to qualify for graduation. |  | Day29;동사;별2 | 해커스 보카/Day 29 | meet the requirement, entitle, empower |  | [kwáləfài] |
+| qualify | 자격을 갖추다; 자격을 주다 | Students must maintain a C average or better to qualify for graduation. |  | Day29;동사;별2 | 해커스 보카/Day 29 | meet the requirement / entitle, empower |  | [kwáləfài] |
 | evolve | (서서히) 발전하다, 진화하다 | The article evolved into a tightly argued piece of writing. |  | Day29;동사;별2 | 해커스 보카/Day 29 | develop, progress |  | [iválv] |
 | despite | ~에도 불구하고 | Despite a lack of money for college, Jerry managed to obtain a good education. |  | Day29;전치사;별2 | 해커스 보카/Day 29 | in spite of, notwithstanding |  | [dispáit] |
 | emergence | 출현 | The emergence of Japan as a world power began in the early 20th century. | v. emerge | Day29;명사;별1 | 해커스 보카/Day 29 | appearance, advent, rise |  | [imə́ːrdʒəns] |

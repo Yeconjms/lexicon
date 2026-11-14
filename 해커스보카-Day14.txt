@@ -1,11 +1,11 @@
 | 단어 | 뜻 | 예문 | 함께쓰는표현 | 태그 | 팩 | 비슷한말 | 반대말 | 발음기호 |
 |---|---|---|---|---|---|---|---|---|
 | lethal | 치명적인 | The black mamba is one of the world's most lethal snakes. |  | Day14;형용사;별3 | 해커스 보카/Day 14 | deadly, dangerous, fatal, pernicious |  | [líːθəl] |
-| modest | 그리 크지(많지) 않은; 수수한 | The apartment Janet lives in is a modest one, but it satisfies her needs. | a modest personality (겸손한) | Day14;형용사;별3 | 해커스 보카/Day 14 | small, not large, limited, simple, humble, unpretentious |  | [mádist] |
+| modest | 그리 크지(많지) 않은; 수수한 | The apartment Janet lives in is a modest one, but it satisfies her needs. | a modest personality (겸손한) | Day14;형용사;별3 | 해커스 보카/Day 14 | small, not large, limited / simple, humble, unpretentious |  | [mádist] |
 | component | 구성 요소 | Nitrogen is one of the major components of the air humans breathe. |  | Day14;명사;별3 | 해커스 보카/Day 14 | element, constituent, ingredient, part, factor |  | [kəmpóunənt] |
 | exploitation | (부당한) 이용, 착취 | The Keating-Owen Act of 1916 was an early attempt to address the exploitation of child labor. | v. exploit | Day14;명사;별3 | 해커스 보카/Day 14 | use, abuse, misuse |  | [èksplɔitéiʃən] |
 | relic | 유물, 나머지 | In the jungle, archaeologists uncovered pottery and other relics from an ancient civilization. |  | Day14;명사;별3 | 해커스 보카/Day 14 | remains, remnant, vestige |  | [rélik] |
-| profoundly | 깊이; 대단히 | The death of the popular king profoundly affected the emotions of his subjects. | adj. profound | Day14;부사;별3 | 해커스 보카/Day 14 | deeply, completely, strongly |  | [prəfáundli] |
+| profoundly | 깊이; 대단히 | The death of the popular king profoundly affected the emotions of his subjects. | adj. profound | Day14;부사;별3 | 해커스 보카/Day 14 | deeply / completely, strongly |  | [prəfáundli] |
 | deflect | 방향을 바꾸다 | Barriers were erected to deflect traffic away from the construction site. |  | Day14;동사;별3 | 해커스 보카/Day 14 | change the direction of, divert |  | [diflékt] |
 | highlight | 강조하다 | The burglary highlighted the company's need to upgrade its security system. |  | Day14;동사;별3 | 해커스 보카/Day 14 | emphasize, stress, underline, accent |  | [hàiláit] |
 | exert | (힘·능력 등을) 가하다, 행사하다 | Oil drills exert a tremendous amount of force and can easily break through hard rock. | n. exertion (노력) = effort, strain | Day14;동사;별3 | 해커스 보카/Day 14 | apply, exercise, employ, put forth, wield |  | [igzə́ːrt] |
@@ -35,7 +35,7 @@
 | mobilize | 동원하다 | To prepare for any possible hostilities to come, the military was mobilized. | mobile (이동할 수 있는) = movable, portable | Day14;동사;별2 | 해커스 보카/Day 14 | put into action, deploy |  | [móubəlàiz] |
 | given that | ~을 고려하면 | Given that dogs are descendants of wolves, it is not surprising that they look similar. |  | Day14;숙어;별2 | 해커스 보카/Day 14 | accepting that, considering that |  |  |
 | cargo | 화물, 짐 | The sailors unloaded the cargo from the ship. |  | Day14;명사;별2 | 해커스 보카/Day 14 | shipment, load, freight, burden |  | [káːrgou] |
-| solitary | 외딴; 외로운 | The neighborhood kids made it a Halloween tradition to visit the solitary house on the hill. |  | Day14;형용사;별2 | 해커스 보카/Day 14 | isolated, secluded, remote, alone, lonely |  | [sálətèri] |
+| solitary | 외딴; 외로운 | The neighborhood kids made it a Halloween tradition to visit the solitary house on the hill. |  | Day14;형용사;별2 | 해커스 보카/Day 14 | isolated, secluded, remote / alone, lonely |  | [sálətèri] |
 | slightly | 약간 | This year's bar exam was slightly harder than the one last year. | adj. slight | Day14;부사;별2 | 해커스 보카/Day 14 | a little, somewhat, a bit |  | [sláitli] |
 | deliberately | 일부러 | The teacher deliberately used simple terms to explain the complex concept to the students. | adj. deliberate | Day14;부사;별2 | 해커스 보카/Day 14 | intentionally, consciously, on purpose |  | [dilíbərətli] |
 | unthinkable | 상상도 할 수 없는 | It seems unthinkable that people once worked and studied without using the Internet. |  | Day14;형용사;별2 | 해커스 보카/Day 14 | inconceivable, unimaginable |  | [ʌ̀nθíŋkəbl] |

@@ -28,19 +28,19 @@
 | suspend | 매달다 / 연기하다 | The workers suspended the lights from the ceiling of the building's lobby. | suspend the road construction | Day08;동사;별2 | 해커스 보카/Day 08 | hang, dangle, swing / defer, postpone |  | [səspénd] |
 | prevent | 막다, 방해하다 | The environmental bill prevents citizens from dumping garbage into the lake. |  | Day08;동사;별2 | 해커스 보카/Day 08 | preclude, avoid, impede, avert |  | [privént] |
 | authentic | 진짜의 | The museum has a large collection of authentic artifacts from the late 1400s. | n. authenticity | Day08;형용사;별2 | 해커스 보카/Day 08 | genuine, true, real |  | [ɔːθéntik] |
-| redundant | 불필요한; 장황한 | Students often make the mistake of including redundant information in their essays. |  | Day08;형용사;별2 | 해커스 보카/Day 08 | superfluous, unnecessary, wordy, repetitious |  | [ridʌ́ndənt] |
+| redundant | 불필요한; 장황한 | Students often make the mistake of including redundant information in their essays. |  | Day08;형용사;별2 | 해커스 보카/Day 08 | superfluous, unnecessary / wordy, repetitious |  | [ridʌ́ndənt] |
 | profuse | 풍부한 | The old English sheepdog has a profuse coat of fur that keeps it warm in the winter. |  | Day08;형용사;별2 | 해커스 보카/Day 08 | abundant, plentiful, copious, lavish |  | [prəfjúːs] |
 | ornament | 장식하다 | Timothy's house was ornamented with various flowers. | adj. ornamental | Day08;동사;별2 | 해커스 보카/Day 08 | decorate, adorn, embellish |  | [ɔ́ːrnəmənt] |
 | demolish | 파괴하다 | Large hurricanes and typhoons can easily demolish entire cities. |  | Day08;동사;별2 | 해커스 보카/Day 08 | destroy, wreck |  | [dimáliʃ] |
 | voracious | 만족할 줄 모르는, 탐욕적인 | Because growing children can have voracious appetites, they may need to eat more often than most adults. |  | Day08;형용사;별2 | 해커스 보카/Day 08 | insatiable, greedy, gluttonous |  | [vɔːréiʃəs] |
 | as well as | ~뿐만 아니라 | Florida is a popular tourist destination because it has a warm climate as well as beautiful beaches. |  | Day08;숙어;별2 | 해커스 보카/Day 08 | in addition to, not to mention |  |  |
-| extreme | 극심한; 지나친 | A polar bear's thick fur protects it from the extreme cold. |  | Day08;형용사;별2 | 해커스 보카/Day 08 | intense, severe, excessive |  | [ikstríːm] |
+| extreme | 극심한; 지나친 | A polar bear's thick fur protects it from the extreme cold. |  | Day08;형용사;별2 | 해커스 보카/Day 08 | intense, severe / excessive |  | [ikstríːm] |
 | reform | 개혁, 개선 / 개선하다 | The protestors hoped that their actions would lead to reform. |  | Day08;명사;동사;별2 | 해커스 보카/Day 08 | betterment / amend, improve, ameliorate |  | [rifɔ́ːrm] |
 | determinant | 결정 요인 | Unsanitary water is one major determinant for the spread of infectious diseases. |  | Day08;명사;별2 | 해커스 보카/Day 08 | cause, factor |  | [ditə́ːrmənənt] |
-| inclination | 경향; 기호 | The Mongols had little inclination to ally with other nomadic peoples of Northern Asia. |  | Day08;명사;별2 | 해커스 보카/Day 08 | tendency, trend, preference, taste |  | [ìnklənéiʃən] |
+| inclination | 경향; 기호 | The Mongols had little inclination to ally with other nomadic peoples of Northern Asia. |  | Day08;명사;별2 | 해커스 보카/Day 08 | tendency, trend / preference, taste |  | [ìnklənéiʃən] |
 | inflation | 팽창 | According to the theory, the universe began a rapid inflation following the Big Bang. | v. inflate | Day08;명사;별2 | 해커스 보카/Day 08 | expansion, swelling, enlargement |  | [infléiʃən] |
 | routine | 틀에 박힌, 평범한 | Successful applicants avoid giving routine answers in interviews. | adv. routinely | Day08;형용사;별2 | 해커스 보카/Day 08 | ordinary, normal, conventional |  | [ruːtíːn] |
-| accessible | 접근할 수 있는; 얻을 수 있는 | Eagles nest high on cliffs that are accessible by few predators. |  | Day08;형용사;별2 | 해커스 보카/Day 08 | reachable, able to be reached, obtainable |  | [æksésəbl] |
+| accessible | 접근할 수 있는; 얻을 수 있는 | Eagles nest high on cliffs that are accessible by few predators. |  | Day08;형용사;별2 | 해커스 보카/Day 08 | reachable, able to be reached / obtainable |  | [æksésəbl] |
 | constituent | 구성 요소의 | Carl Linnaeus conducted a great deal of research on the constituent parts of the human body. | v. constitute; n. constitution | Day08;형용사;별2 | 해커스 보카/Day 08 | component, elemental, voter, elector |  | [kənstítʃuənt] |
 | insolent | 무례한 | The waiter's insolent attitude offended the customers in the restaurant. |  | Day08;형용사;별1 | 해커스 보카/Day 08 | impertinent, impudent, rude |  | [ínsələnt] |
 | to be sure | 틀림없이 | To be sure, Shakespeare's contributions to the English language cannot be discounted. |  | Day08;숙어;별1 | 해커스 보카/Day 08 | certainly, definitely, surely |  |  |
